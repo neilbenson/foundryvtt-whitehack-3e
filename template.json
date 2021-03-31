@@ -1,0 +1,29 @@
+{
+  "Actor": {},
+  "Item": {
+    "types": ["weapon", "vehicles"],
+    "templates": {
+      "itemDescription": {
+        "description": ""
+      },
+      "itemCost": {
+        "cost": 0
+      }
+    },
+    "weapon": {
+      "templates": ["itemDescription", "itemCost"],
+      "damage": "",
+      "weight": "Regular",
+      "range": 0,
+      "rateOfFire": "",
+      "special": ""
+    },
+    "gear": {
+      "templates": ["itemDescription", "itemCost"],
+      "acceleration": 0,
+      "frame": 0,
+      "handling": 0,
+      "personal": false
+    }
+  }
+}

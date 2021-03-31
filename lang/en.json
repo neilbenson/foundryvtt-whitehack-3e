@@ -1,0 +1,35 @@
+{
+  "wh3e": {
+    "weapon": {
+      "damage": "Damage",
+      "weight": "Weight",
+      "range": "Range",
+      "rateOfFire": "RoF",
+      "special": "Special",
+      "description": "Description",
+      "cost": "Cost"
+    },
+    "damageDice": {
+      "oneDmg": "1",
+      "d6minus3": "1d6-3",
+      "d6minus2": "1d6-2",
+      "d6minus1": "1d6-1",
+      "d6": "1d6",
+      "d6plus1": "1d6+1",
+      "d6plus2": "1d6+2",
+      "d6plus3": "1d6+3"
+    },
+    "weightTypes": {
+      "regular": "Regular",
+      "heavy": "Heavy",
+      "minor": "Minor"
+    },
+    "roFShotsPerRound": {
+      "oneInFour": "1/4",
+      "oneInThree": "1/3",
+      "oneInTwo": "1/2",
+      "one": "1",
+      "three": "3"
+    }
+  }
+}

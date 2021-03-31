@@ -1,0 +1,22 @@
+{
+  "name": "wh3e",
+  "title": "Whitehack 3e",
+  "description": "A system for playing Whitehack 3e",
+  "author": "Hellbrandt",
+  "version": 0.01,
+  "minimumCoreVersion": "0.7.9",
+  "compatibleCoreVersion": "0.7.9",
+  "esmodules": ["wh3e.js"],
+  "styles": ["wh3e.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "hp",
+  "initiative": "1d6 + @initiative"
+}
