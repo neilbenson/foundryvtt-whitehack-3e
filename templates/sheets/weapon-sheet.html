@@ -3,7 +3,7 @@
       <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
       <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
   </header>
-  <div>
+  <div class="sheet-content">
     <table>
       <tr>
         <th>{{localize "wh3e.weapon.damage"}}</th>
@@ -32,7 +32,7 @@
           </select>
         </td>
         <td>
-          <input name="data.range" type="text" value={{data.range}} data-dtype="Number" />
+          <input name="data.range" type="text" class="center-text" value={{data.range}} data-dtype="Number" />
         </td>
         <td>
           <select id="data.rateOfFire" name="data.rateOfFire">
@@ -44,17 +44,17 @@
           </select>
         </td>
         <td>
-          <input name="data.cost" type="text" value={{data.cost}} data-dtype="Number" />
+          <input name="data.cost" type="text" class="center-text" value={{data.cost}} data-dtype="Number" />
         </td>
       </tr>
     </table>
-    <div style="margin-bottom: 10px;">
+    <div class="item-special">
       <label for="data.special" style="font-weight: bold;">{{localize "wh3e.weapon.special"}}</label>
       <input id="data.special" name="data.special" type="text" value="{{data.special}}" data-dtype="String" />
     </div>
-    <div>
+    <div class="item-description">
       <label for="data.description" style="font-weight: bold;">{{localize "wh3e.weapon.description"}}</label>
-      <textarea name="data.description">{{data.description}}</textarea>
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
     </div>
   </div>
 </form>

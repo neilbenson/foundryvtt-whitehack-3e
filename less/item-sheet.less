@@ -1,0 +1,27 @@
+.sheet {
+  overflow: hidden;
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .sheet-content {
+    height: 100%;
+    display: flex;
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    flex-direction: column;
+    .editor {
+      height: calc(100% - 20px);
+      border: 1px solid #aaa;
+      padding: 1px 3px;
+    }
+    .item-special {
+      margin-bottom: 10px;
+    }
+    .item-description {
+      height: 100%;
+    }
+  }
+}

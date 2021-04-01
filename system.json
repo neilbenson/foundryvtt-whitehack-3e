@@ -7,7 +7,7 @@
   "minimumCoreVersion": "0.7.9",
   "compatibleCoreVersion": "0.7.9",
   "esmodules": ["wh3e.js"],
-  "styles": ["wh3e.css"],
+  "styles": ["css/wh3e.css"],
   "languages": [
     {
       "lang": "en",
