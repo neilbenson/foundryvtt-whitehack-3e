@@ -1,0 +1,28 @@
+<section>
+  <div class="attributes">
+    <div class="headings flexrow flex-group-center">
+      <span class="flex-grow1">{{localize "wh3e.category.attr"}}</span>
+      <span class="flex-grow1">{{localize "wh3e.attribute.score"}}</span>
+      <span class="flex-grow8">{{localize "wh3e.resource.groups"}}</span>
+      <span class="flex-grow3">{{localize "wh3e.function.rolls"}}</span>
+    </div>
+    {{#each data.attributes as |attribute key|}}
+      <div class="attribute flexrow flex-group-center">
+        <label for="data.attributes.{{key}}.value" class="resource-label flex-grow1">{{getTextFromKey "wh3e.attribute" key}}</label>
+        <input type="text" name="data.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="Number" class="flex-grow1" />
+        <input type="text" name="data.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String" class="flex-grow8 groups" />
+        <button class="attribute-roll rollable flex-grow1" data-roll="1d20" data-label="{{key}}">
+          <i class="fas fa-dice-d20"></i>
+        </button>
+        <button class="attribute-roll rollable flex-grow1" data-roll="2d20kl" data-label="{{key}}">
+          <i class="fas fa-dice-d20"></i>
+          <i class="fas fa-plus"></i>
+        </button>
+        <button class="attribute-roll rollable flex-grow1" data-roll="2d20kh" data-label="{{key}}">
+          <i class="fas fa-dice-d20"></i>
+          <i class="fas fa-minus"></i>
+        </button>
+      </div>
+    {{/each}}
+  </div>
+</section>

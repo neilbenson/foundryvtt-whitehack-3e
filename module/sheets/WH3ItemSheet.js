@@ -9,7 +9,7 @@ export default class WH3ItemSheet extends ItemSheet {
   }
 
   get template() {
-    return `systems/wh3e/templates/sheets/${this.item.data.type}-sheet.html`;
+    return `systems/wh3e/templates/sheets/${this.item.data.type}-sheet.hbs`;
   }
 
   getData() {

@@ -1,5 +1,86 @@
 {
-  "Actor": {},
+  "Actor": {
+    "types": ["character", "monster"],
+    "templates": {
+      "base": {
+        "hitPoints": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        }
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "biography": "",
+      "basics": {
+        "level": {
+          "value": 1
+        },
+        "class": "",
+        "vocation": "",
+        "slots": {
+          "value": 1
+        }
+      },
+      "attributes": {
+        "str": {
+          "value": 10,
+          "groups": ""
+        },
+        "dex": {
+          "value": 10,
+          "groups": ""
+        },
+        "con": {
+          "value": 10,
+          "groups": ""
+        },
+        "int": {
+          "value": 10,
+          "groups": ""
+        },
+        "wis": {
+          "value": 10,
+          "groups": ""
+        },
+        "cha": {
+          "value": 10,
+          "groups": ""
+        }
+      },
+      "combat": {
+        "attackValue": {
+          "value": 10
+        },
+        "armourClass": {
+          "value": 0
+        }
+      },
+      "movement": {
+        "value": 30
+      },
+      "savingThrow": {
+        "value": 0
+      },
+      "language": "",
+      "corruptionLevel": {
+        "value": 0,
+        "disorders": ""
+      },
+      "coin": {
+        "gp": {
+          "value": 0
+        },
+        "sp": {
+          "value": 0
+        },
+        "cp": {
+          "value": 0
+        }
+      }
+    }
+  },
   "Item": {
     "types": ["weapon", "vehicles"],
     "templates": {

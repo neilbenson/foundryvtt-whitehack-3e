@@ -1,6 +1,38 @@
 {
   "wh3e": {
+    "attribute": {
+      "str": "STR",
+      "wis": "WIS",
+      "int": "INT",
+      "dex": "DEX",
+      "con": "CON",
+      "cha": "CHA",
+      "score": "Score"
+    },
+    "resource": {
+      "hitpoints": "Hit Points",
+      "level": "Level",
+      "slots": "Slots",
+      "class": "Class",
+      "vocation": "Vocation",
+      "groups": "Groups",
+      "gear": "Gear",
+      "backpack": "Backpack",
+      "item.name": "Name",
+      "item.add": "Add Item"
+    },
+    "category": {
+      "attributes": "Attributes",
+      "attr": "Attr",
+      "description": "Description",
+      "inventory": "Inventory",
+      "abilities": "Abilities"
+    },
+    "function": {
+      "rolls": "Rolls"
+    },
     "weapon": {
+      "name": "Name",
       "damage": "Damage",
       "weight": "Weight",
       "range": "Range",
