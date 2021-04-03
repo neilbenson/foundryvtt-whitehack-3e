@@ -5,7 +5,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       template: "systems/wh3e/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
       width: 600,
-      height: 550
+      height: 550,
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }]
     })
   }
 

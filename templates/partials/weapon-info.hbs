@@ -1,28 +1,45 @@
-<div class="weapon">
-  <li class="item flexrow" data-item-id="{{_id}}">
-    <tr>
-      <td>
-        <img src="{{img}}" title="{{name}}" width="24" height="24"/>
-      </td>
-      <td>
-        <span>{{name}}</span>
-      </td>
-      <td>
-        <span>{{getTextFromKey "wh3e.damageDice" data.damage}}</span>
-      </td>
-      <td>
-        <span>{{getTextFromKey "wh3e.weightTypes" data.weight}}</span>
-      </td>
-      <td>
-        <span>{{data.range}}</span>
-      </td>
-      <td>
-        <span>{{getTextFromKey "wh3e.roFShotsPerRound" data.rateOfFire}}</span>
-      </td>
-      <td>
-          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>        
-      </td>
-    </tr>
-  </li>
-</div>
+    <div class="tab weapons" data-group="primary" data-tab="weapons">
+      <section class="weapon-list">
+        <table>
+          <tr>
+            <th></th>
+            <th>{{localize "wh3e.weapon.name"}}</th>
+            <th>{{localize "wh3e.weapon.damage"}}</th>
+            <th>{{localize "wh3e.weapon.weight"}}</th>
+            <th>{{localize "wh3e.weapon.range"}}</th>
+            <th>{{localize "wh3e.weapon.rateOfFire"}}</th>
+            <th></th>
+          </tr>
+          {{#each weapons as |weapon id|}}
+          <div class="weapon">
+            <li class="item flexrow" data-item-id="{{weapon._id}}">
+              <tr>
+                <td>
+                  <img src="{{weapon.img}}" title="{{name}}" width="24" height="24"/>
+                </td>
+                <td>
+                  <span>{{weapon.name}}</span>
+                </td>
+                <td>
+                  <span>{{getTextFromKey "wh3e.damageDice" weapon.data.damage}}</span>
+                </td>
+                <td>
+                  <span>{{getTextFromKey "wh3e.weightTypes" weapon.data.weight}}</span>
+                </td>
+                <td>
+                  <span>{{weapon.data.range}}</span>
+                </td>
+                <td>
+                  <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.data.rateOfFire}}</span>
+                </td>
+                <td>
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                </td>
+              </tr>
+            </li>
+          </div>
+          {{/each}}
+        </table>
+      </section>
+    </div>

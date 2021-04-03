@@ -26,7 +26,8 @@
       "attr": "Attr",
       "description": "Description",
       "inventory": "Inventory",
-      "abilities": "Abilities"
+      "abilities": "Abilities",
+      "weapons": "Weapons"
     },
     "function": {
       "rolls": "Rolls"

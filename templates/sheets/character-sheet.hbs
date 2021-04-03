@@ -1,24 +1,20 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} flexcol" autocomplete="off">
   <header class="sheet-header">
     {{> "systems/wh3e/templates/partials/character-header.hbs"}}
   </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="attributes">
+            {{localize "wh3e.category.attributes"}}
+        </a>
+        <a class="item" data-tab="weapons">
+            {{localize "wh3e.category.weapons"}}
+        </a>
+    </nav>
+
   <div class="sheet-content">
     {{> "systems/wh3e/templates/partials/character-stats.hbs"}}
-    <section class="weapon-list">
-      <table>
-        <tr>
-          <th></th>
-          <th>{{localize "wh3e.weapon.name"}}</th>
-          <th>{{localize "wh3e.weapon.damage"}}</th>
-          <th>{{localize "wh3e.weapon.weight"}}</th>
-          <th>{{localize "wh3e.weapon.range"}}</th>
-          <th>{{localize "wh3e.weapon.rateOfFire"}}</th>
-          <th></th>
-        </tr>
-        {{#each weapons as |weapon id|}}
-        {{> "systems/wh3e/templates/partials/weapon-info.hbs" weapon}}
-        {{/each}}
-      </table>
-    </section>
+    {{> "systems/wh3e/templates/partials/weapon-info.hbs"}}
   </div>
 </form>
