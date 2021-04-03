@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "monster"],
+    "types": ["Character", "Monster"],
     "templates": {
       "base": {
         "hitPoints": {
@@ -10,7 +10,7 @@
         }
       }
     },
-    "character": {
+    "Character": {
       "templates": ["base"],
       "biography": "",
       "basics": {
@@ -82,7 +82,7 @@
     }
   },
   "Item": {
-    "types": ["weapon", "vehicles"],
+    "types": ["Weapon", "Gear"],
     "templates": {
       "itemDescription": {
         "description": ""
@@ -91,7 +91,7 @@
         "cost": 0
       }
     },
-    "weapon": {
+    "Weapon": {
       "templates": ["itemDescription", "itemCost"],
       "damage": "",
       "weight": "Regular",
@@ -99,12 +99,8 @@
       "rateOfFire": "",
       "special": ""
     },
-    "gear": {
-      "templates": ["itemDescription", "itemCost"],
-      "acceleration": 0,
-      "frame": 0,
-      "handling": 0,
-      "personal": false
+    "Gear": {
+      "templates": ["itemDescription", "itemCost"]
     }
   }
 }

@@ -14,9 +14,7 @@ export default class WH3ItemSheet extends ItemSheet {
 
   getData() {
     const data = super.getData();
-
     data.config = CONFIG.wh3e;
-
     return data;
   }
 }

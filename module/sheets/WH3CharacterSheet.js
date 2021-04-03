@@ -13,7 +13,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
-    data.weapons = data.items.filter((item) => item.type === "weapon");
+    data.weapons = data.items.filter((item) => item.type === "Weapon");
     return data;
   }
 }

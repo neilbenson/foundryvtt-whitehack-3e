@@ -1,6 +1,7 @@
 import { wh3e } from './module/config.js';
 import WH3ItemSheet from './module/sheets/WH3ItemSheet.js';
 import WH3CharacterSheet from './module/sheets/WH3CharacterSheet.js';
+import WH3MonsterSheet from './module/sheets/WH3MonsterSheet.js';
 
 async function preloadHandlebarsTemplates() {
   const templatePaths = [
@@ -21,7 +22,8 @@ Hooks.once("init", function () {
   Items.registerSheet("wh3e", WH3ItemSheet, { makeDefault: true });
 
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("wh3e", WH3CharacterSheet, { makeDefault: true });
+  Actors.registerSheet("wh3e", WH3CharacterSheet, { makeDefault: true, types: ['Character'] });
+  Actors.registerSheet("wh3e", WH3MonsterSheet, { makeDefault: true, types: ['Monster'] });
 
   preloadHandlebarsTemplates();
 
