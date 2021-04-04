@@ -1,0 +1,36 @@
+// Fixed header table
+.fixed_header {
+  width: 584px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  tbody {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    height: 280px;
+  }
+
+  thead tr {
+    display: block;
+  }
+
+  th,
+  td {
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.gear .fixed_header {
+  th,
+  td {
+    width: 144px;
+  }
+}
+
+.weapons .fixed_header {
+  th,
+  td {
+    width: 85px;
+  }
+}
