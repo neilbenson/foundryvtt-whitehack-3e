@@ -7,7 +7,8 @@ async function preloadHandlebarsTemplates() {
   const templatePaths = [
     "systems/wh3e/templates/partials/character-header.hbs",
     "systems/wh3e/templates/partials/character-stats.hbs",
-    "systems/wh3e/templates/partials/weapon-info.hbs"
+    "systems/wh3e/templates/partials/weapon-info.hbs",
+    "systems/wh3e/templates/partials/gear-info.hbs"
   ];
 
   return loadTemplates(templatePaths);

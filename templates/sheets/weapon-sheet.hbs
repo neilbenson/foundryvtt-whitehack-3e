@@ -5,14 +5,14 @@
   </header>
   <div class="sheet-content">
     <table>
-      <tr>
-        <th>{{localize "wh3e.weapon.damage"}}</th>
-        <th>{{localize "wh3e.weapon.weight"}}</th>
-        <th>{{localize "wh3e.weapon.range"}}</th>
-        <th>{{localize "wh3e.weapon.rateOfFire"}}</th>
-        <th>{{localize "wh3e.weapon.cost"}}</th>
+      <tr class="flex-center">
+        <th>{{localize "wh3e.item.damage"}}</th>
+        <th>{{localize "wh3e.item.weight"}}</th>
+        <th>{{localize "wh3e.item.range"}}</th>
+        <th>{{localize "wh3e.item.rateOfFire"}}</th>
+        <th>{{localize "wh3e.item.cost"}}</th>
       </tr>
-      <tr>
+      <tr class="flex-center">
         <td>
           <select id="data.damage" name="data.damage">
             {{#select data.damage}}
@@ -44,16 +44,23 @@
           </select>
         </td>
         <td>
-          <input name="data.cost" type="text" class="center-text" value={{data.cost}} data-dtype="Number" />
+          <input name="data.cost" type="text" class="center-text input-small" value={{data.cost}} data-dtype="Number" />
+          <select id="data.costCoinType" name="data.costCoinType">
+            {{#select data.costCoinType}}
+            {{#each config.coinTypes as |name type|}}
+            <option value="{{type}}">{{localize name}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
         </td>
       </tr>
     </table>
     <div class="item-special">
-      <label for="data.special" style="font-weight: bold;">{{localize "wh3e.weapon.special"}}</label>
+      <label for="data.special" style="font-weight: bold;">{{localize "wh3e.item.special"}}</label>
       <input id="data.special" name="data.special" type="text" value="{{data.special}}" data-dtype="String" />
     </div>
     <div class="item-description">
-      <label for="data.description" style="font-weight: bold;">{{localize "wh3e.weapon.description"}}</label>
+      <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
       {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
     </div>
   </div>

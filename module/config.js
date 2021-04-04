@@ -15,10 +15,16 @@ export const wh3e = {
     minor: "wh3e.weightTypes.minor"
   },
   roFShotsPerRound: {
+    none: "wh3e.misc.none",
     oneInFour: "wh3e.roFShotsPerRound.oneInFour",
     oneInThree: "wh3e.roFShotsPerRound.oneInThree",
     oneInTwo: "wh3e.roFShotsPerRound.oneInTwo",
     one: "wh3e.roFShotsPerRound.one",
     three: "wh3e.roFShotsPerRound.three"
+  },
+  coinTypes: {
+    gp: "wh3e.coinType.gp",
+    sp: "wh3e.coinType.sp",
+    cp: "wh3e.coinType.cp"
   }
 };

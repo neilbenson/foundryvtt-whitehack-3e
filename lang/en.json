@@ -25,14 +25,14 @@
       "attributes": "Attributes",
       "attr": "Attr",
       "description": "Description",
-      "inventory": "Inventory",
+      "gear": "Gear",
       "abilities": "Abilities",
       "weapons": "Weapons"
     },
     "function": {
       "rolls": "Rolls"
     },
-    "weapon": {
+    "item": {
       "name": "Name",
       "damage": "Damage",
       "weight": "Weight",
@@ -40,7 +40,13 @@
       "rateOfFire": "RoF",
       "special": "Special",
       "description": "Description",
-      "cost": "Cost"
+      "cost": "Cost",
+      "melee": "Melee"
+    },
+    "coinType": {
+      "gp": "GP",
+      "sp": "SP",
+      "cp": "CP"
     },
     "damageDice": {
       "oneDmg": "1",
@@ -63,6 +69,9 @@
       "oneInTwo": "1/2",
       "one": "1",
       "three": "3"
+    },
+    "misc": {
+      "none": "None"
     }
   }
 }
