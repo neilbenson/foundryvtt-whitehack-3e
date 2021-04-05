@@ -7,21 +7,21 @@
           "value": 10,
           "min": 0,
           "max": 10
-        }
+        },
+        "combat": {
+          "armourClass": 0
+        },
+        "movement": 30
       }
     },
     "Character": {
       "templates": ["base"],
-      "biography": "",
+      "notes": "",
       "basics": {
-        "level": {
-          "value": 1
-        },
+        "level": 1,
         "class": "",
         "vocation": "",
-        "slots": {
-          "value": 1
-        }
+        "slots": 1
       },
       "attributes": {
         "str": {
@@ -50,35 +50,31 @@
         }
       },
       "combat": {
-        "attackValue": {
-          "value": 10
-        },
-        "armourClass": {
-          "value": 0
-        }
+        "attackValue": 10
       },
-      "movement": {
-        "value": 30
-      },
-      "savingThrow": {
-        "value": 0
-      },
-      "language": "",
+      "savingThrow": 0,
+      "languages": "",
       "corruptionLevel": {
         "value": 0,
         "disorders": ""
       },
       "coin": {
-        "gp": {
-          "value": 0
-        },
-        "sp": {
-          "value": 0
-        },
-        "cp": {
-          "value": 0
-        }
+        "gp": 0,
+        "sp": 0,
+        "cp": 0
       }
+    },
+    "Monster": {
+      "templates": ["base"],
+      "combat": {
+        "hitDice": {
+          "value": "1D6"
+        }
+      },
+      "damage": "",
+      "special": "",
+      "notes": "",
+      "xp": 0
     }
   },
   "Item": {

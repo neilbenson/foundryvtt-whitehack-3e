@@ -5,13 +5,23 @@
     }
   }
 
-  input {
+  input,
+  select {
     background: @c-white;
     border-width: 2px;
     height: @input-height;
     font-size: 1.1em;
     &.input-small {
       width: 50%;
+    }
+    &.read-only {
+      background-color: @c-grey;
+      &:hover,
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        cursor: default;
+      }
     }
   }
 

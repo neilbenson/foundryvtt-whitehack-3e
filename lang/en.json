@@ -19,7 +19,17 @@
       "gear": "Gear",
       "backpack": "Backpack",
       "item.name": "Name",
-      "item.add": "Add Item"
+      "item.add": "Add Item",
+      "hitDice": "Hit Dice"
+    },
+    "actor": {
+      "savingThrow": "ST",
+      "attackValue": "AV",
+      "armourClass": "AC",
+      "movement": "Movement",
+      "monster": {
+        "xp": "XP"
+      }
     },
     "category": {
       "attributes": "Attributes",
@@ -41,7 +51,8 @@
       "special": "Special",
       "description": "Description",
       "cost": "Cost",
-      "melee": "Melee"
+      "melee": "Melee",
+      "notes": "Notes"
     },
     "coinType": {
       "gp": "GP",

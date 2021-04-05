@@ -1,11 +1,81 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
   <header class="sheet-header">
-    {{> "systems/wh3e/templates/partials/character-header.hbs"}}
-    <p>Monster</p>
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
+    <!-- TO DO: Remove unused styles e.g. resources, resource, resource-content -->
+    <div>
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
+      <div class="resources grid grid-3col">
+        {{!-- "flex-group-center" is also defined in the _grid.scss file
+        and it will add a small amount of padding, a border, and will
+        center all of its child elements content and text. --}}
+        <div class="resource flex-group-center">
+          <label for="data.basics.hitDice.value" class="resource-label">{{localize "wh3e.resource.hitDice"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="data.basics.hitDice.value" value="{{data.basics.hitDice.value}}"
+                   data-dtype="Number" />
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="data.hitPoints.value" class="resource-label">{{localize "wh3e.resource.hitpoints"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
+            <span> / </span>
+            <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number" />
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="data.basics.movement" class="resource-label">{{localize "wh3e.actor.movement"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="data.basics.movement" value="{{data.basics.movement}}"
+                   data-dtype="Number" />
+          </div>
+        </div>
+      </div>
+      <div class="resources grid grid-4col">
+        <div class="resource flex-group-center">
+          <label for="calculated.savingThrow" class="resource-label">{{localize "wh3e.actor.savingThrow"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="calculated.savingThrow" value="Calculated ST" class="read-only"
+                   data-dtype="Number" readonly="readonly" />
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="calculated.attackValue" class="resource-label">{{localize "wh3e.actor.attackValue"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="calculated.attackValue" value="Calculated AV" class="read-only"
+                   data-dtype="Number" readonly="readonly" />
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="data.damage" class="resource-label">{{localize "wh3e.item.damage"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <select id="data.damage" name="data.damage">
+              {{#select data.damage}}
+              {{#each config.damageDice as |name dice|}}
+              <option value="{{dice}}">{{localize name}}</option>
+              {{/each}}
+              {{/select}}
+            </select>
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="data.xp" class="resource-label">{{localize "wh3e.actor.monster.xp"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="data.xp" value="{{data.xp}}"
+                   data-dtype="Number" />
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
-
   <div class="sheet-content">
-    {{> "systems/wh3e/templates/partials/character-stats.hbs"}}
-    {{> "systems/wh3e/templates/partials/weapon-info.hbs"}}
+    <div class="item-special">
+      <label for="data.special" style="font-weight: bold;">{{localize "wh3e.item.special"}}</label>
+      <input id="data.special" name="data.special" type="text" value="{{data.special}}" data-dtype="String" />
+    </div>
+    <div class="item-description">
+      <label for="data.notes" style="font-weight: bold;">{{localize "wh3e.item.notes"}}</label>
+      {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
+    </div>
   </div>
 </form>

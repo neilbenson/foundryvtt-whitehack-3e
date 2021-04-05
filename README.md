@@ -1,9 +1,9 @@
 TO DO:
 
 - [x] Add Gear tab and items
-- [ ] Update Monster actors with right fields
+- [x] Update Monster actors with right fields
 - [ ] Add Abilities tab (best name for slots?)
-- [ ] Add Encumbrance to character header
+- [ ] Add Encumbrance and Movement to character header
 - [ ] Add/remove weapons, gear and abilities
 - [ ] Add stat mod for str, dex etc
 - [ ] Add rolls for attributes and weapons
@@ -11,3 +11,7 @@ TO DO:
 - [ ] For spell abilities have hp lost
 - [x] Add currency (CP, SP, GP) to weapons and gear
 - [x] Fix css table scroll for weapons and gear on character sheet
+- [ ] Calculate armour class for character based on selected armour
+- [ ] Add armour item type
+- [ ] Calculate ST and AV for monsters
+- [ ] Add corruption level and disorders to character sheet

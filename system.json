@@ -3,7 +3,7 @@
   "title": "Whitehack 3e",
   "description": "A system for playing Whitehack 3e",
   "author": "Hellbrandt",
-  "version": 0.01,
+  "version": 0.02,
   "minimumCoreVersion": "0.7.9",
   "compatibleCoreVersion": "0.7.9",
   "esmodules": ["wh3e.js"],
