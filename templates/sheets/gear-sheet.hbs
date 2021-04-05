@@ -1,37 +1,15 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-      <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
-      <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64" />
+    <div>
+      <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+    </div>
   </header>
   <div class="sheet-content">
-    <div class="flex-group-center">
-      <span>{{localize "wh3e.item.weight"}}</span>
-        <select id="data.weight" name="data.weight">
-          {{#select data.weight}}
-          {{#each config.weightTypes as |name type|}}
-          <option value="{{type}}">{{localize name}}</option>
-          {{/each}}
-          {{/select}}
-        </select>        
-    </div>
-    <div class="flex-group-center">
-      <span>{{localize "wh3e.item.cost"}}</span>
-      <input name="data.cost" type="text" class="center-text input-small" value={{data.cost}} data-dtype="Number" />   
-      <select id="data.costCoinType" name="data.costCoinType">
-        {{#select data.costCoinType}}
-        {{#each config.coinTypes as |name type|}}
-        <option value="{{type}}">{{localize name}}</option>
-        {{/each}}
-        {{/select}}
-      </select>             
-    </div>
-    {{!-- <table>
-      <tr class="flex-center">
-        <th>{{localize "wh3e.item.weight"}}</th>
-        <th>{{localize "wh3e.item.cost"}}</th>
-      </tr>
-      <tr class="flex-center">
-        <td>
+    <div class="resources grid grid-2col">
+      <div class="resource flex-group-center">
+        <label for="data.weight" class="resource-label">{{localize "wh3e.item.weight"}}</label>
+        <div class="resource-content flexrow flex-center flex-between">
           <select id="data.weight" name="data.weight">
             {{#select data.weight}}
             {{#each config.weightTypes as |name type|}}
@@ -39,12 +17,23 @@
             {{/each}}
             {{/select}}
           </select>
-        </td>
-        <td>
-          <input name="data.cost" type="text" class="center-text" value={{data.cost}} data-dtype="Number" />
-        </td>
-      </tr>
-    </table> --}}
+        </div>
+      </div>
+      <div class="resource flex-group-center">
+        <label for="data.cost" class="resource-label">{{localize "wh3e.item.cost"}}</label>
+        <div class="resource-content flexrow flex-center flex-between">
+          <input name="data.cost" type="text" class="center-text" value={{data.cost}}
+                 data-dtype="Number" />
+          <select id="data.costCoinType" name="data.costCoinType" class="margin-left-20">
+            {{#select data.costCoinType}}
+            {{#each config.coinTypes as |name type|}}
+            <option value="{{type}}">{{localize name}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="item-description">
       <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
       {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
