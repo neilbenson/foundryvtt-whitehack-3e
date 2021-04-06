@@ -3,7 +3,7 @@ TO DO:
 - [x] Add Gear tab and items
 - [x] Update Monster actors with right fields
 - [ ] Add Abilities tab (best name for slots?)
-- [ ] Add Encumbrance and Movement to character header
+- [x] Add Encumbrance and Movement to character header
 - [ ] Add/remove weapons, gear and abilities
 - [ ] Add stat mod for str, dex etc
 - [ ] Add rolls for attributes and weapons

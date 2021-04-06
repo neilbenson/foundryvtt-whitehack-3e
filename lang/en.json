@@ -27,6 +27,7 @@
       "attackValue": "AV",
       "armourClass": "AC",
       "movement": "MV",
+      "encumbrance": "ENC",
       "corruption": "CL",
       "hitDice": "Hit Dice",
       "monster": {
