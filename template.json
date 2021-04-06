@@ -21,7 +21,8 @@
         "level": 1,
         "class": "",
         "vocation": "",
-        "slots": 1
+        "numberOfSlots": 1,
+        "numberOfGroups": 1
       },
       "attributes": {
         "str": {
@@ -58,6 +59,7 @@
         "value": 0,
         "disorders": ""
       },
+      "species": "",
       "coin": {
         "gp": 0,
         "sp": 0,

@@ -15,3 +15,5 @@ TO DO:
 - [ ] Add armour item type
 - [ ] Calculate ST and AV for monsters
 - [ ] Add corruption level and disorders to character sheet
+- [ ] Fix right input alignments for forms
+- [ ] Remove unused styles e.g. resources, resource, resource-content

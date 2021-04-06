@@ -1,7 +1,7 @@
 .character,
 .monster {
   .sheet-header {
-    flex: 0 0 180px;
+    flex: 0 0 210px;
     overflow: hidden;
     margin-bottom: 10px;
     .profile-img {
@@ -11,13 +11,16 @@
       align-self: self-start;
       margin-top: 5px;
     }
+    .header-info {
+      align-self: self-start;
+    }
     h1 {
       border-bottom: none;
       &.charname {
         input {
           margin-left: 5px;
           width: calc(100% - 10px);
-          height: @input-height;
+          height: @big-input-height;
           font-size: 0.75em;
         }
       }
@@ -35,6 +38,9 @@
         margin-left: 5px;
         margin-right: 5px;
         text-align: left;
+      }
+      input {
+        height: @big-input-height;
       }
     }
   }

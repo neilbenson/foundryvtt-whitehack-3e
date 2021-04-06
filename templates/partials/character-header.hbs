@@ -1,44 +1,90 @@
 <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
 <!-- TO DO: Remove unused styles e.g. resources, resource, resource-content -->
-<div>
+<div class="header-info">
   <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
-  <div class="resources grid grid-4col">
-    {{!-- "flex-group-center" is also defined in the _grid.scss file
-    and it will add a small amount of padding, a border, and will
-    center all of its child elements content and text. --}}
+  <div class="resources grid grid-3col">
+    <div class="resource flex-group-center">
+      <label for="data.basics.class" class="resource-label">{{localize "wh3e.actor.class"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.basics.class" value="{{data.basics.class}}" data-dtype="String" />
+      </div>
+    </div>
+    <div class="resource flex-group-center grid-span-2-3">
+      <label for="data.basics.vocation" class="resource-label">{{localize "wh3e.actor.vocation"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.basics.vocation" value="{{data.basics.vocation}}" data-dtype="String" />
+      </div>
+    </div>
+  </div>
+  <div class="resources grid grid-6col">
     <div class="resource flex-group-center grid-span-1-2">
-      <label for="data.hitPoints.value" class="resource-label">{{localize "wh3e.resource.hitpoints"}}</label>
+      <label for="data.species" class="resource-label">{{localize "wh3e.actor.species"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.basics.species" value="{{data.basics.species}}" data-dtype="String" />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="data.basics.level" class="resource-label">{{localize "wh3e.actor.level"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.basics.level" value="{{data.basics.level}}" data-dtype="Number" />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="data.combat.savingThrow" class="resource-label">{{localize "wh3e.actor.savingThrow"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.combat.savingThrow" value="{{data.combat.savingThrow}}" data-dtype="Number" />
+      </div>
+    </div>
+
+    <div class="resource flex-group-center">
+      <label for="data.basics.numberOfSlots" class="resource-label">{{localize "wh3e.actor.slots"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.basics.numberOfSlots" value="{{data.basics.numberOfSlots}}" data-dtype="Number" />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="data.combat.numberOfGroups" class="resource-label">{{localize "wh3e.actor.groups"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.combat.numberOfGroups" value="{{data.combat.numberOfGroups}}"
+               data-dtype="Number" />
+      </div>
+    </div>
+  </div>
+  <div class="resources grid grid-6col">
+    <div class="resource flex-group-center">
+      <label for="data.combat.armourClass" class="resource-label">{{localize "wh3e.actor.armourClass"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.combat.armourClass" value="{{data.combat.armourClass}}" data-dtype="Number"
+               class="read-only" readonly="readonly" />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="data.combat.attackValue" class="resource-label">{{localize "wh3e.actor.attackValue"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" data-dtype="Number" />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="data.movement" class="resource-label">{{localize "wh3e.actor.movement"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number" />
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label for="data.corruptionLevel.value" class="resource-label">{{localize "wh3e.actor.corruption"}}</label>
+      <div class="resource-content flexrow flex-center flex-between">
+        <input type="text" name="data.corruptionLevel.value" value="{{data.corruptionLevel.value}}"
+               data-dtype="Number" />
+      </div>
+    </div>
+    <div class="resource flex-group-center grid-span-5-2">
+      <label for="data.hitPoints.value" class="resource-label">{{localize "wh3e.actor.hitpoints"}}</label>
       <div class="resource-content flexrow flex-center flex-between">
         <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
         <span> / </span>
         <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number" />
       </div>
     </div>
-    <div class="resource flex-group-center">
-      <label for="data.basics.level" class="resource-label">{{localize "wh3e.resource.level"}}</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="data.basics.level" value="{{data.basics.level}}" data-dtype="Number" />
-      </div>
-    </div>
-    <div class="resource flex-group-center">
-      <label for="data.basics.slots" class="resource-label">{{localize "wh3e.resource.slots"}}</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="data.basics.slots" value="{{data.basics.slots}}" data-dtype="Number" />
-      </div>
-    </div>
   </div>
-  <div class="resources grid grid-3col">
-    <div class="resource flex-group-center">
-      <label for="data.basics.class" class="resource-label">{{localize "wh3e.resource.class"}}</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="data.basics.class" value="{{data.basics.class}}" data-dtype="String" />
-      </div>
-    </div>
-    <div class="resource flex-group-center grid-span-2-3">
-      <label for="data.basics.vocation" class="resource-label">{{localize "wh3e.resource.vocation"}}</label>
-      <div class="resource-content flexrow flex-center flex-between">
-        <input type="text" name="data.basics.vocation" value="{{data.basics.vocation}}" data-dtype="String" />
-      </div>
-    </div>
-  </div>
+
 </div>
