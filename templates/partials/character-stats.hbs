@@ -14,7 +14,11 @@
              class="flex-grow1" />
       {{#if (showModifier key)}}
       <input type="text" name="data.attributes.{{key}}.mod" value="{{attribute.mod}}" data-dtype="Number"
-             class="flex-grow1 modifier" />
+             {{#if (readOnly key)}}
+             class="flex-grow1 modifier read-only" readonly="readonly"
+             {{else}}
+             class="flex-grow1 modifier"
+             {{/if}} />
       {{/if}}
       <input type="text" name="data.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String"
              class="flex-grow8 groups" />

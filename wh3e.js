@@ -39,4 +39,9 @@ Hooks.once("init", function () {
     const showArrayFor = ['str', 'dex', 'con'];
     return showArrayFor.find(element => element === key);
   })
+
+  Handlebars.registerHelper("readOnly", (key) => {
+    const showArrayFor = ['dex'];
+    return showArrayFor.find(element => element === key);
+  })
 })

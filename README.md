@@ -5,7 +5,7 @@ TO DO:
 - [x] Add Abilities tab (best name for slots?)
 - [x] Add Encumbrance and Movement to character header
 - [ ] Add/remove weapons, gear and abilities
-- [ ] Add stat mod for str, dex etc
+- [x] Add stat mod for str, dex etc
 - [ ] Add rolls for attributes and weapons
 - [ ] Specify weapons as melee ranged and take mod into account on roll
 - [ ] For spell abilities have hp lost
