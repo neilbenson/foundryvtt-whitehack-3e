@@ -8,7 +8,7 @@
     </div>
     {{#each data.attributes as |attribute key|}}
     <div class="attribute flexrow flex-group-center">
-      <label for="data.attributes.{{key}}.value" class="resource-label flex-grow1">{{getTextFromKey "wh3e.attribute"
+      <label for="data.attributes.{{key}}.value" class="flex-grow1">{{getTextFromKey "wh3e.attribute"
         key}}</label>
       <input type="text" name="data.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="Number"
              class="flex-grow1" />

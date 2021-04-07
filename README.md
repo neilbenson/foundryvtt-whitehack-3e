@@ -15,7 +15,7 @@ TO DO:
 - [ ] Add armour item type
 - [ ] Calculate ST and AV for monsters
 - [ ] Add corruption level and disorders to character sheet
-- [ ] Fix right input alignments for forms
-- [ ] Remove unused styles e.g. resources, resource, resource-content
+- [x] Fix right input alignments for forms
+- [x] Remove unused styles e.g. resources, resource, resource-content
 - [ ] Button to add Weapons, Gear and Abilities
 - [ ] Tooltip for Ability description on character sheet

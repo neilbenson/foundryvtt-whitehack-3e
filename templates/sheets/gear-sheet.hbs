@@ -6,10 +6,10 @@
     </div>
   </header>
   <div class="sheet-content">
-    <div class="resources grid grid-2col">
-      <div class="resource flex-group-center">
+    <div class="grid grid-2col">
+      <div class="flex-group-center">
         <label for="data.weight">{{localize "wh3e.item.weight"}}</label>
-        <div class="resource-content flexrow flex-center flex-between">
+        <div class="flexrow flex-center flex-between">
           <select id="data.weight" name="data.weight">
             {{#select data.weight}}
             {{#each config.weightTypes as |name type|}}
@@ -19,9 +19,9 @@
           </select>
         </div>
       </div>
-      <div class="resource flex-group-center" style="padding-right: 0;">
+      <div class="flex-group-center" style="padding-right: 0;">
         <label for="data.cost">{{localize "wh3e.item.cost"}}</label>
-        <div class="resource-content flexrow flex-center flex-between">
+        <div class="flexrow flex-center flex-between">
           <input name="data.cost" type="text" class="center-text" value={{data.cost}}
                  data-dtype="Number" />
           <select id="data.costCoinType" name="data.costCoinType" class="margin-left-20">
