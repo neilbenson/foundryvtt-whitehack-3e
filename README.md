@@ -2,7 +2,7 @@ TO DO:
 
 - [x] Add Gear tab and items
 - [x] Update Monster actors with right fields
-- [ ] Add Abilities tab (best name for slots?)
+- [x] Add Abilities tab (best name for slots?)
 - [x] Add Encumbrance and Movement to character header
 - [ ] Add/remove weapons, gear and abilities
 - [ ] Add stat mod for str, dex etc
@@ -17,3 +17,5 @@ TO DO:
 - [ ] Add corruption level and disorders to character sheet
 - [ ] Fix right input alignments for forms
 - [ ] Remove unused styles e.g. resources, resource, resource-content
+- [ ] Button to add Weapons, Gear and Abilities
+- [ ] Tooltip for Ability description on character sheet

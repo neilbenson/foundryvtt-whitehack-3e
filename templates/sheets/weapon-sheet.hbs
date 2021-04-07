@@ -2,7 +2,7 @@
   <header class="sheet-header">
     <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64" />
     <div>
-      <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" style="width: calc(100% - 11px);" />
+      <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" />
       </h1>
     </div>
   </header>
@@ -58,12 +58,12 @@
         </td>
       </tr>
     </table>
-    <div class="item-special">
-      <label for="data.special" style="font-weight: bold;">{{localize "wh3e.item.special"}}</label>
+    <div class="full-width-field">
+      <label for="data.special">{{localize "wh3e.item.special"}}</label>
       <input id="data.special" name="data.special" type="text" value="{{data.special}}" data-dtype="String" />
     </div>
-    <div class="item-description">
-      <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
+    <div class="full-height-field">
+      <label for="data.description">{{localize "wh3e.item.description"}}</label>
       {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
     </div>
   </div>

@@ -34,6 +34,12 @@
         "xp": "XP"
       }
     },
+    "abilityType": {
+      "slot": "Slot",
+      "species": "Species Group",
+      "vocation": "Vocation Group",
+      "affiliation": "Affiliation Group"
+    },
     "category": {
       "attributes": "Attributes",
       "attr": "Attr",
@@ -55,7 +61,8 @@
       "description": "Description",
       "cost": "Cost",
       "melee": "Melee",
-      "notes": "Notes"
+      "notes": "Notes",
+      "type": "Type"
     },
     "coinType": {
       "gp": "GP",

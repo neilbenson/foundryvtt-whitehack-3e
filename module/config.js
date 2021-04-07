@@ -22,6 +22,12 @@ export const wh3e = {
     one: "wh3e.roFShotsPerRound.one",
     three: "wh3e.roFShotsPerRound.three"
   },
+  abilityTypes: {
+    slot: "wh3e.abilityType.slot",
+    species: "wh3e.abilityType.species",
+    vocation: "wh3e.abilityType.vocation",
+    affiliation: "wh3e.abilityType.affiliation"
+  },
   coinTypes: {
     gp: "wh3e.coinType.gp",
     sp: "wh3e.coinType.sp",

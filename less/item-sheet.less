@@ -6,9 +6,10 @@
   }
   &.item {
     .sheet-header {
+      padding-bottom: 10px;
       h1 {
         input {
-          width: calc(100% - 14px);
+          width: calc(100% - 9px);
         }
       }
     }
@@ -26,10 +27,14 @@
       border: 1px solid #aaa;
       padding: 1px 3px;
     }
-    .item-special {
+    .full-width-field {
       margin-bottom: 10px;
+      input,
+      select {
+        width: 100%;
+      }
     }
-    .item-description {
+    .full-height-field {
       height: 100%;
     }
   }

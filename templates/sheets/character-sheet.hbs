@@ -3,21 +3,25 @@
     {{> "systems/wh3e/templates/partials/character-header.hbs"}}
   </header>
 
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="attributes">
-            {{localize "wh3e.category.attributes"}}
-        </a>
-        <a class="item" data-tab="weapons">
-            {{localize "wh3e.category.weapons"}}
-        </a>
-        <a class="item" data-tab="gear">
-            {{localize "wh3e.category.gear"}}
-        </a>
-    </nav>
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">
+      {{localize "wh3e.category.attributes"}}
+    </a>
+    <a class="item" data-tab="abilities">
+      {{localize "wh3e.category.abilities"}}
+    </a>
+    <a class="item" data-tab="weapons">
+      {{localize "wh3e.category.weapons"}}
+    </a>
+    <a class="item" data-tab="gear">
+      {{localize "wh3e.category.gear"}}
+    </a>
+  </nav>
 
   <div class="sheet-content">
     {{> "systems/wh3e/templates/partials/character-stats.hbs"}}
+    {{> "systems/wh3e/templates/partials/ability-info.hbs"}}
     {{> "systems/wh3e/templates/partials/weapon-info.hbs"}}
     {{> "systems/wh3e/templates/partials/gear-info.hbs"}}
   </div>

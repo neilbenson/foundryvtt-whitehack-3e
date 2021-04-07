@@ -80,9 +80,9 @@
     }
   },
   "Item": {
-    "types": ["Weapon", "Gear"],
+    "types": ["Ability", "Weapon", "Gear"],
     "templates": {
-      "base": {
+      "equipmentBase": {
         "description": "",
         "cost": 0,
         "costCoinType": "GP",
@@ -90,7 +90,7 @@
       }
     },
     "Weapon": {
-      "templates": ["base"],
+      "templates": ["equipmentBase"],
       "damage": "",
       "weight": "Regular",
       "range": 0,
@@ -98,7 +98,11 @@
       "special": ""
     },
     "Gear": {
-      "templates": ["base"]
+      "templates": ["equipmentBase"]
+    },
+    "Ability": {
+      "type": "",
+      "description": ""
     }
   }
 }

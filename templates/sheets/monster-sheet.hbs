@@ -9,14 +9,14 @@
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="data.basics.hitDice.value" class="resource-label">{{localize "wh3e.actor.hitDice"}}</label>
+          <label for="data.basics.hitDice.value">{{localize "wh3e.actor.hitDice"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="data.basics.hitDice.value" value="{{data.basics.hitDice.value}}"
                    data-dtype="Number" />
           </div>
         </div>
         <div class="resource flex-group-center">
-          <label for="data.hitPoints.value" class="resource-label">{{localize "wh3e.actor.hitpoints"}}</label>
+          <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
             <span> / </span>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="resource flex-group-center">
-          <label for="data.basics.movement" class="resource-label">{{localize "wh3e.actor.movement"}}</label>
+          <label for="data.basics.movement">{{localize "wh3e.actor.movement"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="data.basics.movement" value="{{data.basics.movement}}"
                    data-dtype="Number" />
@@ -33,21 +33,21 @@
       </div>
       <div class="resources grid grid-4col">
         <div class="resource flex-group-center">
-          <label for="calculated.savingThrow" class="resource-label">{{localize "wh3e.actor.savingThrow"}}</label>
+          <label for="calculated.savingThrow">{{localize "wh3e.actor.savingThrow"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="calculated.savingThrow" value="Calculated ST" class="read-only"
                    data-dtype="Number" readonly="readonly" />
           </div>
         </div>
         <div class="resource flex-group-center">
-          <label for="calculated.attackValue" class="resource-label">{{localize "wh3e.actor.attackValue"}}</label>
+          <label for="calculated.attackValue">{{localize "wh3e.actor.attackValue"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="calculated.attackValue" value="Calculated AV" class="read-only"
                    data-dtype="Number" readonly="readonly" />
           </div>
         </div>
         <div class="resource flex-group-center">
-          <label for="data.damage" class="resource-label">{{localize "wh3e.item.damage"}}</label>
+          <label for="data.damage">{{localize "wh3e.item.damage"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <select id="data.damage" name="data.damage">
               {{#select data.damage}}
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="resource flex-group-center">
-          <label for="data.xp" class="resource-label">{{localize "wh3e.actor.monster.xp"}}</label>
+          <label for="data.xp">{{localize "wh3e.actor.monster.xp"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="text" name="data.xp" value="{{data.xp}}"
                    data-dtype="Number" />
@@ -69,11 +69,11 @@
     </div>
   </header>
   <div class="sheet-content">
-    <div class="item-special">
+    <div class="full-width-field">
       <label for="data.special" style="font-weight: bold;">{{localize "wh3e.item.special"}}</label>
       <input id="data.special" name="data.special" type="text" value="{{data.special}}" data-dtype="String" />
     </div>
-    <div class="item-description">
+    <div class="full-height-field">
       <label for="data.notes" style="font-weight: bold;">{{localize "wh3e.item.notes"}}</label>
       {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
     </div>
