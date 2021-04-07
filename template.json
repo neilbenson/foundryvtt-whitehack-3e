@@ -27,26 +27,32 @@
       "attributes": {
         "str": {
           "value": 10,
+          "mod": 0,
           "groups": ""
         },
         "dex": {
           "value": 10,
+          "mod": 0,
           "groups": ""
         },
         "con": {
           "value": 10,
+          "mod": 0,
           "groups": ""
         },
         "int": {
           "value": 10,
+          "mod": 0,
           "groups": ""
         },
         "wis": {
           "value": 10,
+          "mod": 0,
           "groups": ""
         },
         "cha": {
           "value": 10,
+          "mod": 0,
           "groups": ""
         }
       },

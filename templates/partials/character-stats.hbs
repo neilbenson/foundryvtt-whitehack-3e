@@ -12,6 +12,10 @@
         key}}</label>
       <input type="text" name="data.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="Number"
              class="flex-grow1" />
+      {{#if (showModifier key)}}
+      <input type="text" name="data.attributes.{{key}}.mod" value="{{attribute.mod}}" data-dtype="Number"
+             class="flex-grow1 modifier" />
+      {{/if}}
       <input type="text" name="data.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String"
              class="flex-grow8 groups" />
       <button class="attribute-roll flex-grow1" data-roll="1d20" data-label="{{key}}">
