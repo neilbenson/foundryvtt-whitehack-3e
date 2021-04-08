@@ -21,9 +21,16 @@ export default class WH3CharacterSheet extends ActorSheet {
   }
 
   activateListeners(html) {
-    html.find(".item-create").click(this._onItemCreate.bind(this));
-    html.find(".item-edit").click(this._onItemEdit.bind(this));
-    html.find(".item-delete").click(this._onItemDelete.bind(this));
+    if (this.isEditable) {
+      html.find(".item-create").click(this._onItemCreate.bind(this));
+      html.find(".item-edit").click(this._onItemEdit.bind(this));
+      html.find(".item-delete").click(this._onItemDelete.bind(this));
+    }
+
+    // Owner only listeners
+    if (this.actor.owner) {
+
+    }
 
     super.activateListeners(html);
   }
@@ -33,6 +40,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     let element = event.currentTarget;
 
     let itemData = {
+      img: "icons/svg/mystery-man.svg",
       name: game.i18n.localize("wh3e.sheet.new" + element.dataset.type),
       type: element.dataset.type,
       data: {
@@ -45,12 +53,10 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     if (element.dataset.type === "Gear") {
-      itemData.img = "icons/svg/mystery-man.svg";
       itemData.data.weight = "regular";
     }
 
     if (element.dataset.type === "Weapon") {
-      itemData.img = "icons/svg/mystery-man.svg";
       itemData.data.damage = 'd6';
       itemData.data.weight = "regular";
       itemData.data.rateOfFire = "none";
