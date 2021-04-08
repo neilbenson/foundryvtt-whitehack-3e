@@ -92,13 +92,13 @@
         "description": "",
         "cost": 0,
         "costCoinType": "GP",
-        "weight": "Regular"
+        "weight": "regular"
       }
     },
     "Weapon": {
       "templates": ["equipmentBase"],
       "damage": "",
-      "weight": "Regular",
+      "weight": "regular",
       "range": 0,
       "rateOfFire": "",
       "special": ""

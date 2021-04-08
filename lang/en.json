@@ -49,8 +49,12 @@
       "weapons": "Weapons"
     },
     "sheet": {
-      "addAbility": "Add ability",
-      "newAbility": "New ability"
+      "addAbility": "Add Ability",
+      "newAbility": "New Ability",
+      "addGear": "Add Gear",
+      "newGear": "New Gear",
+      "addWeapon": "Add Weapon",
+      "newWeapon": "New Weapon"
     },
     "function": {
       "rolls": "Rolls"

@@ -2,9 +2,8 @@
   <table class="fixed_header">
     <thead>
       <tr>
-        <th class="align-left">{{localize "wh3e.item.name"}}</th>
-        <th>{{localize "wh3e.item.type"}}</th>
-        <th class="align-left">{{localize "wh3e.item.description"}}</th>
+        <th class="align-left ability-name-column">{{localize "wh3e.item.name"}}</th>
+        <th class="ability-type-column">{{localize "wh3e.item.type"}}</th>
         <th class="item-controls">
           <a class="item-create" data-type="Ability" title="{{localize " wh3e.sheet.addAbility"}}">
             <i class="fas fa-plus"></i>
@@ -15,14 +14,11 @@
     <tbody>
       {{#each abilities as |ability id|}}
       <tr data-item-id="{{ability._id}}">
-        <td class="align-left">
+        <td class="align-left ability-name-column">
           <span>{{ability.name}}</span>
         </td>
-        <td>
+        <td class="ability-type-column">
           <span>{{getTextFromKey "wh3e.abilityType" ability.data.type}}</span>
-        </td>
-        <td class="align-left">
-          <span>{{ability.data.description}}</span>
         </td>
         <td class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

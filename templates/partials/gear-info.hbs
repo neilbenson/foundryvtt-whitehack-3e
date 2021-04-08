@@ -3,9 +3,13 @@
     <thead>
       <tr>
         <th class="item-image"></th>
-        <th class="align-left">{{localize "wh3e.item.name"}}</th>
-        <th>{{localize "wh3e.item.weight"}}</th>
-        <th class="item-controls"></th>
+        <th class="align-left gear-name-column">{{localize "wh3e.item.name"}}</th>
+        <th class="gear-weight-column">{{localize "wh3e.item.weight"}}</th>
+        <th class="item-controls">
+          <a class="item-create" data-type="Gear" title="{{localize " wh3e.sheet.addGear"}}">
+            <i class="fas fa-plus"></i>
+          </a>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -14,10 +18,10 @@
         <td class="item-image">
           <img src="{{gear.img}}" title="{{name}}" width="24" height="24" />
         </td>
-        <td class="align-left">
+        <td class="align-left gear-name-column">
           <span>{{gear.name}}</span>
         </td>
-        <td>
+        <td class="gear-weight-column">
           <span>{{getTextFromKey "wh3e.weightTypes" gear.data.weight}}</span>
         </td>
         <td class="item-controls">
