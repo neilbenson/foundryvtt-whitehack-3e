@@ -30,9 +30,31 @@ export default class WH3CharacterSheet extends ActorSheet {
     // Owner only listeners
     if (this.actor.owner) {
       html.find(".item-roll").click(this._onItemRoll.bind(this));
+      html.find(".attack-roll").click(this._onAttackRoll.bind(this));
     }
 
     super.activateListeners(html);
+  }
+
+  _onAttackRoll(event) {
+    const itemId = event.currentTarget.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+
+    // To hit roll
+    let rollFormula = "1d20 + @strMod";
+    let rollData = {
+      strMod: this.actor.data.data.attributes.str.mod
+    }
+    let messageData = {
+      speaker: ChatMessage.getSpeaker()
+    };
+
+    new Roll(rollFormula, rollData).roll().toMessage(messageData);
+
+    // Damage roll
+    rollFormula = game.i18n.localize("wh3e.damageDice." + item.data.data.damage) + " + @strMod";
+
+    new Roll(rollFormula, rollData).roll().toMessage(messageData);
   }
 
   _onItemRoll(event) {
