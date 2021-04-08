@@ -18,26 +18,20 @@
   td {
     padding: 5px;
     text-align: center;
+    &:first-child {
+      padding-left: 5px;
+    }
   }
 }
 
 .abilities .fixed_header {
-  th,
-  td {
-    width: 110px;
-  }
+  .fixed_header_styles(175px);
 }
 
 .gear .fixed_header {
-  th,
-  td {
-    width: 144px;
-  }
+  .fixed_header_styles(232px);
 }
 
 .weapons .fixed_header {
-  th,
-  td {
-    width: 85px;
-  }
+  .fixed_header_styles(93px);
 }

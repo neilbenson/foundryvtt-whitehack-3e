@@ -1,0 +1,21 @@
+.item-image {
+  width: @item-image-width;
+  text-align: center;
+}
+
+.fixed_header_styles(@column-width) {
+  th,
+  td {
+    width: @column-width;
+    &.item-controls {
+      width: @item-controls-width;
+      text-align: center;
+    }
+    &.item-image {
+      width: @item-image-width;
+    }
+    &.align-left {
+      text-align: left;
+    }
+  }
+}

@@ -48,6 +48,10 @@
       "abilities": "Abilities",
       "weapons": "Weapons"
     },
+    "sheet": {
+      "addAbility": "Add ability",
+      "newAbility": "New ability"
+    },
     "function": {
       "rolls": "Rolls"
     },

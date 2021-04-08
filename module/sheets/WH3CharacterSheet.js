@@ -20,8 +20,8 @@ export default class WH3CharacterSheet extends ActorSheet {
         let cleanedDescription = item.data.description.replace(/(<([^>]+)>)/ig, '');
         let descriptionLength = cleanedDescription.length;
         item.data.description = cleanedDescription.replace(/(<([^>]+)>)/ig, '')
-          .slice(0, 12);
-        if (descriptionLength > 12) {
+          .slice(0, 24);
+        if (descriptionLength > 24) {
           item.data.description = item.data.description.concat('...');
         }
         return item;
@@ -29,5 +29,47 @@ export default class WH3CharacterSheet extends ActorSheet {
     });
 
     return data;
+  }
+
+  activateListeners(html) {
+    html.find(".item-create").click(this._onItemCreate.bind(this));
+    html.find(".item-edit").click(this._onItemEdit.bind(this));
+    html.find(".item-delete").click(this._onItemDelete.bind(this));
+
+    super.activateListeners(html);
+  }
+
+  _onItemCreate(event) {
+    event.preventDefault();
+    let element = event.currentTarget;
+
+    let itemData = {
+      name: game.i18n.localize("wh3e.sheet.newAbility"),
+      type: element.dataset.type,
+      data: {
+        type: "slot",
+        description: ""
+      }
+    };
+
+    return this.actor.createOwnedItem(itemData);
+  }
+
+  _onItemEdit(event) {
+    event.preventDefault();
+
+    let element = event.currentTarget;
+    let itemId = element.closest("tr").dataset.itemId;
+    let item = this.actor.getOwnedItem(itemId);
+
+    item.sheet.render(true);
+  }
+
+  _onItemDelete(event) {
+    event.preventDefault();
+
+    let element = event.currentTarget;
+    let itemId = element.closest("tr").dataset.itemId;
+    return this.actor.deleteOwnedItem(itemId);
   }
 }
