@@ -1,7 +1,9 @@
 import { wh3e } from './module/config.js';
+import WH3Item from './module/WH3Item.js';
 import WH3ItemSheet from './module/sheets/WH3ItemSheet.js';
 import WH3CharacterSheet from './module/sheets/WH3CharacterSheet.js';
 import WH3MonsterSheet from './module/sheets/WH3MonsterSheet.js';
+import { registerHelpers } from "./module/helpers.js";
 
 async function preloadHandlebarsTemplates() {
   const templatePaths = [
@@ -15,10 +17,12 @@ async function preloadHandlebarsTemplates() {
   return loadTemplates(templatePaths);
 }
 
-Hooks.once("init", function () {
+Hooks.once("init", () => {
   console.log("wh3e | Initialising Whitehack 3e System");
 
   CONFIG.wh3e = wh3e;
+
+  CONFIG.Item.entityClass = WH3Item;
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("wh3e", WH3ItemSheet, { makeDefault: true });
@@ -29,19 +33,5 @@ Hooks.once("init", function () {
 
   preloadHandlebarsTemplates();
 
-  Handlebars.registerHelper("getTextFromKey", (group, key) => {
-    const languageKey = group + "." + key;
-    const languageValue = game.i18n.localize(languageKey);
-    return new Handlebars.SafeString(languageValue);
-  });
-
-  Handlebars.registerHelper("showModifier", (key) => {
-    const showArrayFor = ['str', 'dex', 'con'];
-    return showArrayFor.find(element => element === key);
-  })
-
-  Handlebars.registerHelper("readOnly", (key) => {
-    const showArrayFor = ['dex'];
-    return showArrayFor.find(element => element === key);
-  })
+  registerHelpers();
 })

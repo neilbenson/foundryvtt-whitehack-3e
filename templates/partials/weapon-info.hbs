@@ -19,7 +19,9 @@
       {{#each weapons as |weapon id|}}
       <tr data-item-id="{{weapon._id}}" class="weapons">
         <td class="item-image">
-          <img src="{{weapon.img}}" title="{{name}}" width="24" height="24" />
+          <a class="item-roll">
+            <span class="weapon-rollable" style="background-image: url({{weapon.img}})"></span>
+          </a>
         </td>
         <td class="align-left">
           <span>{{weapon.name}}</span>

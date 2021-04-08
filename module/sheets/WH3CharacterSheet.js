@@ -29,15 +29,22 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     // Owner only listeners
     if (this.actor.owner) {
-
+      html.find(".item-roll").click(this._onItemRoll.bind(this));
     }
 
     super.activateListeners(html);
   }
 
+  _onItemRoll(event) {
+    const itemId = event.currentTarget.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+
+    item.roll();
+  }
+
   _onItemCreate(event) {
     event.preventDefault();
-    let element = event.currentTarget;
+    const element = event.currentTarget;
 
     let itemData = {
       img: "icons/svg/mystery-man.svg",
@@ -68,9 +75,9 @@ export default class WH3CharacterSheet extends ActorSheet {
   _onItemEdit(event) {
     event.preventDefault();
 
-    let element = event.currentTarget;
-    let itemId = element.closest("tr").dataset.itemId;
-    let item = this.actor.getOwnedItem(itemId);
+    const element = event.currentTarget;
+    const itemId = element.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
 
     item.sheet.render(true);
   }
@@ -78,8 +85,8 @@ export default class WH3CharacterSheet extends ActorSheet {
   _onItemDelete(event) {
     event.preventDefault();
 
-    let element = event.currentTarget;
-    let itemId = element.closest("tr").dataset.itemId;
+    const element = event.currentTarget;
+    const itemId = element.closest("tr").dataset.itemId;
     return this.actor.deleteOwnedItem(itemId);
   }
 }

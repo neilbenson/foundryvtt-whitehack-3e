@@ -16,7 +16,9 @@
       {{#each gear as |gear id|}}
       <tr data-item-id="{{gear._id}}">
         <td class="item-image">
-          <img src="{{gear.img}}" title="{{name}}" width="24" height="24" />
+          <a class="item-roll">
+            <span class="item-info" style="background-image: url({{gear.img}})"></span>
+          </a>
         </td>
         <td class="align-left gear-name-column">
           <span>{{gear.name}}</span>

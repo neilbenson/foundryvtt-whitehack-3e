@@ -63,3 +63,20 @@
     flex: 0 0 160px;
   }
 }
+
+a.item-roll {
+  span {
+    height: 24px;
+    width: 24px;
+    display: block;
+    background-size: 24px 24px;
+    &.weapon-rollable:hover {
+      background-image: url("/icons/svg/d20-highlight.svg") !important;
+      cursor: pointer;
+    }
+    &.item-info:hover {
+      background-image: url("/icons/svg/book.svg") !important;
+      cursor: pointer;
+    }
+  }
+}
