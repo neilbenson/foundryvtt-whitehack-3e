@@ -17,5 +17,6 @@ TO DO:
 - [ ] Add corruption level and disorders to character sheet
 - [x] Fix right input alignments for forms
 - [x] Remove unused styles e.g. resources, resource, resource-content
-- [ ] Button to add Weapons, Gear and Abilities
+- [x] Button to add Weapons, Gear and Abilities
 - [ ] Tooltip for Ability description on character sheet
+- [ ] Add modifier for attack rolls

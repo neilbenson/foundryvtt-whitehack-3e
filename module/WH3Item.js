@@ -34,11 +34,13 @@ class WHItem extends Item {
 
     // Attack Result
     let rollFormula = "1d20 + @strMod";
-    const toHitResult = new Roll(rollFormula, rollData).evaluate();
-    messageData.content = await toHitResult.render({ template: rollTemplate });
-    messageData.flavor = this.actor.name + " makes an " + weapon.name + " attack and rolls " + toHitResult.total;
-    toHitResult.toMessage(messageData);
-
+    const toHitRoll = new Roll(rollFormula, rollData).evaluate();
+    messageData.content = await toHitRoll.render({ template: rollTemplate });
+    messageData.flavor = this.actor.name + " makes an " + weapon.name + " attack and rolls " + toHitRoll.total;
+    const toHitResult = toHitRoll.toMessage(messageData, { rollMode: null, create: false });
+    console.log(toHitResult);
+    console.log(toHitResult.roll.total);
+    game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
     // Damage Result
     rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @strMod";
     const damageResult = new Roll(rollFormula, rollData).evaluate();
