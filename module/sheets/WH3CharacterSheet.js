@@ -40,28 +40,14 @@ export default class WH3CharacterSheet extends ActorSheet {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
     const item = this.actor.getOwnedItem(itemId);
 
-    // To hit roll
-    let rollFormula = "1d20 + @strMod";
-    let rollData = {
-      strMod: this.actor.data.data.attributes.str.mod
-    }
-    let messageData = {
-      speaker: ChatMessage.getSpeaker()
-    };
-
-    new Roll(rollFormula, rollData).roll().toMessage(messageData);
-
-    // Damage roll
-    rollFormula = game.i18n.localize("wh3e.damageDice." + item.data.data.damage) + " + @strMod";
-
-    new Roll(rollFormula, rollData).roll().toMessage(messageData);
+    item.rollWeaponAttack(item);
   }
 
   _onItemRoll(event) {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
     const item = this.actor.getOwnedItem(itemId);
 
-    item.roll();
+    item.sendInfoToChat();
   }
 
   _onItemCreate(event) {
@@ -111,4 +97,5 @@ export default class WH3CharacterSheet extends ActorSheet {
     const itemId = element.closest("tr").dataset.itemId;
     return this.actor.deleteOwnedItem(itemId);
   }
+
 }
