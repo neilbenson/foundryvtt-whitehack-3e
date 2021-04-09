@@ -34,4 +34,4 @@ Hooks.once("init", () => {
   preloadHandlebarsTemplates();
 
   registerHelpers();
-})
+});
