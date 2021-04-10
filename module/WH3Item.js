@@ -49,8 +49,10 @@ class WHItem extends Item {
     const damageContent = await damageRoll.render();
     const damageResult = damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
-    await game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
-    await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
+    if (game.dice3d) {
+      await game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
+      await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
+    }
 
     cardData.toHitTemplate = attackContent;
     cardData.damageTemplate = damageContent;
