@@ -2,9 +2,14 @@
   {{#if flavor}}
   <div class="dice-flavor">{{flavor}}</div>
   {{/if}}
-  <div class="dice-result">
+  {{!-- <div class="dice-result">
     <div class="dice-formula">{{formula}}</div>
     {{{tooltip}}}
     <h4 class="dice-total">{{total}}</h4>
-  </div>
+  </div> --}}
 </div>
+<h2>Attack roll</h2>
+{{{toHitTemplate}}}
+<br />
+<h2>Damage roll</h2>
+{{{damageTemplate}}}

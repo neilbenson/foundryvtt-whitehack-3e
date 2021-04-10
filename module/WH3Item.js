@@ -6,7 +6,7 @@ class WHItem extends Item {
   }
 
   async sendInfoToChat() {
-    let chatData = {
+    let messageData = {
       user: game.user._id,
       speaker: ChatMessage.getSpeaker()
     };
@@ -15,9 +15,9 @@ class WHItem extends Item {
       ...this.data,
       owner: this.actor.id
     };
-    chatData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
-    chatData.roll = true;
-    return ChatMessage.create(chatData);
+    messageData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
+    messageData.roll = true;
+    return ChatMessage.create(messageData);
   }
 
   async rollWeaponAttack(weapon) {
@@ -26,28 +26,40 @@ class WHItem extends Item {
       strMod: this.actor.data.data.attributes.str.mod
     };
     const messageData = {
+      user: game.user._id,
       speaker: ChatMessage.getSpeaker()
     };
 
-    const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
-    const damageTemplate = "systems/wh3e/templates/chat/attack-damage.hbs";
+    let cardData = {
+      ...this.data,
+      owner: this.actor.id
+    };
 
-    // Attack Result
+    const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
+
+    // To Hit Roll
     let rollFormula = "1d20 + @strMod";
     const toHitRoll = new Roll(rollFormula, rollData).evaluate();
-    messageData.content = await toHitRoll.render({ template: rollTemplate });
-    messageData.flavor = this.actor.name + " makes an " + weapon.name + " attack and rolls " + toHitRoll.total;
+    const attackContent = await toHitRoll.render();
     const toHitResult = toHitRoll.toMessage(messageData, { rollMode: null, create: false });
-    console.log(toHitResult);
-    console.log(toHitResult.roll.total);
-    game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
-    // Damage Result
-    rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @strMod";
-    const damageResult = new Roll(rollFormula, rollData).evaluate();
-    messageData.content = await damageResult.render({ template: damageTemplate });
-    messageData.flavor = this.actor.name + " does " + damageResult.total + " damage with " + weapon.name;
-    damageResult.toMessage(messageData);
 
+    // Damage Roll
+    rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @strMod";
+    const damageRoll = new Roll(rollFormula, rollData).evaluate();
+    const damageContent = await damageRoll.render();
+    const damageResult = damageRoll.toMessage(messageData, { rollMode: null, create: false });
+
+    await game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
+    await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
+
+    cardData.toHitTemplate = attackContent;
+    cardData.damageTemplate = damageContent;
+    cardData.toHitResult = toHitResult.roll.total;
+    cardData.damageResult = damageResult.roll.total;
+    messageData.content = await renderTemplate(rollTemplate, cardData);
+    messageData.flavor = this.actor.name + " attacks with " + weapon.name;
+    messageData.roll = true;
+    return ChatMessage.create(messageData);
   }
 };
 
