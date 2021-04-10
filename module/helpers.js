@@ -6,15 +6,18 @@ export const registerHelpers = async function () {
     return new Handlebars.SafeString(languageValue);
   });
 
-  Handlebars.registerHelper("showModifier", (key) => {
-    const showArrayFor = ['str', 'dex', 'con'];
-    return showArrayFor.find(element => element === key);
+  Handlebars.registerHelper("showModifier", (key, charClass) => {
+    if (key === 'str' && charClass === "theStrong") return true;
+    if (key === 'con' && charClass === "theStrong") return true;
+    if (key === 'wis' && charClass === "theWise") return true;
+    if (key === 'dex' || key === 'int') return true;
+    return false;
   })
 
-  Handlebars.registerHelper("readOnly", (key) => {
-    const showArrayFor = ['dex'];
-    return showArrayFor.find(element => element === key);
-  })
+  // Handlebars.registerHelper("readOnly", (key) => {
+  //   const showArrayFor = ['dex', 'con', 'int', 'wis'];
+  //   return showArrayFor.find(element => element === key);
+  // })
 
   Handlebars.registerHelper("stripHtml", (html) => {
     return html.replace(/(<([^>]+)>)/ig, '');

@@ -28,6 +28,7 @@
         "str": {
           "value": 10,
           "mod": 0,
+          "dmgMod": 0,
           "groups": ""
         },
         "dex": {

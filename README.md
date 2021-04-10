@@ -20,3 +20,9 @@ TO DO:
 - [x] Button to add Weapons, Gear and Abilities
 - [ ] Tooltip for Ability description on character sheet
 - [ ] Add modifier for attack rolls
+- [x] Drop down for class
+- [ ] Strong attack mods
+- [ ] Initiative roller and Dex mod
+- [ ] Strong hp mod
+- [ ] Deft 2d20 keep best attack
+- [ ] Saving throw roll

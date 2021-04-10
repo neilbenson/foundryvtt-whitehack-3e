@@ -34,6 +34,13 @@
         "xp": "XP"
       }
     },
+    "class": {
+      "theDeft": "The Deft",
+      "theStrong": "The Strong",
+      "theWise": "The Wise",
+      "theBrave": "The Brave",
+      "theFortunate": "The Fortunate"
+    },
     "abilityType": {
       "slot": "Slot",
       "species": "Species Group",

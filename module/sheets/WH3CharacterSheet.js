@@ -16,7 +16,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     data.weapons = data.items.filter((item) => item.type === "Weapon");
     data.gear = data.items.filter((item) => item.type === "Gear");
     data.abilities = data.items.filter((item) => item.type === "Ability");
-
+    data.charClass = data.data.basics.class;
     return data;
   }
 
@@ -25,6 +25,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-create").click(this._onItemCreate.bind(this));
       html.find(".item-edit").click(this._onItemEdit.bind(this));
       html.find(".item-delete").click(this._onItemDelete.bind(this));
+      html.find(".attribute-score").change(this._onAttributeChange.bind(this));
     }
 
     // Owner only listeners
@@ -34,6 +35,46 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     super.activateListeners(html);
+  }
+
+  _onAttributeChange(event) {
+    const attrName = event.currentTarget.name.split(".")[2];
+    const attrValue = event.currentTarget.value;
+
+    let modObj = { strMod: 0, dmgMod: 0, dexMod: 0, conMod: 0, intMod: 0, wisMod: 0 };
+
+    // Set STR modifiers for attack and damage
+    if (attrName === 'str') {
+      if (attrValue >= 13) {
+        modObj.strMod = 1;
+        if (attrValue >= 16) {
+          modObj.dmgMod = 1;
+        }
+      }
+    }
+
+    // Set modifiers for other attributes
+    const attrs = ['dex', 'con', 'int', 'wis'];
+    attrs.forEach(element => {
+      if (attrName === element) {
+        if (attrValue >= 13) {
+          modObj[element + 'Mod'] = 1;
+          if (attrValue >= 16) {
+            modObj[element + 'Mod'] = 1;
+          }
+        }
+      }
+    });
+
+    // Update data
+    this.actor.update({
+      'data.attributes.str.mod': modObj.strMod,
+      'data.attributes.str.dmgMod': modObj.dmgMod,
+      'data.attributes.dexMod': modObj.dexMod,
+      'data.attributes.conMod': modObj.conMod,
+      'data.attributes.intMod': modObj.intMod,
+      'data.attributes.wisMod': modObj.wisMod
+    })
   }
 
   _onAttackRoll(event) {

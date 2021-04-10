@@ -1,4 +1,11 @@
 export const wh3e = {
+  classes: {
+    theDeft: "wh3e.class.theDeft",
+    theStrong: "wh3e.class.theStrong",
+    theWise: "wh3e.class.theWise",
+    theBrave: "wh3e.class.theBrave",
+    theFortunate: "wh3e.class.theFortunate"
+  },
   damageDice: {
     oneDmg: "wh3e.damageDice.oneDmg",
     d6minus3: "wh3e.damageDice.d6minus3",
