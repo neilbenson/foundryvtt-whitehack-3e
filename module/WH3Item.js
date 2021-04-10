@@ -21,8 +21,16 @@ class WHItem extends Item {
   }
 
   async rollWeaponAttack(weapon) {
+    let strMod = 0;
+    let dmgMod = 0;
+    if (this.actor.data.data.basics.class === 'theStrong') {
+      strMod = this.actor.data.data.attributes.str.mod;
+      dmgMod = this.actor.data.data.attributes.str.dmgMod;
+    }
+
     const rollData = {
-      strMod: this.actor.data.data.attributes.str.mod,
+      strMod: strMod,
+      dmgMod: dmgMod,
       attackMod: 0
     };
 
@@ -37,7 +45,6 @@ class WHItem extends Item {
     };
 
     const attackValue = this.actor.data.data.combat.attackValue;
-    const strMod = rollData.strMod;
     const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
 
     // To Hit Roll
@@ -53,7 +60,7 @@ class WHItem extends Item {
 
     if (toHitResult.roll.total <= attackValue + strMod) {
       // Hit - Damage Roll
-      rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @strMod";
+      rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @dmgMod";
       const damageRoll = new Roll(rollFormula, rollData).evaluate();
       cardData.damageTemplate = await damageRoll.render();
       const damageResult = damageRoll.toMessage(messageData, { rollMode: null, create: false });

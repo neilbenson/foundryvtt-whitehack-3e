@@ -70,10 +70,10 @@ export default class WH3CharacterSheet extends ActorSheet {
     this.actor.update({
       'data.attributes.str.mod': modObj.strMod,
       'data.attributes.str.dmgMod': modObj.dmgMod,
-      'data.attributes.dexMod': modObj.dexMod,
-      'data.attributes.conMod': modObj.conMod,
-      'data.attributes.intMod': modObj.intMod,
-      'data.attributes.wisMod': modObj.wisMod
+      'data.attributes.dex.mod': modObj.dexMod,
+      'data.attributes.con.mod': modObj.conMod,
+      'data.attributes.int.mod': modObj.intMod,
+      'data.attributes.wis.mod': modObj.wisMod
     })
   }
 
