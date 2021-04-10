@@ -21,10 +21,11 @@ class WHItem extends Item {
   }
 
   async rollWeaponAttack(weapon) {
-    // Not ideal, I've not been able to show both attack and damage results in one message
     const rollData = {
-      strMod: this.actor.data.data.attributes.str.mod
+      strMod: this.actor.data.data.attributes.str.mod,
+      attackMod: 0
     };
+
     const messageData = {
       user: game.user._id,
       speaker: ChatMessage.getSpeaker()
@@ -35,29 +36,38 @@ class WHItem extends Item {
       owner: this.actor.id
     };
 
+    const attackValue = this.actor.data.data.combat.attackValue;
+    const strMod = rollData.strMod;
     const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
 
     // To Hit Roll
-    let rollFormula = "1d20 + @strMod";
+    let rollFormula = "1d20 + @attackMod";
     const toHitRoll = new Roll(rollFormula, rollData).evaluate();
-    const attackContent = await toHitRoll.render();
+    cardData.toHitTemplate = await toHitRoll.render();
     const toHitResult = toHitRoll.toMessage(messageData, { rollMode: null, create: false });
-
-    // Damage Roll
-    rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @strMod";
-    const damageRoll = new Roll(rollFormula, rollData).evaluate();
-    const damageContent = await damageRoll.render();
-    const damageResult = damageRoll.toMessage(messageData, { rollMode: null, create: false });
+    cardData.toHitResult = toHitResult.roll.total;
 
     if (game.dice3d) {
       await game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
-      await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
     }
 
-    cardData.toHitTemplate = attackContent;
-    cardData.damageTemplate = damageContent;
-    cardData.toHitResult = toHitResult.roll.total;
-    cardData.damageResult = damageResult.roll.total;
+    if (toHitResult.roll.total <= attackValue + strMod) {
+      // Hit - Damage Roll
+      rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @strMod";
+      const damageRoll = new Roll(rollFormula, rollData).evaluate();
+      cardData.damageTemplate = await damageRoll.render();
+      const damageResult = damageRoll.toMessage(messageData, { rollMode: null, create: false });
+
+      if (game.dice3d) {
+        await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
+      }
+      cardData.damageResult = damageResult.roll.total;
+      cardData.attackHit = true;
+    } else {
+      // Miss - hide damage template in message
+      cardData.attackHit = false;
+    }
+
     messageData.content = await renderTemplate(rollTemplate, cardData);
     messageData.flavor = this.actor.name + " attacks with " + weapon.name;
     messageData.roll = true;
