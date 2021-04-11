@@ -35,7 +35,9 @@
       </div>
     </div>
     <div class="flex-group-center">
-      <label for="data.savingThrow">{{localize "wh3e.actor.savingThrow"}}</label>
+      <label for="data.savingThrow" class="rollable savingThrow" data-roll-for="savingThrow"><span
+              class="fas fa-dice"></span>&nbsp;{{localize
+        "wh3e.actor.savingThrow"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" data-dtype="Number" />
       </div>

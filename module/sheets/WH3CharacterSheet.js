@@ -30,8 +30,10 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     // Owner only listeners
     if (this.actor.owner) {
-      html.find(".item-roll").click(this._onItemRoll.bind(this));
-      html.find(".attack-roll").click(this._onShowAttackModifiers.bind(this));
+      html.find(".item-description").click(this._onItemRoll.bind(this));
+      html.find(".attack-roll").click(this._onShowAttackModDialog.bind(this));
+      html.find(".attribute label").click(this._onShowRollModDialog.bind(this));
+      html.find("label.savingThrow").click(this._onShowRollModDialog.bind(this));
     }
 
     super.activateListeners(html);
@@ -84,11 +86,11 @@ export default class WH3CharacterSheet extends ActorSheet {
     item.weaponAttack(item);
   }
 
-  _onShowAttackModifiers(event) {
+  _onShowAttackModDialog(event) {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
     const item = this.actor.getOwnedItem(itemId);
-    const toHitModLabel = game.i18n.localize("wh3e.combat.toHitMod");
-    const damageModLabel = game.i18n.localize("wh3e.combat.damageMod");
+    const toHitModLabel = game.i18n.localize("wh3e.modifiers.toHitMod");
+    const damageModLabel = game.i18n.localize("wh3e.modifiers.damageMod");
     const content = `
     <div class="dialog mod-prompt grid grid-2col flex-group-center">
       <div class="form-group">
@@ -110,31 +112,78 @@ export default class WH3CharacterSheet extends ActorSheet {
           icon: '<i class="fas fa-dice-d20"></i>',
           label: null,
           default: true,
-          callback: (html) => this.rollDialogCallback(html, item)
+          callback: (html) => this.attackRollDialogCallback(html, item)
         },
         doublePositiveRoll: {
           icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
           label: null,
           default: true,
-          callback: (html) => this.rollDialogCallback(html, item, 'doublePositive')
+          callback: (html) => this.attackRollDialogCallback(html, item, 'doublePositive')
         },
         doubleNegativeRoll: {
           icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
           label: null,
           default: true,
-          callback: (html) => this.rollDialogCallback(html, item, 'doubleNegative')
+          callback: (html) => this.attackRollDialogCallback(html, item, 'doubleNegative')
         },
       },
     }, { width: 50 }).render(true);
   }
 
-  rollDialogCallback(html, item, rollType = 'roll') {
+  attackRollDialogCallback(html, item = null, rollType = 'roll') {
     const toHitMod = Number.parseInt(html.find('.mod-prompt.dialog [name="attack_modifier"]')[0].value);
     const damageMod = Number.parseInt(html.find('.mod-prompt.dialog [name="damage_modifier"]')[0].value);
     if (isNaN(toHitMod) || isNaN(damageMod)) {
       ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
     } else {
       item.weaponAttack(item, toHitMod, damageMod, rollType);
+    }
+  }
+
+  _onShowRollModDialog(event) {
+    const rollModLabel = game.i18n.localize("wh3e.modifiers.rollMod");
+    const rollAttribute = event.currentTarget.dataset.rollFor;
+    const content = `
+    <div class="dialog mod-prompt flex-group-center">
+      <div class="form-group">
+        <label for="roll_modifier">${rollModLabel}</label>
+        <input type="number" id="roll_modifier" name="roll_modifier" value="0"/>
+      </div>
+    </div>`;
+
+    new Dialog({
+      title: rollAttribute.toUpperCase() + " task Roll!",
+      content: content,
+      default: "ok",
+      buttons: {
+        roll: {
+          icon: '<i class="fas fa-dice-d20"></i>',
+          label: null,
+          default: true,
+          callback: (html) => this.taskRollDialogCallback(html, rollAttribute)
+        },
+        doublePositiveRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
+          label: null,
+          default: true,
+          callback: (html) => this.taskRollDialogCallback(html, rollAttribute, 'doublePositive')
+        },
+        doubleNegativeRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
+          label: null,
+          default: true,
+          callback: (html) => this.taskRollDialogCallback(html, rollAttribute, 'doubleNegative')
+        },
+      },
+    }, { width: 50 }).render(true);
+  }
+
+  taskRollDialogCallback(html, rollAttribute, rollType = 'roll') {
+    const rollMod = Number.parseInt(html.find('.mod-prompt.dialog [name="roll_modifier"]')[0].value);
+    if (isNaN(rollMod)) {
+      ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
+    } else {
+      this.actor.taskRoll(rollMod, rollAttribute, rollType);
     }
   }
 

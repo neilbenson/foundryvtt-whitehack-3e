@@ -1,6 +1,7 @@
+import { getDiceToRoll } from './diceHelpers.js';
+
 class WHItem extends Item {
   chatTemplate = {
-    "Weapon": "systems/wh3e/templates/chat/attack-roll.hbs",
     "Gear": "systems/wh3e/templates/chat/item-info.hbs",
     "Ability": "systems/wh3e/templates/chat/item-info.hbs",
   };
@@ -48,7 +49,7 @@ class WHItem extends Item {
     const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
 
     // To Hit Roll
-    let rollFormula = this.getAttackDice(rollType);
+    let rollFormula = getDiceToRoll(rollType);
     const toHitRoll = new Roll(rollFormula, rollData).evaluate();
     cardData.toHitTemplate = await toHitRoll.render();
     const toHitResult = toHitRoll.toMessage(messageData, { rollMode: null, create: false });
@@ -88,19 +89,6 @@ class WHItem extends Item {
     return ChatMessage.create(messageData);
   };
 
-  getAttackDice(rollType) {
-    switch (rollType) {
-      case 'doublePositive':
-        return '2d20kl';
-      case 'doubleNegative':
-        return '2d20kh';
-      default:
-        return '1d20';
-    }
-  };
-
 };
-
-
 
 export default WHItem;

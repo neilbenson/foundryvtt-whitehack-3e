@@ -1,0 +1,8 @@
+<h3 style="color: dark{{rollResultColour}};">
+  {{#if (eq rollFor 'SAVINGTHROW')}}
+  Saving throw vs target {{rollTarget}}
+  {{else}}
+  {{rollFor}} task roll vs target {{rollTarget}}
+  {{/if}}
+</h3>
+{{{rollTemplate}}}

@@ -63,12 +63,10 @@
       "addWeapon": "Add Weapon",
       "newWeapon": "New Weapon"
     },
-    "combat": {
+    "modifiers": {
+      "rollMod": "Modifier",
       "toHitMod": "To Hit Mod",
       "damageMod": "Damage Mod"
-    },
-    "function": {
-      "rolls": "Rolls"
     },
     "item": {
       "name": "Name",

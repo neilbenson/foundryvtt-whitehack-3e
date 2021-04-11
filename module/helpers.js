@@ -14,11 +14,6 @@ export const registerHelpers = async function () {
     return false;
   })
 
-  // Handlebars.registerHelper("readOnly", (key) => {
-  //   const showArrayFor = ['dex', 'con', 'int', 'wis'];
-  //   return showArrayFor.find(element => element === key);
-  // })
-
   Handlebars.registerHelper("stripHtml", (html) => {
     return html.replace(/(<([^>]+)>)/ig, '');
   })
