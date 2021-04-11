@@ -87,7 +87,7 @@
     }
   },
   "Item": {
-    "types": ["Ability", "Weapon", "Gear"],
+    "types": ["Ability", "Armour", "Gear", "Weapon"],
     "templates": {
       "equipmentBase": {
         "description": "",
@@ -99,10 +99,13 @@
     "Weapon": {
       "templates": ["equipmentBase"],
       "damage": "",
-      "weight": "regular",
       "range": 0,
       "rateOfFire": "",
       "special": ""
+    },
+    "Armour": {
+      "templates": ["equipmentBase"],
+      "armourClass": 0
     },
     "Gear": {
       "templates": ["equipmentBase"]

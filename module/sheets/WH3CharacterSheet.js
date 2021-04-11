@@ -151,8 +151,10 @@ export default class WH3CharacterSheet extends ActorSheet {
       </div>
     </div>`;
 
+    const rollTitle = rollAttribute === 'savingThrow' ? 'Saving Throw' : rollAttribute.toUpperCase() + " task Roll!";
+
     new Dialog({
-      title: rollAttribute.toUpperCase() + " task Roll!",
+      title: rollTitle,
       content: content,
       default: "ok",
       buttons: {

@@ -39,5 +39,17 @@ export const wh3e = {
     gp: "wh3e.coinType.gp",
     sp: "wh3e.coinType.sp",
     cp: "wh3e.coinType.cp"
+  },
+  armourClasses: {
+    0: "0",
+    1: "1",
+    2: "2",
+    3: "3",
+    4: "4",
+    5: "5",
+    6: "6",
+    7: "7",
+    8: "8",
+    special: "wh3e.item.special"
   }
 };

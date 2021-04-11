@@ -79,7 +79,8 @@
       "cost": "Cost",
       "melee": "Melee",
       "notes": "Notes",
-      "type": "Type"
+      "type": "Type",
+      "armourClass": "Armour Class"
     },
     "coinType": {
       "gp": "GP",

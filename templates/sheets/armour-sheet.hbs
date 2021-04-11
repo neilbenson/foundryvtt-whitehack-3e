@@ -8,12 +8,12 @@
   <div class="sheet-content">
     <div class="grid grid-2col">
       <div class="flex-group-left">
-        <label for="data.weight">{{localize "wh3e.item.weight"}}</label>
+        <label for="data.armourClass" class="left-text">{{localize "wh3e.item.armourClass"}}</label>
         <div class="flexrow flex-center flex-between">
-          <select id="data.weight" name="data.weight">
-            {{#select data.weight}}
-            {{#each config.weightTypes as |name type|}}
-            <option value="{{type}}">{{localize name}}</option>
+          <select id="data.armourClass" name="data.armourClass">
+            {{#select data.armourClass}}
+            {{#each config.armourClasses as |ac acVal|}}
+            <option value="{{acVal}}">{{localize ac}}</option>
             {{/each}}
             {{/select}}
           </select>

@@ -6,8 +6,7 @@ TO DO:
 - [x] Add Encumbrance and Movement to character header
 - [x] Add/remove weapons, gear and abilities
 - [x] Add stat mod for str, dex etc
-- [ ] Add rolls for attributes and weapons
-- [ ] Specify weapons as melee ranged and take mod into account on roll
+- [x] Add rolls for attributes and weapons
 - [ ] For spell abilities have hp lost
 - [x] Add currency (CP, SP, GP) to weapons and gear
 - [x] Fix css table scroll for weapons and gear on character sheet
@@ -21,8 +20,8 @@ TO DO:
 - [ ] Tooltip for Ability description on character sheet
 - [x] Add modifier for attack rolls
 - [x] Drop down for class
-- [ ] Strong attack mods
+- [x] Strong attack mods
 - [ ] Initiative roller and Dex mod
 - [x] Strong hp mod
 - [x] Deft 2d20 keep best attack
-- [ ] Saving throw roll
+- [x] Saving throw roll
