@@ -31,7 +31,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     // Owner only listeners
     if (this.actor.owner) {
       html.find(".item-roll").click(this._onItemRoll.bind(this));
-      html.find(".attack-roll").click(this._onAttackRoll.bind(this));
+      html.find(".attack-roll").click(this._onShowAttackModifiers.bind(this));
     }
 
     super.activateListeners(html);
@@ -82,6 +82,60 @@ export default class WH3CharacterSheet extends ActorSheet {
     const item = this.actor.getOwnedItem(itemId);
 
     item.weaponAttack(item);
+  }
+
+  _onShowAttackModifiers(event) {
+    const itemId = event.currentTarget.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+    const toHitModLabel = game.i18n.localize("wh3e.combat.toHitMod");
+    const damageModLabel = game.i18n.localize("wh3e.combat.damageMod");
+    const content = `
+    <div class="dialog mod-prompt grid grid-2col flex-group-center">
+      <div class="form-group">
+        <label for="attack_modifier">${toHitModLabel}</label>
+        <input type="number" id="attack_modifier" name="attack_modifier" value="0"/>
+      </div>
+      <div class="form-group">
+        <label for="damage_modifier">${damageModLabel}</label>
+        <input type="number" id="damage_modifier" name="damage_modifier" value="0"/>
+      </div>
+    </div>`;
+
+    new Dialog({
+      title: "Attack!",
+      content: content,
+      default: "ok",
+      buttons: {
+        roll: {
+          icon: '<i class="fas fa-dice-d20"></i>',
+          label: null,
+          default: true,
+          callback: (html) => this.rollDialogCallback(html, item)
+        },
+        doublePositiveRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
+          label: null,
+          default: true,
+          callback: (html) => this.rollDialogCallback(html, item, 'doublePositive')
+        },
+        doubleNegativeRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
+          label: null,
+          default: true,
+          callback: (html) => this.rollDialogCallback(html, item, 'doubleNegative')
+        },
+      },
+    }, { width: 50 }).render(true);
+  }
+
+  rollDialogCallback(html, item, rollType = 'roll') {
+    const toHitMod = Number.parseInt(html.find('.mod-prompt.dialog [name="attack_modifier"]')[0].value);
+    const damageMod = Number.parseInt(html.find('.mod-prompt.dialog [name="damage_modifier"]')[0].value);
+    if (isNaN(toHitMod) || isNaN(damageMod)) {
+      ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
+    } else {
+      item.weaponAttack(item, toHitMod, damageMod, rollType);
+    }
   }
 
   _onItemRoll(event) {
