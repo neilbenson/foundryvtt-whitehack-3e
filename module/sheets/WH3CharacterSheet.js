@@ -5,7 +5,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       template: "systems/wh3e/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
       width: 600,
-      height: 550,
+      height: 584,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }]
     })
   }
@@ -16,6 +16,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     data.weapons = data.items.filter((item) => item.type === "Weapon");
     data.gear = data.items.filter((item) => item.type === "Gear");
     data.abilities = data.items.filter((item) => item.type === "Ability");
+    data.armour = data.items.filter((item) => item.type === "Armour");
     data.charClass = data.data.basics.class;
     return data;
   }

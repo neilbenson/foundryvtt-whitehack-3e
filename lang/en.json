@@ -53,7 +53,9 @@
       "description": "Description",
       "gear": "Gear",
       "abilities": "Abilities",
-      "weapons": "Weapons"
+      "weapons": "Weapons",
+      "armour": "Armour",
+      "notes": "Notes"
     },
     "sheet": {
       "addAbility": "Add Ability",
@@ -109,6 +111,18 @@
       "oneInTwo": "1/2",
       "one": "1",
       "three": "3"
+    },
+    "armourClasses": {
+      "0": "0",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "special": "Special"
     },
     "misc": {
       "none": "None"

@@ -1,0 +1,37 @@
+<div class="tab armour" data-group="primary" data-tab="armour">
+  <table class="fixed_header">
+    <thead>
+      <tr>
+        <th class="item-image"></th>
+        <th class="align-left armour-name-column">{{localize "wh3e.item.name"}}</th>
+        <th class="armour-ac-column">{{localize "wh3e.item.armourClass"}}</th>
+        <th class="item-controls">
+          <a class="item-create" data-type="Gear" title="{{localize " wh3e.sheet.addArmour"}}">
+            <i class="fas fa-plus"></i>
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each armour as |armour id|}}
+      <tr data-item-id="{{armour._id}}">
+        <td class="item-image">
+          <a class="item-description">
+            <span class="item-info" style="background-image: url({{armour.img}})"></span>
+          </a>
+        </td>
+        <td class="align-left armour-name-column">
+          <span>{{armour.name}}</span>
+        </td>
+        <td class="armour-ac-column">
+          <span>{{getTextFromKey "wh3e.armourClasses" armour.data.armourClass}}</span>
+        </td>
+        <td class="item-controls">
+          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
