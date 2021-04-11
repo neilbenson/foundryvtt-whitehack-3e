@@ -20,7 +20,7 @@ class WHItem extends Item {
     return ChatMessage.create(messageData);
   }
 
-  async rollWeaponAttack(weapon) {
+  async weaponAttack(weapon) {
     let strMod = 0;
     let dmgMod = 0;
     if (this.actor.data.data.basics.class === 'theStrong') {
@@ -53,12 +53,14 @@ class WHItem extends Item {
     cardData.toHitTemplate = await toHitRoll.render();
     const toHitResult = toHitRoll.toMessage(messageData, { rollMode: null, create: false });
     cardData.toHitResult = toHitResult.roll.total;
+    cardData.toHitTarget = attackValue + strMod;
+    cardData.weapon = weapon.name;
 
     if (game.dice3d) {
       await game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
     }
 
-    if (toHitResult.roll.total <= attackValue + strMod) {
+    if (toHitResult.roll.total <= cardData.toHitTarget) {
       // Hit - Damage Roll
       rollFormula = game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + " + @dmgMod";
       const damageRoll = new Roll(rollFormula, rollData).evaluate();
@@ -68,18 +70,24 @@ class WHItem extends Item {
       if (game.dice3d) {
         await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
       }
-      cardData.damageResult = damageResult.roll.total;
-      cardData.attackHit = true;
+
+      cardData = {
+        ...cardData,
+        damageResult: damageResult.roll.total,
+        attackHit: true,
+        acSuccess: " hits AC " + toHitResult.roll.total,
+      }
     } else {
       // Miss - hide damage template in message
       cardData.attackHit = false;
+      cardData.acSuccess = " misses";
     }
 
     messageData.content = await renderTemplate(rollTemplate, cardData);
-    messageData.flavor = this.actor.name + " attacks with " + weapon.name;
     messageData.roll = true;
     return ChatMessage.create(messageData);
   }
+
 };
 
 export default WHItem;

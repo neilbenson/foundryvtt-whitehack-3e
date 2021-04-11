@@ -81,7 +81,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
     const item = this.actor.getOwnedItem(itemId);
 
-    item.rollWeaponAttack(item);
+    item.weaponAttack(item);
   }
 
   _onItemRoll(event) {

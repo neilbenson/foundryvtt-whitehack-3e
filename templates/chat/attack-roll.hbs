@@ -3,10 +3,10 @@
   <div class="dice-flavor">{{flavor}}</div>
   {{/if}}
 </div>
-<h2>Attack roll</h2>
+<h3>{{weapon}} attack vs target {{toHitTarget}}{{acSuccess}}</h3>
 {{{toHitTemplate}}}
 <br />
 {{#if attackHit}}
-<h2>Damage roll</h2>
+<h3>{{weapon}} hits for {{damageResult}} damage</h3>
 {{{damageTemplate}}}
 {{/if}}
