@@ -24,4 +24,28 @@ TO DO:
 - [ ] Initiative roller and Dex mod
 - [x] Strong hp mod
 - [x] Deft 2d20 keep best attack
-- [x] Saving throw roll
+- [x] Saving throw 
+- [ ] Remove 1 and 20 successes and add below conditions
+- [ ] Auctions!
+
+
+So in Whitehack you have to roll less than or equal to your stat (or AV or ST) to pass, but the higher you roll the better. So if two people are opposed but one passed with a 9 and the other passed with a 6, then the 9 wins.
+
+So if you are rolling with advantage and both dice pass, it's the higher dice you want to keep because it is more likely to beat an opposing roll (or in the case of attack rolls, beat the opponent's AC).
+
+The other situations of note are,
+- Rolling exactly your score, which is a crit.
+- Rolling the same number on a positive double roll and that number is a pass, this is a better crit.
+- Rolling exactly your target on a positive double roll, this is the best crit.
+
+- Rolling the same number *on both dice* of a positive double roll and that number is a pass, is a better crit.
+- Rolling exactly your target *on both dice* of a positive double roll, is the best crit.
+
+fa-weight-hanging
+fa-tshirt
+fa-eye
+fa-archive
+fa-box
+fa-box-open
+fa-shield-alt
+fa-check-square

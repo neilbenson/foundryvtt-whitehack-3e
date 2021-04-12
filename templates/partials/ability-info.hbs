@@ -5,7 +5,8 @@
         <th class="item-image"></th>
         <th class="align-left ability-name-column">{{localize "wh3e.item.name"}}</th>
         <th class="ability-type-column">{{localize "wh3e.item.type"}}</th>
-        {{> itemControlsHeader title=(localize "wh3e.sheet.addAbility") type="Ability"}}
+        <th class="ability-activated-column">{{localize "wh3e.item.active"}}</th>
+        {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addAbility") type="Ability"}}
       </tr>
     </thead>
     <tbody>
@@ -22,7 +23,12 @@
         <td class="ability-type-column">
           <span>{{getTextFromKey "wh3e.abilityType" ability.data.type}}</span>
         </td>
-        {{> itemControls }}
+        <td class="ability-activated-column">
+          <a class="item-control" title="{{localize "wh3e.sheet.activateDeactivate"}} {{ability.name}}"><i
+               class="fas fa-check-square {{ability.data.activeStatus}}"></i></a>
+        </td>
+        {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editAbility") deleteTitle=(localize
+        "wh3e.sheet.deleteAbility") }}
       </tr>
       {{/each}}
     </tbody>

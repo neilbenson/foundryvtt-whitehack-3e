@@ -112,7 +112,8 @@
     },
     "Ability": {
       "type": "",
-      "description": ""
+      "description": "",
+      "activeStatus": "inactive"
     }
   }
 }

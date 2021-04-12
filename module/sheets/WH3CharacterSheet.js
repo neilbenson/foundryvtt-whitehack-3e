@@ -28,6 +28,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-edit").click(this._onItemEdit.bind(this));
       html.find(".item-delete").click(this._onItemDelete.bind(this));
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
+      html.find(".ability-activated-column i").click(this._onToggleAbility.bind(this));
     }
 
     // Owner only listeners
@@ -39,6 +40,30 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     super.activateListeners(html);
+  }
+
+  _onToggleAbility(event) {
+    const itemId = event.currentTarget.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+    item.update(
+      {
+        data: {
+          activeStatus: this.updateActiveStatus($(event.currentTarget))
+        }
+      }
+    )
+  }
+
+  updateActiveStatus(icon) {
+    let newActiveStatus = "";
+    if (icon.hasClass("inactive")) {
+      icon.removeClass("inactive").addClass("active");
+      newActiveStatus = "active";
+    } else {
+      icon.removeClass("active").addClass("inactive")
+      newActiveStatus = "inactive";
+    }
+    return newActiveStatus;
   }
 
   _onAttributeChange(event) {
@@ -213,6 +238,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     if (element.dataset.type === "Ability") {
       itemData.data.type = "slot";
+      itemData.data.activeStatus = "inactive";
     }
 
     if (element.dataset.type === "Gear") {

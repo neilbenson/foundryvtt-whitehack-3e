@@ -60,12 +60,23 @@
     "sheet": {
       "addAbility": "Add Ability",
       "newAbility": "New Ability",
+      "editAbility": "Edit Ability",
+      "deleteAbility": "Delete Ability",
+      "activateDeactivate": "Activate/deactivate",
       "addGear": "Add Gear",
       "newGear": "New Gear",
+      "editGear": "Edit Gear",
+      "deleteGear": "Delete Gear",
+      "equipGear": "Equip Gear",
+      "storeGear": "Store Gear",
       "addWeapon": "Add Weapon",
       "newWeapon": "New Weapon",
+      "editWeapon": "Edit Weapon",
+      "deleteWeapon": "Delete Weapon",
       "addArmour": "Add Armour",
-      "newArmour": "New Armour"
+      "newArmour": "New Armour",
+      "editArmour": "Edit Armour",
+      "deleteArmour": "Delete Armour"
     },
     "modifiers": {
       "rollMod": "Modifier",
@@ -84,7 +95,9 @@
       "melee": "Melee",
       "notes": "Notes",
       "type": "Type",
-      "armourClass": "Armour Class"
+      "armourClass": "Armour Class",
+      "active": "Active",
+      "equipped": "Equipped"
     },
     "coinType": {
       "gp": "GP",

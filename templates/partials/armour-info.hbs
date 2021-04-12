@@ -5,7 +5,7 @@
         <th class="item-image"></th>
         <th class="align-left armour-name-column">{{localize "wh3e.item.name"}}</th>
         <th class="armour-ac-column">{{localize "wh3e.item.armourClass"}}</th>
-        {{> itemControlsHeader title=(localize "wh3e.sheet.addArmour") type="Armour"}}
+        {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addArmour") type="Armour"}}
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,8 @@
         <td class="armour-ac-column">
           <span>{{getTextFromKey "wh3e.armourClasses" armour.data.armourClass}}</span>
         </td>
-        {{> itemControls }}
+        {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editArmour") deleteTitle=(localize
+        "wh3e.sheet.deleteArmour") }}
       </tr>
       {{/each}}
     </tbody>
