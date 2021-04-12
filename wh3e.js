@@ -5,6 +5,7 @@ import WH3CharacterSheet from './module/sheets/WH3CharacterSheet.js';
 import WH3MonsterSheet from './module/sheets/WH3MonsterSheet.js';
 import WH3Actor from './module/WH3Actor.js';
 import { registerHelpers } from "./module/helpers.js";
+import { registerPartials } from './module/partials.js';
 
 async function preloadHandlebarsTemplates() {
   const templatePaths = [
@@ -39,4 +40,5 @@ Hooks.once("init", () => {
   preloadHandlebarsTemplates();
 
   registerHelpers();
+  registerPartials();
 });

@@ -4,7 +4,8 @@ export default class WH3ItemSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       width: 530,
       height: 350,
-      classes: ["wh3e", "sheet", "item"]
+      classes: ["wh3e", "sheet", "item"],
+      resizable: false
     })
   }
 

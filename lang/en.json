@@ -63,7 +63,9 @@
       "addGear": "Add Gear",
       "newGear": "New Gear",
       "addWeapon": "Add Weapon",
-      "newWeapon": "New Weapon"
+      "newWeapon": "New Weapon",
+      "addArmour": "Add Armour",
+      "newArmour": "New Armour"
     },
     "modifiers": {
       "rollMod": "Modifier",

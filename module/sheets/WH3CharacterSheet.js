@@ -6,7 +6,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       classes: ["wh3e", "sheet", "character"],
       width: 600,
       height: 584,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
+      resizable: false
     })
   }
 

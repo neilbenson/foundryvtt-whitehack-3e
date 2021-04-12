@@ -5,11 +5,7 @@
         <th class="item-image"></th>
         <th class="align-left gear-name-column">{{localize "wh3e.item.name"}}</th>
         <th class="gear-weight-column">{{localize "wh3e.item.weight"}}</th>
-        <th class="item-controls">
-          <a class="item-create" data-type="Gear" title="{{localize " wh3e.sheet.addGear"}}">
-            <i class="fas fa-plus"></i>
-          </a>
-        </th>
+        {{> itemControlsHeader title=(localize "wh3e.sheet.addGear") type="Gear"}}
       </tr>
     </thead>
     <tbody>
@@ -26,10 +22,7 @@
         <td class="gear-weight-column">
           <span>{{getTextFromKey "wh3e.weightTypes" gear.data.weight}}</span>
         </td>
-        <td class="item-controls">
-          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-        </td>
+        {{> itemControls }}
       </tr>
       {{/each}}
     </tbody>

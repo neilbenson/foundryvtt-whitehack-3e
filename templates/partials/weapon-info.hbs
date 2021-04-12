@@ -8,11 +8,7 @@
         <th>{{localize "wh3e.item.weight"}}</th>
         <th>{{localize "wh3e.item.range"}}</th>
         <th>{{localize "wh3e.item.rateOfFire"}}</th>
-        <th class="item-controls">
-          <a class="item-create" data-type="Weapon" title="{{localize " wh3e.sheet.addWeapon"}}">
-            <i class="fas fa-plus"></i>
-          </a>
-        </th>
+        {{> itemControlsHeader title=(localize "wh3e.sheet.addWeapon") type="Weapon"}}
       </tr>
     </thead>
     <tbody>
@@ -38,10 +34,7 @@
         <td>
           <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.data.rateOfFire}}</span>
         </td>
-        <td class="item-controls">
-          <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-          <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-        </td>
+        {{> itemControls }}
       </tr>
       {{/each}}
     </tbody>

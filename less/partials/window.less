@@ -1,14 +1,19 @@
-// .window-app {
-//   .window-content {
-//     overflow: hidden;
-//   }
-// }
-
 .window-app {
+  background: url("../assets/ui/old-worn-paper-header.jpg");
   .window-content {
     overflow-y: initial;
     overflow-x: initial;
-    background: url("../assets/ui/old-worn-paper.jpg");
+    background: url("../assets/ui/old-worn-paper-content.jpg");
+  }
+  .window-header {
+    border-bottom: none;
+    color: black;
+  }
+}
+
+.window-app.minimized {
+  .window-header {
+    border-bottom: none;
   }
 }
 
@@ -22,10 +27,6 @@
   .fa-dice {
     opacity: 50%;
   }
-}
-
-.window-resizable-handle {
-  visibility: hidden;
 }
 
 .sheet {
