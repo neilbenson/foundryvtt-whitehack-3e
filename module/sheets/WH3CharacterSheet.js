@@ -29,6 +29,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-delete").click(this._onItemDelete.bind(this));
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
       html.find(".ability-activated-column i").click(this._onToggleAbility.bind(this));
+      html.find(".gear-equipped-column i").click(this._onToggleGear.bind(this));
     }
 
     // Owner only listeners
@@ -40,6 +41,27 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     super.activateListeners(html);
+  }
+
+  _onToggleGear(event) {
+    const itemId = event.currentTarget.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+    // TODO: Update encumbrance when gear equipped?
+    item.update(
+      {
+        data: {
+          equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus)
+        }
+      }
+    )
+  }
+
+  updateEquippedStatus(equippedStatus) {
+    if (equippedStatus === "stored") {
+      return "equipped";
+    } else {
+      return "stored";
+    };
   }
 
   _onToggleAbility(event) {
@@ -55,15 +77,11 @@ export default class WH3CharacterSheet extends ActorSheet {
   }
 
   updateActiveStatus(icon) {
-    let newActiveStatus = "";
     if (icon.hasClass("inactive")) {
-      icon.removeClass("inactive").addClass("active");
-      newActiveStatus = "active";
+      return "active";
     } else {
-      icon.removeClass("active").addClass("inactive")
-      newActiveStatus = "inactive";
+      return "inactive";
     }
-    return newActiveStatus;
   }
 
   _onAttributeChange(event) {
@@ -243,12 +261,19 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     if (element.dataset.type === "Gear") {
       itemData.data.weight = "regular";
+      itemData.data.equippedStatus = "stored";
+    }
+
+    if (element.dataset.type === "Armour") {
+      itemData.data.armourClass = 0;
+      itemData.data.equippedStatus = "stored";
     }
 
     if (element.dataset.type === "Weapon") {
       itemData.data.damage = 'd6';
       itemData.data.weight = "regular";
       itemData.data.rateOfFire = "none";
+      itemData.data.equippedStatus = "stored";
     }
 
     return this.actor.createOwnedItem(itemData);
