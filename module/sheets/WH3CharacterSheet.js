@@ -29,7 +29,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-delete").click(this._onItemDelete.bind(this));
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
       html.find(".ability-activated-column i").click(this._onToggleAbility.bind(this));
-      html.find(".gear-equipped-column i").click(this._onToggleGear.bind(this));
+      html.find(".equippable i").click(this._onToggleGear.bind(this));
     }
 
     // Owner only listeners

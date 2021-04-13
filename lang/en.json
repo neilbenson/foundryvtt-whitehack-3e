@@ -97,7 +97,8 @@
       "type": "Type",
       "armourClass": "Armour Class",
       "active": "Active",
-      "equipped": "Equipped"
+      "equipped": "Equipped",
+      "stored": "Stored"
     },
     "coinType": {
       "gp": "GP",

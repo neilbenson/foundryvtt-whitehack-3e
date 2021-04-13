@@ -4,10 +4,11 @@
       <tr class="weapons">
         <th class="item-image"></th>
         <th class="align-lef weapon-name">{{localize "wh3e.item.name"}}</th>
-        <th>{{localize "wh3e.item.damage"}}</th>
+        <th class="weapon-damage">{{localize "wh3e.item.damage"}}</th>
         <th>{{localize "wh3e.item.weight"}}</th>
         <th>{{localize "wh3e.item.range"}}</th>
         <th>{{localize "wh3e.item.rateOfFire"}}</th>
+        <th class="equippable">{{localize "wh3e.item.equipped"}}</th>
         {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addWeapon") type="Weapon"}}
       </tr>
     </thead>
@@ -22,7 +23,7 @@
         <td class="align-left weapon-name">
           <span>{{weapon.name}}</span>
         </td>
-        <td>
+        <td class="weapon-damage">
           <span>{{getTextFromKey "wh3e.damageDice" weapon.data.damage}}</span>
         </td>
         <td>
@@ -34,6 +35,7 @@
         <td>
           <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.data.rateOfFire}}</span>
         </td>
+        {{> controlsEquipStore name=weapon.name status=weapon.data.equippedStatus}}
         {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editWeapon") deleteTitle=(localize
         "wh3e.sheet.deleteWeapon") }}
       </tr>

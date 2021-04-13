@@ -12,10 +12,17 @@ export const registerHelpers = async function () {
     if (key === 'wis' && charClass === "theWise") return true;
     if (key === 'dex' || key === 'int') return true;
     return false;
-  })
+  });
 
   Handlebars.registerHelper("stripHtml", (html) => {
     return html.replace(/(<([^>]+)>)/ig, '');
-  })
+  });
 
+  Handlebars.registerHelper('upper', function (aString) {
+    return aString.toUpperCase();
+  });
+
+  Handlebars.registerHelper('lower', function (aString) {
+    return aString.toLowerCase();
+  });
 }

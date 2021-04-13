@@ -11,7 +11,7 @@ TO DO:
 - [x] Add currency (CP, SP, GP) to weapons and gear
 - [x] Fix css table scroll for weapons and gear on character sheet
 - [ ] Calculate armour class for character based on selected armour
-- [ ] Add armour item type
+- [x] Add armour item type
 - [ ] Calculate ST and AV for monsters
 - [ ] Add corruption level and disorders to character sheet
 - [x] Fix right input alignments for forms
@@ -27,6 +27,7 @@ TO DO:
 - [x] Saving throw 
 - [ ] Remove 1 and 20 successes and add below conditions
 - [ ] Auctions!
+- [ ] Calculate encumbrance
 
 
 So in Whitehack you have to roll less than or equal to your stat (or AV or ST) to pass, but the higher you roll the better. So if two people are opposed but one passed with a 9 and the other passed with a 6, then the 9 wins.

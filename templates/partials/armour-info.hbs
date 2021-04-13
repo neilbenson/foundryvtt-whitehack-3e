@@ -3,8 +3,9 @@
     <thead>
       <tr>
         <th class="item-image"></th>
-        <th class="align-left armour-name-column">{{localize "wh3e.item.name"}}</th>
+        <th class="align-left armour-name">{{localize "wh3e.item.name"}}</th>
         <th class="armour-ac-column">{{localize "wh3e.item.armourClass"}}</th>
+        <th class="equippable">{{localize "wh3e.item.equipped"}}</th>
         {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addArmour") type="Armour"}}
       </tr>
     </thead>
@@ -16,12 +17,13 @@
             <span class="item-info" style="background-image: url({{armour.img}})"></span>
           </a>
         </td>
-        <td class="align-left armour-name-column">
+        <td class="align-left armour-name">
           <span>{{armour.name}}</span>
         </td>
         <td class="armour-ac-column">
           <span>{{getTextFromKey "wh3e.armourClasses" armour.data.armourClass}}</span>
         </td>
+        {{> controlsEquipStore name=armour.name status=armour.data.equippedStatus}}
         {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editArmour") deleteTitle=(localize
         "wh3e.sheet.deleteArmour") }}
       </tr>

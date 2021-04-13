@@ -99,7 +99,7 @@
     },
     "Weapon": {
       "templates": ["equipmentBase"],
-      "damage": "",
+      "damage": "d6",
       "range": 0,
       "rateOfFire": "",
       "special": ""
