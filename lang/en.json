@@ -98,7 +98,8 @@
       "armourClass": "Armour Class",
       "active": "Active",
       "equipped": "Equipped",
-      "stored": "Stored"
+      "stored": "Stored",
+      "quantity": "Quantity"
     },
     "coinType": {
       "gp": "GP",
@@ -118,7 +119,8 @@
     "weightTypes": {
       "regular": "Regular",
       "heavy": "Heavy",
-      "minor": "Minor"
+      "minor": "Minor",
+      "small": "Small"
     },
     "roFShotsPerRound": {
       "none": "None",

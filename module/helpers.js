@@ -25,4 +25,13 @@ export const registerHelpers = async function () {
   Handlebars.registerHelper('lower', function (aString) {
     return aString.toLowerCase();
   });
+
+  Handlebars.registerHelper('decimals', function (aNumber) {
+    return aNumber !== null ? aNumber.toFixed(2) : 0;
+  });
+
+  Handlebars.registerHelper('encumbered', function (encumbrance) {
+    return encumbrance !== null ? encumbrance.equipped + encumbrance.stored >= 15 : false;
+  });
+
 }

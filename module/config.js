@@ -16,10 +16,16 @@ export const wh3e = {
     d6plus2: "wh3e.damageDice.d6plus2",
     d6plus3: "wh3e.damageDice.d6plus3"
   },
-  weightTypes: {
+  weaponWeightTypes: {
     regular: "wh3e.weightTypes.regular",
     heavy: "wh3e.weightTypes.heavy",
     minor: "wh3e.weightTypes.minor"
+  },
+  gearWeightTypes: {
+    regular: "wh3e.weightTypes.regular",
+    heavy: "wh3e.weightTypes.heavy",
+    minor: "wh3e.weightTypes.minor",
+    small: "wh3e.weightTypes.small"
   },
   roFShotsPerRound: {
     none: "wh3e.misc.none",

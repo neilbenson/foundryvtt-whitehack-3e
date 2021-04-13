@@ -1,20 +1,14 @@
 <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
 <div class="header-info">
   <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
-  <div class="grid grid-6col">
-    <div class="flex-group-center grid-span-1-2">
+  <div class="grid grid-8col">
+    <div class="flex-group-center grid-span-1-3">
       <label for="data.basics.class">{{localize "wh3e.actor.class"}}</label>
       <div class="flexrow flex-center flex-between">
-        <select id="data.basics.class" name="data.basics.class">
-          {{#select data.basics.class}}
-          {{#each config.classes as |class classType|}}
-          <option value="{{classType}}">{{localize class}}</option>
-          {{/each}}
-          {{/select}}
-        </select>
+        {{> selectOptions field="data.basics.class" selected=data.basics.class options=config.classes}}
       </div>
     </div>
-    <div class="flex-group-center grid-span-3-3">
+    <div class="flex-group-center grid-span-4-4">
       <label for="data.basics.vocation">{{localize "wh3e.actor.vocation"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.basics.vocation" value="{{data.basics.vocation}}" data-dtype="String" />
@@ -27,16 +21,16 @@
       </div>
     </div>
   </div>
-  <div class="grid grid-6col">
-    <div class="flex-group-center grid-span-1-2">
+  <div class="grid grid-8col">
+    <div class="flex-group-center grid-span-1-3">
       <label for="data.species">{{localize "wh3e.actor.species"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.basics.species" value="{{data.basics.species}}" data-dtype="String" />
       </div>
     </div>
-    <div class="flex-group-center">
-      <label for="data.savingThrow" class="rollable savingThrow" data-roll-for="savingThrow"><span
-              class="fas fa-dice"></span>&nbsp;{{localize
+    <div class="flex-group-center grid-span-4-2">
+      <label for="data.savingThrow" class="rollable savingThrow" data-roll-for="savingThrow"><i
+           class="fas fa-dice"></i>&nbsp;{{localize
         "wh3e.actor.savingThrow"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" data-dtype="Number" />
@@ -63,7 +57,7 @@
       </div>
     </div>
   </div>
-  <div class="grid grid-6col">
+  <div class="grid grid-8col">
     <div class="flex-group-center">
       <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
       <div class="flexrow flex-center flex-between">
@@ -83,14 +77,23 @@
         <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number" />
       </div>
     </div>
-    <div class="flex-group-center">
-      <label for="calc.encumbrance">{{localize "wh3e.actor.encumbrance"}}</label>
+    <div class="flex-group-center grid-span-4-2">
+      <label for="data.encumbrance">{{localize "wh3e.actor.encumbrance"}}</label>
       <div class="flexrow flex-center flex-between">
-        <input type="text" name="calc.encumbrance" value="Calculated" data-dtype="Number" class="read-only"
+        <input type="text" name="data.encumbrance"
+               value="{{data.encumbrance.equipped}} / {{data.encumbrance.stored}}"
+               data-dtype="Number"
+               class="read-only{{#if (encumbered data.encumbrance ) }} encumbered{{/if}}"
                readonly="readonly" />
       </div>
     </div>
-    <div class="flex-group-center grid-span-5-2">
+    <div class="flex-group-center">
+      <div class="rollable savingThrow">
+        <label>Init</label>
+        <span><i class="fas fa-dice"></i></span>
+      </div>
+    </div>
+    <div class="flex-group-center grid-span-7-2">
       <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />

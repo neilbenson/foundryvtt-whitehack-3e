@@ -4,6 +4,7 @@
       <tr>
         <th class="item-image"></th>
         <th class="align-left gear-name">{{localize "wh3e.item.name"}}</th>
+        <th class="gear-quantity">{{localize "wh3e.item.quantity"}}</th>
         <th class="gear-weight">{{localize "wh3e.item.weight"}}</th>
         <th class="equippable">{{localize "wh3e.item.equipped"}}</th>
         {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addGear") type="Gear"}}
@@ -19,6 +20,9 @@
         </td>
         <td class="align-left gear-name">
           <span>{{gear.name}}</span>
+        </td>
+        <td class="gear-quantity">
+          <span>{{gear.data.quantity}}</span>
         </td>
         <td class="gear-weight">
           <span>{{getTextFromKey "wh3e.weightTypes" gear.data.weight}}</span>

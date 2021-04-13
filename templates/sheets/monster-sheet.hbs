@@ -49,13 +49,7 @@
         <div class="flex-group-center">
           <label for="data.damage">{{localize "wh3e.item.damage"}}</label>
           <div class="flexrow flex-center flex-between">
-            <select id="data.damage" name="data.damage">
-              {{#select data.damage}}
-              {{#each config.damageDice as |name dice|}}
-              <option value="{{dice}}">{{localize name}}</option>
-              {{/each}}
-              {{/select}}
-            </select>
+            {{> selectOptions field="data.damage" selected=data.damage options=config.damageDice}}
           </div>
         </div>
         <div class="flex-group-center">

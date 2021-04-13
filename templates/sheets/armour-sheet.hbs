@@ -10,13 +10,7 @@
       <div class="flex-group-left">
         <label for="data.armourClass" class="left-text">{{localize "wh3e.item.armourClass"}}</label>
         <div class="flexrow flex-center flex-between">
-          <select id="data.armourClass" name="data.armourClass">
-            {{#select data.armourClass}}
-            {{#each config.armourClasses as |ac acVal|}}
-            <option value="{{acVal}}">{{localize ac}}</option>
-            {{/each}}
-            {{/select}}
-          </select>
+          {{> selectOptions field="data.armourClass" selected=data.armourClass options=config.armourClasses}}
         </div>
       </div>
       <div class="flex-group-center" style="padding-right: 0;">
@@ -24,13 +18,7 @@
         <div class="flexrow flex-center flex-between">
           <input name="data.cost" type="text" class="center-text" value={{data.cost}}
                  data-dtype="Number" />
-          <select id="data.costCoinType" name="data.costCoinType" class="margin-left-20">
-            {{#select data.costCoinType}}
-            {{#each config.coinTypes as |name type|}}
-            <option value="{{type}}">{{localize name}}</option>
-            {{/each}}
-            {{/select}}
-          </select>
+          {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}
         </div>
       </div>
     </div>

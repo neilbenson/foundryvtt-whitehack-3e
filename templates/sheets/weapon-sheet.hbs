@@ -17,44 +17,20 @@
       </tr>
       <tr class="flex-center">
         <td>
-          <select id="data.damage" name="data.damage">
-            {{#select data.damage}}
-            {{#each config.damageDice as |name dice|}}
-            <option value="{{dice}}">{{localize name}}</option>
-            {{/each}}
-            {{/select}}
-          </select>
+          {{> selectOptions field="data.damage" selected=data.damage options=config.damageDice}}
         </td>
         <td>
-          <select id="data.weight" name="data.weight">
-            {{#select data.weight}}
-            {{#each config.weightTypes as |name type|}}
-            <option value="{{type}}">{{localize name}}</option>
-            {{/each}}
-            {{/select}}
-          </select>
+          {{> selectOptions field="data.weight" selected=data.weight options=config.weaponWeightTypes}}
         </td>
         <td>
           <input name="data.range" type="text" class="center-text" value={{data.range}} data-dtype="Number" />
         </td>
         <td>
-          <select id="data.rateOfFire" name="data.rateOfFire">
-            {{#select data.rateOfFire}}
-            {{#each config.roFShotsPerRound as |name shots|}}
-            <option value="{{shots}}">{{localize name}}</option>
-            {{/each}}
-            {{/select}}
-          </select>
+          {{> selectOptions field="data.rateOfFire" selected=data.rateOfFire options=config.roFShotsPerRound}}
         </td>
         <td>
           <input name="data.cost" type="text" class="center-text input-small" value={{data.cost}} data-dtype="Number" />
-          <select id="data.costCoinType" name="data.costCoinType">
-            {{#select data.costCoinType}}
-            {{#each config.coinTypes as |name type|}}
-            <option value="{{type}}">{{localize name}}</option>
-            {{/each}}
-            {{/select}}
-          </select>
+          {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}
         </td>
       </tr>
     </table>

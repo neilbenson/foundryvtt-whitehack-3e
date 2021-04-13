@@ -8,13 +8,7 @@
   <div class="sheet-content">
     <div class="full-width-field">
       <label for="data.type">{{localize "wh3e.item.type"}}</label>
-      <select id="data.type" name="data.type">
-        {{#select data.type}}
-        {{#each config.abilityTypes as |ability type|}}
-        <option value="{{type}}">{{localize ability}}</option>
-        {{/each}}
-        {{/select}}
-      </select>
+      {{> selectOptions field="data.type" selected=data.type options=config.abilityTypes}}
     </div>
     <div class="full-height-field">
       <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>

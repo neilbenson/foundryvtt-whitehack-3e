@@ -1,3 +1,5 @@
+import { updateEncumbrance } from '../equipmentHelpers.js';
+
 export default class WH3CharacterSheet extends ActorSheet {
 
   static get defaultOptions() {
@@ -9,7 +11,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
       resizable: false
     })
-  }
+  };
 
   getData() {
     const data = super.getData();
@@ -20,7 +22,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     data.armour = data.items.filter((item) => item.type === "Armour");
     data.charClass = data.data.basics.class;
     return data;
-  }
+  };
 
   activateListeners(html) {
     if (this.isEditable) {
@@ -30,6 +32,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
       html.find(".ability-activated-column i").click(this._onToggleAbility.bind(this));
       html.find(".equippable i").click(this._onToggleGear.bind(this));
+      html.find(".gear-quantity-input").click(updateEncumbrance(this.actor));
     }
 
     // Owner only listeners
@@ -41,20 +44,29 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     super.activateListeners(html);
-  }
+  };
 
-  _onToggleGear(event) {
+  async _onDrop(event) {
+    await super._onDrop(event);
+    updateEncumbrance(this.actor);
+  };
+
+  getItem(event) {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
-    // TODO: Update encumbrance when gear equipped?
-    item.update(
+    return this.actor.getOwnedItem(itemId);
+  };
+
+  async _onToggleGear(event) {
+    const item = this.getItem(event);
+    await item.update(
       {
         data: {
           equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus)
         }
       }
-    )
-  }
+    );
+    updateEncumbrance(this.actor);
+  };
 
   updateEquippedStatus(equippedStatus) {
     if (equippedStatus === "stored") {
@@ -62,11 +74,10 @@ export default class WH3CharacterSheet extends ActorSheet {
     } else {
       return "stored";
     };
-  }
+  };
 
   _onToggleAbility(event) {
-    const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
+    const item = this.getItem(event);
     item.update(
       {
         data: {
@@ -74,7 +85,7 @@ export default class WH3CharacterSheet extends ActorSheet {
         }
       }
     )
-  }
+  };
 
   updateActiveStatus(icon) {
     if (icon.hasClass("inactive")) {
@@ -82,7 +93,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     } else {
       return "inactive";
     }
-  }
+  };
 
   _onAttributeChange(event) {
     const attrName = event.currentTarget.name.split(".")[2];
@@ -121,19 +132,17 @@ export default class WH3CharacterSheet extends ActorSheet {
       'data.attributes.con.mod': modObj.conMod,
       'data.attributes.int.mod': modObj.intMod,
       'data.attributes.wis.mod': modObj.wisMod
-    })
-  }
+    });
+  };
 
   _onAttackRoll(event) {
-    const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
+    const item = this.getItem(event);
 
     item.weaponAttack(item);
   }
 
   _onShowAttackModDialog(event) {
-    const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
+    const item = this.getItem(event);
     const toHitModLabel = game.i18n.localize("wh3e.modifiers.toHitMod");
     const damageModLabel = game.i18n.localize("wh3e.modifiers.damageMod");
     const content = `
@@ -173,7 +182,7 @@ export default class WH3CharacterSheet extends ActorSheet {
         },
       },
     }, { width: 50 }).render(true);
-  }
+  };
 
   attackRollDialogCallback(html, item = null, rollType = 'roll') {
     const toHitMod = Number.parseInt(html.find('.mod-prompt.dialog [name="attack_modifier"]')[0].value);
@@ -183,7 +192,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     } else {
       item.weaponAttack(item, toHitMod, damageMod, rollType);
     }
-  }
+  };
 
   _onShowRollModDialog(event) {
     const rollModLabel = game.i18n.localize("wh3e.modifiers.rollMod");
@@ -223,7 +232,7 @@ export default class WH3CharacterSheet extends ActorSheet {
         },
       },
     }, { width: 50 }).render(true);
-  }
+  };
 
   taskRollDialogCallback(html, rollAttribute, rollType = 'roll') {
     const rollMod = Number.parseInt(html.find('.mod-prompt.dialog [name="roll_modifier"]')[0].value);
@@ -232,52 +241,54 @@ export default class WH3CharacterSheet extends ActorSheet {
     } else {
       this.actor.taskRoll(rollMod, rollAttribute, rollType);
     }
-  }
+  };
 
   _onItemRoll(event) {
-    const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
+    const item = this.getItem(event);
 
     item.sendInfoToChat();
-  }
+  };
 
-  _onItemCreate(event) {
+  async _onItemCreate(event) {
     event.preventDefault();
-    const element = event.currentTarget;
+    const type = event.currentTarget.dataset.type;
 
     let itemData = {
       img: "icons/svg/mystery-man.svg",
-      name: game.i18n.localize("wh3e.sheet.new" + element.dataset.type),
-      type: element.dataset.type,
+      name: game.i18n.localize("wh3e.sheet.new" + type),
+      type: type,
       data: {
         description: ""
       }
     };
 
-    if (element.dataset.type === "Ability") {
+    if (type === "Ability") {
       itemData.data.type = "slot";
       itemData.data.activeStatus = "inactive";
     }
 
-    if (element.dataset.type === "Gear") {
+    if (type === "Gear") {
       itemData.data.weight = "regular";
       itemData.data.equippedStatus = "stored";
     }
 
-    if (element.dataset.type === "Armour") {
+    if (type === "Armour") {
       itemData.data.armourClass = 0;
       itemData.data.equippedStatus = "stored";
     }
 
-    if (element.dataset.type === "Weapon") {
+    if (type === "Weapon") {
       itemData.data.damage = 'd6';
       itemData.data.weight = "regular";
       itemData.data.rateOfFire = "none";
       itemData.data.equippedStatus = "stored";
     }
 
-    return this.actor.createOwnedItem(itemData);
-  }
+    await this.actor.createOwnedItem(itemData);
+    if (type !== "Ability") {
+      updateEncumbrance(this.actor);
+    }
+  };
 
   _onItemEdit(event) {
     event.preventDefault();
@@ -287,14 +298,15 @@ export default class WH3CharacterSheet extends ActorSheet {
     const item = this.actor.getOwnedItem(itemId);
 
     item.sheet.render(true);
-  }
+  };
 
-  _onItemDelete(event) {
+  async _onItemDelete(event) {
     event.preventDefault();
 
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
-    return this.actor.deleteOwnedItem(itemId);
-  }
+    await this.actor.deleteOwnedItem(itemId);
+    updateEncumbrance(this.actor);
+  };
 
 }

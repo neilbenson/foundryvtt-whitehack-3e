@@ -10,7 +10,7 @@ export const getDiceToRoll = (rollType) => {
 }
 
 export const getResultColour = (rollResult, rollTarget) => {
-  if (rollResult !== 20 && (rollResult <= rollTarget || rollResult === 1)) {
+  if (rollResult <= rollTarget) {
     return 'green';
   } else {
     return 'red';

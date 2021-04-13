@@ -66,6 +66,10 @@
         "value": 0,
         "disorders": ""
       },
+      "encumbrance": {
+        "equipped": 0,
+        "stored": 0
+      },
       "species": "",
       "coin": {
         "gp": 0,
@@ -109,7 +113,8 @@
       "armourClass": 0
     },
     "Gear": {
-      "templates": ["equipmentBase"]
+      "templates": ["equipmentBase"],
+      "quantity": 1
     },
     "Ability": {
       "type": "",
