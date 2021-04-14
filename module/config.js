@@ -56,6 +56,7 @@ export const wh3e = {
     6: "6",
     7: "7",
     8: "8",
+    plusOne: "+1",
     special: "wh3e.item.special"
   }
 };

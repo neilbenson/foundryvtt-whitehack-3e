@@ -1,4 +1,4 @@
-import { updateEncumbrance } from '../equipmentHelpers.js';
+import { updateEquipmentValues } from '../equipmentHelpers.js';
 
 export default class WH3CharacterSheet extends ActorSheet {
 
@@ -32,7 +32,6 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
       html.find(".ability-activated-column i").click(this._onToggleAbility.bind(this));
       html.find(".equippable i").click(this._onToggleGear.bind(this));
-      html.find(".gear-quantity-input").click(updateEncumbrance(this.actor));
     }
 
     // Owner only listeners
@@ -48,7 +47,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   async _onDrop(event) {
     await super._onDrop(event);
-    updateEncumbrance(this.actor);
+    updateEquipmentValues(this.actor);
   };
 
   getItem(event) {
@@ -65,7 +64,7 @@ export default class WH3CharacterSheet extends ActorSheet {
         }
       }
     );
-    updateEncumbrance(this.actor);
+    updateEquipmentValues(this.actor);
   };
 
   updateEquippedStatus(equippedStatus) {
@@ -286,7 +285,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     await this.actor.createOwnedItem(itemData);
     if (type !== "Ability") {
-      updateEncumbrance(this.actor);
+      updateEquipmentValues(this.actor);
     }
   };
 
@@ -306,7 +305,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
     await this.actor.deleteOwnedItem(itemId);
-    updateEncumbrance(this.actor);
+    updateEquipmentValues(this.actor);
   };
 
 }

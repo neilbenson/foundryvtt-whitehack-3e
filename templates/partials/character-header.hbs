@@ -78,10 +78,15 @@
       </div>
     </div>
     <div class="flex-group-center grid-span-4-2">
-      <label for="data.encumbrance">{{localize "wh3e.actor.encumbrance"}}</label>
+      <label for="data.encumbrance.equipped">{{localize "wh3e.actor.encumbrance"}}</label>
       <div class="flexrow flex-center flex-between">
-        <input type="text" name="data.encumbrance"
-               value="{{data.encumbrance.equipped}} / {{data.encumbrance.stored}}"
+        <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
+               value="{{decimals data.encumbrance.equipped}}"
+               data-dtype="Number"
+               class="read-only{{#if (encumbered data.encumbrance ) }} encumbered{{/if}}"
+               readonly="readonly" />
+        <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
+               value="{{decimals data.encumbrance.stored}}"
                data-dtype="Number"
                class="read-only{{#if (encumbered data.encumbrance ) }} encumbered{{/if}}"
                readonly="readonly" />
