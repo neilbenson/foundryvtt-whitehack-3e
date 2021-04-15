@@ -83,12 +83,12 @@
         <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
                value="{{decimals data.encumbrance.equipped}}"
                data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance ) }} encumbered{{/if}}"
+               class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} encumbered{{/if}}"
                readonly="readonly" />
         <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
                value="{{decimals data.encumbrance.stored}}"
                data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance ) }} encumbered{{/if}}"
+               class="read-only{{#if (encumbered data.encumbrance.stored 5) }} encumbered{{/if}}"
                readonly="readonly" />
       </div>
     </div>

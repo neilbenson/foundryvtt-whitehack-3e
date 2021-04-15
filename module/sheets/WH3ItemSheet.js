@@ -29,7 +29,15 @@ export default class WH3ItemSheet extends ItemSheet {
     super.activateListeners(html);
   };
 
-  _onUpdateGearQuantity() {
-    updateEquipmentValues(this.actor);
+  async _onUpdateGearQuantity(event) {
+    if (this.actor) {
+      await this.actor.updateOwnedItem({
+        _id: this.item.id,
+        data: {
+          quantity: +event.currentTarget.value
+        }
+      })
+      updateEquipmentValues(this.actor);
+    }
   }
 }
