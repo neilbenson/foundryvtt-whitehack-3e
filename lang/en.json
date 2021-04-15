@@ -42,10 +42,14 @@
       "theFortunate": "The Fortunate"
     },
     "abilityType": {
-      "slot": "Slot",
-      "species": "Species Group",
-      "vocation": "Vocation Group",
-      "affiliation": "Affiliation Group"
+      "attunement": "Attunement",
+      "combatOption": "Combat Option",
+      "miracle": "Miracle",
+      "quirk": "Quirk",
+      "retainer": "Retainer",
+      "species": "Species",
+      "vocation": "Vocation",
+      "affiliation": "Affiliation"
     },
     "category": {
       "attributes": "Attributes",

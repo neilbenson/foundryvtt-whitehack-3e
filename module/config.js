@@ -36,7 +36,10 @@ export const wh3e = {
     three: "wh3e.roFShotsPerRound.three"
   },
   abilityTypes: {
-    slot: "wh3e.abilityType.slot",
+    attunement: "wh3e.abilityType.attunement",
+    combatOption: "wh3e.abilityType.combatOption",
+    miracle: "wh3e.abilityType.miracle",
+    quirk: "wh3e.abilityType.quirk",
     species: "wh3e.abilityType.species",
     vocation: "wh3e.abilityType.vocation",
     affiliation: "wh3e.abilityType.affiliation"

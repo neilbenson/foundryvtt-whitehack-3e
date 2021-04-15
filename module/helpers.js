@@ -1,9 +1,13 @@
 export const registerHelpers = async function () {
 
   Handlebars.registerHelper("getTextFromKey", (group, key) => {
-    const languageKey = group + "." + key;
-    const languageValue = game.i18n.localize(languageKey);
-    return new Handlebars.SafeString(languageValue);
+    if (key) {
+      const languageKey = group + "." + key;
+      const languageValue = game.i18n.localize(languageKey);
+      return new Handlebars.SafeString(languageValue);
+    } else {
+      return "";
+    }
   });
 
   Handlebars.registerHelper("showModifier", (key, charClass) => {

@@ -262,7 +262,6 @@ export default class WH3CharacterSheet extends ActorSheet {
     };
 
     if (type === "Ability") {
-      itemData.data.type = "slot";
       itemData.data.activeStatus = "inactive";
     }
 
