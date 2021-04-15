@@ -18,23 +18,23 @@ export const registerHelpers = async function () {
     return false;
   });
 
-  Handlebars.registerHelper("stripHtml", (html) => {
+  Handlebars.registerHelper("stripHtml", html => {
     return html.replace(/(<([^>]+)>)/ig, '');
   });
 
-  Handlebars.registerHelper('upper', function (aString) {
+  Handlebars.registerHelper('upper', aString => {
     return aString.toUpperCase();
   });
 
-  Handlebars.registerHelper('lower', function (aString) {
+  Handlebars.registerHelper('lower', aString => {
     return aString.toLowerCase();
   });
 
-  Handlebars.registerHelper('decimals', function (aNumber) {
+  Handlebars.registerHelper('decimals', aNumber => {
     return aNumber.toFixed(2);
   });
 
-  Handlebars.registerHelper('encumbered', function (encumbrance, threshold) {
+  Handlebars.registerHelper('encumbered', (encumbrance, threshold) => {
     return encumbrance > threshold;
   });
 

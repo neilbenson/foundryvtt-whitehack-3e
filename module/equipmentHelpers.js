@@ -22,18 +22,32 @@ export const updateEquipmentValues = (actor) => {
       encumbrance: {
         equipped: encEquipped,
         stored: encStored
+      },
+      combat: {
+        armourClass: ac
       }
     }
   });
 };
 
 const getArmourClassForItems = (items) => {
-  console.log(items);
+  let maxAc = 0;
+  let shieldHelmAc = 0;
+  items.forEach(item => {
+    let tempAc = item.data.data.armourClass;
+    if (tempAc === 'plusOne') {
+      shieldHelmAc = 1;
+    } else if (tempAc !== 'special') {
+      tempAc = +tempAc;
+      maxAc = tempAc > maxAc ? tempAc : maxAc;
+    }
+  })
+  return maxAc + shieldHelmAc;
 };
 
 const getEncumbranceForItems = (items) => {
   let encCount = 0;
-  items.forEach((item) => {
+  items.forEach(item => {
     if (item.type == 'Weapon' || item.type === 'Gear') {
       const quantity = item.data.data.quantity === undefined ? 1 : item.data.data.quantity;
       switch (item.data.data.weight) {
