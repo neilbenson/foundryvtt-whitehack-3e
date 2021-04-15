@@ -80,7 +80,8 @@
       "addArmour": "Add Armour",
       "newArmour": "New Armour",
       "editArmour": "Edit Armour",
-      "deleteArmour": "Delete Armour"
+      "deleteArmour": "Delete Armour",
+      "monsterNPC": "Monster/NPC"
     },
     "modifiers": {
       "rollMod": "Modifier",

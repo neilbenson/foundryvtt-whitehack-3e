@@ -102,7 +102,7 @@ export const attackModDialog = (item) => {
 export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rollType = 'roll') => {
   let strMod = 0;
   let strDmgMod = 0;
-  if (actor.data.data.basics.class === 'theStrong') {
+  if (actor.data.type !== 'Monster' && actor.data.data.basics.class === 'theStrong') {
     strMod = actor.data.data.attributes.str.mod;
     strDmgMod = actor.data.data.attributes.str.dmgMod;
   }
