@@ -8,11 +8,31 @@ export default class WH3MonsterSheet extends ActorSheet {
       height: 450,
       resizable: false
     })
-  }
+  };
 
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
     return data;
+  };
+
+  async activateListeners(html) {
+    if (this.isEditable) {
+      await html.find(".hitDiceBase").change(this._onUpdateMonster.bind(this));
+    }
+
+    super.activateListeners(html);
+  };
+
+  _onUpdateMonster(event) {
+    const newHDBase = parseInt(event.currentTarget.value);
+    this.actor.update({
+      data: {
+        savingThrow: newHDBase + 5,
+        combat: {
+          attackValue: newHDBase + 10
+        }
+      }
+    })
   }
 }

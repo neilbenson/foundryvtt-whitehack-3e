@@ -10,9 +10,9 @@ TO DO:
 - [ ] For spell abilities have hp lost
 - [x] Add currency (CP, SP, GP) to weapons and gear
 - [x] Fix css table scroll for weapons and gear on character sheet
-- [ ] Calculate armour class for character based on selected armour
+- [x] Calculate armour class for character based on selected armour
 - [x] Add armour item type
-- [ ] Calculate ST and AV for monsters
+- [x] Calculate ST and AV for monsters
 - [ ] Add corruption level and disorders to character sheet
 - [x] Fix right input alignments for forms
 - [x] Remove unused styles e.g. resources, resource, resource-content
@@ -25,7 +25,7 @@ TO DO:
 - [x] Strong hp mod
 - [x] Deft 2d20 keep best attack
 - [x] Saving throw 
-- [ ] Remove 1 and 20 successes and add below conditions
+- [x] Remove 1 and 20 successes and add below conditions
 - [ ] Auctions!
 - [x] Calculate encumbrance
 

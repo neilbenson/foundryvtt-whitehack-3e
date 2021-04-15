@@ -9,9 +9,11 @@
           "max": 10
         },
         "combat": {
-          "armourClass": 0
+          "armourClass": 0,
+          "attackValue": 10
         },
-        "movement": 30
+        "movement": 30,
+        "savingThrow": 5
       }
     },
     "Character": {
@@ -57,10 +59,6 @@
           "groups": ""
         }
       },
-      "combat": {
-        "attackValue": 10
-      },
-      "savingThrow": 0,
       "languages": "",
       "corruptionLevel": {
         "value": 0,
@@ -81,7 +79,8 @@
       "templates": ["base"],
       "combat": {
         "hitDice": {
-          "value": "1D6"
+          "base": 1,
+          "modifier": 0
         }
       },
       "damage": "",
