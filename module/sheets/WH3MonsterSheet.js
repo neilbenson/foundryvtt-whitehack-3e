@@ -1,3 +1,5 @@
+import { rollModDialog, attackModDialog } from '../diceHelpers.js';
+
 export default class WH3MonsterSheet extends ActorSheet {
 
   static get defaultOptions() {
@@ -21,6 +23,12 @@ export default class WH3MonsterSheet extends ActorSheet {
       await html.find(".hitDiceBase").change(this._onUpdateMonster.bind(this));
     }
 
+    // Owner only listeners
+    if (this.actor.owner) {
+      html.find("label.attack-roll").click(this._onCreateAttack.bind(this));
+      html.find("label.savingThrow").click(this._onShowSavingThrowModDialog.bind(this));
+    }
+
     super.activateListeners(html);
   };
 
@@ -34,5 +42,29 @@ export default class WH3MonsterSheet extends ActorSheet {
         }
       }
     })
-  }
+  };
+
+  _onShowSavingThrowModDialog() {
+    rollModDialog(this.actor, 'savingThrow', 'Saving Throw');
+  };
+
+  async _onCreateAttack() {
+    // To use the diceHelper.js attackRoll need to create an item
+    // for the monster attack
+    let monsterAttackItem = {
+      img: "icons/svg/mystery-man.svg",
+      name: game.i18n.localize("wh3e.sheet.newWeapon"),
+      type: "Weapon",
+      data: {
+        description: "",
+        damage: "d6",
+        weight: "regular",
+        rateOfFire: "none"
+      }
+    };
+
+    const newAttackItem = await this.actor.createOwnedItem(monsterAttackItem);
+    attackModDialog(newAttackItem);
+  };
+
 }

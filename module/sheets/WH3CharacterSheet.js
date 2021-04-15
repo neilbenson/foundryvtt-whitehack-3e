@@ -1,4 +1,5 @@
 import { updateEquipmentValues } from '../equipmentHelpers.js';
+import { rollModDialog, attackModDialog } from '../diceHelpers.js';
 
 export default class WH3CharacterSheet extends ActorSheet {
 
@@ -134,112 +135,15 @@ export default class WH3CharacterSheet extends ActorSheet {
     });
   };
 
-  _onAttackRoll(event) {
-    const item = this.getItem(event);
-
-    item.weaponAttack(item);
-  }
-
   _onShowAttackModDialog(event) {
     const item = this.getItem(event);
-    const toHitModLabel = game.i18n.localize("wh3e.modifiers.toHitMod");
-    const damageModLabel = game.i18n.localize("wh3e.modifiers.damageMod");
-    const content = `
-    <div class="dialog mod-prompt grid grid-2col flex-group-center">
-      <div class="form-group">
-        <label for="attack_modifier">${toHitModLabel}</label>
-        <input type="number" id="attack_modifier" name="attack_modifier" value="0"/>
-      </div>
-      <div class="form-group">
-        <label for="damage_modifier">${damageModLabel}</label>
-        <input type="number" id="damage_modifier" name="damage_modifier" value="0"/>
-      </div>
-    </div>`;
-
-    new Dialog({
-      title: "Attack!",
-      content: content,
-      default: "ok",
-      buttons: {
-        roll: {
-          icon: '<i class="fas fa-dice-d20"></i>',
-          label: null,
-          default: true,
-          callback: (html) => this.attackRollDialogCallback(html, item)
-        },
-        doublePositiveRoll: {
-          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
-          label: null,
-          default: true,
-          callback: (html) => this.attackRollDialogCallback(html, item, 'doublePositive')
-        },
-        doubleNegativeRoll: {
-          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
-          label: null,
-          default: true,
-          callback: (html) => this.attackRollDialogCallback(html, item, 'doubleNegative')
-        },
-      },
-    }, { width: 50 }).render(true);
-  };
-
-  attackRollDialogCallback(html, item = null, rollType = 'roll') {
-    const toHitMod = Number.parseInt(html.find('.mod-prompt.dialog [name="attack_modifier"]')[0].value);
-    const damageMod = Number.parseInt(html.find('.mod-prompt.dialog [name="damage_modifier"]')[0].value);
-    if (isNaN(toHitMod) || isNaN(damageMod)) {
-      ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
-    } else {
-      item.weaponAttack(item, toHitMod, damageMod, rollType);
-    }
+    attackModDialog(item);
   };
 
   _onShowRollModDialog(event) {
-    const rollModLabel = game.i18n.localize("wh3e.modifiers.rollMod");
     const rollAttribute = event.currentTarget.dataset.rollFor;
-    const content = `
-    <div class="dialog mod-prompt flex-group-center">
-      <div class="form-group">
-        <label for="roll_modifier">${rollModLabel}</label>
-        <input type="number" id="roll_modifier" name="roll_modifier" value="0"/>
-      </div>
-    </div>`;
-
-    const rollTitle = rollAttribute === 'savingThrow' ? 'Saving Throw' : rollAttribute.toUpperCase() + " task Roll!";
-
-    new Dialog({
-      title: rollTitle,
-      content: content,
-      default: "ok",
-      buttons: {
-        roll: {
-          icon: '<i class="fas fa-dice-d20"></i>',
-          label: null,
-          default: true,
-          callback: (html) => this.taskRollDialogCallback(html, rollAttribute)
-        },
-        doublePositiveRoll: {
-          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
-          label: null,
-          default: true,
-          callback: (html) => this.taskRollDialogCallback(html, rollAttribute, 'doublePositive')
-        },
-        doubleNegativeRoll: {
-          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
-          label: null,
-          default: true,
-          callback: (html) => this.taskRollDialogCallback(html, rollAttribute, 'doubleNegative')
-        },
-      },
-    }, { width: 50 }).render(true);
-  };
-
-  taskRollDialogCallback(html, rollAttribute, rollType = 'roll') {
-    const rollMod = Number.parseInt(html.find('.mod-prompt.dialog [name="roll_modifier"]')[0].value);
-    if (isNaN(rollMod)) {
-      ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
-    } else {
-      this.actor.taskRoll(rollMod, rollAttribute, rollType);
-    }
+    const rollTitle = rollAttribute === 'savingThrow' ? 'Saving Throw' : rollAttribute.toUpperCase() + " task roll!";
+    rollModDialog(this.actor, rollAttribute, rollTitle);
   };
 
   _onItemRoll(event) {

@@ -38,20 +38,22 @@
       </div>
       <div class="grid grid-4col">
         <div class="flex-group-left">
-          <label for="data.damage">{{localize "wh3e.item.damage"}}</label>
+          <label for="data.damage" class="rollable damage-roll">{{localize "wh3e.item.damage"}}</label>
           <div class="flexrow flex-center flex-between">
             {{> selectOptions field="data.damage" selected=data.damage options=config.damageDice}}
           </div>
         </div>
         <div class="flex-group-center">
-          <label for="data.savingThrow">{{localize "wh3e.actor.savingThrow"}}</label>
+          <label for="data.savingThrow" class="rollable savingThrow"><i
+               class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.savingThrow"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" class="read-only"
                    data-dtype="Number" readonly="readonly" />
           </div>
         </div>
         <div class="flex-group-center">
-          <label for="data.combat.attackValue">{{localize "wh3e.actor.attackValue"}}</label>
+          <label for="data.combat.attackValue" class="rollable attack-roll"><i
+               class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.attackValue"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" class="read-only"
                    data-dtype="Number" readonly="readonly" />

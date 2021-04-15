@@ -17,17 +17,18 @@ TO DO:
 - [x] Fix right input alignments for forms
 - [x] Remove unused styles e.g. resources, resource, resource-content
 - [x] Button to add Weapons, Gear and Abilities
-- [ ] Tooltip for Ability description on character sheet
+- [ ] Tooltip for all fields and ability descriptions on character sheet
 - [x] Add modifier for attack rolls
 - [x] Drop down for class
 - [x] Strong attack mods
-- [ ] Initiative roller and Dex mod
+- [ ] Initiative roller and Dex mod for character and monster
 - [x] Strong hp mod
 - [x] Deft 2d20 keep best attack
 - [x] Saving throw 
 - [x] Remove 1 and 20 successes and add below conditions
 - [ ] Auctions!
 - [x] Calculate encumbrance
+- [ ] Monster attack, damage and saving throw rolls
 
 
 So in Whitehack you have to roll less than or equal to your stat (or AV or ST) to pass, but the higher you roll the better. So if two people are opposed but one passed with a 9 and the other passed with a 6, then the 9 wins.
@@ -41,12 +42,3 @@ The other situations of note are,
 
 - Rolling the same number *on both dice* of a positive double roll and that number is a pass, is a better crit.
 - Rolling exactly your target *on both dice* of a positive double roll, is the best crit.
-
-fa-weight-hanging
-fa-tshirt
-fa-eye
-fa-archive
-fa-box
-fa-box-open
-fa-shield-alt
-fa-check-square
