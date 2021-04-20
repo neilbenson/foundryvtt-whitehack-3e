@@ -1,4 +1,4 @@
-export const updateEquipmentValues = (actor) => {
+export const updateActorForItems = async (actor) => {
   const items = actor.items;
   // Calculate encumbrance
   let encEquipped = 0;
@@ -11,13 +11,19 @@ export const updateEquipmentValues = (actor) => {
   encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === 'Weapon' && item.data.data.equippedStatus === 'stored'));
   encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === 'Gear' && item.data.data.equippedStatus === 'stored'));
 
+  // Get vocation and species
+  const speciesObj = items.filter((item) => item.type === "Ability" && item.data.data.type === "species");
+  const vocationObj = items.filter((item) => item.type === "Ability" && item.data.data.type === "vocation");
+  const species = speciesObj.length > 0 ? speciesObj[0].name : "";
+  const vocation = vocationObj.length > 0 ? vocationObj[0].name : "";
+
   // Calculate armour class
   let ac = 0;
   if (equippedArmour.length > 0) {
     ac = getArmourClassForItems(equippedArmour);
   }
 
-  actor.update({
+  await actor.update({
     data: {
       encumbrance: {
         equipped: encEquipped,
@@ -25,6 +31,10 @@ export const updateEquipmentValues = (actor) => {
       },
       combat: {
         armourClass: ac
+      },
+      basics: {
+        vocation: vocation,
+        species: species
       }
     }
   });

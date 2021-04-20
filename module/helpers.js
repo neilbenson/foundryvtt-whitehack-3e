@@ -1,4 +1,4 @@
-export const registerHelpers = async function () {
+export const registerHelpers = async () => {
 
   Handlebars.registerHelper("getTextFromKey", (group, key) => {
     if (key) {

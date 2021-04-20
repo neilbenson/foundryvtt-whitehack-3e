@@ -1,4 +1,4 @@
-import { updateEquipmentValues } from '../equipmentHelpers.js';
+import { updateActorForItems } from '../equipmentHelpers.js';
 
 export default class WH3ItemSheet extends ItemSheet {
 
@@ -24,10 +24,23 @@ export default class WH3ItemSheet extends ItemSheet {
   activateListeners(html) {
     if (this.isEditable) {
       html.find(".gear-quantity-input").change(this._onUpdateGearQuantity.bind(this));
+      html.find(".ability-type-select select").change(this._onUpdateActorForItems.bind(this));
     }
 
     super.activateListeners(html);
   };
+
+  async _onUpdateActorForItems(event) {
+    if (this.actor) {
+      await this.actor.updateOwnedItem({
+        _id: this.item.id,
+        data: {
+          type: event.currentTarget.value
+        }
+      })
+      updateActorForItems(this.actor);
+    }
+  }
 
   async _onUpdateGearQuantity(event) {
     if (this.actor) {
@@ -37,7 +50,7 @@ export default class WH3ItemSheet extends ItemSheet {
           quantity: +event.currentTarget.value
         }
       })
-      updateEquipmentValues(this.actor);
+      updateActorForItems(this.actor);
     }
   }
 }

@@ -1,4 +1,4 @@
-export const registerPartials = async function () {
+export const registerPartials = async () => {
 
   Handlebars.registerPartial('controlsEditDeleteHeader', `
     <th class="item-controls">

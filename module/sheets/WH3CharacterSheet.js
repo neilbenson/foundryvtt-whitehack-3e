@@ -1,4 +1,4 @@
-import { updateEquipmentValues } from '../equipmentHelpers.js';
+import { updateActorForItems } from '../equipmentHelpers.js';
 import { rollModDialog, attackModDialog } from '../diceHelpers.js';
 
 export default class WH3CharacterSheet extends ActorSheet {
@@ -32,7 +32,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-edit").click(this._onItemEdit.bind(this));
       html.find(".item-delete").click(this._onItemDelete.bind(this));
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
-      html.find(".ability-activated-column i").click(this._onToggleAbility.bind(this));
+      html.find(".ability-activated i").click(this._onToggleAbility.bind(this));
       html.find(".equippable i").click(this._onToggleGear.bind(this));
     }
 
@@ -55,7 +55,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   async _onDrop(event) {
     await super._onDrop(event);
-    updateEquipmentValues(this.actor);
+    updateActorForItems(this.actor);
   };
 
   getItem(event) {
@@ -72,7 +72,7 @@ export default class WH3CharacterSheet extends ActorSheet {
         }
       }
     );
-    updateEquipmentValues(this.actor);
+    updateActorForItems(this.actor);
   };
 
   updateEquippedStatus(equippedStatus) {
@@ -195,7 +195,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     await this.actor.createOwnedItem(itemData);
     if (type !== "Ability") {
-      updateEquipmentValues(this.actor);
+      updateActorForItems(this.actor);
     }
   };
 
@@ -215,7 +215,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
     await this.actor.deleteOwnedItem(itemId);
-    updateEquipmentValues(this.actor);
+    updateActorForItems(this.actor);
   };
 
 }
