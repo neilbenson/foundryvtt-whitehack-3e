@@ -33,7 +33,9 @@
       "monster": {
         "xp": "XP"
       },
-      "initiative": "Init"
+      "initiative": "Init",
+      "languages": "Languages",
+      "notes": "Notes"
     },
     "class": {
       "theDeft": "The Deft",

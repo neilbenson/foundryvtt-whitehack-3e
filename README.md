@@ -7,13 +7,12 @@ TO DO:
 - [x] Add/remove weapons, gear and abilities
 - [x] Add stat mod for str, dex etc
 - [x] Add rolls for attributes and weapons
-- [ ] For spell abilities have hp lost
 - [x] Add currency (CP, SP, GP) to weapons and gear
 - [x] Fix css table scroll for weapons and gear on character sheet
 - [x] Calculate armour class for character based on selected armour
 - [x] Add armour item type
 - [x] Calculate ST and AV for monsters
-- [ ] Add corruption level and disorders to character sheet
+- [x] Add corruption level
 - [x] Fix right input alignments for forms
 - [x] Remove unused styles e.g. resources, resource, resource-content
 - [x] Button to add Weapons, Gear and Abilities
@@ -26,7 +25,7 @@ TO DO:
 - [x] Deft 2d20 keep best attack
 - [x] Saving throw 
 - [x] Remove 1 and 20 successes and add below conditions
-- [ ] Auctions!
+- [ ] Auctions! Is this needed?
 - [x] Calculate encumbrance
 - [x] Monster attack, damage and saving throw rolls
 - [ ] Setting in Config menu - what to include?

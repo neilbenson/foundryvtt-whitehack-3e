@@ -13,12 +13,12 @@
           "attackValue": 10
         },
         "movement": 30,
-        "savingThrow": 5
+        "savingThrow": 5,
+        "notes": ""
       }
     },
     "Character": {
       "templates": ["base"],
-      "notes": "",
       "basics": {
         "level": 1,
         "class": "",
@@ -90,7 +90,6 @@
       },
       "damage": "",
       "special": "",
-      "notes": "",
       "xp": 0
     }
   },
