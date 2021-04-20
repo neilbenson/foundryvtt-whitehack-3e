@@ -22,6 +22,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     data.abilities = data.items.filter((item) => item.type === "Ability");
     data.armour = data.items.filter((item) => item.type === "Armour");
     data.charClass = data.data.basics.class;
+    data.hasToken = !(this.token === null);
     return data;
   };
 
@@ -41,9 +42,15 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".attack-roll").click(this._onShowAttackModDialog.bind(this));
       html.find(".attribute label").click(this._onShowRollModDialog.bind(this));
       html.find("label.savingThrow").click(this._onShowRollModDialog.bind(this));
+      html.find('.init-label').click(this._onRollInitiative.bind(this));
     }
 
     super.activateListeners(html);
+  };
+
+  _onRollInitiative(event) {
+    event.preventDefault()
+    this.actor.rollInitiative(this.token)
   };
 
   async _onDrop(event) {

@@ -32,7 +32,8 @@
       "hitDice": "Hit Dice",
       "monster": {
         "xp": "XP"
-      }
+      },
+      "initiative": "Init"
     },
     "class": {
       "theDeft": "The Deft",
@@ -82,6 +83,12 @@
       "editArmour": "Edit Armour",
       "deleteArmour": "Delete Armour",
       "monsterNPC": "Monster/NPC"
+    },
+    "combat": {
+      "initiative": "Initiative",
+      "noTokenForInitiative": "Open character sheet from token to roll for initiative",
+      "tokenNotInCombatTracker": "Add {name} to the combat tracker before rolling initiative",
+      "noActiveCombat": "There is no active combat encounter!"
     },
     "modifiers": {
       "rollMod": "Modifier",

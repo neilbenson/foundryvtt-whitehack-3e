@@ -15,6 +15,7 @@ export default class WH3MonsterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
+    data.hasToken = !(this.token === null);
     return data;
   };
 
@@ -27,9 +28,15 @@ export default class WH3MonsterSheet extends ActorSheet {
     if (this.actor.owner) {
       html.find("label.attack-roll").click(this._onCreateAttack.bind(this));
       html.find("label.savingThrow").click(this._onShowSavingThrowModDialog.bind(this));
+      html.find('.init-label').click(this._onRollInitiative.bind(this));
     }
 
     super.activateListeners(html);
+  };
+
+  _onRollInitiative(event) {
+    event.preventDefault()
+    this.actor.rollInitiative(this.token)
   };
 
   _onUpdateMonster(event) {

@@ -83,6 +83,11 @@
           "modifier": 0
         }
       },
+      "attributes": {
+        "dex": {
+          "mod": 0
+        }
+      },
       "damage": "",
       "special": "",
       "notes": "",

@@ -18,5 +18,5 @@
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "hp",
-  "initiative": "1d6 + @dexMod"
+  "initiative": "1d6 + @attributes.dex.mod"
 }

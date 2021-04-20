@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="grid grid-4col">
+      <div class="grid grid-5col">
         <div class="flex-group-left">
           <label for="data.damage" class="rollable damage-roll">{{localize "wh3e.item.damage"}}</label>
           <div class="flexrow flex-center flex-between">
@@ -57,6 +57,18 @@
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" class="read-only"
                    data-dtype="Number" readonly="readonly" />
+          </div>
+        </div>
+        <div class="flex-group-center">
+          {{#if hasToken}}
+          <label for="data.attributes.dex.mod" class="rollable init-label"><i
+               class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.initiative"}}</label>
+          {{else}}
+          <label for="data.attributes.dex.mod">{{localize "wh3e.actor.initiative"}}</label>
+          {{/if}}
+          <div class="flexrow flex-center flex-between">
+            <input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}"
+                   data-dtype="Number" />
           </div>
         </div>
         <div class="flex-group-center">

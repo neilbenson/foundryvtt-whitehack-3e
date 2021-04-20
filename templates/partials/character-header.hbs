@@ -77,34 +77,41 @@
         <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number" />
       </div>
     </div>
+    {{#if hasToken}}
     <div class="flex-group-center grid-span-4-2">
-      <label for="data.encumbrance.equipped">{{localize "wh3e.actor.encumbrance"}}</label>
-      <div class="flexrow flex-center flex-between">
-        <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
-               value="{{decimals data.encumbrance.equipped}}"
-               data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} encumbered{{/if}}"
-               readonly="readonly" />
-        <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
-               value="{{decimals data.encumbrance.stored}}"
-               data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance.stored 5) }} encumbered{{/if}}"
-               readonly="readonly" />
+      {{else}}
+      <div class="flex-group-center grid-span-4-3">
+        {{/if}}
+        <label for="data.encumbrance.equipped">{{localize "wh3e.actor.encumbrance"}}</label>
+        <div class="flexrow flex-center flex-between">
+          <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
+                 value="{{decimals data.encumbrance.equipped}}"
+                 data-dtype="Number"
+                 class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} encumbered{{/if}}"
+                 readonly="readonly" />
+          <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
+                 value="{{decimals data.encumbrance.stored}}"
+                 data-dtype="Number"
+                 class="read-only{{#if (encumbered data.encumbrance.stored 5) }} encumbered{{/if}}"
+                 readonly="readonly" />
+        </div>
       </div>
-    </div>
-    <div class="flex-group-center">
-      <div class="rollable savingThrow">
-        <label>Init</label>
-        <span><i class="fas fa-dice"></i></span>
+      {{#if hasToken}}
+      <div class="flex-group-center">
+        <div class="rollable savingThrow">
+          <label class="init-label">{{localize "wh3e.actor.initiative"}}
+            <span><i class="fas fa-dice"></i></span>
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="flex-group-center grid-span-7-2">
-      <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
-      <div class="flexrow flex-center flex-between">
-        <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
-        <span> / </span>
-        <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number" />
+      {{/if}}
+      <div class="flex-group-center grid-span-7-2">
+        <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
+        <div class="flexrow flex-center flex-between">
+          <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
+          <span> / </span>
+          <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number" />
+        </div>
       </div>
     </div>
   </div>
-</div>

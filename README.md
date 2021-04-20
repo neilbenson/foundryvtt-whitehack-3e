@@ -21,14 +21,15 @@ TO DO:
 - [x] Add modifier for attack rolls
 - [x] Drop down for class
 - [x] Strong attack mods
-- [ ] Initiative roller and Dex mod for character and monster
+- [x] Initiative roller and Dex mod for character and monster
 - [x] Strong hp mod
 - [x] Deft 2d20 keep best attack
 - [x] Saving throw 
 - [x] Remove 1 and 20 successes and add below conditions
 - [ ] Auctions!
 - [x] Calculate encumbrance
-- [ ] Monster attack, damage and saving throw rolls
+- [x] Monster attack, damage and saving throw rolls
+- [ ] Setting in Config menu - what to include?
 
 
 So in Whitehack you have to roll less than or equal to your stat (or AV or ST) to pass, but the higher you roll the better. So if two people are opposed but one passed with a 9 and the other passed with a 6, then the 9 wins.
