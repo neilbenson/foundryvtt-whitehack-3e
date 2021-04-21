@@ -12,7 +12,7 @@
       <label for="data.basics.vocation">{{localize "wh3e.actor.vocation"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.basics.vocation" value="{{data.basics.vocation}}" data-dtype="String"
-               class="read-only" readonly="readonly" />
+               class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.vocationInput"}}" />
       </div>
     </div>
     <div class="flex-group-center">
@@ -27,7 +27,7 @@
       <label for="data.species">{{localize "wh3e.actor.species"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.basics.species" value="{{data.basics.species}}" data-dtype="String"
-               class="read-only" readonly="readonly" />
+               class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.speciesInput"}}" />
       </div>
     </div>
     <div class="flex-group-center grid-span-4-2">
@@ -35,7 +35,8 @@
            class="fas fa-dice"></i>&nbsp;{{localize
         "wh3e.actor.savingThrow"}}</label>
       <div class="flexrow flex-center flex-between">
-        <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" data-dtype="Number" />
+        <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" data-dtype="Number"
+               title="{{localize "wh3e.tooltip.savingThrow"}}" />
       </div>
     </div>
     <div class="flex-group-center">
@@ -55,7 +56,7 @@
       <label for="data.corruptionLevel.value">{{localize "wh3e.actor.corruption"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.corruptionLevel.value" value="{{data.corruptionLevel.value}}"
-               data-dtype="Number" />
+               data-dtype="Number" title="{{localize "wh3e.tooltip.corruptionLevel"}}" />
       </div>
     </div>
   </div>
@@ -64,19 +65,21 @@
       <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
       <div class="flexrow flex-center flex-between">
         <input type="text" name="data.combat.armourClass" value="{{data.combat.armourClass}}" data-dtype="Number"
-               class="read-only" readonly="readonly" />
+               class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.armourClass"}}" />
       </div>
     </div>
     <div class="flex-group-center">
       <label for="data.combat.attackValue">{{localize "wh3e.actor.attackValue"}}</label>
       <div class="flexrow flex-center flex-between">
-        <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" data-dtype="Number" />
+        <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" data-dtype="Number"
+               title="{{localize "wh3e.tooltip.attackValue"}}" />
       </div>
     </div>
     <div class="flex-group-center">
       <label for="data.movement">{{localize "wh3e.actor.movement"}}</label>
       <div class="flexrow flex-center flex-between">
-        <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number" />
+        <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number"
+               title="{{localize "wh3e.tooltip.movement"}}" />
       </div>
     </div>
     {{#if hasToken}}
@@ -90,12 +93,12 @@
                  value="{{decimals data.encumbrance.equipped}}"
                  data-dtype="Number"
                  class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} encumbered{{/if}}"
-                 readonly="readonly" />
+                 readonly="readonly" title="{{localize "wh3e.tooltip.encEquipped"}}" />
           <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
                  value="{{decimals data.encumbrance.stored}}"
                  data-dtype="Number"
                  class="read-only{{#if (encumbered data.encumbrance.stored 5) }} encumbered{{/if}}"
-                 readonly="readonly" />
+                 readonly="readonly" title="{{localize "wh3e.tooltip.encStored"}}" />
         </div>
       </div>
       {{#if hasToken}}
@@ -110,9 +113,11 @@
       <div class="flex-group-center grid-span-7-2">
         <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
         <div class="flexrow flex-center flex-between">
-          <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
+          <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number"
+                 title="{{localize "wh3e.tooltip.hpCurrent"}}" />
           <span> / </span>
-          <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number" />
+          <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number"
+                 title="{{localize "wh3e.tooltip.hpMax"}}" />
         </div>
       </div>
     </div>

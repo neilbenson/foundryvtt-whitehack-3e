@@ -1,8 +1,9 @@
 export const registerHelpers = async () => {
 
-  Handlebars.registerHelper("getTextFromKey", (group, key) => {
+  Handlebars.registerHelper("getTextFromKey", (group, key, postfix) => {
     if (key) {
-      const languageKey = group + "." + key;
+      postfix = typeof postfix === 'string' ? postfix : '';
+      const languageKey = group + "." + key + postfix;
       const languageValue = game.i18n.localize(languageKey);
       return new Handlebars.SafeString(languageValue);
     } else {

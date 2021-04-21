@@ -16,7 +16,6 @@ TO DO:
 - [x] Fix right input alignments for forms
 - [x] Remove unused styles e.g. resources, resource, resource-content
 - [x] Button to add Weapons, Gear and Abilities
-- [ ] Tooltip for all fields and ability descriptions on character sheet
 - [x] Add modifier for attack rolls
 - [x] Drop down for class
 - [x] Strong attack mods
@@ -25,11 +24,12 @@ TO DO:
 - [x] Deft 2d20 keep best attack
 - [x] Saving throw 
 - [x] Remove 1 and 20 successes and add below conditions
-- [ ] Auctions! Is this needed?
 - [x] Calculate encumbrance
 - [x] Monster attack, damage and saving throw rolls
-- [ ] Setting in Config menu - what to include?
 - [x] Vocation and species read only from abilities
+- [ ] Auctions! Is this needed?
+- [ ] Tooltip for all fields and ability descriptions on character sheet
+- [ ] Setting in Config menu - what to include?
 - [ ] Fix rolls as below
 
 

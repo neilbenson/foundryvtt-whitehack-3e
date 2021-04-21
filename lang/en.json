@@ -163,6 +163,25 @@
     },
     "errors": {
       "modsNotNumbers": "Modifiers must be numbers"
+    },
+    "tooltip": {
+      "vocationInput": "Updated from first vocation added in abilities tab",
+      "speciesInput": "Updated from first species added in abilities tab",
+      "savingThrow": "Saving Throw",
+      "corruptionLevel": "Corruption Level",
+      "armourClass": "Armour Class (calculated from Armour and Shield)",
+      "attackValue": "Attack Value",
+      "movement": "Movement",
+      "encEquipped": "Encumbrance of Equipped Items (Max 10)",
+      "encStored": "Encumbrance of Stored Items (Max 5)",
+      "hpCurrent": "Current HP",
+      "hpMax": "Max HP",
+      "strMod": "AV bonus",
+      "strModDamage": "Damage bonus",
+      "dexMod": "Initiative bonus",
+      "conMod": "Additional hit points",
+      "intMod": "Additional extra languages",
+      "wisMod": "Extra level 1 slot inactive miracles"
     }
   }
 }
