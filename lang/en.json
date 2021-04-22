@@ -155,7 +155,7 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "plusOne": "1",
+      "plusOne": "+1",
       "special": "Special"
     },
     "misc": {
@@ -171,6 +171,7 @@
       "corruptionLevel": "Corruption Level",
       "armourClass": "Armour Class (calculated from Armour and Shield)",
       "attackValue": "Attack Value",
+      "initiative": "Initiative",
       "movement": "Movement",
       "encEquipped": "Encumbrance of Equipped Items (Max 10)",
       "encStored": "Encumbrance of Stored Items (Max 5)",
@@ -181,7 +182,12 @@
       "dexMod": "Initiative bonus",
       "conMod": "Additional hit points",
       "intMod": "Additional extra languages",
-      "wisMod": "Extra level 1 slot inactive miracles"
+      "wisMod": "Extra level 1 slot inactive miracles",
+      "monsterSavingThrow": "Saving Throw (calculated from Hit Dice)",
+      "monsterAttackValue": "Attack Value (calculated from Hit Dice)",
+      "monsterHDInfo": "ST and AV are calculated from this value",
+      "monsterHDAnyValue": "You can put any value in here, for example < to indicate a creature with 1 hp",
+      "monsterXP": "Base XP award"
     }
   }
 }

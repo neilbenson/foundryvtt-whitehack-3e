@@ -4,7 +4,7 @@
     <div class="header-info">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
       <div class="grid grid-4col">
-        <div class="flex-group-left">
+        <div class="flex-group-left" title="{{localize "wh3e.item.armourClass"}}">
           <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
           <div class="flexrow flex-center flex-between">
             {{> selectOptions field="data.combat.armourClass" selected=data.combat.armourClass options=config.monsterArmourClasses}}
@@ -14,25 +14,27 @@
           <label for="data.combat.hitDice.base">{{localize "wh3e.actor.hitDice"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.combat.hitDice.base" value="{{data.combat.hitDice.base}}"
-                   data-dtype="Number" class="hitDiceBase" />
+                   data-dtype="Number" class="hitDiceBase" title="{{localize "wh3e.tooltip.monsterHDInfo"}}" />
             <span> + </span>
             <input type="text" name="data.combat.hitDice.modifier" value="{{data.combat.hitDice.modifier}}"
-                   data-dtype="Number" />
+                   data-dtype="String" title="{{localize "wh3e.tooltip.monsterHDAnyValue"}}" />
           </div>
         </div>
         <div class="flex-group-center">
           <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
           <div class="flexrow flex-center flex-between">
-            <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number" />
+            <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number"
+                   title="{{localize "wh3e.tooltip.hpCurrent"}}" />
             <span> / </span>
-            <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number" />
+            <input type="text" name="data.hitPoints.max" value="{{data.hitPoints.max}}" data-dtype="Number"
+                   title="{{localize "wh3e.tooltip.hpMax"}}" />
           </div>
         </div>
         <div class="flex-group-center">
           <label for="data.movement">{{localize "wh3e.actor.movement"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.movement" value="{{data.movement}}"
-                   data-dtype="Number" />
+                   data-dtype="Number" title="{{localize "wh3e.tooltip.movement"}}" />
           </div>
         </div>
       </div>
@@ -48,7 +50,7 @@
                class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.savingThrow"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" class="read-only"
-                   data-dtype="Number" readonly="readonly" />
+                   data-dtype="Number" readonly="readonly" title="{{localize "wh3e.tooltip.monsterSavingThrow"}}" />
           </div>
         </div>
         <div class="flex-group-center">
@@ -56,7 +58,7 @@
                class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.attackValue"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" class="read-only"
-                   data-dtype="Number" readonly="readonly" />
+                   data-dtype="Number" readonly="readonly" title="{{localize "wh3e.tooltip.monsterAttackValue"}}" />
           </div>
         </div>
         <div class="flex-group-center">
@@ -68,14 +70,14 @@
           {{/if}}
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}"
-                   data-dtype="Number" />
+                   data-dtype="Number" title="{{localize "wh3e.tooltip.initiative"}}" />
           </div>
         </div>
         <div class="flex-group-center">
           <label for="data.xp">{{localize "wh3e.actor.monster.xp"}}</label>
           <div class="flexrow flex-center flex-between">
             <input type="text" name="data.xp" value="{{data.xp}}"
-                   data-dtype="Number" />
+                   data-dtype="Number" title="{{localize "wh3e.tooltip.monsterXP"}}" />
           </div>
         </div>
       </div>

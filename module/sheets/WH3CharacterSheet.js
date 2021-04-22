@@ -38,7 +38,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     // Owner only listeners
     if (this.actor.owner) {
-      html.find(".item-description").click(this._onItemRoll.bind(this));
+      html.find(".item-description").click(this._onShowItemInfo.bind(this));
       html.find(".attack-roll").click(this._onShowAttackModDialog.bind(this));
       html.find(".attribute label").click(this._onShowRollModDialog.bind(this));
       html.find("label.savingThrow").click(this._onShowRollModDialog.bind(this));
@@ -164,9 +164,8 @@ export default class WH3CharacterSheet extends ActorSheet {
     rollModDialog(this.actor, rollAttribute, rollTitle);
   };
 
-  _onItemRoll(event) {
+  _onShowItemInfo(event) {
     const item = this.getItem(event);
-
     item.sendInfoToChat();
   };
 

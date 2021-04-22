@@ -8,12 +8,7 @@
           "min": 0,
           "max": 10
         },
-        "combat": {
-          "armourClass": 0,
-          "attackValue": 10
-        },
         "movement": 30,
-        "savingThrow": 5,
         "notes": ""
       }
     },
@@ -59,6 +54,11 @@
           "groups": ""
         }
       },
+      "combat": {
+        "armourClass": 0,
+        "attackValue": 10
+      },
+      "savingThrow": 5,
       "languages": "",
       "corruptionLevel": {
         "value": 0,
@@ -78,17 +78,20 @@
     "Monster": {
       "templates": ["base"],
       "combat": {
+        "armourClass": 0,
+        "attackValue": 11,
         "hitDice": {
           "base": 1,
           "modifier": 0
         }
       },
+      "savingThrow": 6,
       "attributes": {
         "dex": {
           "mod": 0
         }
       },
-      "damage": "",
+      "damage": "d6",
       "special": "",
       "xp": 0
     }

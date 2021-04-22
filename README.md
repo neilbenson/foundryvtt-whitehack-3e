@@ -27,11 +27,11 @@ TO DO:
 - [x] Calculate encumbrance
 - [x] Monster attack, damage and saving throw rolls
 - [x] Vocation and species read only from abilities
-- [ ] Auctions! Is this needed?
 - [x] Tooltip for all fields and ability descriptions on character sheet
-- [ ] Tooltip for all fields  on monster sheet
+- [x] Tooltip for all fields  on monster sheet
 - [ ] Setting in Config menu - what to include?
 - [ ] Fix rolls as below
+- [ ] Auctions! Is this needed?
 
 
 So in Whitehack you have to roll less than or equal to your stat (or AV or ST) to pass, but the higher you roll the better. So if two people are opposed but one passed with a 9 and the other passed with a 6, then the 9 wins.
