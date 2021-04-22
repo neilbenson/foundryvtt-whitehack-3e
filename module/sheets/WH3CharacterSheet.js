@@ -106,40 +106,51 @@ export default class WH3CharacterSheet extends ActorSheet {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
 
-    let modObj = { strMod: 0, dmgMod: 0, dexMod: 0, conMod: 0, intMod: 0, wisMod: 0 };
-
     // Set STR modifiers for attack and damage
     if (attrName === 'str') {
+      let strMod = 0, dmgMod = 0;
       if (attrValue >= 13) {
-        modObj.strMod = 1;
+        strMod = 1;
         if (attrValue >= 16) {
-          modObj.dmgMod = 1;
+          dmgMod = 1;
         }
       }
+      this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              mod: strMod,
+              value: attrValue,
+              dmgMod: dmgMod
+            }
+          }
+        }
+      });
+      return;
     }
 
     // Set modifiers for other attributes
-    const attrs = ['dex', 'con', 'int', 'wis'];
-    attrs.forEach(element => {
-      if (attrName === element) {
-        if (attrValue >= 13) {
-          modObj[element + 'Mod'] = 1;
-          if (attrValue >= 16) {
-            modObj[element + 'Mod'] = 1;
-          }
+    let modObj = { [attrName + 'Mod']: 0 };
+    if (attrName !== 'cha') {
+      if (attrValue >= 13) {
+        if (attrValue < 16) {
+          modObj[attrName + 'Mod'] = 1;
+        } else {
+          modObj[attrName + 'Mod'] = 2;
         }
       }
-    });
+      this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+              mod: modObj[attrName + 'Mod'],
+              value: attrValue
+            }
+          }
+        }
+      });
+    }
 
-    // Update data
-    this.actor.update({
-      'data.attributes.str.mod': modObj.strMod,
-      'data.attributes.str.dmgMod': modObj.dmgMod,
-      'data.attributes.dex.mod': modObj.dexMod,
-      'data.attributes.con.mod': modObj.conMod,
-      'data.attributes.int.mod': modObj.intMod,
-      'data.attributes.wis.mod': modObj.wisMod
-    });
   };
 
   _onShowAttackModDialog(event) {

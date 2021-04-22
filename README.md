@@ -28,7 +28,8 @@ TO DO:
 - [x] Monster attack, damage and saving throw rolls
 - [x] Vocation and species read only from abilities
 - [ ] Auctions! Is this needed?
-- [ ] Tooltip for all fields and ability descriptions on character sheet
+- [x] Tooltip for all fields and ability descriptions on character sheet
+- [ ] Tooltip for all fields  on monster sheet
 - [ ] Setting in Config menu - what to include?
 - [ ] Fix rolls as below
 
