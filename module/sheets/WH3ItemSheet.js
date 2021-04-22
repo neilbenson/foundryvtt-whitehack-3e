@@ -1,4 +1,4 @@
-import { updateActorForItems } from '../equipmentHelpers.js';
+import { updateActorForItems } from '../helpers/equipmentHelpers.js';
 
 export default class WH3ItemSheet extends ItemSheet {
 

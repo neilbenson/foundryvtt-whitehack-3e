@@ -1,5 +1,4 @@
-import { getDiceToRoll } from './diceHelpers.js';
-import { getResultColour } from './diceHelpers.js';
+import { getDiceToRoll, getResultColour } from './helpers/diceHelpers.js';
 
 class WH3Actor extends Actor {
   async taskRoll(rollMod, rollFor, rollType) {

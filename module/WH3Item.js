@@ -1,5 +1,4 @@
-// import { getDiceToRoll } from './diceHelpers.js';
-import { attackRoll } from './diceHelpers.js';
+import { attackRoll } from './helpers/diceHelpers.js';
 
 class WHItem extends Item {
   chatTemplate = {

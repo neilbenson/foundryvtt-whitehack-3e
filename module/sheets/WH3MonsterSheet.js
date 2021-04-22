@@ -1,4 +1,4 @@
-import { rollModDialog, attackModDialog } from '../diceHelpers.js';
+import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
 
 export default class WH3MonsterSheet extends ActorSheet {
 

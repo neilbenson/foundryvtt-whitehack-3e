@@ -4,7 +4,7 @@ import WH3ItemSheet from './module/sheets/WH3ItemSheet.js';
 import WH3CharacterSheet from './module/sheets/WH3CharacterSheet.js';
 import WH3MonsterSheet from './module/sheets/WH3MonsterSheet.js';
 import WH3Actor from './module/WH3Actor.js';
-import { registerHelpers } from "./module/helpers.js";
+import { registerHelpers } from "./module/helpers/handleBarsHelpers.js";
 import { registerPartials } from './module/partials.js';
 
 async function preloadHandlebarsTemplates() {

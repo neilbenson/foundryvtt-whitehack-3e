@@ -1,5 +1,5 @@
-import { updateActorForItems } from '../equipmentHelpers.js';
-import { rollModDialog, attackModDialog } from '../diceHelpers.js';
+import { updateActorForItems } from '../helpers/equipmentHelpers.js';
+import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
 
 export default class WH3CharacterSheet extends ActorSheet {
 
