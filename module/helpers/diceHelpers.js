@@ -31,7 +31,7 @@ export const rollModDialog = (actor, rollAttribute, rollTitle) => {
   new Dialog({
     title: rollTitle,
     content: content,
-    default: "ok",
+    default: "roll",
     buttons: {
       roll: {
         icon: '<i class="fas fa-dice-d20"></i>',
@@ -57,7 +57,6 @@ export const rollModDialog = (actor, rollAttribute, rollTitle) => {
 
 
 export const attackModDialog = (item) => {
-  // const item = this.getItem(event);
   const toHitModLabel = game.i18n.localize("wh3e.modifiers.toHitMod");
   const damageModLabel = game.i18n.localize("wh3e.modifiers.damageMod");
   const content = `
@@ -75,7 +74,7 @@ export const attackModDialog = (item) => {
   new Dialog({
     title: "Attack!",
     content: content,
-    default: "ok",
+    default: "roll",
     buttons: {
       roll: {
         icon: '<i class="fas fa-dice-d20"></i>',
@@ -166,6 +165,26 @@ export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rol
   messageData.roll = true;
   return ChatMessage.create(messageData);
 };
+
+export const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
+  if (rollResult === 20) {
+    return "Fumble!";
+  } else if (rollResult === rollTarget) {
+    return "Crit!";
+  } else if (rollResult <= rollTarget) {
+    if (diceOne === diceTwo && rollType === "doublePositive") {
+      return "Successful positive pair!";
+    } else {
+      return "Success";
+    }
+  } else {
+    if (diceOne === diceTwo && rollType === "doubleNegative") {
+      return "Unsuccessful negative pair!";
+    } else {
+      return "Failure";
+    }
+  };
+}
 
 const taskRollDialogCallback = (html, actor, rollAttribute, rollType = 'roll') => {
   const rollMod = Number.parseInt(html.find('.mod-prompt.dialog [name="roll_modifier"]')[0].value);

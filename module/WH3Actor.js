@@ -1,4 +1,4 @@
-import { getDiceToRoll, getResultColour } from './helpers/diceHelpers.js';
+import { getDiceToRoll, getResultColour, getResultCategory } from './helpers/diceHelpers.js';
 
 class WH3Actor extends Actor {
   async taskRoll(rollMod, rollFor, rollType) {
@@ -28,18 +28,59 @@ class WH3Actor extends Actor {
     // Task Roll
     const roll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
     cardData.rollTemplate = await roll.render();
-    const rollResult = roll.toMessage(messageData, { rollMode: null, create: false });
+    roll.toMessage(messageData, { rollMode: null, create: false });
+
+    // Get results data
+    const diceOne = roll.terms[0].results[0].result;
+    const diceTwo = roll.terms[0].results.length > 1 ? roll.terms[0].results[1].result : null;
+    const highestResult = diceOne >= diceTwo ? diceOne : diceTwo;
+    const lowestResult = diceOne < diceTwo ? diceOne : diceTwo;
+
+    let rollResult = diceOne;
+    let formula = roll.formula;
+
+
+    // Put this into dicehelper
+    // Add strings to language file
+    switch (rollType) {
+      case "doublePositive":
+        formula = "2d20 take best result";
+        break;
+      case "doubleNegative":
+        formula = "2d20 take worst result";
+        break;
+    }
+
+    // If double positive roll keep the highest under rollTarget
+    // If double negative keep just the highest
+    if (rollType === "doublePositive") {
+      formula = "2d20 take best result";
+      rollResult = highestResult;
+      if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
+        rollResult = lowestResult;
+      }
+    } else if (rollType === "doubleNegative") {
+      formula = "2d20 take worst result";
+      rollResult = lowestResult;
+      if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
+        rollResult = highestResult;
+      }
+    }
 
     cardData = {
       ...cardData,
-      rollResult: rollResult.roll.total,
+      diceOne: diceOne,
+      diceTwo: diceTwo,
+      formula: formula,
+      rollResult: rollResult,
       rollTarget: rollTarget,
       rollFor: rollFor.toUpperCase(),
-      rollResultColour: getResultColour(rollResult.roll.total, rollTarget)
+      rollResultColour: getResultColour(rollResult, rollTarget),
+      resultCategory: getResultCategory(rollTarget, rollResult, rollType, diceOne, diceTwo)
     }
 
     if (game.dice3d) {
-      await game.dice3d.showForRoll(rollResult.roll, game.user, true, null, false);
+      await game.dice3d.showForRoll(roll, game.user, true, null, false);
     }
 
     messageData.content = await renderTemplate(rollTemplate, cardData);

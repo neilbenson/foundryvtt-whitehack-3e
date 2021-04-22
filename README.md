@@ -40,8 +40,5 @@ So if you are rolling with advantage and both dice pass, it's the higher dice yo
 
 The other situations of note are,
 - Rolling exactly your score, which is a crit.
-- Rolling the same number on a positive double roll and that number is a pass, this is a better crit.
-- Rolling exactly your target on a positive double roll, this is the best crit.
-
 - Rolling the same number *on both dice* of a positive double roll and that number is a pass, is a better crit.
 - Rolling exactly your target *on both dice* of a positive double roll, is the best crit.
