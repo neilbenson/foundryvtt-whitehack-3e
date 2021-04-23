@@ -153,17 +153,6 @@ export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rol
   return ChatMessage.create(messageData);
 };
 
-const getDiceToRoll = (rollType) => {
-  switch (rollType) {
-    case 'doublePositive':
-      return '2d20kl';
-    case 'doubleNegative':
-      return '2d20kh';
-    default:
-      return '1d20';
-  }
-};
-
 const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   const rollData = {
     rollMod: rollMod
@@ -196,45 +185,13 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   // Get results data
   const diceOne = roll.terms[0].results[0].result;
   const diceTwo = roll.terms[0].results.length > 1 ? roll.terms[0].results[1].result : null;
-  const highestResult = diceOne >= diceTwo ? diceOne : diceTwo;
-  const lowestResult = diceOne < diceTwo ? diceOne : diceTwo;
-
-  let rollResult = diceOne;
-  let formula = roll.formula;
-
-
-  // Put this into dicehelper
-  // Add strings to language file
-  switch (rollType) {
-    case "doublePositive":
-      formula = "2d20 take best result";
-      break;
-    case "doubleNegative":
-      formula = "2d20 take worst result";
-      break;
-  }
-
-  // If double positive roll keep the highest under rollTarget
-  // If double negative keep just the highest
-  if (rollType === "doublePositive") {
-    formula = "2d20 take best result";
-    rollResult = highestResult;
-    if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
-      rollResult = lowestResult;
-    }
-  } else if (rollType === "doubleNegative") {
-    formula = "2d20 take worst result";
-    rollResult = lowestResult;
-    if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
-      rollResult = highestResult;
-    }
-  }
+  const rollResult = getRollResult(rollType, rollTarget, diceOne, diceTwo);
 
   cardData = {
     ...cardData,
     diceOne: diceOne,
     diceTwo: diceTwo,
-    formula: formula,
+    formula: getRollTypeText(rollType, roll.formula),
     rollResult: rollResult,
     rollTarget: rollTarget,
     rollFor: rollFor.toUpperCase(),
@@ -250,26 +207,6 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   messageData.roll = true;
   return ChatMessage.create(messageData);
 };
-
-const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
-  if (rollResult === 20) {
-    return "Fumble!";
-  } else if (rollResult === rollTarget) {
-    return "Crit!";
-  } else if (rollResult <= rollTarget) {
-    if (diceOne === diceTwo && rollType === "doublePositive") {
-      return "Successful positive pair!";
-    } else {
-      return "Success";
-    }
-  } else {
-    if (diceOne === diceTwo && rollType === "doubleNegative") {
-      return "Unsuccessful negative pair!";
-    } else {
-      return "Failure";
-    }
-  };
-}
 
 const taskRollDialogCallback = (html, actor, rollAttribute, rollType = 'roll') => {
   const rollMod = Number.parseInt(html.find('.mod-prompt.dialog [name="roll_modifier"]')[0].value);
@@ -288,4 +225,68 @@ const attackRollDialogCallback = (html, item = null, rollType = 'roll') => {
   } else {
     item.weaponAttack(item, toHitMod, damageMod, rollType);
   }
+};
+
+const getDiceToRoll = (rollType) => {
+  switch (rollType) {
+    case 'doublePositive':
+      return '2d20kl';
+    case 'doubleNegative':
+      return '2d20kh';
+    default:
+      return '1d20';
+  }
+};
+
+const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
+  if (rollResult === 20) {
+    return game.i18n.localize("wh3e.dice.fumble");
+  } else if (rollResult === rollTarget) {
+    return game.i18n.localize("wh3e.dice.crit");
+  } else if (rollResult <= rollTarget) {
+    if (diceOne === diceTwo && rollType === "doublePositive") {
+      return game.i18n.localize("wh3e.dice.successfulPositivePair");
+    } else {
+      return game.i18n.localize("wh3e.dice.success");
+    }
+  } else {
+    if (diceOne === diceTwo && rollType === "doubleNegative") {
+      return game.i18n.localize("wh3e.dice.unsuccessfulNegativePair");
+    } else {
+      return game.i18n.localize("wh3e.dice.failure");
+    }
+  };
+}
+
+const getRollTypeText = (rollType, rollFormula) => {
+  switch (rollType) {
+    case "doublePositive":
+      return game.i18n.localize("wh3e.dice.doublePositiveText");
+    case "doubleNegative":
+      return game.i18n.localize("wh3e.dice.doubleNegativeText");
+    default:
+      return rollFormula;
+  }
+};
+
+const getRollResult = (rollType, rollTarget, diceOne, diceTwo) => {
+  const highestResult = diceOne >= diceTwo ? diceOne : diceTwo;
+  const lowestResult = diceOne < diceTwo ? diceOne : diceTwo;
+
+  let rollResult = diceOne;
+
+  // If double positive roll keep the highest under rollTarget
+  // If double negative keep just the highest
+  if (rollType === "doublePositive") {
+    rollResult = highestResult;
+    if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
+      rollResult = lowestResult;
+    }
+  } else if (rollType === "doubleNegative") {
+    rollResult = lowestResult;
+    if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
+      rollResult = highestResult;
+    }
+  }
+  return rollResult;
 };

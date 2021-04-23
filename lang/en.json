@@ -161,6 +161,16 @@
     "misc": {
       "none": "None"
     },
+    "dice": {
+      "doublePositiveText": "2d20 take best result",
+      "doubleNegativeText": "2d20 take worst result",
+      "fumble": "Fumble!",
+      "crit": "Crit!",
+      "successfulPositivePair": "Successful positive pair!",
+      "success": "Success",
+      "unsuccessfulNegativePair": "Unsuccessful negative pair!",
+      "failure": "Failure"
+    },
     "errors": {
       "modsNotNumbers": "Modifiers must be numbers"
     },
