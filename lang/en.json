@@ -90,7 +90,11 @@
       "initiative": "Initiative",
       "noTokenForInitiative": "Open character sheet from token to roll for initiative",
       "tokenNotInCombatTracker": "Add {name} to the combat tracker before rolling initiative",
-      "noActiveCombat": "There is no active combat encounter!"
+      "noActiveCombat": "There is no active combat encounter!",
+      "attackVsTarget": "attack vs target",
+      "hitsAC": "hits AC",
+      "hitsFor": "hits for",
+      "damage": "damage"
     },
     "modifiers": {
       "rollMod": "Modifier",

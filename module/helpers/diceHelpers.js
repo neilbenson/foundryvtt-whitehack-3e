@@ -252,11 +252,15 @@ const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne,
 };
 
 const getToHitResultHeader = (toHitResult, weapon, toHitTarget) => {
-  return weapon + " attack vs target " + toHitTarget + " hits AC " + toHitResult;
+  const attackVsTarget = game.i18n.localize("wh3e.combat.attackVsTarget");
+  const hitsAC = game.i18n.localize("wh3e.combat.hitsAC");
+  return `${weapon} ${attackVsTarget} ${toHitTarget} ${hitsAC} ${toHitResult}`
 };
 
 const getDamageResultHeader = (weapon, damageResult) => {
-  return weapon + " hits for " + damageResult + " damage";
+  const hitsFor = game.i18n.localize("wh3e.combat.hitsFor");
+  const damage = game.i18n.localize("wh3e.combat.damage");
+  return `${weapon} ${hitsFor} ${damageResult} ${damage}`;
 };
 
 
