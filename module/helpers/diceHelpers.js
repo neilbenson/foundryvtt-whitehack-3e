@@ -1,15 +1,3 @@
-// TODO remove this export after moving taskroll from WH3Actor
-export const getDiceToRoll = (rollType) => {
-  switch (rollType) {
-    case 'doublePositive':
-      return '2d20kl';
-    case 'doubleNegative':
-      return '2d20kh';
-    default:
-      return '1d20';
-  }
-};
-
 export const getResultColour = (rollResult, rollTarget) => {
   if (rollResult <= rollTarget) {
     return 'green';
@@ -55,7 +43,6 @@ export const rollModDialog = (actor, rollAttribute, rollTitle) => {
   }, { width: 50 }).render(true);
 };
 
-
 export const attackModDialog = (item) => {
   const toHitModLabel = game.i18n.localize("wh3e.modifiers.toHitMod");
   const damageModLabel = game.i18n.localize("wh3e.modifiers.damageMod");
@@ -72,7 +59,7 @@ export const attackModDialog = (item) => {
   </div>`;
 
   new Dialog({
-    title: "Attack!",
+    title: item.name + " Attack",
     content: content,
     default: "roll",
     buttons: {
@@ -166,7 +153,105 @@ export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rol
   return ChatMessage.create(messageData);
 };
 
-export const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
+const getDiceToRoll = (rollType) => {
+  switch (rollType) {
+    case 'doublePositive':
+      return '2d20kl';
+    case 'doubleNegative':
+      return '2d20kh';
+    default:
+      return '1d20';
+  }
+};
+
+const taskRoll = async (actor, rollMod, rollFor, rollType) => {
+  const rollData = {
+    rollMod: rollMod
+  };
+
+  const messageData = {
+    user: game.user._id,
+    speaker: ChatMessage.getSpeaker()
+  };
+
+  let cardData = {
+    ...actor,
+    owner: actor.data.id
+  };
+
+  let rollValue = 0;
+  if (rollFor === 'savingThrow') {
+    rollValue = actor.data.data.savingThrow;
+  } else {
+    rollValue = actor.data.data.attributes[rollFor].value;
+  }
+  const rollTarget = rollValue + rollMod;
+  const rollTemplate = "systems/wh3e/templates/chat/task-roll.hbs";
+
+  // Task Roll
+  const roll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
+  cardData.rollTemplate = await roll.render();
+  roll.toMessage(messageData, { rollMode: null, create: false });
+
+  // Get results data
+  const diceOne = roll.terms[0].results[0].result;
+  const diceTwo = roll.terms[0].results.length > 1 ? roll.terms[0].results[1].result : null;
+  const highestResult = diceOne >= diceTwo ? diceOne : diceTwo;
+  const lowestResult = diceOne < diceTwo ? diceOne : diceTwo;
+
+  let rollResult = diceOne;
+  let formula = roll.formula;
+
+
+  // Put this into dicehelper
+  // Add strings to language file
+  switch (rollType) {
+    case "doublePositive":
+      formula = "2d20 take best result";
+      break;
+    case "doubleNegative":
+      formula = "2d20 take worst result";
+      break;
+  }
+
+  // If double positive roll keep the highest under rollTarget
+  // If double negative keep just the highest
+  if (rollType === "doublePositive") {
+    formula = "2d20 take best result";
+    rollResult = highestResult;
+    if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
+      rollResult = lowestResult;
+    }
+  } else if (rollType === "doubleNegative") {
+    formula = "2d20 take worst result";
+    rollResult = lowestResult;
+    if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
+      rollResult = highestResult;
+    }
+  }
+
+  cardData = {
+    ...cardData,
+    diceOne: diceOne,
+    diceTwo: diceTwo,
+    formula: formula,
+    rollResult: rollResult,
+    rollTarget: rollTarget,
+    rollFor: rollFor.toUpperCase(),
+    rollResultColour: getResultColour(rollResult, rollTarget),
+    resultCategory: getResultCategory(rollTarget, rollResult, rollType, diceOne, diceTwo)
+  }
+
+  if (game.dice3d) {
+    await game.dice3d.showForRoll(roll, game.user, true, null, false);
+  }
+
+  messageData.content = await renderTemplate(rollTemplate, cardData);
+  messageData.roll = true;
+  return ChatMessage.create(messageData);
+};
+
+const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
   if (rollResult === 20) {
     return "Fumble!";
   } else if (rollResult === rollTarget) {
@@ -191,7 +276,7 @@ const taskRollDialogCallback = (html, actor, rollAttribute, rollType = 'roll') =
   if (isNaN(rollMod)) {
     ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
   } else {
-    actor.taskRoll(rollMod, rollAttribute, rollType);
+    taskRoll(actor, rollMod, rollAttribute, rollType);
   }
 };
 

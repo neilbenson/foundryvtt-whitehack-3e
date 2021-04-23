@@ -29,8 +29,13 @@ TO DO:
 - [x] Vocation and species read only from abilities
 - [x] Tooltip for all fields and ability descriptions on character sheet
 - [x] Tooltip for all fields  on monster sheet
+- [x] Fix rolls as below
+- [x] Attack dialog - add weapon name
+- [ ] Fix rolls for combat
+- [ ] Select groups next to attributes from those added
+- [ ] Added classes to compendium?
+- [ ] Add AC input on Attack Dialog?
 - [ ] Setting in Config menu - what to include?
-- [ ] Fix rolls as below
 - [ ] Auctions! Is this needed?
 
 
