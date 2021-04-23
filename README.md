@@ -31,8 +31,8 @@ TO DO:
 - [x] Tooltip for all fields  on monster sheet
 - [x] Fix rolls as below
 - [x] Attack dialog - add weapon name
-- [ ] Fix rolls for combat
-- [ ] Select groups next to attributes from those added
+- [x] Fix rolls for combat
+- [x] Select groups next to attributes from those added
 - [ ] Added classes to compendium?
 - [ ] Add AC input on Attack Dialog?
 - [ ] Setting in Config menu - what to include?

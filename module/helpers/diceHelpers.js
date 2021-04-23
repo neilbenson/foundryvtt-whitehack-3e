@@ -59,7 +59,7 @@ export const attackModDialog = (item) => {
   </div>`;
 
   new Dialog({
-    title: item.name + " Attack",
+    title: item.name + " " + game.i18n.localize("wh3e.combat.attack"),
     content: content,
     default: "roll",
     buttons: {

@@ -17,10 +17,11 @@ export default class WH3CharacterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
-    data.weapons = data.items.filter((item) => item.type === "Weapon");
-    data.gear = data.items.filter((item) => item.type === "Gear");
-    data.abilities = data.items.filter((item) => item.type === "Ability");
-    data.armour = data.items.filter((item) => item.type === "Armour");
+    data.weapons = data.items.filter(item => item.type === "Weapon");
+    data.gear = data.items.filter(item => item.type === "Gear");
+    data.abilities = data.items.filter(item => item.type === "Ability");
+    data.activeAbilities = data.abilities.filter(item => item.data.activeStatus === "active");
+    data.armour = data.items.filter(item => item.type === "Armour");
     data.charClass = data.data.basics.class;
     data.hasToken = !(this.token === null);
     return data;
@@ -34,6 +35,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".attribute-score").change(this._onAttributeChange.bind(this));
       html.find(".ability-activated i").click(this._onToggleAbility.bind(this));
       html.find(".equippable i").click(this._onToggleGear.bind(this));
+      html.find(".manage-groups").click(this._onShowGroupsDialog.bind(this));
+      html.find(".clear-groups").click(this._onClearGroups.bind(this));
     }
 
     // Owner only listeners
@@ -93,6 +96,14 @@ export default class WH3CharacterSheet extends ActorSheet {
       }
     )
   };
+
+  _onShowGroupsDialog(event) {
+    this.actor.manageGroupsDialog(event.currentTarget.dataset.groupsFor);
+  }
+
+  _onClearGroups(event) {
+    this.actor.clearGroupsDialog(event.currentTarget.dataset.groupsFor);
+  }
 
   updateActiveStatus(icon) {
     if (icon.hasClass("inactive")) {

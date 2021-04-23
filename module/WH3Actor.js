@@ -1,4 +1,76 @@
 class WH3Actor extends Actor {
+  manageGroupsDialog(attribute) {
+    const groups = this.data.items.filter(item => item.type === 'Ability' && item.data.activeStatus === "active");
+    let groupsHtml = "";
+    groups.forEach(element => {
+      groupsHtml = groupsHtml + `
+      <div>
+        <input type="checkbox" id="${element._id}" name="${element._id}" value="${element.name}">
+        <label for="${element._id}">${element.name}</label>
+      </div>`
+    });
+
+    const content = `
+    <div class="dialog groups-list">
+      ${groupsHtml}
+    </div>`;
+
+    new Dialog({
+      title: game.i18n.localize("wh3e.actor.selectGroupsFor") + " " + attribute.toUpperCase(),
+      content: content,
+      default: "ok",
+      buttons: {
+        ok: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize("wh3e.sheet.update"),
+          default: true,
+          callback: (html) => this.updateGroupsForActor(attribute, html)
+        }
+      },
+    }, { width: 50 }).render(true);
+  };
+
+  clearGroupsDialog(attribute) {
+    const content = `
+      <div class="margin">
+        <p>${game.i18n.localize("wh3e.actor.confirmClearGroups")} ${attribute.toUpperCase()}</p>
+      </div>
+    `;
+    new Dialog({
+      title: game.i18n.localize("wh3e.actor.clearGroupsFor") + " " + attribute.toUpperCase(),
+      content: content,
+      default: "cancel",
+      buttons: {
+        ok: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize("wh3e.sheet.clear"),
+          default: true,
+          callback: (html) => this.update({ data: { attributes: { [attribute]: { groups: "" } } } })
+        }
+      },
+    }, { width: 50 }).render(true);
+  };
+
+  updateGroupsForActor = (attribute, html) => {
+    let selectedGroupsArray = [];
+
+    html.find('.groups-list.dialog input').each((index, group) => {
+      if (group.checked) {
+        selectedGroupsArray.push(group.value);
+      }
+    });
+
+    this.update({
+      data: {
+        attributes: {
+          [attribute]: {
+            groups: selectedGroupsArray.join(", ")
+          }
+        }
+      }
+    })
+  }
+
   /**
  * Roll Initiative
  * Liberally borrowed from DCC Actor sheet with some improvements

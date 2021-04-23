@@ -3,7 +3,8 @@
     <div class="headings flexrow flex-group-center">
       <span class="flex-grow1">{{localize "wh3e.category.attr"}}</span>
       <span class="flex-grow1">{{localize "wh3e.attribute.score"}}</span>
-      <span class="flex-grow12">{{localize "wh3e.actor.groups"}}</span>
+      <span class="flex-grow12"
+            title="{{localize "wh3e.sheet.activeGroupsRequired"}}">{{localize "wh3e.actor.groups"}}</span>
     </div>
     {{#each data.attributes as |attribute key|}}
     <div class="attribute flexrow flex-group-center">
@@ -24,7 +25,17 @@
       {{/if}}
       {{/if}}
       <input type="text" name="data.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String"
-             class="flex-grow12 groups" />
+             class="flex-grow12 groups read-only" readonly="readonly" title="{{attribute.groups}}" />
+      <div class="flex-grow1">
+        {{#if ../activeAbilities}}
+        <a class="manage-groups" data-groups-for="{{key}}"
+           title="{{localize "wh3e.tooltip.manageGroups"}} {{upper key}}"><i
+             class="fas fa-bars"></i></a>
+        {{/if}}
+        <a class="clear-groups" data-groups-for="{{key}}"
+           title="{{localize "wh3e.actor.clearGroupsFor"}} {{upper key}}"><i
+             class="fas fa-trash"></i></a>
+      </div>
     </div>
     {{/each}}
   </div>
