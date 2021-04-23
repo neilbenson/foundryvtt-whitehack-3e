@@ -109,43 +109,47 @@ export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rol
     owner: actor.id
   };
 
-  const attackValue = actor.data.data.combat.attackValue;
+  const toHitTarget = actor.data.data.combat.attackValue + strMod + toHitMod;
   const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
 
   // To Hit Roll
-  let rollFormula = getDiceToRoll(rollType);
-  const toHitRoll = new Roll(rollFormula, rollData).evaluate();
-  cardData.toHitTemplate = await toHitRoll.render();
-  const toHitResult = toHitRoll.toMessage(messageData, { rollMode: null, create: false });
-  cardData.toHitResult = toHitResult.roll.total;
-  cardData.toHitTarget = attackValue + strMod + toHitMod;
-  cardData.weapon = weapon.name;
+  const toHitRoll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
+  toHitRoll.toMessage(messageData, { rollMode: null, create: false });
+
+  const diceOne = toHitRoll.terms[0].results[0].result;
+  const diceTwo = toHitRoll.terms[0].results.length > 1 ? toHitRoll.terms[0].results[1].result : null;
+  const toHitResult = getRollResult(rollType, toHitTarget, diceOne, diceTwo);
 
   if (game.dice3d) {
-    await game.dice3d.showForRoll(toHitResult.roll, game.user, true, null, false);
+    await game.dice3d.showForRoll(toHitRoll, game.user, true, null, false);
   }
 
-  if (toHitResult.roll.total <= cardData.toHitTarget) {
+  const toHitHeader = getToHitResultHeader(toHitResult, weapon.name, toHitTarget);
+  const toHitResultCategory = getResultCategory(toHitTarget, toHitResult, rollType, diceOne, diceTwo);
+
+  cardData = {
+    ...cardData,
+    diceOne: diceOne,
+    diceTwo: diceTwo,
+    formula: getRollTypeText(rollType, toHitRoll.formula),
+    rollResult: toHitResult,
+    toHitHeader: toHitHeader + " - " + toHitResultCategory,
+    rollResultColour: getResultColour(toHitResult, toHitTarget)
+  }
+
+  if (toHitResult <= toHitTarget) {
     // Hit - Damage Roll
-    rollFormula = "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
+    let rollFormula = "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
     const damageRoll = new Roll(rollFormula, rollData).evaluate();
+    damageRoll.toMessage(messageData, { rollMode: null, create: false });
+
     cardData.damageTemplate = await damageRoll.render();
-    const damageResult = damageRoll.toMessage(messageData, { rollMode: null, create: false });
+    cardData.damageResult = damageRoll.total;
+    cardData.damageHeader = getDamageResultHeader(weapon.name, damageRoll.total);
 
     if (game.dice3d) {
-      await game.dice3d.showForRoll(damageResult.roll, game.user, true, null, false);
+      await game.dice3d.showForRoll(damageRoll, game.user, true, null, false);
     }
-
-    cardData = {
-      ...cardData,
-      damageResult: damageResult.roll.total,
-      attackHit: true,
-      acSuccess: " hits AC " + toHitResult.roll.total,
-    }
-  } else {
-    // Miss - hide damage template in message
-    cardData.attackHit = false;
-    cardData.acSuccess = " misses";
   }
 
   messageData.content = await renderTemplate(rollTemplate, cardData);
@@ -179,24 +183,23 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
 
   // Task Roll
   const roll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
-  cardData.rollTemplate = await roll.render();
   roll.toMessage(messageData, { rollMode: null, create: false });
 
   // Get results data
   const diceOne = roll.terms[0].results[0].result;
   const diceTwo = roll.terms[0].results.length > 1 ? roll.terms[0].results[1].result : null;
   const rollResult = getRollResult(rollType, rollTarget, diceOne, diceTwo);
+  const resultHeader = getRollResultHeader(rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo);
 
   cardData = {
     ...cardData,
+    rollTemplate: await roll.render(),
     diceOne: diceOne,
     diceTwo: diceTwo,
     formula: getRollTypeText(rollType, roll.formula),
     rollResult: rollResult,
-    rollTarget: rollTarget,
-    rollFor: rollFor.toUpperCase(),
-    rollResultColour: getResultColour(rollResult, rollTarget),
-    resultCategory: getResultCategory(rollTarget, rollResult, rollType, diceOne, diceTwo)
+    resultHeader: resultHeader,
+    rollResultColour: getResultColour(rollResult, rollTarget)
   }
 
   if (game.dice3d) {
@@ -238,6 +241,25 @@ const getDiceToRoll = (rollType) => {
   }
 };
 
+const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo) => {
+  let resultHeader = "";
+  if (rollFor === "savingThrow") {
+    resultHeader = game.i18n.localize("wh3e.dice.savingThrowVsTarget");
+  } else {
+    resultHeader = rollFor.toUpperCase() + " " + game.i18n.localize("wh3e.dice.taskRollVsTarget");
+  }
+  return resultHeader + " " + rollTarget + " - " + getResultCategory(rollTarget, rollResult, rollType, diceOne, diceTwo);
+};
+
+const getToHitResultHeader = (toHitResult, weapon, toHitTarget) => {
+  return weapon + " attack vs target " + toHitTarget + " hits AC " + toHitResult;
+};
+
+const getDamageResultHeader = (weapon, damageResult) => {
+  return weapon + " hits for " + damageResult + " damage";
+};
+
+
 const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
   if (rollResult === 20) {
     return game.i18n.localize("wh3e.dice.fumble");
@@ -256,7 +278,7 @@ const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) =
       return game.i18n.localize("wh3e.dice.failure");
     }
   };
-}
+};
 
 const getRollTypeText = (rollType, rollFormula) => {
   switch (rollType) {

@@ -169,7 +169,9 @@
       "successfulPositivePair": "Successful positive pair!",
       "success": "Success",
       "unsuccessfulNegativePair": "Unsuccessful negative pair!",
-      "failure": "Failure"
+      "failure": "Failure",
+      "savingThrowVsTarget": "Saving throw vs target",
+      "taskRollVsTarget": "task roll vs target"
     },
     "errors": {
       "modsNotNumbers": "Modifiers must be numbers"

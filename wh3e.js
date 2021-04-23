@@ -16,7 +16,7 @@ async function preloadHandlebarsTemplates() {
     "systems/wh3e/templates/partials/gear-info.hbs",
     "systems/wh3e/templates/partials/armour-info.hbs",
     "systems/wh3e/templates/partials/notes-tab.hbs",
-    "templates/dice/roll.html"
+    "systems/wh3e/templates/chat/partials/roll-results.hbs"
   ];
 
   return loadTemplates(templatePaths);

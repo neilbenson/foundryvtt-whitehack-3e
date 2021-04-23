@@ -1,7 +1,7 @@
-<h3>{{weapon}} attack vs target {{toHitTarget}}{{acSuccess}}</h3>
-{{{toHitTemplate}}}
+<h3 style="color: dark{{rollResultColour}};">{{toHitHeader}}</h3>
+{{> "systems/wh3e/templates/chat/partials/roll-results.hbs"}}
 <br />
-{{#if attackHit}}
-<h3>{{weapon}} hits for {{damageResult}} damage</h3>
-{{{damageTemplate}}}
+{{#if damageHeader}}
+<h3>{{damageHeader}}</h3>
 {{/if}}
+{{{damageTemplate}}}
