@@ -12,10 +12,10 @@ export const registerHelpers = async () => {
   });
 
   Handlebars.registerHelper("showModifier", (key, charClass) => {
-    if (key === 'str' && charClass === "theStrong") return true;
-    if (key === 'con' && charClass === "theStrong") return true;
-    if (key === 'wis' && charClass === "theWise") return true;
-    if (key === 'dex' || key === 'int') return true;
+    if (key === c.STR && charClass === "theStrong") return true;
+    if (key === c.CON && charClass === "theStrong") return true;
+    if (key === c.WIS && charClass === "theWise") return true;
+    if (key === c.DEX || key === c.INT) return true;
     return false;
   });
 

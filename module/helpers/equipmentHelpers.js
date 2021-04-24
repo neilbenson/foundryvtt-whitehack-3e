@@ -1,19 +1,21 @@
+import * as c from '../constants.js';
+
 export const updateActorForItems = async (actor) => {
   const items = actor.items;
   // Calculate encumbrance
   let encEquipped = 0;
   let encStored = 0;
-  let equippedArmour = items.filter(item => item.type === 'Armour' && item.data.data.equippedStatus === 'equipped');
+  let equippedArmour = items.filter(item => item.type === c.ARMOUR && item.data.data.equippedStatus === c.EQUIPPED);
   encEquipped = encEquipped + getEncumbranceForItems(equippedArmour);
-  encEquipped = encEquipped + getEncumbranceForItems(items.filter((item) => item.type === 'Weapon' && item.data.data.equippedStatus === 'equipped'));
-  encEquipped = encEquipped + getEncumbranceForItems(items.filter((item) => item.type === 'Gear' && item.data.data.equippedStatus === 'equipped'));
-  encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === 'Armour' && item.data.data.equippedStatus === 'stored'));
-  encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === 'Weapon' && item.data.data.equippedStatus === 'stored'));
-  encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === 'Gear' && item.data.data.equippedStatus === 'stored'));
+  encEquipped = encEquipped + getEncumbranceForItems(items.filter((item) => item.type === c.WEAPON && item.data.data.equippedStatus === c.EQUIPPED));
+  encEquipped = encEquipped + getEncumbranceForItems(items.filter((item) => item.type === c.GEAR && item.data.data.equippedStatus === c.EQUIPPED));
+  encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === c.ARMOUR && item.data.data.equippedStatus === c.STORED));
+  encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === c.WEAPON && item.data.data.equippedStatus === c.STORED));
+  encStored = encStored + getEncumbranceForItems(items.filter((item) => item.type === c.GEAR && item.data.data.equippedStatus === c.STORED));
 
   // Get vocation and species
-  const speciesObj = items.filter((item) => item.type === "Ability" && item.data.data.type === "species");
-  const vocationObj = items.filter((item) => item.type === "Ability" && item.data.data.type === "vocation");
+  const speciesObj = items.filter((item) => item.type === c.ABILITY && item.data.data.type === "species");
+  const vocationObj = items.filter((item) => item.type === c.ABILITY && item.data.data.type === "vocation");
   const species = speciesObj.length > 0 ? speciesObj[0].name : "";
   const vocation = vocationObj.length > 0 ? vocationObj[0].name : "";
 
@@ -58,7 +60,7 @@ const getArmourClassForItems = (items) => {
 const getEncumbranceForItems = (items) => {
   let encCount = 0;
   items.forEach(item => {
-    if (item.type == 'Weapon' || item.type === 'Gear') {
+    if (item.type == c.WEAPON || item.type === c.GEAR) {
       const quantity = item.data.data.quantity === undefined ? 1 : item.data.data.quantity;
       switch (item.data.data.weight) {
         case 'regular':

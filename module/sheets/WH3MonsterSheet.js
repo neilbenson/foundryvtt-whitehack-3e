@@ -66,7 +66,7 @@ export default class WH3MonsterSheet extends ActorSheet {
       let newItem = {
         img: "icons/svg/mystery-man.svg",
         name: this.actor.name,
-        type: "Weapon",
+        type: c.WEAPON,
         data: {
           description: "",
           damage: this.actor.data.data.damage,

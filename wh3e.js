@@ -6,6 +6,7 @@ import WH3MonsterSheet from './module/sheets/WH3MonsterSheet.js';
 import WH3Actor from './module/WH3Actor.js';
 import { registerHelpers } from "./module/helpers/handleBarsHelpers.js";
 import { registerPartials } from './module/partials.js';
+import * as c from './module/constants.js'; // c = constants
 
 async function preloadHandlebarsTemplates() {
   const templatePaths = [
@@ -34,8 +35,8 @@ Hooks.once("init", () => {
   Items.registerSheet("wh3e", WH3ItemSheet, { makeDefault: true });
 
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("wh3e", WH3CharacterSheet, { makeDefault: true, types: ['Character'] });
-  Actors.registerSheet("wh3e", WH3MonsterSheet, { makeDefault: true, types: ['Monster'] });
+  Actors.registerSheet("wh3e", WH3CharacterSheet, { makeDefault: true, types: [c.CHARACTER] });
+  Actors.registerSheet("wh3e", WH3MonsterSheet, { makeDefault: true, types: [c.MONSTER] });
 
   preloadHandlebarsTemplates();
 

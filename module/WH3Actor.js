@@ -1,6 +1,8 @@
+import * as c from './constants.js';
+
 class WH3Actor extends Actor {
   manageGroupsDialog(attribute) {
-    const groups = this.data.items.filter(item => item.type === 'Ability' && item.data.activeStatus === "active");
+    const groups = this.data.items.filter(item => item.type === c.ABILITY && item.data.activeStatus === c.ACTIVE);
     let groupsHtml = "";
     groups.forEach(element => {
       groupsHtml = groupsHtml + `

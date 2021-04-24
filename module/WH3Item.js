@@ -1,10 +1,11 @@
 import { attackRoll } from './helpers/diceHelpers.js';
+import * as c from './constants.js';
 
 class WHItem extends Item {
   chatTemplate = {
-    "Gear": "systems/wh3e/templates/chat/item-info.hbs",
-    "Ability": "systems/wh3e/templates/chat/item-info.hbs",
-    "Armour": "systems/wh3e/templates/chat/armour-info.hbs"
+    [c.GEAR]: "systems/wh3e/templates/chat/item-info.hbs",
+    [c.ABILITY]: "systems/wh3e/templates/chat/item-info.hbs",
+    [c.ARMOUR]: "systems/wh3e/templates/chat/armour-info.hbs"
   };
 
   async sendInfoToChat() {

@@ -1,5 +1,6 @@
 import { updateActorForItems } from '../helpers/equipmentHelpers.js';
 import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
+import * as c from '../constants.js';
 
 export default class WH3CharacterSheet extends ActorSheet {
 
@@ -17,11 +18,11 @@ export default class WH3CharacterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
-    data.weapons = data.items.filter(item => item.type === "Weapon");
-    data.gear = data.items.filter(item => item.type === "Gear");
-    data.abilities = data.items.filter(item => item.type === "Ability");
-    data.activeAbilities = data.abilities.filter(item => item.data.activeStatus === "active");
-    data.armour = data.items.filter(item => item.type === "Armour");
+    data.weapons = data.items.filter(item => item.type === c.WEAPON);
+    data.gear = data.items.filter(item => item.type === c.GEAR);
+    data.abilities = data.items.filter(item => item.type === c.ABILITY);
+    data.activeAbilities = data.abilities.filter(item => item.data.activeStatus === c.ACTIVE);
+    data.armour = data.items.filter(item => item.type === c.ARMOUR);
     data.charClass = data.data.basics.class;
     data.hasToken = !(this.token === null);
     return data;
@@ -79,10 +80,10 @@ export default class WH3CharacterSheet extends ActorSheet {
   };
 
   updateEquippedStatus(equippedStatus) {
-    if (equippedStatus === "stored") {
-      return "equipped";
+    if (equippedStatus === c.STORED) {
+      return c.EQUIPPED;
     } else {
-      return "stored";
+      return c.STORED;
     };
   };
 
@@ -106,10 +107,10 @@ export default class WH3CharacterSheet extends ActorSheet {
   }
 
   updateActiveStatus(icon) {
-    if (icon.hasClass("inactive")) {
-      return "active";
+    if (icon.hasClass(c.INACTIVE)) {
+      return c.ACTIVE;
     } else {
-      return "inactive";
+      return c.INACTIVE;
     }
   };
 
@@ -118,7 +119,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const attrValue = event.currentTarget.value;
 
     // Set STR modifiers for attack and damage
-    if (attrName === 'str') {
+    if (attrName === c.STR) {
       let strMod = 0, dmgMod = 0;
       if (attrValue >= 13) {
         strMod = 1;
@@ -141,20 +142,20 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     // Set modifiers for other attributes
-    let modObj = { [attrName + 'Mod']: 0 };
-    if (attrName !== 'cha') {
+    let modObj = { [attrName + c.MOD]: 0 };
+    if (attrName !== c.CHA) {
       if (attrValue >= 13) {
         if (attrValue < 16) {
-          modObj[attrName + 'Mod'] = 1;
+          modObj[attrName + c.MOD] = 1;
         } else {
-          modObj[attrName + 'Mod'] = 2;
+          modObj[attrName + c.MOD] = 2;
         }
       }
       this.actor.update({
         data: {
           attributes: {
             [attrName]: {
-              mod: modObj[attrName + 'Mod'],
+              mod: modObj[attrName + c.MOD],
               value: attrValue
             }
           }
@@ -193,29 +194,29 @@ export default class WH3CharacterSheet extends ActorSheet {
       }
     };
 
-    if (type === "Ability") {
-      itemData.data.activeStatus = "inactive";
+    if (type === c.ABILITY) {
+      itemData.data.activeStatus = c.INACTIVE;
     }
 
-    if (type === "Gear") {
+    if (type === c.GEAR) {
       itemData.data.weight = "regular";
-      itemData.data.equippedStatus = "stored";
+      itemData.data.equippedStatus = c.STORED;
     }
 
-    if (type === "Armour") {
+    if (type === c.ARMOUR) {
       itemData.data.armourClass = 0;
-      itemData.data.equippedStatus = "stored";
+      itemData.data.equippedStatus = c.STORED;
     }
 
-    if (type === "Weapon") {
+    if (type === c.WEAPON) {
       itemData.data.damage = 'd6';
       itemData.data.weight = "regular";
       itemData.data.rateOfFire = "none";
-      itemData.data.equippedStatus = "stored";
+      itemData.data.equippedStatus = c.STORED;
     }
 
     await this.actor.createOwnedItem(itemData);
-    if (type !== "Ability") {
+    if (type !== c.ABILITY) {
       updateActorForItems(this.actor);
     }
   };
