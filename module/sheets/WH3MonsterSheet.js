@@ -1,4 +1,5 @@
-import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
+import { rollModDialog, attackRollDialog } from '../helpers/diceHelpers.js';
+import * as c from '../constants.js';
 
 export default class WH3MonsterSheet extends ActorSheet {
 
@@ -12,6 +13,10 @@ export default class WH3MonsterSheet extends ActorSheet {
     })
   };
 
+  /**
+   * Fetch Foundry data
+   * @returns {Object}
+   */
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
@@ -19,27 +24,30 @@ export default class WH3MonsterSheet extends ActorSheet {
     return data;
   };
 
+  /**
+   * Register event listeners
+   * @param {Object} html
+   */
   async activateListeners(html) {
     if (this.isEditable) {
-      await html.find(".hitDiceBase").change(this._onUpdateMonster.bind(this));
+      await html.find(".hitDiceBase").change(this._monsterUpdateStats.bind(this));
     }
 
     // Owner only listeners
     if (this.actor.owner) {
-      html.find("label.attack-roll").click(this._onCreateAttack.bind(this));
-      html.find("label.savingThrow").click(this._onShowSavingThrowModDialog.bind(this));
-      html.find('.init-label').click(this._onRollInitiative.bind(this));
+      html.find("label.attack-roll").click(this._attackRollHandler.bind(this));
+      html.find("label.savingThrow").click(this._savingThrowRollHandler.bind(this));
+      html.find('.init-label').click(this._initiativeRollHander.bind(this));
     }
 
     super.activateListeners(html);
   };
 
-  _onRollInitiative(event) {
-    event.preventDefault()
-    this.actor.rollInitiative(this.token)
-  };
-
-  _onUpdateMonster(event) {
+  /**
+   * Update monster ST and AV based on Hit Dice
+   * @param {Object} event
+   */
+  _monsterUpdateStats(event) {
     const newHDBase = parseInt(event.currentTarget.value);
     this.actor.update({
       data: {
@@ -51,11 +59,10 @@ export default class WH3MonsterSheet extends ActorSheet {
     })
   };
 
-  _onShowSavingThrowModDialog() {
-    rollModDialog(this.actor, c.SAVINGTHROW, game.i18n.localize("wh3e.sheet.savingThrow"));
-  };
-
-  async _onCreateAttack() {
+  /**
+   * Create item to use as weapon for monster and pass to roll dialog
+   */
+  async _attackRollHandler() {
     // To use the diceHelper.js attackRoll need to create an item
     // for the monster attack
     await this.actor.update({
@@ -78,7 +85,21 @@ export default class WH3MonsterSheet extends ActorSheet {
     }
     monsterAttackItem = this.actor.items.entries[0];
 
-    attackModDialog(monsterAttackItem);
+    attackRollDialog(monsterAttackItem);
+  };
+
+  /**
+   * Call saving throw dialog
+   */
+  _savingThrowRollHandler() {
+    rollModDialog(this.actor, c.SAVINGTHROW, game.i18n.localize("wh3e.sheet.savingThrow"));
+  };
+
+  /**
+   * Roll initiative for monster
+   */
+  _initiativeRollHander() {
+    this.actor.rollInitiative(this.token)
   };
 
 }

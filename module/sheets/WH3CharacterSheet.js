@@ -1,5 +1,5 @@
-import { updateActorForAbilities, updateActorForItems } from '../helpers/itemHelpers.js';
-import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
+import { updateActorGroups, updateActorEncumbrance, updateActorArmourClass } from '../helpers/itemHelpers.js';
+import { rollModDialog, attackRollDialog } from '../helpers/diceHelpers.js';
 import * as c from '../constants.js';
 
 export default class WH3CharacterSheet extends ActorSheet {
@@ -15,6 +15,10 @@ export default class WH3CharacterSheet extends ActorSheet {
     })
   };
 
+  /**
+   * Fetch Foundry data
+   * @returns {Object}
+   */
   getData() {
     const data = super.getData();
     data.config = CONFIG.wh3e;
@@ -28,6 +32,10 @@ export default class WH3CharacterSheet extends ActorSheet {
     return data;
   };
 
+  /**
+   * Register event listeners
+   * @param {string} html
+   */
   activateListeners(html) {
     if (this.isEditable) {
       html.find(".item-create").click(this._itemCreateHandler.bind(this));
@@ -52,6 +60,10 @@ export default class WH3CharacterSheet extends ActorSheet {
     super.activateListeners(html);
   };
 
+  /**
+   * Create Item in data and attach to Actor
+   * @param {Object} event
+   */
   async _itemCreateHandler(event) {
     event.preventDefault();
     const type = event.currentTarget.dataset.type;
@@ -88,10 +100,14 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     await this.actor.createOwnedItem(itemData);
     if (type !== c.ABILITY) {
-      updateActorForItems(this.actor);
+      updateActorEncumbrance(this.actor);
     }
   };
 
+  /**
+   * Get Item and show item sheet
+   * @param {Object} event
+   */
   _itemEditHandler(event) {
     event.preventDefault();
 
@@ -102,16 +118,25 @@ export default class WH3CharacterSheet extends ActorSheet {
     item.sheet.render(true);
   };
 
+  /**
+   * Get Item and delete for owner
+   * @param {Object} event
+   */
   async _itemDeleteHandler(event) {
     event.preventDefault();
 
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
     await this.actor.deleteOwnedItem(itemId);
-    await updateActorForItems(this.actor);
-    await updateActorForAbilities(this.actor);
+    await updateActorEncumbrance(this.actor);
+    await updateActorGroups(this.actor);
   };
 
+  /**
+   * Set attribute modifiers when attribute changes
+   * @param {Object} event
+   * @returns
+   */
   async _attributeChangeHandler(event) {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
@@ -163,6 +188,10 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   };
 
+  /**
+   * Update active status for ability
+   * @param {Object} event
+   */
   async _abilityChangeStatusHandler(event) {
     const item = this.getItem(event);
     await item.update(
@@ -172,9 +201,13 @@ export default class WH3CharacterSheet extends ActorSheet {
         }
       }
     );
-    updateActorForAbilities(this.actor);
+    updateActorGroups(this.actor);
   };
 
+  /**
+   * Update equipped status for gear
+   * @param {Object} event
+   */
   async _gearChangeEquippedStatusHandler(event) {
     const item = this.getItem(event);
     await item.update(
@@ -184,27 +217,48 @@ export default class WH3CharacterSheet extends ActorSheet {
         }
       }
     );
-    updateActorForItems(this.actor);
+    await updateActorEncumbrance(this.actor);
+    await updateActorArmourClass(this.actor);
   };
 
+  /**
+   * Open dialogue to show selectable groups for attribute
+   * @param {Object} event
+   */
   _groupsChangeHandler(event) {
     this.actor.manageGroupsDialog(event.currentTarget.dataset.groupsFor);
   };
 
+  /**
+   * Remove groups from attribute
+   * @param {Object} event
+   */
   _groupsDeleteFromAttributeHandler(event) {
     this.actor.clearGroupsDialog(event.currentTarget.dataset.groupsFor);
   };
 
+  /**
+   * Show information on Item in chat
+   * @param {Object} event
+   */
   _itemShowInfoHandler(event) {
     const item = this.getItem(event);
     item.sendInfoToChat();
   };
 
+  /**
+   * Get item (weapon) and send to dialog for attack roll
+   * @param {Object} event
+   */
   _attackRollHandler(event) {
     const item = this.getItem(event);
-    attackModDialog(item);
+    attackRollDialog(item);
   };
 
+  /**
+   * Determine if saving throw or attribute roll and send to dialog for roll
+   * @param {Object} event
+   */
   _rollHandler(event) {
     const rollAttribute = event.currentTarget.dataset.rollFor;
     const rollTitle = rollAttribute === c.SAVINGTHROW ? game.i18n.localize("wh3e.sheet.savingThrow") :
@@ -212,22 +266,39 @@ export default class WH3CharacterSheet extends ActorSheet {
     rollModDialog(this.actor, rollAttribute, rollTitle);
   };
 
-
+  /**
+   * Initiate rollInitiative method on actor
+   * @param {Object} event
+   */
   _initiativeRollHandler(event) {
     event.preventDefault()
     this.actor.rollInitiative(this.token)
   };
 
+  /**
+   * When item is dropped on actor sheet update items for actor
+   * @param {Object} event
+   */
   async _onDrop(event) {
     await super._onDrop(event);
-    updateActorForItems(this.actor);
+    updateActorEncumbrance(this.actor);
   };
 
+  /**
+   * Get item for event based on table
+   * @param {Object} event
+   * @returns {Object}
+   */
   getItem(event) {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
     return this.actor.getOwnedItem(itemId);
   };
 
+  /**
+   * Toggle equipped status
+   * @param {string} equippedStatus
+   * @returns {string}
+   */
   updateEquippedStatus(equippedStatus) {
     if (equippedStatus === c.STORED) {
       return c.EQUIPPED;
@@ -236,6 +307,11 @@ export default class WH3CharacterSheet extends ActorSheet {
     };
   };
 
+  /**
+   * Toggle active status for icon
+   * @param {Object} icon
+   * @returns {string}
+   */
   updateActiveStatus(icon) {
     if (icon.hasClass(c.INACTIVE)) {
       return c.ACTIVE;

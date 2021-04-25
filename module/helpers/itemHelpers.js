@@ -1,17 +1,31 @@
 import * as c from '../constants.js';
 
-export const updateActorForItems = async (actor) => {
+export const updateActorEncumbrance = async (actor) => {
   const items = actor.items;
   // Calculate encumbrance
   let encEquipped = 0;
   let encStored = 0;
-  let equippedArmour = items.filter(item => item.type === c.ARMOUR && item.data.data.equippedStatus === c.EQUIPPED);
+  const equippedArmour = items.filter(item => item.type === c.ARMOUR && item.data.data.equippedStatus === c.EQUIPPED);
   encEquipped = encEquipped + getEncumbranceForItems(equippedArmour);
   encEquipped = encEquipped + getEncumbranceForItems(items.filter(item => item.type === c.WEAPON && item.data.data.equippedStatus === c.EQUIPPED));
   encEquipped = encEquipped + getEncumbranceForItems(items.filter(item => item.type === c.GEAR && item.data.data.equippedStatus === c.EQUIPPED));
   encStored = encStored + getEncumbranceForItems(items.filter(item => item.type === c.ARMOUR && item.data.data.equippedStatus === c.STORED));
   encStored = encStored + getEncumbranceForItems(items.filter(item => item.type === c.WEAPON && item.data.data.equippedStatus === c.STORED));
   encStored = encStored + getEncumbranceForItems(items.filter(item => item.type === c.GEAR && item.data.data.equippedStatus === c.STORED));
+
+  await actor.update({
+    data: {
+      encumbrance: {
+        equipped: encEquipped,
+        stored: encStored
+      }
+    }
+  });
+};
+
+export const updateActorArmourClass = async (actor) => {
+  const items = actor.items;
+  const equippedArmour = items.filter(item => item.type === c.ARMOUR && item.data.data.equippedStatus === c.EQUIPPED);
 
   // Calculate armour class
   let ac = 0;
@@ -21,10 +35,6 @@ export const updateActorForItems = async (actor) => {
 
   await actor.update({
     data: {
-      encumbrance: {
-        equipped: encEquipped,
-        stored: encStored
-      },
       combat: {
         armourClass: ac
       }
@@ -32,7 +42,7 @@ export const updateActorForItems = async (actor) => {
   });
 };
 
-export const updateActorForAbilities = async (actor) => {
+export const updateActorGroups = async (actor) => {
   const items = actor.items;
 
   // Get vocation and species
@@ -51,7 +61,7 @@ export const updateActorForAbilities = async (actor) => {
   });
 };
 
-const getArmourClassForItems = (items) => {
+const getArmourClassForItems = items => {
   let maxAc = 0;
   let shieldHelmAc = 0;
   items.forEach(item => {
@@ -66,7 +76,7 @@ const getArmourClassForItems = (items) => {
   return maxAc + shieldHelmAc;
 };
 
-const getEncumbranceForItems = (items) => {
+const getEncumbranceForItems = items => {
   let encCount = 0;
   items.forEach(item => {
     if (item.type == c.WEAPON || item.type === c.GEAR) {

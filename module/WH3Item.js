@@ -1,4 +1,3 @@
-import { attackRoll } from './helpers/diceHelpers.js';
 import * as c from './constants.js';
 
 class WHItem extends Item {
@@ -8,6 +7,9 @@ class WHItem extends Item {
     [c.ARMOUR]: "systems/wh3e/templates/chat/armour-info.hbs"
   };
 
+  /**
+   * Send item info to chat
+   */
   async sendInfoToChat() {
     let messageData = {
       user: game.user._id,
@@ -20,11 +22,7 @@ class WHItem extends Item {
     };
     messageData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
     messageData.roll = true;
-    return ChatMessage.create(messageData);
-  };
-
-  weaponAttack(weapon, toHitMod, damageMod, rollType) {
-    attackRoll(weapon, this.actor, toHitMod, damageMod, rollType);
+    ChatMessage.create(messageData);
   };
 
 };

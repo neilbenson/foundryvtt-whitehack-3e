@@ -23,6 +23,9 @@ async function preloadHandlebarsTemplates() {
   return loadTemplates(templatePaths);
 }
 
+/**
+ * FoundryVTT hooks
+ */
 Hooks.once("init", () => {
   console.log("wh3e | Initialising Whitehack 3e System");
 

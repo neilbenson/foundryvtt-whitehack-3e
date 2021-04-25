@@ -2,6 +2,9 @@ import * as c from '../constants.js';
 
 export const registerHelpers = async () => {
 
+  /**
+   * Get string from language file based on partial path (group), key and postfix
+   */
   Handlebars.registerHelper("getTextFromKey", (group, key, postfix) => {
     if (key) {
       postfix = typeof postfix === c.STRING ? postfix : c.EMPTYSTRING;
@@ -13,6 +16,9 @@ export const registerHelpers = async () => {
     }
   });
 
+  /**
+   * Determine which modifier to show based on attribute and class
+   */
   Handlebars.registerHelper("showModifier", (key, charClass) => {
     if (key === c.STR && charClass === c.THESTRONG) return true;
     if (key === c.CON && charClass === c.THESTRONG) return true;

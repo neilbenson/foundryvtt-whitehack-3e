@@ -1,6 +1,10 @@
 import * as c from './constants.js';
 
 class WH3Actor extends Actor {
+  /**
+   * Show dialog to update groups for attribute
+   * @param {string} attribute
+   */
   manageGroupsDialog(attribute) {
     const groupTypes = [c.AFFILIATION, c.SPECIES, c.VOCATION];
     const groups = this.data.items.filter(item => item.type === c.ABILITY &&
@@ -28,12 +32,16 @@ class WH3Actor extends Actor {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize("wh3e.sheet.update"),
           default: true,
-          callback: (html) => this.updateGroupsForActor(attribute, html)
+          callback: html => this.updateGroupsForActor(attribute, html)
         }
       },
     }, { width: 250 }).render(true);
   };
 
+  /**
+   * Show dialog and clear groups for attribute
+   * @param {string} attribute
+   */
   clearGroupsDialog(attribute) {
     const content = `
       <div class="margin">
@@ -48,12 +56,17 @@ class WH3Actor extends Actor {
         ok: {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize("wh3e.sheet.clear"),
-          callback: (html) => this.update({ data: { attributes: { [attribute]: { groups: c.EMPTYSTRING } } } })
+          callback: () => this.update({ data: { attributes: { [attribute]: { groups: c.EMPTYSTRING } } } })
         }
       },
     }, { width: 50 }).render(true);
   };
 
+  /**
+   * Update groups for an attribute
+   * @param {string} attribute
+   * @param {Object} html
+   */
   updateGroupsForActor = (attribute, html) => {
     let selectedGroupsArray = [];
 
@@ -75,10 +88,10 @@ class WH3Actor extends Actor {
   }
 
   /**
- * Roll Initiative
- * Liberally borrowed from DCC Actor sheet with some improvements
- * @param {Object} token    The token to roll initiative for
- */
+   * Roll Initiative
+   * Liberally borrowed from DCC Actor sheet with some improvements
+   * @param {Object} token The token to roll initiative for
+   */
   async rollInitiative(token) {
     // No selected token - bail out
     if (!token) {
