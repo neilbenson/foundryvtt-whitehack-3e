@@ -91,7 +91,9 @@
       "update": "Update",
       "cancel": "Cancel",
       "clear": "Clear",
-      "activeGroupsRequired": "There must be active groups in Abilities to add here"
+      "activeGroupsRequired": "There must be active groups in Abilities to add here",
+      "savingThrow": "Saving Throw",
+      "taskRoll": "task roll"
     },
     "combat": {
       "initiative": "Initiative",

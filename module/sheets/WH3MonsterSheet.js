@@ -52,7 +52,7 @@ export default class WH3MonsterSheet extends ActorSheet {
   };
 
   _onShowSavingThrowModDialog() {
-    rollModDialog(this.actor, 'savingThrow', 'Saving Throw');
+    rollModDialog(this.actor, c.SAVINGTHROW, game.i18n.localize("wh3e.sheet.savingThrow"));
   };
 
   async _onCreateAttack() {
@@ -64,14 +64,14 @@ export default class WH3MonsterSheet extends ActorSheet {
     let monsterAttackItem = null;
     if (this.actor.items.entries[0] === undefined) {
       let newItem = {
-        img: "icons/svg/mystery-man.svg",
+        img: c.DEFAULTACTORIMAGE,
         name: this.actor.name,
         type: c.WEAPON,
         data: {
-          description: "",
+          description: c.EMPTYSTRING,
           damage: this.actor.data.data.damage,
-          weight: "regular",
-          rateOfFire: "none"
+          weight: c.REGULAR,
+          rateOfFire: c.NONE
         }
       };
       await this.actor.createOwnedItem(newItem);

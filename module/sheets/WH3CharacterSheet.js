@@ -1,4 +1,4 @@
-import { updateActorForItems } from '../helpers/equipmentHelpers.js';
+import { updateActorForAbilities, updateActorForItems } from '../helpers/equipmentHelpers.js';
 import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
 import * as c from '../constants.js';
 
@@ -87,15 +87,16 @@ export default class WH3CharacterSheet extends ActorSheet {
     };
   };
 
-  _onToggleAbility(event) {
+  async _onToggleAbility(event) {
     const item = this.getItem(event);
-    item.update(
+    await item.update(
       {
         data: {
           activeStatus: this.updateActiveStatus($(event.currentTarget))
         }
       }
-    )
+    );
+    updateActorForAbilities(this.actor);
   };
 
   _onShowGroupsDialog(event) {
@@ -114,7 +115,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
   };
 
-  _onAttributeChange(event) {
+  async _onAttributeChange(event) {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
 
@@ -127,7 +128,7 @@ export default class WH3CharacterSheet extends ActorSheet {
           dmgMod = 1;
         }
       }
-      this.actor.update({
+      await this.actor.update({
         data: {
           attributes: {
             str: {
@@ -151,7 +152,7 @@ export default class WH3CharacterSheet extends ActorSheet {
           modObj[attrName + c.MOD] = 2;
         }
       }
-      this.actor.update({
+      await this.actor.update({
         data: {
           attributes: {
             [attrName]: {
@@ -172,7 +173,8 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   _onShowRollModDialog(event) {
     const rollAttribute = event.currentTarget.dataset.rollFor;
-    const rollTitle = rollAttribute === 'savingThrow' ? 'Saving Throw' : rollAttribute.toUpperCase() + " task roll!";
+    const rollTitle = rollAttribute === c.SAVINGTHROW ? game.i18n.localize("wh3e.sheet.savingThrow") :
+      rollAttribute.toUpperCase() + " " + game.i18n.localize("wh3e.sheet.taskRoll");
     rollModDialog(this.actor, rollAttribute, rollTitle);
   };
 
@@ -186,11 +188,11 @@ export default class WH3CharacterSheet extends ActorSheet {
     const type = event.currentTarget.dataset.type;
 
     let itemData = {
-      img: "icons/svg/mystery-man.svg",
+      img: c.DEFAULTACTORIMAGE,
       name: game.i18n.localize("wh3e.sheet.new" + type),
       type: type,
       data: {
-        description: ""
+        description: c.EMPTYSTRING
       }
     };
 
@@ -199,7 +201,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     if (type === c.GEAR) {
-      itemData.data.weight = "regular";
+      itemData.data.weight = c.REGULAR;
       itemData.data.equippedStatus = c.STORED;
     }
 
@@ -209,9 +211,9 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     if (type === c.WEAPON) {
-      itemData.data.damage = 'd6';
-      itemData.data.weight = "regular";
-      itemData.data.rateOfFire = "none";
+      itemData.data.damage = c.D6;
+      itemData.data.weight = c.REGULAR;
+      itemData.data.rateOfFire = c.NONE;
       itemData.data.equippedStatus = c.STORED;
     }
 
@@ -237,7 +239,8 @@ export default class WH3CharacterSheet extends ActorSheet {
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
     await this.actor.deleteOwnedItem(itemId);
-    updateActorForItems(this.actor);
+    await updateActorForItems(this.actor);
+    await updateActorForAbilities(this.actor);
   };
 
 }

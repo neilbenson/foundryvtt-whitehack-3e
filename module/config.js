@@ -28,7 +28,7 @@ export const wh3e = {
     small: "wh3e.weightTypes.small"
   },
   roFShotsPerRound: {
-    none: "wh3e.misc.none",
+    none: "wh3e.misc.NONE",
     oneInFour: "wh3e.roFShotsPerRound.oneInFour",
     oneInThree: "wh3e.roFShotsPerRound.oneInThree",
     oneInTwo: "wh3e.roFShotsPerRound.oneInTwo",

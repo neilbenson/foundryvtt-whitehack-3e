@@ -1,26 +1,28 @@
+import * as c from '../constants.js';
+
 export const registerHelpers = async () => {
 
   Handlebars.registerHelper("getTextFromKey", (group, key, postfix) => {
     if (key) {
-      postfix = typeof postfix === 'string' ? postfix : '';
+      postfix = typeof postfix === c.STRING ? postfix : c.EMPTYSTRING;
       const languageKey = group + "." + key + postfix;
       const languageValue = game.i18n.localize(languageKey);
       return new Handlebars.SafeString(languageValue);
     } else {
-      return "";
+      return c.EMPTYSTRING;
     }
   });
 
   Handlebars.registerHelper("showModifier", (key, charClass) => {
-    if (key === c.STR && charClass === "theStrong") return true;
-    if (key === c.CON && charClass === "theStrong") return true;
-    if (key === c.WIS && charClass === "theWise") return true;
+    if (key === c.STR && charClass === c.THESTRONG) return true;
+    if (key === c.CON && charClass === c.THESTRONG) return true;
+    if (key === c.WIS && charClass === c.THEWISE) return true;
     if (key === c.DEX || key === c.INT) return true;
     return false;
   });
 
   Handlebars.registerHelper("stripHtml", html => {
-    return html.replace(/(<([^>]+)>)/ig, '');
+    return html.replace(/(<([^>]+)>)/ig, c.EMPTYSTRING);
   });
 
   Handlebars.registerHelper('upper', aString => {

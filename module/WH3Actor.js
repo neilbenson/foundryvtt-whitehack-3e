@@ -3,7 +3,7 @@ import * as c from './constants.js';
 class WH3Actor extends Actor {
   manageGroupsDialog(attribute) {
     const groups = this.data.items.filter(item => item.type === c.ABILITY && item.data.activeStatus === c.ACTIVE);
-    let groupsHtml = "";
+    let groupsHtml = c.EMPTYSTRING;
     groups.forEach(element => {
       groupsHtml = groupsHtml + `
       <div>
@@ -41,13 +41,12 @@ class WH3Actor extends Actor {
     new Dialog({
       title: game.i18n.localize("wh3e.actor.clearGroupsFor") + " " + attribute.toUpperCase(),
       content: content,
-      default: "cancel",
+      default: "ok",
       buttons: {
         ok: {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize("wh3e.sheet.clear"),
-          default: true,
-          callback: (html) => this.update({ data: { attributes: { [attribute]: { groups: "" } } } })
+          callback: (html) => this.update({ data: { attributes: { [attribute]: { groups: c.EMPTYSTRING } } } })
         }
       },
     }, { width: 50 }).render(true);
@@ -99,7 +98,7 @@ class WH3Actor extends Actor {
     }
 
     // Setup the roll
-    const die = '1d6';
+    const die = c.ONED6;
     const init = this.data.data.attributes.dex.mod;
     const roll = new Roll('@die+@init', { die, init });
 

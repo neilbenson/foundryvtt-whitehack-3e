@@ -1,8 +1,10 @@
+import * as c from '../constants.js';
+
 export const getResultColour = (rollResult, rollTarget) => {
   if (rollResult <= rollTarget) {
-    return 'green';
+    return c.GREEN;
   } else {
-    return 'red';
+    return c.RED;
   }
 };
 
@@ -19,25 +21,22 @@ export const rollModDialog = (actor, rollAttribute, rollTitle) => {
   new Dialog({
     title: rollTitle,
     content: content,
-    default: "roll",
+    default: c.ROLL,
     buttons: {
       roll: {
         icon: '<i class="fas fa-dice-d20"></i>',
         label: null,
-        default: true,
         callback: (html) => taskRollDialogCallback(html, actor, rollAttribute)
       },
       doublePositiveRoll: {
         icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
         label: null,
-        default: true,
-        callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, 'doublePositive')
+        callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLEPOSITIVE)
       },
       doubleNegativeRoll: {
         icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
         label: null,
-        default: true,
-        callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, 'doubleNegative')
+        callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLENEGATIVE)
       },
     },
   }, { width: 50 }).render(true);
@@ -61,34 +60,31 @@ export const attackModDialog = (item) => {
   new Dialog({
     title: item.name + " " + game.i18n.localize("wh3e.combat.attack"),
     content: content,
-    default: "roll",
+    default: c.ROLL,
     buttons: {
       roll: {
         icon: '<i class="fas fa-dice-d20"></i>',
         label: null,
-        default: true,
         callback: (html) => attackRollDialogCallback(html, item)
       },
       doublePositiveRoll: {
         icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
         label: null,
-        default: true,
-        callback: (html) => attackRollDialogCallback(html, item, 'doublePositive')
+        callback: (html) => attackRollDialogCallback(html, item, c.DOUBLEPOSITIVE)
       },
       doubleNegativeRoll: {
         icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
         label: null,
-        default: true,
-        callback: (html) => attackRollDialogCallback(html, item, 'doubleNegative')
+        callback: (html) => attackRollDialogCallback(html, item, c.DOUBLENEGATIVE)
       },
     },
   }, { width: 50 }).render(true);
 };
 
-export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rollType = 'roll') => {
+export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rollType = c.ROLL) => {
   let strMod = 0;
   let strDmgMod = 0;
-  if (actor.data.type !== 'Monster' && actor.data.data.basics.class === 'theStrong') {
+  if (actor.data.type !== c.MONSTER && actor.data.data.basics.class === c.THESTRONG) {
     strMod = actor.data.data.attributes.str.mod;
     strDmgMod = actor.data.data.attributes.str.dmgMod;
   }
@@ -173,7 +169,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   };
 
   let rollValue = 0;
-  if (rollFor === 'savingThrow') {
+  if (rollFor === c.SAVINGTHROW) {
     rollValue = actor.data.data.savingThrow;
   } else {
     rollValue = actor.data.data.attributes[rollFor].value;
@@ -211,7 +207,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   return ChatMessage.create(messageData);
 };
 
-const taskRollDialogCallback = (html, actor, rollAttribute, rollType = 'roll') => {
+const taskRollDialogCallback = (html, actor, rollAttribute, rollType = c.ROLL) => {
   const rollMod = Number.parseInt(html.find('.mod-prompt.dialog [name="roll_modifier"]')[0].value);
   if (isNaN(rollMod)) {
     ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
@@ -220,7 +216,7 @@ const taskRollDialogCallback = (html, actor, rollAttribute, rollType = 'roll') =
   }
 };
 
-const attackRollDialogCallback = (html, item = null, rollType = 'roll') => {
+const attackRollDialogCallback = (html, item = null, rollType = c.ROLL) => {
   const toHitMod = Number.parseInt(html.find('.mod-prompt.dialog [name="attack_modifier"]')[0].value);
   const damageMod = Number.parseInt(html.find('.mod-prompt.dialog [name="damage_modifier"]')[0].value);
   if (isNaN(toHitMod) || isNaN(damageMod)) {
@@ -232,9 +228,9 @@ const attackRollDialogCallback = (html, item = null, rollType = 'roll') => {
 
 const getDiceToRoll = (rollType) => {
   switch (rollType) {
-    case 'doublePositive':
+    case c.DOUBLEPOSITIVE:
       return '2d20kl';
-    case 'doubleNegative':
+    case c.DOUBLENEGATIVE:
       return '2d20kh';
     default:
       return '1d20';
@@ -242,8 +238,8 @@ const getDiceToRoll = (rollType) => {
 };
 
 const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo) => {
-  let resultHeader = "";
-  if (rollFor === "savingThrow") {
+  let resultHeader = c.EMPTYSTRING;
+  if (rollFor === c.SAVINGTHROW) {
     resultHeader = game.i18n.localize("wh3e.dice.savingThrowVsTarget");
   } else {
     resultHeader = rollFor.toUpperCase() + " " + game.i18n.localize("wh3e.dice.taskRollVsTarget");
@@ -270,13 +266,13 @@ const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) =
   } else if (rollResult === rollTarget) {
     return game.i18n.localize("wh3e.dice.crit");
   } else if (rollResult <= rollTarget) {
-    if (diceOne === diceTwo && rollType === "doublePositive") {
+    if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE) {
       return game.i18n.localize("wh3e.dice.successfulPositivePair");
     } else {
       return game.i18n.localize("wh3e.dice.success");
     }
   } else {
-    if (diceOne === diceTwo && rollType === "doubleNegative") {
+    if (diceOne === diceTwo && rollType === c.DOUBLENEGATIVE) {
       return game.i18n.localize("wh3e.dice.unsuccessfulNegativePair");
     } else {
       return game.i18n.localize("wh3e.dice.failure");
@@ -286,9 +282,9 @@ const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) =
 
 const getRollTypeText = (rollType, rollFormula) => {
   switch (rollType) {
-    case "doublePositive":
+    case c.DOUBLEPOSITIVE:
       return game.i18n.localize("wh3e.dice.doublePositiveText");
-    case "doubleNegative":
+    case c.DOUBLENEGATIVE:
       return game.i18n.localize("wh3e.dice.doubleNegativeText");
     default:
       return rollFormula;
@@ -303,12 +299,12 @@ const getRollResult = (rollType, rollTarget, diceOne, diceTwo) => {
 
   // If double positive roll keep the highest under rollTarget
   // If double negative keep just the highest
-  if (rollType === "doublePositive") {
+  if (rollType === c.DOUBLEPOSITIVE) {
     rollResult = highestResult;
     if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
       rollResult = lowestResult;
     }
-  } else if (rollType === "doubleNegative") {
+  } else if (rollType === c.DOUBLENEGATIVE) {
     rollResult = lowestResult;
     if ((lowestResult <= rollTarget && highestResult > rollTarget) || highestResult === 20) {
       rollResult = highestResult;
