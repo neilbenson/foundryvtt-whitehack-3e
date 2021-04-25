@@ -32,6 +32,7 @@ export const THEWISE = 'theWise';
 export const THEBRAVE = 'theBrave';
 export const THEFORTUNATE = 'theFortunate';
 export const STRING = 'string';
+export const AFFILIATION = 'affiliation';
 export const SPECIES = 'species';
 export const VOCATION = 'vocation';
 export const EMPTYSTRING = '';

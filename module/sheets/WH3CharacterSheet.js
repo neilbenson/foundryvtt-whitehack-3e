@@ -1,4 +1,4 @@
-import { updateActorForAbilities, updateActorForItems } from '../helpers/equipmentHelpers.js';
+import { updateActorForAbilities, updateActorForItems } from '../helpers/itemHelpers.js';
 import { rollModDialog, attackModDialog } from '../helpers/diceHelpers.js';
 import * as c from '../constants.js';
 
@@ -30,92 +30,89 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   activateListeners(html) {
     if (this.isEditable) {
-      html.find(".item-create").click(this._onItemCreate.bind(this));
-      html.find(".item-edit").click(this._onItemEdit.bind(this));
-      html.find(".item-delete").click(this._onItemDelete.bind(this));
-      html.find(".attribute-score").change(this._onAttributeChange.bind(this));
-      html.find(".ability-activated i").click(this._onToggleAbility.bind(this));
-      html.find(".equippable i").click(this._onToggleGear.bind(this));
-      html.find(".manage-groups").click(this._onShowGroupsDialog.bind(this));
-      html.find(".clear-groups").click(this._onClearGroups.bind(this));
+      html.find(".item-create").click(this._itemCreateHandler.bind(this));
+      html.find(".item-edit").click(this._itemEditHandler.bind(this));
+      html.find(".item-delete").click(this._itemDeleteHandler.bind(this));
+      html.find(".attribute-score").change(this._attributeChangeHandler.bind(this));
+      html.find(".ability-activated i").click(this._abilityChangeStatusHandler.bind(this));
+      html.find(".equippable i").click(this._gearChangeEquippedStatusHandler.bind(this));
+      html.find(".manage-groups").click(this._groupsChangeHandler.bind(this));
+      html.find(".clear-groups").click(this._groupsDeleteFromAttributeHandler.bind(this));
     }
 
     // Owner only listeners
     if (this.actor.owner) {
-      html.find(".item-description").click(this._onShowItemInfo.bind(this));
-      html.find(".attack-roll").click(this._onShowAttackModDialog.bind(this));
-      html.find(".attribute label").click(this._onShowRollModDialog.bind(this));
-      html.find("label.savingThrow").click(this._onShowRollModDialog.bind(this));
-      html.find('.init-label').click(this._onRollInitiative.bind(this));
+      html.find(".item-description").click(this._itemShowInfoHandler.bind(this));
+      html.find(".attack-roll").click(this._attackRollHandler.bind(this));
+      html.find(".attribute label").click(this._rollHandler.bind(this));
+      html.find("label.savingThrow").click(this._rollHandler.bind(this));
+      html.find('.init-label').click(this._initiativeRollHandler.bind(this));
     }
 
     super.activateListeners(html);
   };
 
-  _onRollInitiative(event) {
-    event.preventDefault()
-    this.actor.rollInitiative(this.token)
-  };
+  async _itemCreateHandler(event) {
+    event.preventDefault();
+    const type = event.currentTarget.dataset.type;
 
-  async _onDrop(event) {
-    await super._onDrop(event);
-    updateActorForItems(this.actor);
-  };
-
-  getItem(event) {
-    const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    return this.actor.getOwnedItem(itemId);
-  };
-
-  async _onToggleGear(event) {
-    const item = this.getItem(event);
-    await item.update(
-      {
-        data: {
-          equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus)
-        }
+    let itemData = {
+      img: c.DEFAULTACTORIMAGE,
+      name: game.i18n.localize("wh3e.sheet.new" + type),
+      type: type,
+      data: {
+        description: c.EMPTYSTRING
       }
-    );
-    updateActorForItems(this.actor);
-  };
-
-  updateEquippedStatus(equippedStatus) {
-    if (equippedStatus === c.STORED) {
-      return c.EQUIPPED;
-    } else {
-      return c.STORED;
     };
-  };
 
-  async _onToggleAbility(event) {
-    const item = this.getItem(event);
-    await item.update(
-      {
-        data: {
-          activeStatus: this.updateActiveStatus($(event.currentTarget))
-        }
-      }
-    );
-    updateActorForAbilities(this.actor);
-  };
+    if (type === c.ABILITY) {
+      itemData.data.activeStatus = c.INACTIVE;
+    }
 
-  _onShowGroupsDialog(event) {
-    this.actor.manageGroupsDialog(event.currentTarget.dataset.groupsFor);
-  }
+    if (type === c.GEAR) {
+      itemData.data.weight = c.REGULAR;
+      itemData.data.equippedStatus = c.STORED;
+    }
 
-  _onClearGroups(event) {
-    this.actor.clearGroupsDialog(event.currentTarget.dataset.groupsFor);
-  }
+    if (type === c.ARMOUR) {
+      itemData.data.armourClass = 0;
+      itemData.data.equippedStatus = c.STORED;
+    }
 
-  updateActiveStatus(icon) {
-    if (icon.hasClass(c.INACTIVE)) {
-      return c.ACTIVE;
-    } else {
-      return c.INACTIVE;
+    if (type === c.WEAPON) {
+      itemData.data.damage = c.D6;
+      itemData.data.weight = c.REGULAR;
+      itemData.data.rateOfFire = c.NONE;
+      itemData.data.equippedStatus = c.STORED;
+    }
+
+    await this.actor.createOwnedItem(itemData);
+    if (type !== c.ABILITY) {
+      updateActorForItems(this.actor);
     }
   };
 
-  async _onAttributeChange(event) {
+  _itemEditHandler(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const itemId = element.closest("tr").dataset.itemId;
+    const item = this.actor.getOwnedItem(itemId);
+
+    item.sheet.render(true);
+  };
+
+  async _itemDeleteHandler(event) {
+    event.preventDefault();
+
+    const element = event.currentTarget;
+    const itemId = element.closest("tr").dataset.itemId;
+    await this.actor.deleteOwnedItem(itemId);
+    await updateActorForItems(this.actor);
+    await updateActorForAbilities(this.actor);
+  };
+
+  async _attributeChangeHandler(event) {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
 
@@ -166,81 +163,85 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   };
 
-  _onShowAttackModDialog(event) {
+  async _abilityChangeStatusHandler(event) {
+    const item = this.getItem(event);
+    await item.update(
+      {
+        data: {
+          activeStatus: this.updateActiveStatus($(event.currentTarget))
+        }
+      }
+    );
+    updateActorForAbilities(this.actor);
+  };
+
+  async _gearChangeEquippedStatusHandler(event) {
+    const item = this.getItem(event);
+    await item.update(
+      {
+        data: {
+          equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus)
+        }
+      }
+    );
+    updateActorForItems(this.actor);
+  };
+
+  _groupsChangeHandler(event) {
+    this.actor.manageGroupsDialog(event.currentTarget.dataset.groupsFor);
+  };
+
+  _groupsDeleteFromAttributeHandler(event) {
+    this.actor.clearGroupsDialog(event.currentTarget.dataset.groupsFor);
+  };
+
+  _itemShowInfoHandler(event) {
+    const item = this.getItem(event);
+    item.sendInfoToChat();
+  };
+
+  _attackRollHandler(event) {
     const item = this.getItem(event);
     attackModDialog(item);
   };
 
-  _onShowRollModDialog(event) {
+  _rollHandler(event) {
     const rollAttribute = event.currentTarget.dataset.rollFor;
     const rollTitle = rollAttribute === c.SAVINGTHROW ? game.i18n.localize("wh3e.sheet.savingThrow") :
       rollAttribute.toUpperCase() + " " + game.i18n.localize("wh3e.sheet.taskRoll");
     rollModDialog(this.actor, rollAttribute, rollTitle);
   };
 
-  _onShowItemInfo(event) {
-    const item = this.getItem(event);
-    item.sendInfoToChat();
+
+  _initiativeRollHandler(event) {
+    event.preventDefault()
+    this.actor.rollInitiative(this.token)
   };
 
-  async _onItemCreate(event) {
-    event.preventDefault();
-    const type = event.currentTarget.dataset.type;
+  async _onDrop(event) {
+    await super._onDrop(event);
+    updateActorForItems(this.actor);
+  };
 
-    let itemData = {
-      img: c.DEFAULTACTORIMAGE,
-      name: game.i18n.localize("wh3e.sheet.new" + type),
-      type: type,
-      data: {
-        description: c.EMPTYSTRING
-      }
+  getItem(event) {
+    const itemId = event.currentTarget.closest("tr").dataset.itemId;
+    return this.actor.getOwnedItem(itemId);
+  };
+
+  updateEquippedStatus(equippedStatus) {
+    if (equippedStatus === c.STORED) {
+      return c.EQUIPPED;
+    } else {
+      return c.STORED;
     };
-
-    if (type === c.ABILITY) {
-      itemData.data.activeStatus = c.INACTIVE;
-    }
-
-    if (type === c.GEAR) {
-      itemData.data.weight = c.REGULAR;
-      itemData.data.equippedStatus = c.STORED;
-    }
-
-    if (type === c.ARMOUR) {
-      itemData.data.armourClass = 0;
-      itemData.data.equippedStatus = c.STORED;
-    }
-
-    if (type === c.WEAPON) {
-      itemData.data.damage = c.D6;
-      itemData.data.weight = c.REGULAR;
-      itemData.data.rateOfFire = c.NONE;
-      itemData.data.equippedStatus = c.STORED;
-    }
-
-    await this.actor.createOwnedItem(itemData);
-    if (type !== c.ABILITY) {
-      updateActorForItems(this.actor);
-    }
   };
 
-  _onItemEdit(event) {
-    event.preventDefault();
-
-    const element = event.currentTarget;
-    const itemId = element.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
-
-    item.sheet.render(true);
-  };
-
-  async _onItemDelete(event) {
-    event.preventDefault();
-
-    const element = event.currentTarget;
-    const itemId = element.closest("tr").dataset.itemId;
-    await this.actor.deleteOwnedItem(itemId);
-    await updateActorForItems(this.actor);
-    await updateActorForAbilities(this.actor);
+  updateActiveStatus(icon) {
+    if (icon.hasClass(c.INACTIVE)) {
+      return c.ACTIVE;
+    } else {
+      return c.INACTIVE;
+    }
   };
 
 }

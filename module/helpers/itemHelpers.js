@@ -36,10 +36,8 @@ export const updateActorForAbilities = async (actor) => {
   const items = actor.items;
 
   // Get vocation and species
-  const speciesObj = items.filter(item => {
-    return item.type === c.ABILITY && item.data.data.type === c.SPECIES && item.data.data.activeStatus === c.ACTIVE;
-  });
-  const vocationObj = items.filter(item => item.type === c.ABILITY && item.data.data.type === c.VOCATION);
+  const speciesObj = items.filter(item => item.type === c.ABILITY && item.data.data.type === c.SPECIES && item.data.data.activeStatus === c.ACTIVE);
+  const vocationObj = items.filter(item => item.type === c.ABILITY && item.data.data.type === c.VOCATION && item.data.data.activeStatus === c.ACTIVE);
   const species = speciesObj.length > 0 ? speciesObj[0].name : c.EMPTYSTRING;
   const vocation = vocationObj.length > 0 ? vocationObj[0].name : c.EMPTYSTRING;
 

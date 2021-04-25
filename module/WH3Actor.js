@@ -2,7 +2,9 @@ import * as c from './constants.js';
 
 class WH3Actor extends Actor {
   manageGroupsDialog(attribute) {
-    const groups = this.data.items.filter(item => item.type === c.ABILITY && item.data.activeStatus === c.ACTIVE);
+    const groupTypes = [c.AFFILIATION, c.SPECIES, c.VOCATION];
+    const groups = this.data.items.filter(item => item.type === c.ABILITY &&
+      item.data.activeStatus === c.ACTIVE && groupTypes.includes(item.data.type));
     let groupsHtml = c.EMPTYSTRING;
     groups.forEach(element => {
       groupsHtml = groupsHtml + `
@@ -29,7 +31,7 @@ class WH3Actor extends Actor {
           callback: (html) => this.updateGroupsForActor(attribute, html)
         }
       },
-    }, { width: 50 }).render(true);
+    }, { width: 250 }).render(true);
   };
 
   clearGroupsDialog(attribute) {

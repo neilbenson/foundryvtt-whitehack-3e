@@ -39,7 +39,7 @@ export const rollModDialog = (actor, rollAttribute, rollTitle) => {
         callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLENEGATIVE)
       },
     },
-  }, { width: 50 }).render(true);
+  }, { width: 200 }).render(true);
 };
 
 export const attackModDialog = (item) => {
@@ -78,7 +78,7 @@ export const attackModDialog = (item) => {
         callback: (html) => attackRollDialogCallback(html, item, c.DOUBLENEGATIVE)
       },
     },
-  }, { width: 50 }).render(true);
+  }, { width: 250 }).render(true);
 };
 
 export const attackRoll = async (weapon, actor, toHitMod = 0, damageMod = 0, rollType = c.ROLL) => {
