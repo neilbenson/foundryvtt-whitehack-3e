@@ -1,8 +1,8 @@
-name: Battle Axe
+name: Axe
 type: Weapon
 data:
-  description: "<p>A deadly single bladed axe</p>"
-  cost: 20
+  description: ""
+  cost: 10
   costCoinType: gp
   weight: regular
   equippedStatus: stored
@@ -11,3 +11,87 @@ data:
   rateOfFire: none
   special: ""
 img: icons/weapons/axes/axe-battle-blackened.webp
+---
+name: Club
+type: Weapon
+data:
+  description: ""
+  cost: 0
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  damage: d6minus2
+  range: 0
+  rateOfFire: none
+  special: "Knock-out, Improvised"
+img: icons/weapons/clubs/club-banded-brown.webp
+---
+name: Crossbow
+type: Weapon
+data:
+  description: ""
+  cost: 30
+  costCoinType: gp
+  weight: heavy
+  equippedStatus: stored
+  damage: d6plus1
+  range: 70
+  rateOfFire: oneInTwo
+  special: "Two handed"
+img: icons/weapons/crossbows/crossbow-purple.webp
+---
+name: Dagger
+type: Weapon
+data:
+  description: ""
+  cost: 3
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  damage: d6minus2
+  range: 15
+  rateOfFire: one
+  special: ""
+img: icons/weapons/daggers/dagger-straight-blue.webp
+---
+name: Darts
+type: Weapon
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  damage: oneDmg
+  range: 20
+  rateOfFire: three
+  special: ""
+img: icons/weapons/thrown/dart-feathered.webp
+---
+name: Flail
+type: Weapon
+data:
+  description: ""
+  cost: 8
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  damage: d6
+  range: 0
+  rateOfFire: none
+  special: "Ignore shield AC"
+img: icons/weapons/maces/flail-spiked-grey.webp
+---
+name: Sword
+type: Weapon
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  damage: d6plus1
+  range: 0
+  rateOfFire: none
+  special: ""
+img: icons/weapons/swords/sword-guard-worn-brown.webp
