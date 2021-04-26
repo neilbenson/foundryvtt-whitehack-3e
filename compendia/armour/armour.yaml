@@ -1,0 +1,10 @@
+name: Chainmail
+type: Armour
+data:
+  description: ""
+  cost: 30
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  armourClass: "4"
+img: icons/equipment/chest/breastplate-scale-grey.webp

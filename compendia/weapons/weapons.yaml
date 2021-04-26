@@ -1,0 +1,13 @@
+name: Battle Axe
+type: Weapon
+data:
+  description: "<p>A deadly single bladed axe</p>"
+  cost: 20
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  damage: d6plus1
+  range: 0
+  rateOfFire: none
+  special: ""
+img: icons/weapons/axes/axe-battle-blackened.webp

@@ -1,0 +1,522 @@
+name: Backpack
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/containers/bags/pack-leather-tan.webp
+---
+name: Bandages
+type: Gear
+data:
+  description: ""
+  cost: 2
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 5
+img: icons/commodities/cloth/cloth-worn-gold.webp
+---
+name: Boat
+type: Gear
+data:
+  description: ""
+  cost: 60
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/nautical/anchor.webp
+---
+name: Bottle (wine), glass
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/survival/wetskin-leather-purple.webp
+---
+name: Cart
+type: Gear
+data:
+  description: ""
+  cost: 50
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+img: icons/environment/settlement/wagon.webp
+---
+name: Case (map or scroll)
+type: Gear
+data:
+  description: ""
+  cost: 3
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/containers/bags/case-scroll-leather-tan.webp
+---
+name: Checkers (game)
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/gaming/chess-knight-white.webp
+---
+name: Compass
+type: Gear
+data:
+  description: ""
+  cost: 50
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/navigation/compass-worn-copper.webp
+---
+name: Crowbar
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+---
+name: Dice
+type: Gear
+data:
+  description: ""
+  cost: 2
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/gaming/dice-runed-brown.webp
+---
+name: Flint & steel
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/commodities/stone/stone-chunk-teal.webp
+---
+name: Grappling hook
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/fishing/hook-multi-steel-brown.webp
+---
+name: Hammer & Wooden stakes
+type: Gear
+data:
+  description: ""
+  cost: 3
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/hand/hammer-and-nail.webp
+---
+name: Hatchet
+type: Gear
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/hand/hatchet-steel-grey.webp
+---
+name: Holy symbol, wooden
+type: Gear
+data:
+  description: ""
+  cost: 2
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/equipment/neck/amulet-engraved-wood.webp
+---
+name: Holy symbol, silver
+type: Gear
+data:
+  description: ""
+  cost: 25
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/equipment/neck/amulet-carved-stone-cross.webp
+---
+name: Holy water, small vial
+type: Gear
+data:
+  description: ""
+  cost: 15
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/equipment/neck/amulet-carved-stone-bottle.webp
+---
+name: Horse (riding)
+type: Gear
+data:
+  description: ""
+  cost: 60
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+img: icons/environment/creatures/horse-tan.webp
+---
+name: Horse (battle trained)
+type: Gear
+data:
+  description: ""
+  cost: 120
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+img: icons/environment/creatures/horse-brown.webp
+---
+name: Laboratory (portable)
+type: Gear
+data:
+  description: ""
+  cost: 130
+  costCoinType: gp
+  weight: heavy
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/laboratory/vials-blue-pink.webp
+---
+name: Lantern
+type: Gear
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/lights/lantern-iron-yellow.webp
+---
+name: Lock picks
+type: Gear
+data:
+  description: ""
+  cost: 20
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/hand/lockpicks-steel-grey.webp
+---
+name: Map
+type: Gear
+data:
+  description: ""
+  cost: 20
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/navigation/map-simple-brown.webp
+---
+name: Mirror (small steel)
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/survival/mirror-plain.webp
+---
+name: Mule
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+---
+name: Oil (lamp), 1 pint
+type: Gear
+data:
+  description: ""
+  cost: 2
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/containers/kitchenware/vase-015.webp
+---
+name: Pole, 10 ft
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: heavy
+  equippedStatus: stored
+  quantity: 1
+img: icons/commodities/wood/wood-pole.webp
+---
+name: Raft
+type: Gear
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+img: icons/commodities/wood/bark-brown-red.webp
+---
+name: Rations, dried (day)
+type: Gear
+data:
+  description: ""
+  cost: 3
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/containers/bags/case-simple-leather-brown.webp
+---
+name: Rations, trail (day)
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/cooking/bowl-steaming-brown.webp
+---
+name: Rope, elven (50 ft)
+type: Gear
+data:
+  description: ""
+  cost: 70
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/survival/rope-wrapped-tan.webp
+---
+name: Rope, hemp (50 ft)
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/survival/rope-wrapped-brown.webp
+---
+name: Sack
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/containers/bags/sack-cloth-brown.webp
+---
+name: Saddle bags
+type: Gear
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/containers/bags/satchel-leather-white-tan.webp
+---
+name: Saddle
+type: Gear
+data:
+  description: ""
+  cost: 25
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/commodities/leather/leather-worn-tan.webp
+---
+name: Scroll, empty
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: small
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/scrolls/scroll-plain-tan.webp
+---
+name: Shovel
+type: Gear
+data:
+  description: ""
+  cost: 5
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/hand/shovel-spade-steel-grey.webp
+---
+name: Skiing gear
+type: Gear
+data:
+  description: ""
+  cost: 15
+  costCoinType: gp
+  weight: heavy
+  equippedStatus: stored
+  quantity: 1
+---
+name: Sled
+type: Gear
+data:
+  description: ""
+  cost: 20
+  costCoinType: gp
+  weight: heavy
+  equippedStatus: stored
+  quantity: 1
+---
+name: Sleeping bag
+type: Gear
+data:
+  description: ""
+  cost: 2
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/survival/bedroll-grey.webp
+---
+name: Snare
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/environment/traps/trap-jaw-green.webp
+---
+name: Spell book (blank)
+type: Gear
+data:
+  description: ""
+  cost: 100
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/books/book-symbol-spiral-silver-blue.webp
+---
+name: Spike, iron
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 12
+img: icons/tools/fasteners/pin-spiked.webp
+---
+name: Tent
+type: Gear
+data:
+  description: ""
+  cost: 15
+  costCoinType: gp
+  weight: notCarried
+  equippedStatus: stored
+  quantity: 1
+img: icons/environment/settlement/tent.webp
+---
+name: Tinderbox
+type: Gear
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+---
+name: Torch
+type: Gear
+data:
+  description: ""
+  cost: 1
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 6
+img: icons/sundries/lights/torch-black.webp
+---
+name: Waterskin
+type: Gear
+data:
+  description: ""
+  cost: 3
+  costCoinType: gp
+  weight: regular
+  equippedStatus: stored
+  quantity: 1
+img: icons/sundries/survival/waterskin-leather-brown.webp
+---
+name: Wolvesbane & Garlic
+type: Gear
+data:
+  description: ""
+  cost: 10
+  costCoinType: gp
+  weight: minor
+  equippedStatus: stored
+  quantity: 1
+img: icons/tools/laboratory/mortar-powder-green.webp
