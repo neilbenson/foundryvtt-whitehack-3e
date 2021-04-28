@@ -37,9 +37,9 @@
   ],
   "gridDistance": 5,
   "gridUnits": "ft",
-  "primaryTokenAttribute": "hp",
+  "primaryTokenAttribute": "hitPoints",
   "initiative": "1d6 + @attributes.dex.mod",
   "url": "https://github.com/hellbrandt/foundryvtt-whitehack-3e",
   "manifest": "https://raw.githubusercontent.com/hellbrandt/foundryvtt-whitehack-3e/main/src/system.json",
-  "download": "https://your/packaged/download/archive.zip"
+  "download": "https://raw.githubusercontent.com/hellbrandt/foundryvtt-whitehack-3e/main/dist/foundryvtt-whitehack3e-v0.1.0.zip"
 }
