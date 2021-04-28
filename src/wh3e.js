@@ -10,14 +10,14 @@ import * as c from './module/constants.js'; // c = constants
 
 async function preloadHandlebarsTemplates() {
   const templatePaths = [
-    "systems/wh3e/templates/partials/character-header.hbs",
-    "systems/wh3e/templates/partials/character-stats.hbs",
-    "systems/wh3e/templates/partials/ability-info.hbs",
-    "systems/wh3e/templates/partials/weapon-info.hbs",
-    "systems/wh3e/templates/partials/gear-info.hbs",
-    "systems/wh3e/templates/partials/armour-info.hbs",
-    "systems/wh3e/templates/partials/notes-tab.hbs",
-    "systems/wh3e/templates/chat/partials/roll-results.hbs"
+    "systems/whitehack3e/templates/partials/character-header.hbs",
+    "systems/whitehack3e/templates/partials/character-stats.hbs",
+    "systems/whitehack3e/templates/partials/ability-info.hbs",
+    "systems/whitehack3e/templates/partials/weapon-info.hbs",
+    "systems/whitehack3e/templates/partials/gear-info.hbs",
+    "systems/whitehack3e/templates/partials/armour-info.hbs",
+    "systems/whitehack3e/templates/partials/notes-tab.hbs",
+    "systems/whitehack3e/templates/chat/partials/roll-results.hbs"
   ];
 
   return loadTemplates(templatePaths);
@@ -53,7 +53,7 @@ Hooks.on("renderSidebarTab", async (object, html) => {
     let gamesystem = html.find("#game-details");
 
     // License text
-    const template = "systems/wh3e/templates/license.hbs";
+    const template = "systems/whitehack3e/templates/license.hbs";
     const rendered = await renderTemplate(template);
     gamesystem.find(".system").append(rendered);
 

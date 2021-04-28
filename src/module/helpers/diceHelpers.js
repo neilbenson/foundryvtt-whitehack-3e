@@ -131,7 +131,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   };
 
   const toHitTarget = actor.data.data.combat.attackValue + strMod + toHitMod;
-  const rollTemplate = "systems/wh3e/templates/chat/attack-roll.hbs";
+  const rollTemplate = "systems/whitehack3e/templates/chat/attack-roll.hbs";
 
   // To Hit Roll
   const toHitRoll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
@@ -207,7 +207,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     rollValue = actor.data.data.attributes[rollFor].value;
   }
   const rollTarget = rollValue + rollMod;
-  const rollTemplate = "systems/wh3e/templates/chat/task-roll.hbs";
+  const rollTemplate = "systems/whitehack3e/templates/chat/task-roll.hbs";
 
   // Task Roll
   const roll = new Roll(getDiceToRoll(rollType), rollData).evaluate();

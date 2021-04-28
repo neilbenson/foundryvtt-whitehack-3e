@@ -6,7 +6,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      template: "systems/wh3e/templates/sheets/character-sheet.hbs",
+      template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
       width: 600,
       height: 584,

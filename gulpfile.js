@@ -15,6 +15,7 @@ const SYSTEM = JSON.parse(fs.readFileSync("src/system.json"));
 const STATIC_FILES = [
   "src/system.json",
   "src/template.json",
+  "src/wh3e.js",
   "src/assets/**/*",
   "src/lang/**/*",
   "src/module/**/*",
@@ -24,7 +25,7 @@ const LESS_SRC = "src/less/wh3e.less";
 const PACK_SRC = "src/packs";
 const BUILD_DIR = "build";
 const DIST_DIR = "dist";
-const CSS_DEST = path.join(BUILD_DIR, "css/");
+const CSS_DEST = path.join(BUILD_DIR, "css");
 
 /* ----------------------------------------- */
 /*  Compile Compendia
@@ -95,7 +96,7 @@ cleanBuild = () => {
 }
 
 watchUpdates = () => {
-  gulp.watch("src/**/*", gulp.series(cleanBuild, copyFiles, compilePacks));
+  gulp.watch("src/**/*", gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks));
 }
 
 /* ----------------------------------------- */
@@ -106,6 +107,6 @@ exports.clean = gulp.series(cleanBuild);
 exports.compile = gulp.series(compilePacks);
 exports.compileCSS = gulp.series(compileCSS);
 exports.copy = gulp.series(copyFiles);
-exports.build = gulp.series(cleanBuild, copyFiles, compilePacks);
+exports.build = gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks);
 exports.dist = gulp.series(createZip);
 exports.default = gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks, watchUpdates);
