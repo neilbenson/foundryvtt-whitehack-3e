@@ -11,35 +11,26 @@ const zip = require("gulp-zip");
 const fs = require("fs");
 const path = require("path");
 
-gulp.task('less', (cb) => {
-  gulp
-    .src('less/wh3e.less')
-    .pipe(less())
-    .pipe(
-      gulp.dest('css/')
-    );
-  cb();
-});
-
-gulp.task(
-  'default',
-  gulp.series('less', (cb) => {
-    gulp.watch('less/**/*.less', gulp.series('less'));
-    cb();
-  })
-);
-
-const SYSTEM = JSON.parse(fs.readFileSync("system.json"));
-const STATIC_FILES = ["system.json", "assets/**/*"];
-const PACK_SRC = "compendia";
+const SYSTEM = JSON.parse(fs.readFileSync("src/system.json"));
+const STATIC_FILES = [
+  "src/system.json",
+  "src/template.json",
+  "src/assets/**/*",
+  "src/lang/**/*",
+  "src/module/**/*",
+  "src/templates/**/*"
+];
+const LESS_SRC = "src/less/wh3e.less";
+const PACK_SRC = "src/packs";
 const BUILD_DIR = "build";
 const DIST_DIR = "dist";
+const CSS_DEST = path.join(BUILD_DIR, "css/");
 
 /* ----------------------------------------- */
 /*  Compile Compendia
 /* ----------------------------------------- */
 
-function compilePacks() {
+compilePacks = () => {
   // determine the source folders to process
   const folders = fs.readdirSync(PACK_SRC).filter((file) => {
     return fs.statSync(path.join(PACK_SRC, file)).isDirectory();
@@ -60,10 +51,23 @@ function compilePacks() {
 }
 
 /* ----------------------------------------- */
+/*  Compile LESS files to CSS
+/* ----------------------------------------- */
+
+compileCSS = () => {
+  return gulp
+    .src(LESS_SRC)
+    .pipe(less())
+    .pipe(
+      gulp.dest(CSS_DEST)
+    );
+}
+
+/* ----------------------------------------- */
 /*  Copy static files
 /* ----------------------------------------- */
 
-function copyFiles() {
+copyFiles = () => {
   return gulp
     .src(STATIC_FILES, {
       base: "src",
@@ -75,7 +79,7 @@ function copyFiles() {
 /*  Create distribution archive
 /* ----------------------------------------- */
 
-function createZip() {
+createZip = () => {
   return gulp
     .src(`${BUILD_DIR}/**/*`)
     .pipe(zip(`foundryvtt-${SYSTEM.name}-v${SYSTEM.version}.zip`))
@@ -86,11 +90,11 @@ function createZip() {
 /*  Other Functions
 /* ----------------------------------------- */
 
-function cleanBuild() {
+cleanBuild = () => {
   return gulp.src(`${BUILD_DIR}`, { allowEmpty: true }, { read: false }).pipe(clean());
 }
 
-function watchUpdates() {
+watchUpdates = () => {
   gulp.watch("src/**/*", gulp.series(cleanBuild, copyFiles, compilePacks));
 }
 
@@ -100,7 +104,8 @@ function watchUpdates() {
 
 exports.clean = gulp.series(cleanBuild);
 exports.compile = gulp.series(compilePacks);
+exports.compileCSS = gulp.series(compileCSS);
 exports.copy = gulp.series(copyFiles);
 exports.build = gulp.series(cleanBuild, copyFiles, compilePacks);
 exports.dist = gulp.series(createZip);
-exports.default = gulp.series(cleanBuild, copyFiles, compilePacks, watchUpdates);
+exports.default = gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks, watchUpdates);
