@@ -1,51 +1,57 @@
-TO DO:
+# Whitehack 3e system (unofficial) for FoundryVTT
 
-- [x] Add Gear tab and items
-- [x] Update Monster actors with right fields
-- [x] Add Abilities tab (best name for slots?)
-- [x] Add Encumbrance and Movement to character header
-- [x] Add/remove weapons, gear and abilities
-- [x] Add stat mod for str, dex etc
-- [x] Add rolls for attributes and weapons
-- [x] Add currency (CP, SP, GP) to weapons and gear
-- [x] Fix css table scroll for weapons and gear on character sheet
-- [x] Calculate armour class for character based on selected armour
-- [x] Add armour item type
-- [x] Calculate ST and AV for monsters
-- [x] Add corruption level
-- [x] Fix right input alignments for forms
-- [x] Remove unused styles e.g. resources, resource, resource-content
-- [x] Button to add Weapons, Gear and Abilities
-- [x] Add modifier for attack rolls
-- [x] Drop down for class
-- [x] Strong attack mods
-- [x] Initiative roller and Dex mod for character and monster
-- [x] Strong hp mod
-- [x] Deft 2d20 keep best attack
-- [x] Saving throw 
-- [x] Remove 1 and 20 successes and add below conditions
-- [x] Calculate encumbrance
-- [x] Monster attack, damage and saving throw rolls
-- [x] Vocation and species read only from abilities
-- [x] Tooltip for all fields and ability descriptions on character sheet
-- [x] Tooltip for all fields  on monster sheet
-- [x] Fix rolls as below
-- [x] Attack dialog - add weapon name
-- [x] Fix rolls for combat
-- [x] Select groups next to attributes from those added
-- [ ] Added classes to compendium?
+This system provides support for the [Whitehack RPG 3rd edition](https://whitehackrpg.wordpress.com/) in [FoundryVTT](https://foundryvtt.com). It is published with the approval of Christian Mehrstam, the creator of the Whitehack RPG.
+
+## Installation
+
+The recommended method of installing the Whitehack 3e system is from within FoundryVTT using the **Install System** option in the **Game Systems** tab. Alternatively you can install it using the manifest [link](https://raw.githubusercontent.com/hellbrandt/foundryvtt-whitehack-3e/main/src/system.json) or download the zip package from the repository's dist folder and install to your FoundryVTT `Data/Systems` folder.
+
+## Usage
+
+This system includes actor sheets for:
+
+- Characters
+- Monsters/NPCs
+
+It supports items which can be created in the items panel and dragged onto characters, can be created directly in actors:
+
+- Ability
+- Armour
+- Gear
+- Weapon
+
+There are compendiums for:
+
+- Armour
+- Gear
+- Weapons
+
+Which can be dragged directly onto a character or into the items panel.
+
+The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker you can roll initiative from there or from the relevant token on a battle map.
+
+Full documentation can be accessed in FoundryVTT in the **Game Settings** tab. They are also available on github pages [here](https://neilbenson.github.io/foundryvtt-whitehack-3e/)
+
+## License
+
+This unofficial system requires Whitehack, &copy;2013&ndash;2021 Christian Mehrstam. You can find it [here](https://whitehackrpg.wordpress.com).
+
+Whitehack is an RPG trademark through established use, owned by Christian Mehrstam. This third party product is unaffiliated. The Whitehack name is used with permission.
+
+## Credits
+
+Thanks to:
+
+- Christian Mehrstam for producing the fantastic Whitehack RPG and giving approval to release this FoundryVTT system.
+
+- [Cédric Hauteville's series on FoundryVTT development](https://www.youtube.com/playlist?list=PLFV9z59nkHDccUbRXVt623UdloPTclIrz) which put me on the right path, highly recommended.
+
+- Chris Sharp for guidance and insight, both in Twitter chats and by referencing his fantastic [Operation Whitebox FoundryVTT system](https://github.com/chrisesharp/foundryvtt-owb/), I highly recommend checking that out.
+
+The background texture for actor and item sheets and dialogs is from https://www.myfreetextures.com/worn-parchment-paper-4/ and is used in accordance with the [My Free Textures Licence/Terms of Use](https://www.myfreetextures.com/use-license/).
+
+## TO DO:
+
 - [ ] Add AC input on Attack Dialog?
 - [ ] Setting in Config menu - what to include?
-- [ ] Auctions! Is this needed?
-- [ ] Make this document useful
-- [ ] Write userguide
 
-
-So in Whitehack you have to roll less than or equal to your stat (or AV or ST) to pass, but the higher you roll the better. So if two people are opposed but one passed with a 9 and the other passed with a 6, then the 9 wins.
-
-So if you are rolling with advantage and both dice pass, it's the higher dice you want to keep because it is more likely to beat an opposing roll (or in the case of attack rolls, beat the opponent's AC).
-
-The other situations of note are,
-- Rolling exactly your score, which is a crit.
-- Rolling the same number *on both dice* of a positive double roll and that number is a pass, is a better crit.
-- Rolling exactly your target *on both dice* of a positive double roll, is the best crit.
