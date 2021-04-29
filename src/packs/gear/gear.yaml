@@ -4,7 +4,7 @@ data:
   description: ""
   cost: 5
   costCoinType: gp
-  weight: regular
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/containers/bags/pack-leather-tan.webp
@@ -354,7 +354,7 @@ data:
   description: ""
   cost: 1
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/containers/bags/sack-cloth-brown.webp

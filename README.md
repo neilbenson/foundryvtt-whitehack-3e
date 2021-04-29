@@ -65,4 +65,5 @@ The background texture for actor and item sheets and dialogs is from https://www
 
 - [ ] Add AC input on Attack Dialog?
 - [ ] Setting in Config menu - what to include?
+- [ ] Tracking XP
 

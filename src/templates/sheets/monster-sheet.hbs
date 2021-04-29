@@ -4,7 +4,7 @@
     <div class="header-info">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
       <div class="grid grid-4col">
-        <div class="flex-group-left" title="{{localize "wh3e.item.armourClass"}}">
+        <div class="flex-group-center" title="{{localize "wh3e.item.armourClass"}}">
           <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
           <div class="flexrow flex-center flex-between">
             {{> selectOptions field="data.combat.armourClass" selected=data.combat.armourClass options=config.monsterArmourClasses}}
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="grid grid-5col">
-        <div class="flex-group-left">
+        <div class="flex-group-center">
           <label for="data.damage" class="rollable damage-roll">{{localize "wh3e.item.damage"}}</label>
           <div class="flexrow flex-center flex-between">
             {{> selectOptions field="data.damage" selected=data.damage options=config.damageDice}}

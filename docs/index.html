@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Whitehack 3e system documentation for FoundryVTT</title>
+  <meta name="description" content="Documentation for using the Whitehack 3e system in FoundryVTT">
+  <meta name="author" content="Neil Benson">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/wh3e.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="one-column" style="margin-top: 10%">
+        <h1>Whitehack Third Edition</h1>
+        <h2>An unofficial FoundryVTT system</h2>
+
+        <p>
+          I've been rather taken with the Whitehack RPG from Christian Mehrstam, in particular the current third
+          edition. You'll need to grab a copy of Whitehack Third Edition to get the best out of this system, there's
+          loads more information about it at the <a href="https://whitehackrpg.wordpress.com/">Whitehack
+            website.</a>
+        </p>
+
+        <p>
+          While some systems try to mimic the layout of paper/pdf character sheets I realised early on that while this
+          may be more aesthetically pleasing it would not present as usable a character sheet in a VTT, so I went for a
+          design I have found useful in numerous apps - a top 'header' area with the main and most commonly referenced
+          information on the character and a tabs section beneath it which can be used to drill into more detailed areas
+          of the character. I hope you find this works well for you.
+        </p>
+
+        <p>
+          Thanks to Christian Mehrstam for giving this FoundryVTT system his approval and of course for producing such
+          a great game in the first place.
+        </p>
+
+        <h3>Characters, NPCs and Monsters</h3>
+
+        <h4>Character Sheet</h4>
+
+        <img src="images/character-attributes.png"
+             alt="The FoundryVTT Whitehack 3e character sheet showing stats and tabs" />
+
+        <p>
+          Most of this will be self explanatory. Fields that have abbreviations or are a bit more complex will usually
+          have a tooltip with more info if you mouse over them.
+        </p>
+
+        <ul>
+          <li>
+            Class: select one of the five classes. This will change the bonuses shown on attributes.
+          </li>
+          <li>
+            Vocation and Species: these fields are read only. They will show the first active Vocation/Species added
+            in the Abilities tab.
+          </li>
+          <li>
+            Level, Slots, Groups, Attack Value (AV), Movement (MV): standard inputs, enter the
+            relevant value for the chosen class.
+          </li>
+          <li>
+            Corruption Level (CL): starts at 0, update manually as needed.
+          </li>
+          <li>
+            Saving Throw (ST): enter manually for class. Click on the label (with dice) to make a save (the Saving Throw
+            dialog will pop up).
+          </li>
+          <li>
+            Armour Class (AC): read only, calculated for equipped armour. Only the highest piece of equipped armour
+            will contribute towards AC.
+          </li>
+          <li>
+            Encumbrance (ENC): read only, calculated from equipped and stored armour, gear and weapons. Show in red
+            when values are above the 10 equipped and 5 stored levels.
+          </li>
+        </ul>
+
+        <h4>Tabs</h4>
+
+        <p>
+          The vertical labels down the right hand side of the sheet give access to tabs with different information. Most
+          of these tabs present lists of items in tables which all have in common edit and delete icons, so individual
+          items can be updated for the character or removed from the character sheet.
+        </p>
+
+        <h5>Attributes Tab</h5>
+
+        <p>
+          Shown above, this should be familiar to most gamers with the standard D&amp;D style attributes. The label
+          (with dice) for each attribute can be clicked to perform and attribute task check.
+        </p>
+        <p>
+          The score is entered manually, but the modifier boxes are read only and updated based on the scores entered.
+          A tooltip identifies what each is used for.
+        </p>
+        <p>
+          The final section for each attribute is groups. The text field is read only and is populated from the Select
+          Groups Dialog (accessed by clicking on the three horizontal bars) and cleared with the rubbish bin icon.
+        </p>
+
+        <div class="row">
+          <div class="four columns">
+            <img src="images/select-groups-dialog.png" alt="The select groups dialog showing active groups" />
+          </div>
+          <div class="eight columns">
+            <p>
+              The Select Groups dialog allows the player to choose which group or groups to apply to an attribute. It
+              only shows groups which are marked as active.
+            </p>
+          </div>
+        </div>
+
+        <h5>Abilities Tab</h5>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/character-abilities.png" alt="Tab showing abilities added to character sheet" />
+          </div>
+          <div class="six columns">
+            <p>
+              Attunements, Combat Options, Miracles and Groups all go in here. Along with the type of ability, the
+              active column gives an indicator to which is currently active and affects which groups can be assigned to
+              attributes.
+            </p>
+            <p>
+              Clicking on the icon for the ability will show the ability name and description (if any) in the chat.
+            </p>
+          </div>
+        </div>
+
+        <h5>Weapons Tab</h5>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/character-weapons.png" alt="Tab showing weapons added to character sheet" />
+          </div>
+          <div class="six columns">
+            <p>
+              Stats are shown for each weapon along with whether it is equipped or stored which updates the encumbrance
+              totals appropriately.
+            </p>
+            <p>
+              Clicking on the icon for the weapon shows the weapon attack dialog which can be used to make a weapon
+              attack. The results of the weapon attack are shown in chat.
+            </p>
+          </div>
+        </div>
+
+        <h5>Armour Tab</h5>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/character-armour.png" alt="Tab showing armour added to character sheet" />
+          </div>
+          <div class="six columns">
+            <p>
+              Stats are shown for each piece of armour along with whether it is equipped or stored which updates
+              encumbrance totals and armour class appropriately. While each piece of armour will add to one of the
+              encumbrance totals, only the heaviest piece of armou (the one with the highest AC) will be taken into
+              account in the final AC.
+            </p>
+            <p>
+              Shields add +1 to AC when equipped. Helmets do not affect the final AC, but have a special affect as
+              described in the Whitehack rules.
+            </p>
+            <p>
+              Clicking on the icon for armour will show the armour name, AC and description (if any) in the chat.
+            </p>
+          </div>
+        </div>
+
+        <h5>Gear Tab</h5>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/character-gear.png" alt="Tab showing gear added to character sheet" />
+          </div>
+          <div class="six columns">
+            <p>
+              Stats are shown for each item of gear along with whether it is equipped or stored which updates
+              encumbrance totals appropriately.
+            </p>
+            <p>
+              Clicking on the icon for gear will show the gear name and description (if any) in the chat.
+            </p>
+          </div>
+        </div>
+
+
+        <h5>Notes Tab</h5>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/character-notes.png" alt="Tab showing gear added to character sheet" />
+          </div>
+          <div class="six columns">
+            <p>
+              This is a catch all section for languages and whatever notes a player wishes to record about their
+              character.
+            </p>
+          </div>
+        </div>
+
+        <h4>Dialogs</h4>
+
+        <img src="images/roll-dialogs.png" alt="Saving Throw, Attribute Task Check and Attack dialogs" />
+
+        <p>
+          Besides the Select Groups dialog shown above there are three other dialogs that appear for Saving Throws,
+          Attribute Task Checks and Attacks.
+        </p>
+        <p>
+          Each accepts a modifier (or To Hit and Damage modifiers for attacks) and the player can click the button for
+          whichever die roll is required:
+        <ul>
+          <li>
+            D20: standard single D20 roll
+          </li>
+          <li>
+            D20 with plus sign: a double positive roll
+          </li>
+          <li>
+            D20 with minus sign: a double negative roll
+          </li>
+        </ul>
+        </p>
+
+        <h4>Monster Sheet</h4>
+
+        <img src="images/monster.png" alt="Monster stats and info" />
+        <p>
+          Again pretty much self explanatory. Saving Throw (ST) and Attack Value (AV) are read only and generated from
+          the first Hit Dice input, and both can be rolled by clicking on the label (with dice). As with characters, the
+          appropriate dialog will be shown to modify the roll or make a double positive or double negative roll.
+          Initiative can also be rolled if the Monster Sheet is opened from a token.
+        </p>
+        <p>
+          The rest of the fields can be manually updated.
+        </p>
+
+        <h3>Items</h3>
+        <p>These</p>
+        <ul>
+          <li>Ability</li>
+          <li>Armour</li>
+          <li>Gear</li>
+          <li>Weapon</li>
+        </ul>
+
+        <h4>Compendiums</h4>
+
+
+        <p>There are compendiums for:</p>
+        <ul>
+          <li>Armour</li>
+          <li>Gear</li>
+          <li>Weapons</li>
+        </ul>
+
+        <p>Which can be dragged directly onto a character or into the items panel.</p>
+        <h4>Encumbrance</h4>
+
+        <p>I have slightly changed the encumbrance system, based on a regular item taking one slot:</p>
+        <ul>
+          <li>Heavy (2 slots)</li>
+          <li>Regular (1 slot)</li>
+          <li>Minor (2 per slot)</li>
+          <li>Small (5 per slot)</li>
+          <li>Negligible (100 per slot)</li>
+          <li>Transport (doesn't use character encumbrance slots)</li>
+        </ul>
+
+        <h3>Rolls</h3>
+        <h3>Combat</h3>
+
+        <h4>Initiative</h4>
+
+        <p>The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker
+          you can roll initiative from there or from the relevant token on a battle map.</p>
+
+        <p>Players and GMs can make attribute task checks, saves and attack rolls from actor sheets. Armour Class and
+          Encumbrance are calculated based on Armour, Gear and Weapons (see below). Vocation and Species fields are
+          populated from the Abilities tab and cannot be added directly.</p>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>

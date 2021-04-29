@@ -77,6 +77,18 @@ copyFiles = () => {
 }
 
 /* ----------------------------------------- */
+/*  Copy Docs files for github pages
+/* ----------------------------------------- */
+
+copyDocFiles = () => {
+  return gulp
+    .src("src/assets/fonts/**/*", {
+      base: "src/assets/fonts",
+    })
+    .pipe(gulp.dest("docs/assets/fonts"));
+}
+
+/* ----------------------------------------- */
 /*  Create distribution archive
 /* ----------------------------------------- */
 
@@ -96,7 +108,7 @@ cleanBuild = () => {
 }
 
 watchUpdates = () => {
-  gulp.watch("src/**/*", gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks));
+  gulp.watch("src/**/*", gulp.series(cleanBuild, compileCSS, copyFiles, copyDocFiles, compilePacks));
 }
 
 /* ----------------------------------------- */
@@ -107,6 +119,6 @@ exports.clean = gulp.series(cleanBuild);
 exports.compile = gulp.series(compilePacks);
 exports.compileCSS = gulp.series(compileCSS);
 exports.copy = gulp.series(copyFiles);
-exports.build = gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks);
+exports.build = gulp.series(cleanBuild, compileCSS, copyFiles, copyDocFiles, compilePacks);
 exports.dist = gulp.series(createZip);
-exports.default = gulp.series(cleanBuild, compileCSS, copyFiles, compilePacks, watchUpdates);
+exports.default = gulp.series(cleanBuild, compileCSS, copyFiles, copyDocFiles, compilePacks, watchUpdates);
