@@ -20,6 +20,8 @@ It supports items which can be created in the items panel and dragged onto chara
 - Gear
 - Weapon
 
+Players and GMs can make attribute task checks, saves and attack rolls from actor sheets. Armour Class and Encumbrance are calculated based on Armour, Gear and Weapons (see below). Vocation and Species fields are populated from the Abilities tab and cannot be added directly.
+
 There are compendiums for:
 
 - Armour
@@ -27,6 +29,15 @@ There are compendiums for:
 - Weapons
 
 Which can be dragged directly onto a character or into the items panel.
+
+I have slightly changed the encumbrance system, based on a regular item taking one slot:
+
+- Heavy (2 slots)
+- Regular (1 slot)
+- Minor (2 per slot)
+- Small (5 per slot)
+- Negligible (100 per slot)
+- Transport (doesn't use character encumbrance slots)
 
 The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker you can roll initiative from there or from the relevant token on a battle map.
 

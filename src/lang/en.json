@@ -148,7 +148,9 @@
       "regular": "Regular",
       "heavy": "Heavy",
       "minor": "Minor",
-      "small": "Small"
+      "small": "Small",
+      "negligible": "Negligible",
+      "transport": "Transport"
     },
     "roFShotsPerRound": {
       "none": "None",

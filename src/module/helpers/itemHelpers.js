@@ -92,6 +92,9 @@ const getEncumbranceForItems = items => {
           encCount = encCount + (quantity / 2);
           break;
         case c.SMALL:
+          encCount = encCount + (quantity / 5);
+          break;
+        case c.NEGLIGIBLE:
           encCount = encCount + (quantity / 100);
           break;
         default:

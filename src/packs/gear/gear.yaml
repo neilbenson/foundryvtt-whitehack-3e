@@ -15,7 +15,7 @@ data:
   description: ""
   cost: 2
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 5
 img: icons/commodities/cloth/cloth-worn-gold.webp
@@ -26,7 +26,7 @@ data:
   description: ""
   cost: 60
   costCoinType: gp
-  weight: notCarried
+  weight: transport
   equippedStatus: stored
   quantity: 1
 img: icons/tools/nautical/anchor.webp
@@ -37,7 +37,7 @@ data:
   description: ""
   cost: 1
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/sundries/survival/wetskin-leather-purple.webp
@@ -48,7 +48,7 @@ data:
   description: ""
   cost: 50
   costCoinType: gp
-  weight: notCarried
+  weight: transport
   equippedStatus: stored
   quantity: 1
 img: icons/environment/settlement/wagon.webp
@@ -102,7 +102,7 @@ data:
   description: ""
   cost: 2
   costCoinType: gp
-  weight: small
+  weight: negligible
   equippedStatus: stored
   quantity: 1
 img: icons/sundries/gaming/dice-runed-brown.webp
@@ -124,7 +124,7 @@ data:
   description: ""
   cost: 5
   costCoinType: gp
-  weight: minor
+  weight: regular
   equippedStatus: stored
   quantity: 1
 img: icons/tools/fishing/hook-multi-steel-brown.webp
@@ -135,7 +135,7 @@ data:
   description: ""
   cost: 3
   costCoinType: gp
-  weight: minor
+  weight: regular
   equippedStatus: stored
   quantity: 1
 img: icons/tools/hand/hammer-and-nail.webp
@@ -179,7 +179,7 @@ data:
   description: ""
   cost: 15
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/equipment/neck/amulet-carved-stone-bottle.webp
@@ -190,7 +190,7 @@ data:
   description: ""
   cost: 60
   costCoinType: gp
-  weight: notCarried
+  weight: transport
   equippedStatus: stored
   quantity: 1
 img: icons/environment/creatures/horse-tan.webp
@@ -201,7 +201,7 @@ data:
   description: ""
   cost: 120
   costCoinType: gp
-  weight: notCarried
+  weight: transport
   equippedStatus: stored
   quantity: 1
 img: icons/environment/creatures/horse-brown.webp
@@ -267,7 +267,7 @@ data:
   description: ""
   cost: 5
   costCoinType: gp
-  weight: notCarried
+  weight: transport
   equippedStatus: stored
   quantity: 1
 ---
@@ -299,7 +299,7 @@ data:
   description: ""
   cost: 10
   costCoinType: gp
-  weight: notCarried
+  weight: transport
   equippedStatus: stored
   quantity: 1
 img: icons/commodities/wood/bark-brown-red.webp
@@ -310,7 +310,7 @@ data:
   description: ""
   cost: 3
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/containers/bags/case-simple-leather-brown.webp
@@ -321,7 +321,7 @@ data:
   description: ""
   cost: 1
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/tools/cooking/bowl-steaming-brown.webp
@@ -376,7 +376,7 @@ data:
   description: ""
   cost: 25
   costCoinType: gp
-  weight: regular
+  weight: transport
   equippedStatus: stored
   quantity: 1
 img: icons/commodities/leather/leather-worn-tan.webp
@@ -419,7 +419,7 @@ data:
   description: ""
   cost: 20
   costCoinType: gp
-  weight: heavy
+  weight: transport
   equippedStatus: stored
   quantity: 1
 ---
@@ -462,7 +462,7 @@ data:
   description: ""
   cost: 1
   costCoinType: gp
-  weight: regular
+  weight: small
   equippedStatus: stored
   quantity: 12
 img: icons/tools/fasteners/pin-spiked.webp
@@ -473,7 +473,7 @@ data:
   description: ""
   cost: 15
   costCoinType: gp
-  weight: notCarried
+  weight: heavy
   equippedStatus: stored
   quantity: 1
 img: icons/environment/settlement/tent.webp
@@ -484,7 +484,7 @@ data:
   description: ""
   cost: 10
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 ---
@@ -494,7 +494,7 @@ data:
   description: ""
   cost: 1
   costCoinType: gp
-  weight: regular
+  weight: minor
   equippedStatus: stored
   quantity: 6
 img: icons/sundries/lights/torch-black.webp
@@ -516,7 +516,7 @@ data:
   description: ""
   cost: 10
   costCoinType: gp
-  weight: minor
+  weight: small
   equippedStatus: stored
   quantity: 1
 img: icons/tools/laboratory/mortar-powder-green.webp

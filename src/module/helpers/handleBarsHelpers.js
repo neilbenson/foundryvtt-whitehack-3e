@@ -47,4 +47,8 @@ export const registerHelpers = async () => {
     return encumbrance > threshold;
   });
 
+  Handlebars.registerHelper('isNotTransport', (gear) => {
+    return gear !== c.TRANSPORT;
+  });
+
 }
