@@ -8,7 +8,6 @@ data:
   equippedStatus: stored
   armourClass: special
 img: systems/whitehack3e/assets/icons/armour/crested-helmet.png
-
 ---
 name: Shield
 type: Armour

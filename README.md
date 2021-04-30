@@ -41,7 +41,7 @@ I have slightly changed the encumbrance system, based on a regular item taking o
 
 The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker you can roll initiative from there or from the relevant token on a battle map.
 
-Full documentation can be accessed in FoundryVTT in the **Game Settings** tab. They are also available on github pages [here](https://neilbenson.github.io/foundryvtt-whitehack-3e/)
+Full documentation can be accessed in FoundryVTT in the **Game Settings** tab and is also available on the github page for this project [here](https://neilbenson.github.io/foundryvtt-whitehack-3e/)
 
 ## License
 
@@ -69,4 +69,5 @@ Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [C
 - [ ] Setting in Config menu - what to include?
 - [ ] Tracking XP
 - [ ] Target by token and use target AC for roll
+- [ ] Section for CP, SP and GP
 

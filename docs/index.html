@@ -38,8 +38,8 @@
 
         <p>
           I've been rather taken with the Whitehack RPG from Christian Mehrstam, in particular the current third
-          edition. You'll need to grab a copy of Whitehack Third Edition to get the best out of this system, there's
-          loads more information about it at the <a href="https://whitehackrpg.wordpress.com/">Whitehack
+          edition. You'll need to grab a copy of Whitehack Third Edition to get the best out of this FoundryVTT system,
+          there's loads more information about it at the <a href="https://whitehackrpg.wordpress.com/">Whitehack
             website.</a>
         </p>
 
@@ -70,10 +70,10 @@
 
         <ul>
           <li>
-            Class: select one of the five classes. This will change the bonuses shown on attributes.
+            Class: select one of the five classes, this will change the available bonuses for attributes.
           </li>
           <li>
-            Vocation and Species: these fields are read only. They will show the first active Vocation/Species added
+            Vocation and Species: these fields are read only. They show the first active Vocation/Species added
             in the Abilities tab.
           </li>
           <li>
@@ -88,8 +88,8 @@
             dialog will pop up).
           </li>
           <li>
-            Armour Class (AC): read only, calculated for equipped armour. Only the highest piece of equipped armour
-            will contribute towards AC.
+            Armour Class (AC): read only, calculated from armour equipped in the Armour tab. Only the highest piece of
+            equipped armour will contribute towards AC.
           </li>
           <li>
             Encumbrance (ENC): read only, calculated from equipped and stored armour, gear and weapons. Show in red
@@ -100,7 +100,7 @@
         <h4>Tabs</h4>
 
         <p>
-          The vertical labels down the right hand side of the sheet give access to tabs with different information. Most
+          The vertical labels down the right hand side of the sheet give access to tabs. Most
           of these tabs present lists of items in tables which all have in common edit and delete icons, so individual
           items can be updated for the character or removed from the character sheet.
         </p>
@@ -109,7 +109,7 @@
 
         <p>
           Shown above, this should be familiar to most gamers with the standard D&amp;D style attributes. The label
-          (with dice) for each attribute can be clicked to perform and attribute task check.
+          (with dice) for each attribute can be clicked to perform an attribute task check.
         </p>
         <p>
           The score is entered manually, but the modifier boxes are read only and updated based on the scores entered.
@@ -178,7 +178,7 @@
             <p>
               Stats are shown for each piece of armour along with whether it is equipped or stored which updates
               encumbrance totals and armour class appropriately. While each piece of armour will add to one of the
-              encumbrance totals, only the heaviest piece of armou (the one with the highest AC) will be taken into
+              encumbrance totals, only the heaviest piece of armour (the one with the highest AC) will be taken into
               account in the final AC.
             </p>
             <p>
@@ -264,15 +264,26 @@
         <p>As well as a compendium of items (see below), game masters can add items to the item panel and players can
           add items directly to their character sheet by clicking the plus icon in the header of the right hand column
           of tabs.</p>
-        <ul>
-          <li>Ability</li>
-          <li>Armour</li>
-          <li>Gear</li>
-          <li>Weapon</li>
-        </ul>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/ability.png" alt="Add or edit ability" />
+          </div>
+          <div class="six columns">
+            <img src="images/armour.png" alt="Add or edit armour" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="six columns">
+            <img src="images/gear.png" alt="Add or edit gear" />
+          </div>
+          <div class="six columns">
+            <img src="images/weapons.png" alt="Add or edit weapons" />
+          </div>
+        </div>
 
         <h4>Compendiums</h4>
-
 
         <p>There are compendiums for:</p>
         <ul>
@@ -281,10 +292,13 @@
           <li>Weapons</li>
         </ul>
 
-        <p>Which can be dragged directly onto a character or into the items panel.</p>
+        <p>
+          Items from these compendiums can be dragged directly onto a character or for later use in the items panel.
+        </p>
+
         <h4>Encumbrance</h4>
 
-        <p>I have slightly changed the encumbrance system, based on a regular item taking one slot:</p>
+        <p>I have slightly modified the encumbrance system, based on a regular item taking one slot:</p>
         <ul>
           <li>Heavy (2 slots)</li>
           <li>Regular (1 slot)</li>
@@ -295,6 +309,14 @@
         </ul>
 
         <h3>Rolls</h3>
+
+        <h4>Saving Throws and Task Checks</h4>
+        <p>
+          Dice rolls are compatible with the Dice So Nice module. Dice results show successful positive pair, crit,
+          success, failure, fumble, unsuccessful negative pair along with the dice rolled. As with standard FoundryVTT
+          dice rolls you can click on the result to see the actual dice rolled.
+        </p>
+
         <h3>Combat</h3>
 
         <h4>Initiative</h4>
@@ -302,18 +324,22 @@
         <p>The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker
           you can roll initiative from there or from the relevant token on a battle map.</p>
 
-        <p>Players and GMs can make attribute task checks, saves and attack rolls from actor sheets. Armour Class and
-          Encumbrance are calculated based on Armour, Gear and Weapons (see below). Vocation and Species fields are
-          populated from the Abilities tab and cannot be added directly.</p>
+        <h4>Attack Rolls</h4>
 
+        <p>
+          Attack rolls show the AC hit (I may add in targetting to pick up AC from tokens) and if the attack is
+          successful (in that the to hit roll is less than or equal to attack value) damage will also be rolled. It is
+          then down to the GM to determine if the to hit roll exceeded the targets AC and to manually deduct hit points
+          from tokens.
+        </p>
 
+        <h3>Work in Progress</h3>
 
-
-
-
-
-
-
+        <p>As I've come close to publishing this system I have realised I have no space on the character sheet for coins
+          and treasure, and no doubt I've missed other things. All feedback is welcome (although if it is negative
+          please be polite). As time permits I'll do my best to make enhancements, although bug fixes will always be a
+          priority. Issues can be reported at the github project for this system <a
+             href="https://github.com/hellbrandt/foundryvtt-whitehack-3e">here</a>.</p>
 
       </div>
     </div>
