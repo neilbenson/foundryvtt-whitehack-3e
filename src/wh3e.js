@@ -60,9 +60,9 @@ Hooks.on("renderSidebarTab", async (object, html) => {
     // User guide
     let docs = html.find("button[data-action='docs']");
     const styling = "border:none;margin-right:2px;vertical-align:middle;margin-bottom:5px";
-    $(`<button data-action="userguide"><img src='/systems/owb/assets/default/ability.png' width='16' height='16' style='${styling}'/>WWII:OWB Guide</button>`).insertAfter(docs);
+    $(`<button data-action="userguide"><img src='/systems/whitehack3e/assets/icons/svg/battle-gear.svg' width='16' height='16' style='${styling}'/>Whitehack 3e Guide</button>`).insertAfter(docs);
     html.find('button[data-action="userguide"]').click(ev => {
-      new FrameViewer('https://chrisesharp.github.io/foundryvtt-owb', { resizable: true }).render(true);
+      new FrameViewer('https://neilbenson.github.io/foundryvtt-whitehack-3e', { resizable: true }).render(true);
     });
   }
 });
