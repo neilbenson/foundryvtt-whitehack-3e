@@ -1,87 +1,81 @@
 name: Helmet
 type: Armour
 data:
-  description: "If the character wears any kind of helmet, results of 16+ on the crits table may be re-rolled once"
+  description: If the character wears any kind of helmet, results of 16+ on the crits table may be re-rolled once
   cost: 10
   costCoinType: gp
   weight: regular
   equippedStatus: stored
-  armourClass: "special"
-img: icons/equipment/head/helm-norman-brown.webp
+  armourClass: special
+img: systems/whitehack3e/assets/icons/armour/crested-helmet.png
+
 ---
 name: Shield
 type: Armour
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: regular
   equippedStatus: stored
-  armourClass: "plusOne"
-img: icons/equipment/shield/round-wooden-boss-steel-yellow-blue.webp
+  armourClass: plusOne
+img: systems/whitehack3e/assets/icons/armour/round-shield.png
 ---
 name: Cloth
 type: Armour
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: 1
   equippedStatus: stored
   armourClass: 1
-img: icons/equipment/chest/shirt-collared-yellow.webp
+img: systems/whitehack3e/assets/icons/armour/shirt.png
 ---
 name: Leather
 type: Armour
 data:
-  description: ""
   cost: 15
   costCoinType: gp
   weight: 2
   equippedStatus: stored
   armourClass: 2
-img: icons/equipment/chest/breastplate-layered-leather-brown-silver.webp
+img: systems/whitehack3e/assets/icons/armour/leather-vest.png
 ---
 name: Studded Leather
 type: Armour
 data:
-  description: ""
   cost: 20
   costCoinType: gp
   weight: 3
   equippedStatus: stored
   armourClass: 3
-img: icons/equipment/chest/coat-collared-studded-red.webp
+img: systems/whitehack3e/assets/icons/armour/leather-armor.png
 ---
 name: Chainmail
 type: Armour
 data:
-  description: ""
   cost: 30
   costCoinType: gp
   weight: 4
   equippedStatus: stored
   armourClass: 4
-img: icons/equipment/chest/breastplate-scale-grey.webp
+img: systems/whitehack3e/assets/icons/armour/mail-shirt.png
 ---
 name: Splint mail
 type: Armour
 data:
-  description: ""
   cost: 40
   costCoinType: gp
   weight: 5
   equippedStatus: stored
   armourClass: 5
-img: icons/equipment/chest/breastplate-banded-steel-gold.webp
+img: systems/whitehack3e/assets/icons/armour/lamellar.png
 ---
 name: Full plate
 type: Armour
 data:
-  description: ""
   cost: 50
   costCoinType: gp
   weight: 6
   equippedStatus: stored
   armourClass: 6
-img: icons/equipment/chest/breastplate-cuirass-steel-grey.webp
+img: systems/whitehack3e/assets/icons/armour/breastplate.png

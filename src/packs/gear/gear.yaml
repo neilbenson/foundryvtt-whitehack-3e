@@ -1,522 +1,479 @@
 name: Backpack
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/containers/bags/pack-leather-tan.webp
+img: systems/whitehack3e/assets/icons/gear/backpack.png
 ---
 name: Bandages
 type: Gear
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 5
-img: icons/commodities/cloth/cloth-worn-gold.webp
+img: systems/whitehack3e/assets/icons/gear/bandage-roll.png
 ---
 name: Boat
 type: Gear
 data:
-  description: ""
   cost: 60
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
-img: icons/tools/nautical/anchor.webp
+img: systems/whitehack3e/assets/icons/gear/wood-canoe.png
 ---
 name: Bottle (wine), glass
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/survival/wetskin-leather-purple.webp
+img: systems/whitehack3e/assets/icons/gear/wine-bottle.png
 ---
 name: Cart
 type: Gear
 data:
-  description: ""
   cost: 50
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
-img: icons/environment/settlement/wagon.webp
+img: systems/whitehack3e/assets/icons/gear/old-wagon.png
 ---
 name: Case (map or scroll)
 type: Gear
 data:
-  description: ""
   cost: 3
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/containers/bags/case-scroll-leather-tan.webp
+img: systems/whitehack3e/assets/icons/gear/warp-pipe.png
 ---
 name: Checkers (game)
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/gaming/chess-knight-white.webp
+img: systems/whitehack3e/assets/icons/gear/empty-chessboard.png
 ---
 name: Compass
 type: Gear
 data:
-  description: ""
   cost: 50
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/tools/navigation/compass-worn-copper.webp
+img: systems/whitehack3e/assets/icons/gear/compass.png
 ---
 name: Crowbar
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
+img: systems/whitehack3e/assets/icons/gear/crowbar.png
 ---
 name: Dice
 type: Gear
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: negligible
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/gaming/dice-runed-brown.webp
+img: systems/whitehack3e/assets/icons/gear/rolling-dices.png
 ---
 name: Flint & steel
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/commodities/stone/stone-chunk-teal.webp
+img: systems/whitehack3e/assets/icons/gear/flint-spark.png
 ---
 name: Grappling hook
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/tools/fishing/hook-multi-steel-brown.webp
+img: systems/whitehack3e/assets/icons/gear/grapple.png
 ---
 name: Hammer & Wooden stakes
 type: Gear
 data:
-  description: ""
   cost: 3
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/tools/hand/hammer-and-nail.webp
+img: systems/whitehack3e/assets/icons/gear/stake-hammer.png
 ---
 name: Hatchet
 type: Gear
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/tools/hand/hatchet-steel-grey.webp
+img: systems/whitehack3e/assets/icons/gear/hatchet.png
 ---
 name: Holy symbol, wooden
 type: Gear
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/equipment/neck/amulet-engraved-wood.webp
+img: systems/whitehack3e/assets/icons/gear/crucifix.png
 ---
 name: Holy symbol, silver
 type: Gear
 data:
-  description: ""
   cost: 25
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/equipment/neck/amulet-carved-stone-cross.webp
+img: systems/whitehack3e/assets/icons/gear/holy-symbol.png
 ---
 name: Holy water, small vial
 type: Gear
 data:
-  description: ""
   cost: 15
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/equipment/neck/amulet-carved-stone-bottle.webp
+img: systems/whitehack3e/assets/icons/gear/holy-water.png
 ---
 name: Horse (riding)
 type: Gear
 data:
-  description: ""
   cost: 60
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
-img: icons/environment/creatures/horse-tan.webp
+img: systems/whitehack3e/assets/icons/gear/horse-riding.png
 ---
 name: Horse (battle trained)
 type: Gear
 data:
-  description: ""
   cost: 120
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
-img: icons/environment/creatures/horse-brown.webp
+img: systems/whitehack3e/assets/icons/gear/horse-head.png
 ---
 name: Laboratory (portable)
 type: Gear
 data:
-  description: ""
   cost: 130
   costCoinType: gp
   weight: heavy
   equippedStatus: stored
   quantity: 1
-img: icons/tools/laboratory/vials-blue-pink.webp
+img: systems/whitehack3e/assets/icons/gear/test-tubes.png
 ---
 name: Lantern
 type: Gear
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/lights/lantern-iron-yellow.webp
+img: systems/whitehack3e/assets/icons/gear/lantern.png
 ---
 name: Lock picks
 type: Gear
 data:
-  description: ""
   cost: 20
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/tools/hand/lockpicks-steel-grey.webp
+img: systems/whitehack3e/assets/icons/gear/lockpicks.png
 ---
 name: Map
 type: Gear
 data:
-  description: ""
   cost: 20
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/tools/navigation/map-simple-brown.webp
+img: systems/whitehack3e/assets/icons/gear/treasure-map.png
 ---
 name: Mirror (small steel)
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/survival/mirror-plain.webp
+img: systems/whitehack3e/assets/icons/gear/mirror-mirror.png
 ---
 name: Mule
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
+img: systems/whitehack3e/assets/icons/gear/donkey.png
 ---
 name: Oil (lamp), 1 pint
 type: Gear
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/containers/kitchenware/vase-015.webp
+img: systems/whitehack3e/assets/icons/gear/round-bottom-flask.png
 ---
 name: Pole, 10 ft
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: heavy
   equippedStatus: stored
   quantity: 1
-img: icons/commodities/wood/wood-pole.webp
+img: systems/whitehack3e/assets/icons/gear/half-log.png
 ---
 name: Raft
 type: Gear
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
-img: icons/commodities/wood/bark-brown-red.webp
+img: systems/whitehack3e/assets/icons/gear/raft.png
 ---
 name: Rations, dried (day)
 type: Gear
 data:
-  description: ""
   cost: 3
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/containers/bags/case-simple-leather-brown.webp
+img: systems/whitehack3e/assets/icons/gear/cornucopia.png
 ---
 name: Rations, trail (day)
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/tools/cooking/bowl-steaming-brown.webp
+img: systems/whitehack3e/assets/icons/gear/sausages-ribbon.png
 ---
 name: Rope, elven (50 ft)
 type: Gear
 data:
-  description: ""
   cost: 70
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/survival/rope-wrapped-tan.webp
+img: systems/whitehack3e/assets/icons/gear/lasso.png
 ---
 name: Rope, hemp (50 ft)
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/survival/rope-wrapped-brown.webp
+img: systems/whitehack3e/assets/icons/gear/rope-coil.png
 ---
 name: Sack
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/containers/bags/sack-cloth-brown.webp
+img: systems/whitehack3e/assets/icons/gear/swap-bag.png
 ---
 name: Saddle bags
 type: Gear
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/containers/bags/satchel-leather-white-tan.webp
+img: systems/whitehack3e/assets/icons/gear/knapsack.png
 ---
 name: Saddle
 type: Gear
 data:
-  description: ""
   cost: 25
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
-img: icons/commodities/leather/leather-worn-tan.webp
+img: systems/whitehack3e/assets/icons/gear/saddle.png
 ---
 name: Scroll, empty
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/scrolls/scroll-plain-tan.webp
+img: systems/whitehack3e/assets/icons/gear/scroll-unfurled.png
 ---
 name: Shovel
 type: Gear
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/tools/hand/shovel-spade-steel-grey.webp
+img: systems/whitehack3e/assets/icons/gear/spade.png
 ---
 name: Skiing gear
 type: Gear
 data:
-  description: ""
   cost: 15
   costCoinType: gp
   weight: heavy
   equippedStatus: stored
   quantity: 1
+img: systems/whitehack3e/assets/icons/gear/skis.png
 ---
 name: Sled
 type: Gear
 data:
-  description: ""
   cost: 20
   costCoinType: gp
   weight: transport
   equippedStatus: stored
   quantity: 1
+img: systems/whitehack3e/assets/icons/gear/sled.png
 ---
 name: Sleeping bag
 type: Gear
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/survival/bedroll-grey.webp
+img: systems/whitehack3e/assets/icons/gear/sleeping-bag.png
 ---
 name: Snare
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/environment/traps/trap-jaw-green.webp
+img: systems/whitehack3e/assets/icons/gear/barbed-wire.png
 ---
 name: Spell book (blank)
 type: Gear
 data:
-  description: ""
   cost: 100
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/books/book-symbol-spiral-silver-blue.webp
+img: systems/whitehack3e/assets/icons/gear/spell-book.png
 ---
 name: Spike, iron
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 12
-img: icons/tools/fasteners/pin-spiked.webp
+img: systems/whitehack3e/assets/icons/gear/coiled-nail.png
 ---
 name: Tent
 type: Gear
 data:
-  description: ""
   cost: 15
   costCoinType: gp
   weight: heavy
   equippedStatus: stored
   quantity: 1
-img: icons/environment/settlement/tent.webp
+img: systems/whitehack3e/assets/icons/gear/camping-tent.png
 ---
 name: Tinderbox
 type: Gear
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
+img: systems/whitehack3e/assets/icons/gear/flame.png
 ---
 name: Torch
 type: Gear
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: minor
   equippedStatus: stored
   quantity: 6
-img: icons/sundries/lights/torch-black.webp
+img: systems/whitehack3e/assets/icons/gear/torch.png
 ---
 name: Waterskin
 type: Gear
 data:
-  description: ""
   cost: 3
   costCoinType: gp
   weight: regular
   equippedStatus: stored
   quantity: 1
-img: icons/sundries/survival/waterskin-leather-brown.webp
+img: systems/whitehack3e/assets/icons/gear/magic-potion.png
 ---
 name: Wolvesbane & Garlic
 type: Gear
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: small
   equippedStatus: stored
   quantity: 1
-img: icons/tools/laboratory/mortar-powder-green.webp
+img: systems/whitehack3e/assets/icons/gear/herbs-bundle.png

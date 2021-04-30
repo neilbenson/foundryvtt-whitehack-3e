@@ -1,7 +1,6 @@
 name: Axe
 type: Weapon
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: regular
@@ -9,13 +8,11 @@ data:
   damage: d6plus1
   range: 0
   rateOfFire: none
-  special: ""
-img: icons/weapons/axes/axe-broad-engraved.webp
+img: systems/whitehack3e/assets/icons/weapons/battered-axe.png
 ---
 name: Sword
 type: Weapon
 data:
-  description: ""
   cost: 10
   costCoinType: gp
   weight: regular
@@ -23,13 +20,11 @@ data:
   damage: d6plus1
   range: 0
   rateOfFire: none
-  special: ""
-img: icons/weapons/swords/sword-guard-worn-brown.webp
+img: systems/whitehack3e/assets/icons/weapons/relic-blade.png
 ---
 name: Club
 type: Weapon
 data:
-  description: ""
   cost: 0
   costCoinType: gp
   weight: minor
@@ -37,13 +32,12 @@ data:
   damage: d6minus2
   range: 0
   rateOfFire: none
-  special: "Knock-out, Improvised"
-img: icons/weapons/clubs/club-banded-brown.webp
+  special: Knock-out, Improvised
+img: systems/whitehack3e/assets/icons/weapons/wood-club.png
 ---
 name: Crossbow
 type: Weapon
 data:
-  description: ""
   cost: 30
   costCoinType: gp
   weight: heavy
@@ -51,13 +45,12 @@ data:
   damage: d6plus1
   range: 70
   rateOfFire: oneInTwo
-  special: "Two handed"
-img: icons/weapons/crossbows/crossbow-purple.webp
+  special: Two handed
+img: systems/whitehack3e/assets/icons/weapons/crossbow.png
 ---
 name: Dagger
 type: Weapon
 data:
-  description: ""
   cost: 3
   costCoinType: gp
   weight: minor
@@ -65,13 +58,11 @@ data:
   damage: d6minus2
   range: 15
   rateOfFire: one
-  special: ""
-img: icons/weapons/daggers/dagger-straight-blue.webp
+img: systems/whitehack3e/assets/icons/weapons/plain-dagger.png
 ---
 name: Dart
 type: Weapon
 data:
-  description: ""
   cost: 1
   costCoinType: gp
   weight: small
@@ -79,13 +70,11 @@ data:
   damage: oneDmg
   range: 20
   rateOfFire: three
-  special: ""
-img: icons/weapons/thrown/dart-feathered.webp
+img: systems/whitehack3e/assets/icons/weapons/dart.png
 ---
 name: Flail
 type: Weapon
 data:
-  description: ""
   cost: 8
   costCoinType: gp
   weight: regular
@@ -93,13 +82,12 @@ data:
   damage: d6
   range: 0
   rateOfFire: none
-  special: "Ignore shield AC"
-img: icons/weapons/maces/flail-spiked-grey.webp
+  special: Ignore shield AC
+img: systems/whitehack3e/assets/icons/weapons/flail.png
 ---
 name: Great Axe
 type: Weapon
 data:
-  description: ""
   cost: 15
   costCoinType: gp
   weight: heavy
@@ -107,13 +95,12 @@ data:
   damage: d6plus2
   range: 0
   rateOfFire: none
-  special: "Two handed"
-img: icons/weapons/polearms/halberd-crescent-engraved.webp
+  special: Two handed
+img: systems/whitehack3e/assets/icons/weapons/war-axe.png
 ---
 name: Great Sword
 type: Weapon
 data:
-  description: ""
   cost: 15
   costCoinType: gp
   weight: heavy
@@ -121,13 +108,13 @@ data:
   damage: d6plus2
   range: 0
   rateOfFire: none
-  special: "Two handed"
-img: icons/weapons/swords/greatsword-crossguard-silver.webp
+  special: Two handed
+img: systems/whitehack3e/assets/icons/weapons/two-handed-sword.png
 ---
 name: Pole arm
 type: Weapon
 data:
-  description: "Reach means that enemies within 10 feet are within melee range. This is particularly important when dealing with free atacks."
+  description: Reach means that enemies within 10 feet are within melee range. This is particularly important when dealing with free atacks.
   cost: 10
   costCoinType: gp
   weight: heavy
@@ -135,13 +122,12 @@ data:
   damage: d6plus1
   range: 0
   rateOfFire: none
-  special: "Two handed, Reach"
-img: icons/weapons/polearms/halberd-worn-steel.webp
+  special: Two handed, Reach
+img: systems/whitehack3e/assets/icons/weapons/sharp-halberd.png
 ---
 name: Javelin
 type: Weapon
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: minor
@@ -149,13 +135,12 @@ data:
   damage: d6
   range: 40
   rateOfFire: one
-  special: "d6-2 damage in melee"
-img: icons/weapons/polearms/javelin.webp
+  special: d6-2 damage in melee
+img: systems/whitehack3e/assets/icons/weapons/thrown-spear.png
 ---
 name: Longbow
 type: Weapon
 data:
-  description: ""
   cost: 40
   costCoinType: gp
   weight: regular
@@ -163,13 +148,12 @@ data:
   damage: d6
   range: 70
   rateOfFire: one
-  special: "Two handed"
-img: icons/weapons/bows/longbow-leather-green.webp
+  special: Two handed
+img: systems/whitehack3e/assets/icons/weapons/bow-string.png
 ---
 name: Mace
 type: Weapon
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: regular
@@ -177,13 +161,12 @@ data:
   damage: d6
   range: 0
   rateOfFire: none
-  special: "+1 AV vs. metal armour"
-img: icons/weapons/maces/mace-flanged-steel.webp
+  special: +1 AV vs. metal armour
+img: systems/whitehack3e/assets/icons/weapons/flanged-mace.png
 ---
 name: Warhammer
 type: Weapon
 data:
-  description: ""
   cost: 5
   costCoinType: gp
   weight: regular
@@ -191,13 +174,12 @@ data:
   damage: d6
   range: 0
   rateOfFire: none
-  special: "+1 AV vs. metal armour"
-img: icons/weapons/hammers/hammer-war-rounding.webp
+  special: +1 AV vs. metal armour
+img: systems/whitehack3e/assets/icons/weapons/warhammer.png
 ---
 name: Morning Star
 type: Weapon
 data:
-  description: ""
   cost: 8
   costCoinType: gp
   weight: regular
@@ -205,13 +187,13 @@ data:
   damage: d6
   range: 0
   rateOfFire: none
-  special: "+1 AV vs. metal armour, x3 crit damage"
-img: icons/weapons/maces/mace-round-spiked-black.webp
+  special: +1 AV vs. metal armour, x3 crit damage
+img: systems/whitehack3e/assets/icons/weapons/mace-head.png
 ---
 name: Musket
 type: Weapon
 data:
-  description: "Firearms do not fit in every campaign. The examples given represent a pre-industrial level of technology."
+  description: Firearms do not fit in every campaign. The examples given represent a pre-industrial level of technology.
   cost: 150
   costCoinType: gp
   weight: heavy
@@ -219,13 +201,13 @@ data:
   damage: d6plus2
   range: 30
   rateOfFire: oneInFour
-  special: "Two handed"
-img: icons/weapons/guns/gun-wood.webp
+  special: Two handed
+img: systems/whitehack3e/assets/icons/weapons/musket.png
 ---
 name: Pistol
 type: Weapon
 data:
-  description: "Firearms do not fit in every campaign. The examples given represent a pre-industrial level of technology."
+  description: Firearms do not fit in every campaign. The examples given represent a pre-industrial level of technology.
   cost: 100
   costCoinType: gp
   weight: regular
@@ -233,13 +215,12 @@ data:
   damage: d6plus1
   range: 20
   rateOfFire: oneInThree
-  special: ""
-img: icons/weapons/guns/gun-pistol-flintlock.webp
+img: systems/whitehack3e/assets/icons/weapons/crossed-pistols.png
 ---
 name: Quarterstaff
 type: Weapon
 data:
-  description: "Reach means that enemies within 10 feet are within melee range. This is particularly important when dealing with free atacks."
+  description: Reach means that enemies within 10 feet are within melee range. This is particularly important when dealing with free atacks.
   cost: 1
   costCoinType: gp
   weight: regular
@@ -247,13 +228,12 @@ data:
   damage: d6minus1
   range: 0
   rateOfFire: none
-  special: "Two handed, Reach"
-img: icons/weapons/staves/staff-simple.webp
+  special: Two handed, Reach
+img: systems/whitehack3e/assets/icons/weapons/bo.png
 ---
 name: Scimitar
 type: Weapon
 data:
-  description: ""
   cost: 8
   costCoinType: gp
   weight: regular
@@ -261,13 +241,12 @@ data:
   damage: d6
   range: 0
   rateOfFire: none
-  special: "+1 AV while riding"
-img: icons/weapons/swords/scimitar-worn-blue.webp
+  special: +1 AV while riding
+img: systems/whitehack3e/assets/icons/weapons/dervish-swords.png
 ---
 name: Shortbow
 type: Weapon
 data:
-  description: ""
   cost: 25
   costCoinType: gp
   weight: regular
@@ -275,13 +254,12 @@ data:
   damage: d6minus1
   range: 50
   rateOfFire: one
-  special: "Two handed, Use mounted"
-img: icons/weapons/bows/shortbow-leather.webp
+  special: Two handed, Use mounted
+img: systems/whitehack3e/assets/icons/weapons/bow-arrow.png
 ---
 name: Shortsword
 type: Weapon
 data:
-  description: ""
   cost: 8
   costCoinType: gp
   weight: regular
@@ -289,13 +267,11 @@ data:
   damage: d6minus1
   range: 0
   rateOfFire: none
-  special: ""
-img: icons/weapons/swords/shortsword-guard-worn.webp
+img: systems/whitehack3e/assets/icons/weapons/stiletto.png
 ---
 name: Sling
 type: Weapon
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: small
@@ -303,13 +279,13 @@ data:
   damage: d6minus2
   range: 30
   rateOfFire: one
-  special: "Use with regular stones"
-img: icons/weapons/slings/slingshot-wood.webp
+  special: Use with regular stones
+img: systems/whitehack3e/assets/icons/weapons/sling.png
 ---
 name: Spear
 type: Weapon
 data:
-  description: "Reach means that enemies within 10 feet are within melee range. This is particularly important when dealing with free atacks."
+  description: Reach means that enemies within 10 feet are within melee range. This is particularly important when dealing with free atacks.
   cost: 2
   costCoinType: gp
   weight: regular
@@ -317,13 +293,12 @@ data:
   damage: d6
   range: 0
   rateOfFire: none
-  special: "Reach"
-img: icons/weapons/polearms/spear-flared-worn.webp
+  special: Reach
+img: systems/whitehack3e/assets/icons/weapons/spear-feather.png
 ---
 name: Throwing Axe
 type: Weapon
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: minor
@@ -331,13 +306,12 @@ data:
   damage: d6minus2
   range: 25
   rateOfFire: one
-  special: "-1 AV in melee"
-img: icons/weapons/axes/shortaxe-yellow.webp
+  special: -1 AV in melee
+img: systems/whitehack3e/assets/icons/weapons/hatchets.png
 ---
 name: Throwing Knife
 type: Weapon
 data:
-  description: ""
   cost: 2
   costCoinType: gp
   weight: minor
@@ -345,13 +319,12 @@ data:
   damage: d6minus2
   range: 25
   rateOfFire: one
-  special: "-1 AV in melee"
-img: icons/weapons/thrown/dagger-simple.webp
+  special: -1 AV in melee
+img: systems/whitehack3e/assets/icons/weapons/thrown-daggers.png
 ---
 name: Unarmed
 type: Weapon
 data:
-  description: ""
   cost: 0
   costCoinType: gp
   weight: small
@@ -359,4 +332,5 @@ data:
   damage: d6minus3
   range: 0
   rateOfFire: none
-  special: "Knock-out, Grapple"
+  special: Knock-out, Grapple
+img: systems/whitehack3e/assets/icons/weapons/punch.png

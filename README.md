@@ -61,6 +61,8 @@ Thanks to:
 
 The background texture for actor and item sheets and dialogs is from https://www.myfreetextures.com/worn-parchment-paper-4/ and is used in accordance with the [My Free Textures Licence/Terms of Use](https://www.myfreetextures.com/use-license/).
 
+Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/). Sled icon by me, but it's hardly a work of art so I ain't too worried.
+
 ## TO DO:
 
 - [ ] Add AC input on Attack Dialog?
