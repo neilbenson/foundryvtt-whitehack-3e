@@ -1,6 +1,16 @@
 import * as c from './constants.js';
 
 class WH3Actor extends Actor {
+
+  /**
+   * Set default token for actors
+   */
+  prepareData() {
+    if (!this.data.img) { this.data.img = c.DEFAULTACTORIMAGE }
+
+    super.prepareData();
+  }
+
   /**
    * Show dialog to update groups for attribute
    * @param {string} attribute

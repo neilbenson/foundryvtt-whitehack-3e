@@ -8,6 +8,15 @@ class WHItem extends Item {
   };
 
   /**
+   * Set default token for items
+   */
+  prepareData() {
+    if (!this.data.img) { this.data.img = c.DEFAULTITEMIMAGE }
+
+    super.prepareData();
+  }
+
+  /**
    * Send item info to chat
    */
   async sendInfoToChat() {
