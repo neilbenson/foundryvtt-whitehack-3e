@@ -53,7 +53,7 @@ type: Gear
 data:
   cost: 60
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/wood-canoe.png
@@ -73,7 +73,7 @@ type: Gear
 data:
   cost: 50
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/old-wagon.png
@@ -203,7 +203,7 @@ type: Gear
 data:
   cost: 60
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/horse-riding.png
@@ -213,7 +213,7 @@ type: Gear
 data:
   cost: 120
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/horse-head.png
@@ -273,7 +273,7 @@ type: Gear
 data:
   cost: 5
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/donkey.png
@@ -303,7 +303,7 @@ type: Gear
 data:
   cost: 10
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/raft.png
@@ -373,7 +373,7 @@ type: Gear
 data:
   cost: 25
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/saddle.png
@@ -413,7 +413,7 @@ type: Gear
 data:
   cost: 20
   costCoinType: gp
-  weight: transport
+  weight: noEncumbrance
   equippedStatus: stored
   quantity: 1
 img: systems/whitehack3e/assets/icons/gear/sled.png

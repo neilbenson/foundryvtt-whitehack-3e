@@ -27,7 +27,7 @@ export const wh3e = {
     minor: "wh3e.weightTypes.minor",
     small: "wh3e.weightTypes.small",
     negligible: "wh3e.weightTypes.negligible",
-    transport: "wh3e.weightTypes.transport"
+    noEncumbrance: "wh3e.weightTypes.noEncumbrance"
   },
   roFShotsPerRound: {
     none: "wh3e.misc.none",

@@ -27,7 +27,7 @@
         <td class="gear-weight">
           <span>{{getTextFromKey "wh3e.weightTypes" gear.data.weight}}</span>
         </td>
-        {{#if (isNotTransport gear.data.weight)}}
+        {{#if (hasEncumbrance gear.data.weight)}}
         {{> controlsEquipStore name=gear.name status=gear.data.equippedStatus}}
         {{else}}
         <td class="equippable"></td>

@@ -150,7 +150,7 @@
       "minor": "Minor",
       "small": "Small",
       "negligible": "Negligible",
-      "transport": "Transport"
+      "noEncumbrance": "---"
     },
     "roFShotsPerRound": {
       "none": "None",
