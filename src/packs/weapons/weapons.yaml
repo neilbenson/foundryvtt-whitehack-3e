@@ -262,7 +262,7 @@ type: Weapon
 data:
   cost: 8
   costCoinType: gp
-  weight: regular
+  weight: minor
   equippedStatus: stored
   damage: d6minus1
   range: 0
@@ -327,7 +327,7 @@ type: Weapon
 data:
   cost: 0
   costCoinType: gp
-  weight: small
+  weight: noEncumbrance
   equippedStatus: stored
   damage: d6minus3
   range: 0

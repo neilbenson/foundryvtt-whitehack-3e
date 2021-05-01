@@ -3,7 +3,7 @@
   "title": "Whitehack Third Edition",
   "description": "A system for playing Whitehack Third Edition",
   "author": "Neil Benson (@OldScouserRPing)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimumCoreVersion": "0.7.9",
   "compatibleCoreVersion": "0.7.9",
   "esmodules": ["wh3e.js"],

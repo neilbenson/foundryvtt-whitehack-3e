@@ -161,12 +161,14 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   if (toHitResult <= toHitTarget) {
     // Hit - Damage Roll
     let rollFormula = "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
-    const damageRoll = new Roll(rollFormula, rollData).evaluate();
+    let damageRoll = new Roll(rollFormula, rollData).evaluate();
     damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
+    cardData.dmgFormula = damageRoll._formula;
+    cardData.dmgDice = damageRoll.dice[0].expression;
     cardData.damageTemplate = await damageRoll.render();
-    cardData.damageResult = damageRoll.total;
-    cardData.damageHeader = getDamageResultHeader(weapon.name, damageRoll.total);
+    cardData.damageResult = damageRoll.total >= 1 ? damageRoll.total : 1;
+    cardData.damageHeader = getDamageResultHeader(weapon.name, cardData.damageResult);
 
     if (game.dice3d) {
       await game.dice3d.showForRoll(damageRoll, game.user, true, null, false);
@@ -317,7 +319,11 @@ const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne,
 const getToHitResultHeader = (toHitResult, weapon, toHitTarget) => {
   const attackVsTarget = game.i18n.localize("wh3e.combat.attackVsTarget");
   const hitsAC = game.i18n.localize("wh3e.combat.hitsAC");
-  return `${weapon} ${attackVsTarget} ${toHitTarget} ${hitsAC} ${toHitResult}`
+  if (toHitResult <= toHitTarget) {
+    return `${weapon} ${attackVsTarget} ${toHitTarget} ${hitsAC} ${toHitResult - 1}`;
+  } else {
+    return `${weapon} ${attackVsTarget} ${toHitTarget}`;
+  }
 };
 
 /**
