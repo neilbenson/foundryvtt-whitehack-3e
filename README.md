@@ -69,5 +69,3 @@ Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [C
 - [ ] Setting in Config menu - what to include?
 - [ ] Tracking XP
 - [ ] Target by token and use target AC for roll
-- [ ] Section for CP, SP and GP
-
