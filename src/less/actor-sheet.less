@@ -34,23 +34,19 @@
     }
     .attribute {
       .groups {
-        margin-left: 5px;
+        margin-left: 15px;
         margin-right: 5px;
+        padding-left: 5px;
         text-align: left;
       }
-      .modifier,
-      .modifier2 {
+      .modifier {
         flex: 0;
         position: absolute;
-        width: 15px;
-        height: 18px;
-        margin-top: -18px;
-      }
-      .modifier {
-        left: 82px;
-      }
-      .modifier2 {
-        left: 102px;
+        height: 20px;
+        width: 25px;
+        left: 80px;
+        background-color: @wh-readonly;
+        .default-borders;
       }
       input {
         height: @big-input-height;

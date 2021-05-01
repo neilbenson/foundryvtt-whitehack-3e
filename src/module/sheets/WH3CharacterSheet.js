@@ -140,6 +140,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   async _attributeChangeHandler(event) {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
+    let modObj = { [attrName + c.MOD]: 0 };
 
     // Set STR modifiers for attack and damage
     if (attrName === c.STR) {
@@ -161,12 +162,8 @@ export default class WH3CharacterSheet extends ActorSheet {
           }
         }
       });
-      return;
-    }
-
-    // Set modifiers for other attributes
-    let modObj = { [attrName + c.MOD]: 0 };
-    if (attrName !== c.CHA) {
+    } else if (attrName !== c.CHA) {
+      modObj = { [attrName + c.MOD]: 0 }
       if (attrValue >= 13) {
         if (attrValue < 16) {
           modObj[attrName + c.MOD] = 1;

@@ -15,17 +15,17 @@
       {{!-- Crappy data scoping issue in Handlebars took me ages to figure out, need to use ../
       in nested component to access parent data. F'n stupid I know --}}
       {{#if (showModifier key ../charClass)}}
-      <input type="text" name="data.attributes.{{key}}.mod" value="{{attribute.mod}}" data-dtype="Number"
-             class="flex-grow1 modifier read-only" readonly="readonly"
-             title="{{getTextFromKey "wh3e.tooltip" key "Mod"}}" />
       {{#if (eq key 'str')}}
-      <input type="text" name="data.attributes.str.dmgMod" value="{{attribute.dmgMod}}" data-dtype="Number"
-             class="flex-grow1 modifier2 read-only" readonly="readonly"
-             title="{{localize "wh3e.tooltip.strModDamage"}}" />
+      <div title="{{localize "wh3e.tooltip.strMod"}}"
+           class="flex-grow1 modifier">{{attribute.mod}}/{{attribute.dmgMod}}</div>
+      {{else}}
+      <div title="{{getTextFromKey "wh3e.tooltip" key "Mod"}}"
+           class="flex-grow1 modifier">{{attribute.mod}}</div>
       {{/if}}
       {{/if}}
       <input type="text" name="data.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String"
-             class="flex-grow12 groups read-only" readonly="readonly" title="{{attribute.groups}}" />
+             class="flex-grow12 groups read-only" readonly="readonly"
+             title="{{attribute.groups}}" />
       <div class="flex-grow1">
         {{#if ../activeAbilities}}
         <a class="manage-groups" data-groups-for="{{key}}"

@@ -1,3 +1,33 @@
+name: Gold Piece
+type: Gear
+data:
+  cost: 1
+  costCoinType: gp
+  weight: negligible
+  equippedStatus: stored
+  quantity: 1
+img: systems/whitehack3e/assets/icons/gear/crown-coin.png
+---
+name: Silver Piece
+type: Gear
+data:
+  cost: 1
+  costCoinType: sp
+  weight: negligible
+  equippedStatus: stored
+  quantity: 1
+img: systems/whitehack3e/assets/icons/gear/metal-disc.png
+---
+name: Copper Piece
+type: Gear
+data:
+  cost: 1
+  costCoinType: cp
+  weight: negligible
+  equippedStatus: stored
+  quantity: 1
+img: systems/whitehack3e/assets/icons/gear/token.png
+---
 name: Backpack
 type: Gear
 data:
