@@ -9,9 +9,9 @@
         {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addAbility") type="Ability"}}
       </tr>
     </thead>
-    <tbody>
+    <tbody class="item-list">
       {{#each abilities as |ability id|}}
-      <tr data-item-id="{{ability._id}}">
+      <tr data-item-id="{{ability._id}}" class="item">
         <td class="item-image">
           <a class="item-description">
             <span class="item-info" style="background-image: url({{ability.img}})"></span>

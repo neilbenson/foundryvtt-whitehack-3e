@@ -12,9 +12,9 @@
         {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addWeapon") type="Weapon"}}
       </tr>
     </thead>
-    <tbody>
+    <tbody class="item-list">
       {{#each weapons as |weapon id|}}
-      <tr data-item-id="{{weapon._id}}" class="weapons">
+      <tr data-item-id="{{weapon._id}}" class="weapons item">
         <td class="item-image">
           <a class="attack-roll">
             <span class="weapon-rollable" style="background-image: url({{weapon.img}})"></span>

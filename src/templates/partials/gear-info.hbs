@@ -10,9 +10,9 @@
         {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addGear") type="Gear"}}
       </tr>
     </thead>
-    <tbody>
+    <tbody class="item-list">
       {{#each gear as |gear id|}}
-      <tr data-item-id="{{gear._id}}">
+      <tr data-item-id="{{gear._id}}" class="item">
         <td class="item-image">
           <a class="item-description">
             <span class="item-info" style="background-image: url({{gear.img}})"></span>

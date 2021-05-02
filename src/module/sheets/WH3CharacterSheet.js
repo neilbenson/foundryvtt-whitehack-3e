@@ -11,7 +11,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       width: 600,
       height: 584,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
-      resizable: false
+      resizable: false,
+      dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
     })
   };
 
