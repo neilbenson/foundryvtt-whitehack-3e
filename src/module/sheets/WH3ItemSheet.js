@@ -12,7 +12,7 @@ export default class WH3ItemSheet extends ItemSheet {
   };
 
   get template() {
-    return `systems/whitehack3e/templates/sheets/${this.item.data.type}-sheet.hbs`;
+    return `systems/whitehack3e/templates/sheets/${this.item.data.type.toLowerCase()}-sheet.hbs`;
   };
 
   /**
