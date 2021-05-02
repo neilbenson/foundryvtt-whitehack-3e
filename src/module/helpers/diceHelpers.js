@@ -165,7 +165,11 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
     cardData.dmgFormula = damageRoll._formula;
-    cardData.dmgDice = damageRoll.dice[0].expression;
+    if (damageRoll.dice.length > 0) {
+      cardData.dmgDice = damageRoll.dice[0].expression;
+    } else {
+      cardData.dmgDice = "Fixed damage";
+    }
     cardData.damageTemplate = await damageRoll.render();
     cardData.damageResult = damageRoll.total >= 1 ? damageRoll.total : 1;
     cardData.damageHeader = getDamageResultHeader(weapon.name, cardData.damageResult);
