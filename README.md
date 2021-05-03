@@ -30,15 +30,6 @@ There are compendiums for:
 
 Which can be dragged directly onto a character or into the items panel.
 
-I have slightly changed the encumbrance system, based on a regular item taking one slot:
-
-- Heavy (2 slots)
-- Regular (1 slot)
-- Minor (2 per slot)
-- Small (5 per slot)
-- Negligible (100 per slot)
-- Transport (doesn't use character encumbrance slots)
-
 The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker you can roll initiative from there or from the relevant token on a battle map.
 
 Full documentation can be accessed in FoundryVTT in the **Game Settings** tab and is also available on the github page for this project [here](https://neilbenson.github.io/foundryvtt-whitehack-3e/)
