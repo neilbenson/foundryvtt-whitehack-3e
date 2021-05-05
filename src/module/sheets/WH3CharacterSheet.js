@@ -8,8 +8,8 @@ export default class WH3CharacterSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
-      width: 600,
-      height: 584,
+      width: 630,
+      height: 620,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
       resizable: false,
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],

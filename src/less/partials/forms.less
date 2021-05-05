@@ -40,8 +40,6 @@
   }
 
   .editor {
-    //border-width: 1px;
-    //box-shadow: 1px 2px @wh-secondary;
     .default-borders;
     padding: 0;
     .editor-content {
@@ -50,36 +48,13 @@
     }
   }
 
-  .sheet-content,
-  .sheet-content .tab .editor {
+  .sheet-content {
+    //.sheet-content .tab .editor {
     height: 100%;
   }
 
   nav.sheet-tabs {
-    flex: 0;
-    position: absolute;
-    transform: rotate(90deg);
-    top: 340px;
-    right: -204px;
-    width: 390px;
-    border-top: none;
-    height: 18px;
-    z-index: -1;
-
     .item {
-      padding: 1px 10px 0;
-      margin-left: -5px;
-      text-indent: 4px;
-      line-height: 16px;
-      background: @window-background;
-      border-top-right-radius: 4px;
-      border-top-left-radius: 80px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.9);
-      font-size: 14px;
-      filter: brightness(0.9);
-      font-weight: normal;
-
       &.active {
         filter: none;
         z-index: 1;
@@ -96,7 +71,6 @@
   }
 
   button {
-    //box-shadow: 1px 2px @wh-secondary;
     background-color: rgba(255, 255, 240, 0.8);
   }
 }

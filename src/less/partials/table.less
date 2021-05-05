@@ -1,14 +1,16 @@
 // Fixed header table
 .fixed_header {
-  width: 584px;
+  //width: 584px;
+  width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
   background-color: rgba(0, 0, 0, 0.2);
+  margin: 0;
   tbody {
     display: block;
     width: 100%;
     overflow: auto;
-    height: 275px;
+    height: 280px;
   }
 
   thead tr {
@@ -38,51 +40,61 @@
     th,
     td {
       &.equippable {
-        width: 80px;
+        width: 14%;
+        min-width: 80px;
       }
     }
   }
 }
 
 .abilities .fixed_header {
-  .fixed_header_styles(262px);
+  .fixed_header_styles(45%, 262px);
   .ability-name {
-    width: 310px;
+    width: 53%;
+    min-width: 310px;
   }
   .ability-type {
-    width: 120px;
+    width: 22%;
+    min-width: 120px;
   }
   .ability-activated {
-    width: 60px;
+    width: 10%;
+    min-width: 60px;
   }
 }
 
 .gear .fixed_header {
-  .fixed_header_styles(232px);
+  .fixed_header_styles(40%, 232px);
   .gear-name {
-    width: 250px;
+    width: 44%;
+    min-width: 250px;
   }
   .gear-weight {
-    width: 90px;
+    width: 15%;
+    min-width: 90px;
   }
   .gear-quantity {
-    width: 70px;
+    width: 12%;
+    min-width: 70px;
   }
 }
 
 .weapons .fixed_header {
-  .fixed_header_styles(60px);
+  .fixed_header_styles(10%, 60px);
   .weapon-name {
-    width: 160px;
+    width: 29%;
+    min-width: 160px;
   }
   .weapon-damage {
-    width: 70px;
+    width: 12%;
+    min-width: 70px;
   }
 }
 
 .armour .fixed_header {
-  .fixed_header_styles(120px);
+  .fixed_header_styles(21%, 120px);
   .armour-name {
-    width: 290px;
+    width: 50%;
+    min-width: 290px;
   }
 }
