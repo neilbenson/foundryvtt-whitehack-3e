@@ -49,19 +49,19 @@
   }
 
   .sheet-content {
-    //.sheet-content .tab .editor {
     height: 100%;
   }
 
   nav.sheet-tabs {
+    height: auto;
+    border: hidden;
+    background-color: rgba(0, 0, 0, 0.1);
     .item {
       &.active {
-        filter: none;
-        z-index: 1;
         font-weight: bold;
-        text-shadow: none;
-        margin-bottom: -1px;
-        text-decoration: underline;
+        background: rgba(0, 0, 0, 0.5);
+        color: #f0f0e0;
+        text-shadow: 1px 1px #000;
       }
     }
   }

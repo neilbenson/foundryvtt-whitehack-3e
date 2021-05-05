@@ -9,7 +9,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
       width: 630,
-      height: 620,
+      height: 625,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
       resizable: false,
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
