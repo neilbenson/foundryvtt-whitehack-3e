@@ -199,7 +199,6 @@ export default class WH3CharacterSheet extends ActorSheet {
         activeStatus: this.updateActiveStatus($(event.currentTarget)),
       },
     });
-    updateActorGroups(this.actor);
   }
 
   /**

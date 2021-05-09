@@ -61,7 +61,7 @@ Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [C
 - [ ] Add AC input on Attack Dialog?
 - [ ] Setting in Config menu - what to include? [AC on input dialog, default species for world]
 - [ ] Target by token and use target AC for roll
-- [ ] Vocation field does not update when vocation ability name is changed
+- [x] Vocation field does not update when vocation ability name is changed
 - [ ] Show weight category/burden
 - [ ] Saving throw modifiers e.g. the Strong bonuses?
 - [ ] Tokenizer uploading low res images - 150x150 instead of 256x256
