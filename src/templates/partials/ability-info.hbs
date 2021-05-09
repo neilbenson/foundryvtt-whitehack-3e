@@ -23,10 +23,14 @@
         <td class="ability-type">
           <span>{{getTextFromKey "wh3e.abilityType" ability.data.type}}</span>
         </td>
+        {{#if (isGroup ability.data.type)}}
+        <td class="ability-activated">&nbsp;</td>
+        {{else}}
         <td class="ability-activated">
           <a class="item-control" title="{{localize "wh3e.sheet.activateDeactivate"}} {{ability.name}}"><i
                class="fas fa-check-square {{ability.data.activeStatus}}"></i></a>
         </td>
+        {{/if}}
         {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editAbility") deleteTitle=(localize
         "wh3e.sheet.deleteAbility") }}
       </tr>

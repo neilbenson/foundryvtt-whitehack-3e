@@ -1,7 +1,6 @@
-import * as c from '../constants.js';
+import * as c from "../constants.js";
 
 export const registerHelpers = async () => {
-
   /**
    * Get string from language file based on partial path (group), key and postfix
    */
@@ -27,28 +26,34 @@ export const registerHelpers = async () => {
     return false;
   });
 
-  Handlebars.registerHelper("stripHtml", html => {
-    return html.replace(/(<([^>]+)>)/ig, c.EMPTYSTRING);
+  /**
+   * Is abilityType a group
+   */
+  Handlebars.registerHelper("isGroup", (abilityType) => {
+    return [c.AFFILIATION, c.SPECIES, c.VOCATION].includes(abilityType);
   });
 
-  Handlebars.registerHelper('upper', aString => {
+  Handlebars.registerHelper("stripHtml", (html) => {
+    return html.replace(/(<([^>]+)>)/gi, c.EMPTYSTRING);
+  });
+
+  Handlebars.registerHelper("upper", (aString) => {
     return aString.toUpperCase();
   });
 
-  Handlebars.registerHelper('lower', aString => {
+  Handlebars.registerHelper("lower", (aString) => {
     return aString.toLowerCase();
   });
 
-  Handlebars.registerHelper('decimals', aNumber => {
+  Handlebars.registerHelper("decimals", (aNumber) => {
     return aNumber.toFixed(2);
   });
 
-  Handlebars.registerHelper('encumbered', (encumbrance, threshold) => {
+  Handlebars.registerHelper("encumbered", (encumbrance, threshold) => {
     return encumbrance > threshold;
   });
 
-  Handlebars.registerHelper('hasEncumbrance', (gear) => {
+  Handlebars.registerHelper("hasEncumbrance", (gear) => {
     return gear !== c.NOENCUMBRANCE;
   });
-
-}
+};

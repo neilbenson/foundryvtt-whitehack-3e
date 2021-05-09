@@ -1,9 +1,8 @@
-import { updateActorGroups, updateActorEncumbrance, updateActorArmourClass } from '../helpers/itemHelpers.js';
-import { rollModDialog, attackRollDialog } from '../helpers/diceHelpers.js';
-import * as c from '../constants.js';
+import { updateActorGroups, updateActorEncumbrance, updateActorArmourClass } from "../helpers/itemHelpers.js";
+import { rollModDialog, attackRollDialog } from "../helpers/diceHelpers.js";
+import * as c from "../constants.js";
 
 export default class WH3CharacterSheet extends ActorSheet {
-
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
@@ -13,8 +12,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
       resizable: false,
       dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
-    })
-  };
+    });
+  }
 
   /**
    * Fetch Foundry data
@@ -22,16 +21,19 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   getData() {
     const data = super.getData();
+    const groups = [c.AFFILIATION, c.SPECIES, c.VOCATION];
     data.config = CONFIG.wh3e;
-    data.weapons = data.items.filter(item => item.type === c.WEAPON);
-    data.gear = data.items.filter(item => item.type === c.GEAR);
-    data.abilities = data.items.filter(item => item.type === c.ABILITY);
-    data.activeAbilities = data.abilities.filter(item => item.data.activeStatus === c.ACTIVE);
-    data.armour = data.items.filter(item => item.type === c.ARMOUR);
+    data.weapons = data.items.filter((item) => item.type === c.WEAPON);
+    data.gear = data.items.filter((item) => item.type === c.GEAR);
+    data.abilities = data.items.filter((item) => item.type === c.ABILITY);
+    data.hasGroups = !!data.abilities.filter((item) => {
+      return groups.includes(item.data.type);
+    });
+    data.armour = data.items.filter((item) => item.type === c.ARMOUR);
     data.charClass = data.data.basics.class;
     data.hasToken = !(this.token === null);
     return data;
-  };
+  }
 
   /**
    * Register event listeners
@@ -55,11 +57,11 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".attack-roll").click(this._attackRollHandler.bind(this));
       html.find(".attribute label").click(this._rollHandler.bind(this));
       html.find("label.savingThrow").click(this._rollHandler.bind(this));
-      html.find('.init-label').click(this._initiativeRollHandler.bind(this));
+      html.find(".init-label").click(this._initiativeRollHandler.bind(this));
     }
 
     super.activateListeners(html);
-  };
+  }
 
   /**
    * Create Item in data and attach to Actor
@@ -74,8 +76,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       name: game.i18n.localize("wh3e.sheet.new" + type),
       type: type,
       data: {
-        description: c.EMPTYSTRING
-      }
+        description: c.EMPTYSTRING,
+      },
     };
 
     if (type === c.ABILITY) {
@@ -103,7 +105,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     if (type !== c.ABILITY) {
       updateActorEncumbrance(this.actor);
     }
-  };
+  }
 
   /**
    * Get Item and show item sheet
@@ -117,7 +119,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const item = this.actor.getOwnedItem(itemId);
 
     item.sheet.render(true);
-  };
+  }
 
   /**
    * Get Item and delete for owner
@@ -131,7 +133,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     await this.actor.deleteOwnedItem(itemId);
     await updateActorEncumbrance(this.actor);
     await updateActorGroups(this.actor);
-  };
+  }
 
   /**
    * Set attribute modifiers when attribute changes
@@ -145,7 +147,8 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     // Set STR modifiers for attack and damage
     if (attrName === c.STR) {
-      let strMod = 0, dmgMod = 0;
+      let strMod = 0,
+        dmgMod = 0;
       if (attrValue >= 13) {
         strMod = 1;
         if (attrValue >= 16) {
@@ -158,13 +161,13 @@ export default class WH3CharacterSheet extends ActorSheet {
             str: {
               mod: strMod,
               value: attrValue,
-              dmgMod: dmgMod
-            }
-          }
-        }
+              dmgMod: dmgMod,
+            },
+          },
+        },
       });
     } else if (attrName !== c.CHA) {
-      modObj = { [attrName + c.MOD]: 0 }
+      modObj = { [attrName + c.MOD]: 0 };
       if (attrValue >= 13) {
         if (attrValue < 16) {
           modObj[attrName + c.MOD] = 1;
@@ -177,14 +180,13 @@ export default class WH3CharacterSheet extends ActorSheet {
           attributes: {
             [attrName]: {
               mod: modObj[attrName + c.MOD],
-              value: attrValue
-            }
-          }
-        }
+              value: attrValue,
+            },
+          },
+        },
       });
     }
-
-  };
+  }
 
   /**
    * Update active status for ability
@@ -192,15 +194,13 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   async _abilityChangeStatusHandler(event) {
     const item = this.getItem(event);
-    await item.update(
-      {
-        data: {
-          activeStatus: this.updateActiveStatus($(event.currentTarget))
-        }
-      }
-    );
+    await item.update({
+      data: {
+        activeStatus: this.updateActiveStatus($(event.currentTarget)),
+      },
+    });
     updateActorGroups(this.actor);
-  };
+  }
 
   /**
    * Update equipped status for gear
@@ -208,16 +208,14 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   async _gearChangeEquippedStatusHandler(event) {
     const item = this.getItem(event);
-    await item.update(
-      {
-        data: {
-          equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus)
-        }
-      }
-    );
+    await item.update({
+      data: {
+        equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus),
+      },
+    });
     await updateActorEncumbrance(this.actor);
     await updateActorArmourClass(this.actor);
-  };
+  }
 
   /**
    * Open dialogue to show selectable groups for attribute
@@ -225,7 +223,7 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   _groupsChangeHandler(event) {
     this.actor.manageGroupsDialog(event.currentTarget.dataset.groupsFor);
-  };
+  }
 
   /**
    * Remove groups from attribute
@@ -233,7 +231,7 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   _groupsDeleteFromAttributeHandler(event) {
     this.actor.clearGroupsDialog(event.currentTarget.dataset.groupsFor);
-  };
+  }
 
   /**
    * Show information on Item in chat
@@ -242,7 +240,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   _itemShowInfoHandler(event) {
     const item = this.getItem(event);
     item.sendInfoToChat();
-  };
+  }
 
   /**
    * Get item (weapon) and send to dialog for attack roll
@@ -251,7 +249,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   _attackRollHandler(event) {
     const item = this.getItem(event);
     attackRollDialog(item);
-  };
+  }
 
   /**
    * Determine if saving throw or attribute roll and send to dialog for roll
@@ -259,19 +257,21 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   _rollHandler(event) {
     const rollAttribute = event.currentTarget.dataset.rollFor;
-    const rollTitle = rollAttribute === c.SAVINGTHROW ? game.i18n.localize("wh3e.sheet.savingThrow") :
-      rollAttribute.toUpperCase() + " " + game.i18n.localize("wh3e.sheet.taskRoll");
+    const rollTitle =
+      rollAttribute === c.SAVINGTHROW
+        ? game.i18n.localize("wh3e.sheet.savingThrow")
+        : rollAttribute.toUpperCase() + " " + game.i18n.localize("wh3e.sheet.taskRoll");
     rollModDialog(this.actor, rollAttribute, rollTitle);
-  };
+  }
 
   /**
    * Initiate rollInitiative method on actor
    * @param {Object} event
    */
   _initiativeRollHandler(event) {
-    event.preventDefault()
-    this.actor.rollInitiative(this.token)
-  };
+    event.preventDefault();
+    this.actor.rollInitiative(this.token);
+  }
 
   /**
    * When item is dropped on actor sheet update items for actor
@@ -280,7 +280,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   async _onDrop(event) {
     await super._onDrop(event);
     updateActorEncumbrance(this.actor);
-  };
+  }
 
   /**
    * Get item for event based on table
@@ -290,7 +290,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   getItem(event) {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
     return this.actor.getOwnedItem(itemId);
-  };
+  }
 
   /**
    * Toggle equipped status
@@ -302,8 +302,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       return c.EQUIPPED;
     } else {
       return c.STORED;
-    };
-  };
+    }
+  }
 
   /**
    * Toggle active status for icon
@@ -316,6 +316,5 @@ export default class WH3CharacterSheet extends ActorSheet {
     } else {
       return c.INACTIVE;
     }
-  };
-
+  }
 }
