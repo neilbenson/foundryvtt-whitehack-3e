@@ -1,8 +1,17 @@
 import * as c from "./constants.js";
 
 class WH3Actor extends Actor {
+  constructor(...args) {
+    // Set species
+    if (!args[0].data.basics.species) {
+      args[0].data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
+    }
+
+    super(...args);
+  }
+
   /**
-   * Set default token for actors
+   * Set default token
    */
   prepareData() {
     if (!this.data.img) {

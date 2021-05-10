@@ -18,6 +18,7 @@
         "level": 1,
         "class": "",
         "vocation": "",
+        "species": "",
         "numberOfSlots": 1,
         "numberOfGroups": 1
       },
@@ -68,7 +69,6 @@
         "equipped": 0,
         "stored": 0
       },
-      "species": "",
       "coin": {
         "gp": 0,
         "sp": 0,

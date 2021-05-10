@@ -78,7 +78,7 @@ export const updateActorGroups = async (actor) => {
   // Get vocation and species
   const speciesObj = items.filter((item) => item.type === c.ABILITY && item.data.data.type === c.SPECIES);
   const vocationObj = items.filter((item) => item.type === c.ABILITY && item.data.data.type === c.VOCATION);
-  const species = speciesObj.length > 0 ? speciesObj[0].name : c.EMPTYSTRING;
+  const species = speciesObj.length > 0 ? speciesObj[0].name : game.settings.get("whitehack3e", "defaultSpecies");
   const vocation = vocationObj.length > 0 ? vocationObj[0].name : c.EMPTYSTRING;
 
   await actor.update({

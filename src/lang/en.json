@@ -23,6 +23,7 @@
       "class": "Class",
       "vocation": "Vocation",
       "species": "Species",
+      "defaultSpecies": "Human",
       "savingThrow": "ST",
       "attackValue": "AV",
       "armourClass": "AC",
@@ -216,6 +217,10 @@
       "monsterHDAnyValue": "You can put any value in here, for example < to indicate a creature with 1 hp",
       "monsterXP": "Base XP award",
       "manageGroups": "Manage groups for"
+    },
+    "setting": {
+      "defaultSpecies": "Default Species",
+      "defaultSpeciesHint": "Default species for the world, this will be applied if the PC doesn't have a species group"
     }
   }
 }
