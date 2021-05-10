@@ -1,4 +1,5 @@
 import { updateActorEncumbrance, updateActorGroups } from "../helpers/itemHelpers.js";
+import * as c from "../constants.js";
 
 export default class WH3ItemSheet extends ItemSheet {
   static get defaultOptions() {

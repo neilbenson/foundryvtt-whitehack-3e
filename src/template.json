@@ -61,6 +61,10 @@
       },
       "savingThrow": 5,
       "languages": "",
+      "xp": {
+        "current": 0,
+        "nextLevel": 0
+      },
       "corruptionLevel": {
         "value": 0,
         "disorders": ""

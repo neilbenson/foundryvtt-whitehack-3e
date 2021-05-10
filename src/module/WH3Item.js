@@ -1,17 +1,25 @@
-import * as c from './constants.js';
+import * as c from "./constants.js";
 
 class WHItem extends Item {
   chatTemplate = {
     [c.GEAR]: "systems/whitehack3e/templates/chat/item-info.hbs",
     [c.ABILITY]: "systems/whitehack3e/templates/chat/item-info.hbs",
-    [c.ARMOUR]: "systems/whitehack3e/templates/chat/armour-info.hbs"
+    [c.ARMOUR]: "systems/whitehack3e/templates/chat/armour-info.hbs",
   };
 
   /**
    * Set default token for items
    */
   prepareData() {
-    if (!this.data.img) { this.data.img = c.DEFAULTITEMIMAGE }
+    if (!this.data.img) {
+      const abilityTypeIcons = {
+        [c.ABILITY]: [c.DEFAULTABILITYIMAGE],
+        [c.ARMOUR]: [c.DEFAULTARMOURIMAGE],
+        [c.GEAR]: [c.DEFAULTGEARIMAGE],
+        [c.WEAPON]: [c.DEFAULTWEAPONIMAGE],
+      };
+      this.data.img = abilityTypeIcons[this.data.type][0];
+    }
 
     super.prepareData();
   }
@@ -22,18 +30,17 @@ class WHItem extends Item {
   async sendInfoToChat() {
     let messageData = {
       user: game.user._id,
-      speaker: ChatMessage.getSpeaker()
+      speaker: ChatMessage.getSpeaker(),
     };
 
     let cardData = {
       ...this.data,
-      owner: this.actor.id
+      owner: this.actor.id,
     };
     messageData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
     messageData.roll = true;
     ChatMessage.create(messageData);
-  };
-
-};
+  }
+}
 
 export default WHItem;

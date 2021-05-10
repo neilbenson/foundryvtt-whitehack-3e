@@ -75,7 +75,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const type = event.currentTarget.dataset.type;
 
     let itemData = {
-      img: c.DEFAULTACTORIMAGE,
+      img: c.DEFAULTGEARIMAGE,
       name: game.i18n.localize("wh3e.sheet.new" + type),
       type: type,
       data: {
@@ -85,6 +85,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     if (type === c.ABILITY) {
       itemData.data.activeStatus = c.INACTIVE;
+      itemData.img = c.DEFAULTABILITYIMAGE;
     }
 
     if (type === c.GEAR) {
@@ -95,6 +96,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     if (type === c.ARMOUR) {
       itemData.data.armourClass = 0;
       itemData.data.equippedStatus = c.STORED;
+      itemData.img = c.DEFAULTARMOURIMAGE;
     }
 
     if (type === c.WEAPON) {
@@ -102,6 +104,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       itemData.data.weight = c.REGULAR;
       itemData.data.rateOfFire = c.NONE;
       itemData.data.equippedStatus = c.STORED;
+      itemData.img = c.DEFAULTWEAPONIMAGE;
     }
 
     await this.actor.createOwnedItem(itemData);
