@@ -59,7 +59,7 @@ Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [C
 - [ ] Info on classes and class abilities to add to character sheet
 - [ ] Tracking XP
 - [ ] Add AC input on Attack Dialog?
-- [ ] Setting in Config menu - what to include? [AC on input dialog, default species for world]
+- [x] Setting in Config menu - what to include? [AC on input dialog, default species for world]
 - [ ] Target by token and use target AC for roll
 - [x] Vocation field does not update when vocation ability name is changed
 - [ ] Show weight category/burden

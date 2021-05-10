@@ -30,6 +30,9 @@ export default class WH3CharacterSheet extends ActorSheet {
       return groups.includes(item.data.type);
     });
     data.armour = data.items.filter((item) => item.type === c.ARMOUR);
+    if (!data.actor.data.basics.species) {
+      data.actor.data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
+    }
     data.charClass = data.data.basics.class;
     data.hasToken = !(this.token === null);
     return data;
