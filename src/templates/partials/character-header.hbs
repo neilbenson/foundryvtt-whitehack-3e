@@ -2,128 +2,12 @@
   <div class="grid grid-12col">
     <img class="profile-img grid-col-span-1-3 grid-row-span-1-3" src="{{actor.img}}" data-edit="img"
          title="{{actor.name}}" />
-    <div class="grid-row-span-4-9">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
-    </div>
-    <!-- First row -->
-    <div class="flex-group-center grid-row-span-4-3">
-      <label for="data.basics.class">{{localize "wh3e.actor.class"}}</label>
-      <div class="flexrow flex-center">
-        {{> selectOptions field="data.basics.class" selected=data.basics.class options=config.classes}}
-      </div>
-    </div>
-    <div class="flex-group-center grid-row-span-7-5">
-      <label for="data.basics.vocation">{{localize "wh3e.actor.vocation"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.basics.vocation" value="{{data.basics.vocation}}" data-dtype="String"
-               class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.vocationInput"}}" />
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.basics.level">{{localize "wh3e.actor.level"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.basics.level" value="{{data.basics.level}}" data-dtype="Number" />
-      </div>
-    </div>
-    <!-- Second row -->
-    <div class="flex-group-center grid-row-span-4-4">
-      <label for="data.basics.species">{{localize "wh3e.actor.species"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.basics.species" value="{{data.basics.species}}" data-dtype="String"
-               class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.speciesInput"}}" />
-      </div>
-    </div>
-    <div class="flex-group-center grid-row-span-8-2">
-      <label for="data.savingThrow" class="rollable savingThrow" data-roll-for="savingThrow"><i
-           class="fas fa-dice"></i>&nbsp;{{localize
-          "wh3e.actor.savingThrow"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" data-dtype="Number"
-               title="{{localize "wh3e.tooltip.savingThrow"}}" />
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.basics.numberOfSlots">{{localize "wh3e.actor.slots"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.basics.numberOfSlots" value="{{data.basics.numberOfSlots}}"
-               data-dtype="Number" />
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.basics.numberOfGroups">{{localize "wh3e.actor.groups"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.basics.numberOfGroups" value="{{data.basics.numberOfGroups}}"
-               data-dtype="Number" />
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.corruptionLevel.value">{{localize "wh3e.actor.corruption"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.corruptionLevel.value" value="{{data.corruptionLevel.value}}"
-               data-dtype="Number" title="{{localize "wh3e.tooltip.corruptionLevel"}}" />
-      </div>
-    </div>
-    <!-- Third row -->
-    <div class="flex-group-center grid-row-span-1-3">
-      <label for="data.xp.value">{{localize "wh3e.actor.xp"}}</label>
-      <div class="flexrow flex-center paired-inputs">
-        <div>
-          <input type="text" name="data.xp.value" value="{{data.xp.value}}" data-dtype="Number"
-                 title="{{localize "wh3e.tooltip.xpCurrent"}}" />
-          <span class="helper-text">{{localize "wh3e.misc.current"}}</span>
-        </div>
-        <div>
-          <input type="text" name="data.xp.max" value="{{data.xp.max}}" data-dtype="Number"
-                 title="{{localize "wh3e.tooltip.xpNextLevel"}}" />
-          <span class="helper-text">{{localize "wh3e.actor.nextLevel"}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.combat.armourClass" value="{{data.combat.armourClass}}" data-dtype="Number"
-               class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.armourClass"}}" />
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.combat.attackValue">{{localize "wh3e.actor.attackValue"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" data-dtype="Number"
-               title="{{localize "wh3e.tooltip.attackValue"}}" />
-      </div>
-    </div>
-    <div class="flex-group-center">
-      <label for="data.movement">{{localize "wh3e.actor.movement"}}</label>
-      <div class="flexrow flex-center">
-        <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number"
-               title="{{localize "wh3e.tooltip.movement"}}" />
-      </div>
-    </div>
     {{#if hasToken}}
-      <div class="flex-group-center grid-row-span-7-2">
+      <div class="grid-row-span-4-8">
     {{else}}
-      <div class="flex-group-center grid-row-span-7-3">
+      <div class="grid-row-span-4-9">
     {{/if}}
-    <label for="data.encumbrance.equipped">{{localize "wh3e.actor.encumbrance"}}</label>
-    <div class="flexrow flex-center paired-inputs">
-      <div>
-        <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
-               value="{{decimals data.encumbrance.equipped}}"
-               data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} encumbered{{/if}}"
-               readonly="readonly" title="{{localize "wh3e.tooltip.encEquipped"}}" />
-        <span class="helper-text">{{localize "wh3e.item.equipped"}}</span>
-      </div>
-      <div>
-        <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
-               value="{{decimals data.encumbrance.stored}}"
-               data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance.stored 5) }} encumbered{{/if}}"
-               readonly="readonly" title="{{localize "wh3e.tooltip.encStored"}}" />
-        <span class="helper-text">{{localize "wh3e.item.stored"}}</span>
-      </div>
-    </div>
+    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
   </div>
   {{#if hasToken}}
     <div class="flex-group-center">
@@ -134,6 +18,124 @@
       </div>
     </div>
   {{/if}}
+  <!-- First row -->
+  <div class="flex-group-center grid-row-span-4-3">
+    <label for="data.basics.class">{{localize "wh3e.actor.class"}}</label>
+    <div class="flexrow flex-center">
+      {{> selectOptions field="data.basics.class" selected=data.basics.class options=config.classes}}
+    </div>
+  </div>
+  <div class="flex-group-center grid-row-span-7-5">
+    <label for="data.basics.vocation">{{localize "wh3e.actor.vocation"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.basics.vocation" value="{{data.basics.vocation}}" data-dtype="String"
+             class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.vocationInput"}}" />
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.basics.level">{{localize "wh3e.actor.level"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.basics.level" value="{{data.basics.level}}" data-dtype="Number" />
+    </div>
+  </div>
+  <!-- Second row -->
+  <div class="flex-group-center grid-row-span-4-4">
+    <label for="data.basics.species">{{localize "wh3e.actor.species"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.basics.species" value="{{data.basics.species}}" data-dtype="String"
+             class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.speciesInput"}}" />
+    </div>
+  </div>
+  <div class="flex-group-center grid-row-span-8-2">
+    <label for="data.savingThrow" class="rollable savingThrow" data-roll-for="savingThrow"><i
+         class="fas fa-dice"></i>&nbsp;{{localize
+          "wh3e.actor.savingThrow"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" data-dtype="Number"
+             title="{{localize "wh3e.tooltip.savingThrow"}}" />
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.basics.numberOfSlots">{{localize "wh3e.actor.slots"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.basics.numberOfSlots" value="{{data.basics.numberOfSlots}}"
+             data-dtype="Number" />
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.basics.numberOfGroups">{{localize "wh3e.actor.groups"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.basics.numberOfGroups" value="{{data.basics.numberOfGroups}}"
+             data-dtype="Number" />
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.corruptionLevel.value">{{localize "wh3e.actor.corruption"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.corruptionLevel.value" value="{{data.corruptionLevel.value}}"
+             data-dtype="Number" title="{{localize "wh3e.tooltip.corruptionLevel"}}" />
+    </div>
+  </div>
+  <!-- Third row -->
+  <div class="flex-group-center grid-row-span-1-3">
+    <label for="data.xp.value">{{localize "wh3e.actor.xp"}}</label>
+    <div class="flexrow flex-center paired-inputs">
+      <div>
+        <input type="text" name="data.xp.value" value="{{data.xp.value}}" data-dtype="Number"
+               title="{{localize "wh3e.tooltip.xpCurrent"}}" />
+        <span class="helper-text">{{localize "wh3e.misc.current"}}</span>
+      </div>
+      <div>
+        <input type="text" name="data.xp.max" value="{{data.xp.max}}" data-dtype="Number"
+               title="{{localize "wh3e.tooltip.xpNextLevel"}}"
+               class="{{#if (gt data.xp.value  data.xp.max)}}attention{{/if}}" />
+        <span class="helper-text">{{localize "wh3e.actor.nextLevel"}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.combat.armourClass" value="{{data.combat.armourClass}}" data-dtype="Number"
+             class="read-only" readonly="readonly" title="{{localize "wh3e.tooltip.armourClass"}}" />
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.combat.attackValue">{{localize "wh3e.actor.attackValue"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" data-dtype="Number"
+             title="{{localize "wh3e.tooltip.attackValue"}}" />
+    </div>
+  </div>
+  <div class="flex-group-center">
+    <label for="data.movement">{{localize "wh3e.actor.movement"}}</label>
+    <div class="flexrow flex-center">
+      <input type="text" name="data.movement" value="{{data.movement}}" data-dtype="Number"
+             title="{{localize "wh3e.tooltip.movement"}}" />
+    </div>
+  </div>
+  <div class="flex-group-center grid-row-span-7-3">
+    <label for="data.encumbrance.equipped">{{localize "wh3e.actor.encumbrance"}}</label>
+    <div class="flexrow flex-center paired-inputs">
+      <div>
+        <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
+               value="{{decimals data.encumbrance.equipped}}"
+               data-dtype="Number"
+               class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} attention{{/if}}"
+               readonly="readonly" title="{{localize "wh3e.tooltip.encEquipped"}}" />
+        <span class="helper-text">{{localize "wh3e.item.equipped"}}</span>
+      </div>
+      <div>
+        <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
+               value="{{decimals data.encumbrance.stored}}"
+               data-dtype="Number"
+               class="read-only{{#if (encumbered data.encumbrance.stored 5) }} attention{{/if}}"
+               readonly="readonly" title="{{localize "wh3e.tooltip.encStored"}}" />
+        <span class="helper-text">{{localize "wh3e.item.stored"}}</span>
+      </div>
+    </div>
+  </div>
+
   <div class="flex-group-center grid-row-span-10-3">
     <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
     <div class="flexrow flex-center paired-inputs">
