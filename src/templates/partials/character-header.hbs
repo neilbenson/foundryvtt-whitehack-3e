@@ -78,17 +78,17 @@
   </div>
   <!-- Third row -->
   <div class="flex-group-center grid-row-span-1-3">
-    <label for="data.xp.value">{{localize "wh3e.actor.xp"}}</label>
+    <label for="data.xp.current">{{localize "wh3e.actor.xp"}}</label>
     <div class="flexrow flex-center paired-inputs">
       <div>
-        <input type="text" name="data.xp.value" value="{{data.xp.value}}" data-dtype="Number"
+        <input type="text" name="data.xp.current" value="{{data.xp.current}}" data-dtype="Number"
                title="{{localize "wh3e.tooltip.xpCurrent"}}" />
         <span class="helper-text">{{localize "wh3e.misc.current"}}</span>
       </div>
       <div>
-        <input type="text" name="data.xp.max" value="{{data.xp.max}}" data-dtype="Number"
+        <input type="text" name="data.xp.nextLevel" value="{{data.xp.nextLevel}}" data-dtype="Number"
                title="{{localize "wh3e.tooltip.xpNextLevel"}}"
-               class="{{#if (gt data.xp.value  data.xp.max)}}attention{{/if}}" />
+               class="{{#if (gt data.xp.current  data.xp.nextLevel)}}attention{{/if}}" />
         <span class="helper-text">{{localize "wh3e.actor.nextLevel"}}</span>
       </div>
     </div>
