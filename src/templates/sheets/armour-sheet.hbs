@@ -9,13 +9,13 @@
     <div class="grid grid-2col">
       <div class="flex-group-left">
         <label for="data.armourClass" class="left-text">{{localize "wh3e.item.armourClass"}}</label>
-        <div class="flexrow flex-center flex-between">
+        <div class="flexrow flex-center paired-inputs">
           {{> selectOptions field="data.armourClass" selected=data.armourClass options=config.armourClasses}}
         </div>
       </div>
       <div class="flex-group-center" style="padding-right: 0;">
         <label for="data.cost">{{localize "wh3e.item.cost"}}</label>
-        <div class="flexrow flex-center flex-between">
+        <div class="flexrow flex-center paired-inputs">
           <input name="data.cost" type="text" class="center-text" value={{data.cost}}
                  data-dtype="Number" />
           {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}

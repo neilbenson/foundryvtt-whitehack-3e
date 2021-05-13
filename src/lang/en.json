@@ -28,9 +28,11 @@
       "attackValue": "AV",
       "armourClass": "AC",
       "movement": "MV",
-      "encumbrance": "ENC",
+      "encumbrance": "Encumbrance",
       "corruption": "CL",
       "hitDice": "Hit Dice",
+      "xp": "Experience Points",
+      "nextLevel": "Next level",
       "monster": {
         "xp": "XP"
       },
@@ -176,7 +178,9 @@
       "special": "Special"
     },
     "misc": {
-      "none": "None"
+      "none": "None",
+      "current": "Current",
+      "max": "Maximum"
     },
     "dice": {
       "doublePositiveText": "2d20 take best result",
@@ -205,7 +209,9 @@
       "encEquipped": "Encumbrance of Equipped Items (Max 10)",
       "encStored": "Encumbrance of Stored Items (Max 5)",
       "hpCurrent": "Current HP",
-      "hpMax": "Max HP",
+      "hpMax": "Maximum HP",
+      "xpCurrent": "Current XP",
+      "xpNextLevel": "XP for next level",
       "strMod": "AV bonus/Damage bonus",
       "dexMod": "Initiative bonus",
       "conMod": "Additional hit points",

@@ -65,7 +65,7 @@ type: Weapon
 data:
   cost: 1
   costCoinType: gp
-  weight: small
+  weight: negligible
   equippedStatus: stored
   damage: oneDmg
   range: 20

@@ -4,7 +4,7 @@ export const wh3e = {
     theStrong: "wh3e.class.theStrong",
     theWise: "wh3e.class.theWise",
     theBrave: "wh3e.class.theBrave",
-    theFortunate: "wh3e.class.theFortunate"
+    theFortunate: "wh3e.class.theFortunate",
   },
   damageDice: {
     oneDmg: "wh3e.damageDice.oneDmg",
@@ -14,12 +14,14 @@ export const wh3e = {
     d6: "wh3e.damageDice.d6",
     d6plus1: "wh3e.damageDice.d6plus1",
     d6plus2: "wh3e.damageDice.d6plus2",
-    d6plus3: "wh3e.damageDice.d6plus3"
+    d6plus3: "wh3e.damageDice.d6plus3",
   },
   weaponWeightTypes: {
     regular: "wh3e.weightTypes.regular",
     heavy: "wh3e.weightTypes.heavy",
-    minor: "wh3e.weightTypes.minor"
+    minor: "wh3e.weightTypes.minor",
+    small: "wh3e.weightTypes.small",
+    negligible: "wh3e.weightTypes.negligible",
   },
   gearWeightTypes: {
     regular: "wh3e.weightTypes.regular",
@@ -27,7 +29,7 @@ export const wh3e = {
     minor: "wh3e.weightTypes.minor",
     small: "wh3e.weightTypes.small",
     negligible: "wh3e.weightTypes.negligible",
-    noEncumbrance: "wh3e.weightTypes.noEncumbrance"
+    noEncumbrance: "wh3e.weightTypes.noEncumbrance",
   },
   roFShotsPerRound: {
     none: "wh3e.misc.none",
@@ -35,7 +37,7 @@ export const wh3e = {
     oneInThree: "wh3e.roFShotsPerRound.oneInThree",
     oneInTwo: "wh3e.roFShotsPerRound.oneInTwo",
     one: "wh3e.roFShotsPerRound.one",
-    three: "wh3e.roFShotsPerRound.three"
+    three: "wh3e.roFShotsPerRound.three",
   },
   abilityTypes: {
     attunement: "wh3e.abilityType.attunement",
@@ -44,12 +46,12 @@ export const wh3e = {
     quirk: "wh3e.abilityType.quirk",
     species: "wh3e.abilityType.species",
     vocation: "wh3e.abilityType.vocation",
-    affiliation: "wh3e.abilityType.affiliation"
+    affiliation: "wh3e.abilityType.affiliation",
   },
   coinTypes: {
     gp: "wh3e.coinType.gp",
     sp: "wh3e.coinType.sp",
-    cp: "wh3e.coinType.cp"
+    cp: "wh3e.coinType.cp",
   },
   armourClasses: {
     0: "0",
@@ -60,7 +62,7 @@ export const wh3e = {
     5: "5",
     6: "6",
     plusOne: "+1",
-    special: "wh3e.item.special"
+    special: "wh3e.item.special",
   },
   monsterArmourClasses: {
     0: "0",
@@ -72,6 +74,6 @@ export const wh3e = {
     6: "6",
     7: "7",
     8: "8",
-    9: "9"
-  }
+    9: "9",
+  },
 };

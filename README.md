@@ -57,12 +57,11 @@ Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [C
 ## TO DO:
 
 - [ ] Info on classes and class abilities to add to character sheet
-- [ ] Tracking XP
-- [ ] Add AC input on Attack Dialog?
+- [x] Tracking XP
 - [x] Setting in Config menu - what to include? [AC on input dialog, default species for world]
 - [ ] Target by token and use target AC for roll
 - [x] Vocation field does not update when vocation ability name is changed
 - [ ] Show weight category/burden
 - [ ] Saving throw modifiers e.g. the Strong bonuses?
-- [ ] Tokenizer uploading low res images - 150x150 instead of 256x256
+- [x] Tokenizer uploading low res images - 150x150 instead of 256x256
 - [x] Groups don't need to be active

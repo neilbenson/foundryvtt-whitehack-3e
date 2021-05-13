@@ -4,10 +4,29 @@
   .sheet-header {
     img {
       border: none;
+      margin-right: 0;
     }
     h1 {
       input {
         font-family: "Linux Libertine", sans-serif;
+      }
+    }
+  }
+
+  .paired-inputs {
+    .helper-text {
+      position: relative;
+      min-height: 18px;
+      display: block;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.54);
+    }
+    div {
+      &:nth-child(1) {
+        margin-right: 5px;
+      }
+      &:nth-child(2) {
+        margin-left: 5px;
       }
     }
   }

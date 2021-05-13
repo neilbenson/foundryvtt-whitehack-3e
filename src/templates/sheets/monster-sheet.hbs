@@ -6,13 +6,13 @@
       <div class="grid grid-4col">
         <div class="flex-group-center" title="{{localize "wh3e.item.armourClass"}}">
           <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             {{> selectOptions field="data.combat.armourClass" selected=data.combat.armourClass options=config.monsterArmourClasses}}
           </div>
         </div>
         <div class="flex-group-center">
           <label for="data.combat.hitDice.base">{{localize "wh3e.actor.hitDice"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.combat.hitDice.base" value="{{data.combat.hitDice.base}}"
                    data-dtype="Number" class="hitDiceBase" title="{{localize "wh3e.tooltip.monsterHDInfo"}}" />
             <span> + </span>
@@ -22,7 +22,7 @@
         </div>
         <div class="flex-group-center">
           <label for="data.hitPoints.value">{{localize "wh3e.actor.hitpoints"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.hitPoints.value" value="{{data.hitPoints.value}}" data-dtype="Number"
                    title="{{localize "wh3e.tooltip.hpCurrent"}}" />
             <span> / </span>
@@ -32,7 +32,7 @@
         </div>
         <div class="flex-group-center">
           <label for="data.movement">{{localize "wh3e.actor.movement"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.movement" value="{{data.movement}}"
                    data-dtype="Number" title="{{localize "wh3e.tooltip.movement"}}" />
           </div>
@@ -41,14 +41,14 @@
       <div class="grid grid-5col">
         <div class="flex-group-center">
           <label for="data.damage" class="rollable damage-roll">{{localize "wh3e.item.damage"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             {{> selectOptions field="data.damage" selected=data.damage options=config.damageDice}}
           </div>
         </div>
         <div class="flex-group-center">
           <label for="data.savingThrow" class="rollable savingThrow"><i
                class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.savingThrow"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.savingThrow" value="{{data.savingThrow}}" class="read-only"
                    data-dtype="Number" readonly="readonly" title="{{localize "wh3e.tooltip.monsterSavingThrow"}}" />
           </div>
@@ -56,26 +56,26 @@
         <div class="flex-group-center">
           <label for="data.combat.attackValue" class="rollable attack-roll"><i
                class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.attackValue"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.combat.attackValue" value="{{data.combat.attackValue}}" class="read-only"
                    data-dtype="Number" readonly="readonly" title="{{localize "wh3e.tooltip.monsterAttackValue"}}" />
           </div>
         </div>
         <div class="flex-group-center">
           {{#if hasToken}}
-          <label for="data.attributes.dex.mod" class="rollable init-label"><i
-               class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.initiative"}}</label>
+            <label for="data.attributes.dex.mod" class="rollable init-label"><i
+                 class="fas fa-dice"></i>&nbsp;{{localize "wh3e.actor.initiative"}}</label>
           {{else}}
-          <label for="data.attributes.dex.mod">{{localize "wh3e.actor.initiative"}}</label>
+            <label for="data.attributes.dex.mod">{{localize "wh3e.actor.initiative"}}</label>
           {{/if}}
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.attributes.dex.mod" value="{{data.attributes.dex.mod}}"
                    data-dtype="Number" title="{{localize "wh3e.tooltip.initiative"}}" />
           </div>
         </div>
         <div class="flex-group-center">
           <label for="data.xp">{{localize "wh3e.actor.monster.xp"}}</label>
-          <div class="flexrow flex-center flex-between">
+          <div class="flexrow flex-center">
             <input type="text" name="data.xp" value="{{data.xp}}"
                    data-dtype="Number" title="{{localize "wh3e.tooltip.monsterXP"}}" />
           </div>
