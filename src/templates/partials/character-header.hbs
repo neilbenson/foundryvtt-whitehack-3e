@@ -115,7 +115,8 @@
     </div>
   </div>
   <div class="flex-group-center grid-row-span-7-3">
-    <label for="data.encumbrance.equipped">{{localize "wh3e.actor.encumbrance"}}</label>
+    <label
+           for="data.encumbrance.equipped">{{getBurdenCategory data.encumbrance.equipped data.encumbrance.stored}}</label>
     <div class="flexrow flex-center paired-inputs">
       <div>
         <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"

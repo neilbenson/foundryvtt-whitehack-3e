@@ -33,6 +33,21 @@ export const registerHelpers = async () => {
     return [c.AFFILIATION, c.SPECIES, c.VOCATION].includes(abilityType);
   });
 
+  Handlebars.registerHelper("getBurdenCategory", (equipped, stored) => {
+    const totalEncumbrance = equipped + stored;
+    if (totalEncumbrance <= 15) {
+      return game.i18n.localize("wh3e.burdenCategory.normal");
+    } else if (totalEncumbrance <= 30) {
+      return game.i18n.localize("wh3e.burdenCategory.heavy");
+    } else if (totalEncumbrance <= 45) {
+      return game.i18n.localize("wh3e.burdenCategory.severe");
+    } else if (totalEncumbrance <= 60) {
+      return game.i18n.localize("wh3e.burdenCategory.massive");
+    } else {
+      return game.i18n.localize("wh3e.burdenCategory.tooMuch");
+    }
+  });
+
   Handlebars.registerHelper("stripHtml", (html) => {
     return html.replace(/(<([^>]+)>)/gi, c.EMPTYSTRING);
   });
