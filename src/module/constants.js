@@ -47,3 +47,5 @@ export const RED = "red";
 export const ROLL = "roll";
 export const DOUBLEPOSITIVE = "doublePositive";
 export const DOUBLENEGATIVE = "doubleNegative";
+export const SUCCESS = "success";
+export const FAIL = "fail";

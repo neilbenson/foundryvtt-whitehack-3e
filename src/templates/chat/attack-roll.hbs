@@ -1,23 +1,27 @@
-<h3 style="color: dark{{rollResultColour}};">{{toHitHeader}}</h3>
+<h3 style="color: dark{{rollResultColour}};">{{toHitHeader}}
+	{{#if attackedTarget}}
+		<span class="attacked-target">{{localize "wh3e.misc.versus"}} {{attackedTarget}}</span>
+	{{/if}}
+</h3>
 {{> "systems/whitehack3e/templates/chat/partials/roll-results.hbs"}}
 <br />
 {{#if damageHeader}}
-<h3>{{damageHeader}}</h3>
-<div class="dice-roll">
-	<div class="dice-result">
-		<div class="dice-formula">{{dmgFormula}}</div>
-		<div class="dice-tooltip" style="display: none;">
-			<div class="dice">
-				<header class="part-header flexrow">
-					<span class="part-formula">{{dmgDice}}</span>
-					<span class="part-total">{{damageResult}}</span>
-				</header>
-				<ol class="dice-rolls">
-					<li class="roll die d6">{{damageResult}}</li>
-				</ol>
+	<h3>{{damageHeader}}</h3>
+	<div class="dice-roll">
+		<div class="dice-result">
+			<div class="dice-formula">{{dmgFormula}}</div>
+			<div class="dice-tooltip" style="display: none;">
+				<div class="dice">
+					<header class="part-header flexrow">
+						<span class="part-formula">{{dmgDice}}</span>
+						<span class="part-total">{{damageResult}}</span>
+					</header>
+					<ol class="dice-rolls">
+						<li class="roll die d6">{{damageResult}}</li>
+					</ol>
+				</div>
 			</div>
+			<h4 class="dice-total">{{damageResult}}</h4>
 		</div>
-		<h4 class="dice-total">{{damageResult}}</h4>
 	</div>
-</div>
 {{/if}}

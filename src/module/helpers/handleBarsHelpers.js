@@ -33,6 +33,9 @@ export const registerHelpers = async () => {
     return [c.AFFILIATION, c.SPECIES, c.VOCATION].includes(abilityType);
   });
 
+  /**
+   * Get burden to display
+   */
   Handlebars.registerHelper("getBurdenCategory", (equipped, stored) => {
     const totalEncumbrance = equipped + stored;
     if (totalEncumbrance <= 15) {

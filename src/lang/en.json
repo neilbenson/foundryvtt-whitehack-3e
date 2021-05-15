@@ -103,7 +103,10 @@
       "noTokenForInitiative": "Open character sheet from token to roll for initiative",
       "tokenNotInCombatTracker": "Add {name} to the combat tracker before rolling initiative",
       "noActiveCombat": "There is no active combat encounter!",
-      "attackVsTarget": "attack vs target",
+      "hits": "hits",
+      "with": "with",
+      "misses": "misses",
+      "blockedByArmour": "is blocked by armour vs",
       "hitsAC": "hits AC",
       "hitsFor": "hits for",
       "damage": "damage",
@@ -187,16 +190,17 @@
     "misc": {
       "none": "None",
       "current": "Current",
-      "max": "Maximum"
+      "max": "Maximum",
+      "versus": "vs"
     },
     "dice": {
       "doublePositiveText": "2d20 take best result",
       "doubleNegativeText": "2d20 take worst result",
       "fumble": "Fumble!",
       "crit": "Crit!",
-      "successfulPositivePair": "Successful positive pair!",
+      "successfulPositivePair": "Successful Positive Pair",
       "success": "Success",
-      "unsuccessfulNegativePair": "Unsuccessful negative pair!",
+      "unsuccessfulNegativePair": "Unsuccessful Negative Pair",
       "failure": "Failure",
       "savingThrowVsTarget": "Saving throw vs target",
       "taskRollVsTarget": "task roll vs target"

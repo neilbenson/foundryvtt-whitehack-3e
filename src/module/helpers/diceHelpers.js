@@ -1,16 +1,16 @@
-import * as c from '../constants.js';
+import * as c from "../constants.js";
 
 /**
- * Determines colour based on result and target
+ * Determines success/fail based on rolled result, target and AC
  * @param {number} rollResult
  * @param {number} rollTarget
  * @returns {string}
  */
-export const getResultColour = (rollResult, rollTarget) => {
-  if (rollResult <= rollTarget) {
-    return c.GREEN;
+export const getRollOutcome = (rollResult, rollTarget, rollAC = 0) => {
+  if (rollResult > rollAC && rollResult <= rollTarget) {
+    return c.SUCCESS;
   } else {
-    return c.RED;
+    return c.FAIL;
   }
 };
 
@@ -30,35 +30,38 @@ export const rollModDialog = (actor, rollAttribute, rollTitle) => {
     </div>
   </div>`;
 
-  new Dialog({
-    title: rollTitle,
-    content: content,
-    default: c.ROLL,
-    buttons: {
-      roll: {
-        icon: '<i class="fas fa-dice-d20"></i>',
-        label: null,
-        callback: html => taskRollDialogCallback(html, actor, rollAttribute)
-      },
-      doublePositiveRoll: {
-        icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
-        label: null,
-        callback: html => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLEPOSITIVE)
-      },
-      doubleNegativeRoll: {
-        icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
-        label: null,
-        callback: html => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLENEGATIVE)
+  new Dialog(
+    {
+      title: rollTitle,
+      content: content,
+      default: c.ROLL,
+      buttons: {
+        roll: {
+          icon: '<i class="fas fa-dice-d20"></i>',
+          label: null,
+          callback: (html) => taskRollDialogCallback(html, actor, rollAttribute),
+        },
+        doublePositiveRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
+          label: null,
+          callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLEPOSITIVE),
+        },
+        doubleNegativeRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
+          label: null,
+          callback: (html) => taskRollDialogCallback(html, actor, rollAttribute, c.DOUBLENEGATIVE),
+        },
       },
     },
-  }, { width: 200 }).render(true);
+    { width: 200 }
+  ).render(true);
 };
 
 /**
  * Show dialog for attack roll
  * @param {Object} item
  */
-export const attackRollDialog = item => {
+export const attackRollDialog = (item) => {
   const toHitModLabel = game.i18n.localize("wh3e.modifiers.toHitMod");
   const damageModLabel = game.i18n.localize("wh3e.modifiers.damageMod");
   const content = `
@@ -73,28 +76,31 @@ export const attackRollDialog = item => {
     </div>
   </div>`;
 
-  new Dialog({
-    title: item.name + " " + game.i18n.localize("wh3e.combat.attack"),
-    content: content,
-    default: c.ROLL,
-    buttons: {
-      roll: {
-        icon: '<i class="fas fa-dice-d20"></i>',
-        label: null,
-        callback: html => attackRollDialogCallback(html, item)
-      },
-      doublePositiveRoll: {
-        icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
-        label: null,
-        callback: html => attackRollDialogCallback(html, item, c.DOUBLEPOSITIVE)
-      },
-      doubleNegativeRoll: {
-        icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
-        label: null,
-        callback: html => attackRollDialogCallback(html, item, c.DOUBLENEGATIVE)
+  new Dialog(
+    {
+      title: item.name + " " + game.i18n.localize("wh3e.combat.attack"),
+      content: content,
+      default: c.ROLL,
+      buttons: {
+        roll: {
+          icon: '<i class="fas fa-dice-d20"></i>',
+          label: null,
+          callback: (html) => attackRollDialogCallback(html, item),
+        },
+        doublePositiveRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-plus"></i>',
+          label: null,
+          callback: (html) => attackRollDialogCallback(html, item, c.DOUBLEPOSITIVE),
+        },
+        doubleNegativeRoll: {
+          icon: '<i class="fas fa-dice-d20"></i><i class="fas fa-minus"></i>',
+          label: null,
+          callback: (html) => attackRollDialogCallback(html, item, c.DOUBLENEGATIVE),
+        },
       },
     },
-  }, { width: 250 }).render(true);
+    { width: 250 }
+  ).render(true);
 };
 
 /**
@@ -117,18 +123,28 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   const rollData = {
     strMod: strMod,
     strDmgMod: strDmgMod,
-    damageMod: damageMod
+    damageMod: damageMod,
   };
 
   const messageData = {
     user: game.user._id,
-    speaker: ChatMessage.getSpeaker()
+    speaker: ChatMessage.getSpeaker(),
   };
 
   let cardData = {
     ...weapon.data,
-    owner: actor.id
+    owner: actor.id,
   };
+
+  // Only use targets AC if one target selected
+  let targetName = null;
+  let targetAC = 0;
+  if (game.user.targets.size === 1) {
+    for (let t of game.user.targets.values()) {
+      targetAC = t.sheet.actor.data.data.combat.armourClass;
+      targetName = t.nameplate.text;
+    }
+  }
 
   const toHitTarget = actor.data.data.combat.attackValue + strMod + toHitMod;
   const rollTemplate = "systems/whitehack3e/templates/chat/attack-roll.hbs";
@@ -145,22 +161,28 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     await game.dice3d.showForRoll(toHitRoll, game.user, true, null, false);
   }
 
-  const toHitHeader = getToHitResultHeader(toHitResult, weapon.name, toHitTarget);
-  const toHitResultCategory = getResultCategory(toHitTarget, toHitResult, rollType, diceOne, diceTwo);
+  const toHitOutcome = getRollOutcome(toHitResult, toHitTarget, targetAC);
+  const toHitHeader = getToHitResultHeader(toHitResult, weapon.name, toHitTarget, targetAC, targetName);
+  const toHitResultCategory = getResultCategory(toHitTarget, toHitResult, rollType, diceOne, diceTwo, toHitOutcome);
+  const toHitResultCategoryWith = toHitResultCategory
+    ? `${game.i18n.localize("wh3e.combat.with")}  ${toHitResultCategory}`
+    : "";
 
   cardData = {
     ...cardData,
     diceOne: diceOne,
     diceTwo: diceTwo,
+    attackedTarget: targetName,
     formula: getRollTypeText(rollType, toHitRoll.formula),
     rollResult: toHitResult,
-    toHitHeader: toHitHeader + " - " + toHitResultCategory,
-    rollResultColour: getResultColour(toHitResult, toHitTarget)
-  }
+    toHitHeader: `${toHitHeader} ${toHitResultCategoryWith}`,
+    rollResultColour: toHitOutcome === c.SUCCESS ? c.GREEN : c.RED,
+  };
 
-  if (toHitResult <= toHitTarget) {
+  if (toHitOutcome === c.SUCCESS) {
     // Hit - Damage Roll
-    let rollFormula = "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
+    let rollFormula =
+      "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
     let damageRoll = new Roll(rollFormula, rollData).evaluate();
     damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
@@ -193,17 +215,17 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
  */
 const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   const rollData = {
-    rollMod: rollMod
+    rollMod: rollMod,
   };
 
   const messageData = {
     user: game.user._id,
-    speaker: ChatMessage.getSpeaker()
+    speaker: ChatMessage.getSpeaker(),
   };
 
   let cardData = {
     ...actor,
-    owner: actor.data.id
+    owner: actor.data.id,
   };
 
   let rollValue = 0;
@@ -223,7 +245,8 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   const diceOne = roll.terms[0].results[0].result;
   const diceTwo = roll.terms[0].results.length > 1 ? roll.terms[0].results[1].result : null;
   const rollResult = getRollResult(rollType, rollTarget, diceOne, diceTwo);
-  const resultHeader = getRollResultHeader(rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo);
+  const rollOutcome = getRollOutcome(rollResult, rollTarget);
+  const resultHeader = getRollResultHeader(rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo, rollOutcome);
 
   cardData = {
     ...cardData,
@@ -233,8 +256,8 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     formula: getRollTypeText(rollType, roll.formula),
     rollResult: rollResult,
     resultHeader: resultHeader,
-    rollResultColour: getResultColour(rollResult, rollTarget)
-  }
+    rollResultColour: rollOutcome === c.SUCCESS ? c.GREEN : c.RED,
+  };
 
   if (game.dice3d) {
     await game.dice3d.showForRoll(roll, game.user, true, null, false);
@@ -273,7 +296,7 @@ const attackRollDialogCallback = (html, item = null, rollType = c.ROLL) => {
   if (isNaN(toHitMod) || isNaN(damageMod)) {
     ui.notifications.error(game.i18n.localize("wh3e.errors.modsNotNumbers"));
   } else {
-    attackRoll(item, toHitMod, damageMod, rollType)
+    attackRoll(item, toHitMod, damageMod, rollType);
   }
 };
 
@@ -285,11 +308,11 @@ const attackRollDialogCallback = (html, item = null, rollType = c.ROLL) => {
 const getDiceToRoll = (rollType) => {
   switch (rollType) {
     case c.DOUBLEPOSITIVE:
-      return '2d20kl';
+      return "2d20kl";
     case c.DOUBLENEGATIVE:
-      return '2d20kh';
+      return "2d20kh";
     default:
-      return '1d20';
+      return "1d20";
   }
 };
 
@@ -303,14 +326,20 @@ const getDiceToRoll = (rollType) => {
  * @param {number} diceTwo
  * @returns {string}
  */
-const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo) => {
+const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo, rollOutcome) => {
   let resultHeader = c.EMPTYSTRING;
   if (rollFor === c.SAVINGTHROW) {
     resultHeader = game.i18n.localize("wh3e.dice.savingThrowVsTarget");
   } else {
     resultHeader = rollFor.toUpperCase() + " " + game.i18n.localize("wh3e.dice.taskRollVsTarget");
   }
-  return resultHeader + " " + rollTarget + " - " + getResultCategory(rollTarget, rollResult, rollType, diceOne, diceTwo);
+  return (
+    resultHeader +
+    " " +
+    rollTarget +
+    " - " +
+    getResultCategory(rollTarget, rollResult, rollType, diceOne, diceTwo, rollOutcome, rollFor)
+  );
 };
 
 /**
@@ -320,14 +349,27 @@ const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne,
  * @param {number} toHitTarget
  * @returns {string}
  */
-const getToHitResultHeader = (toHitResult, weapon, toHitTarget) => {
-  const attackVsTarget = game.i18n.localize("wh3e.combat.attackVsTarget");
+const getToHitResultHeader = (toHitResult, weapon, toHitTarget, targetAC, targetName) => {
+  const attackVsTarget = `(${game.i18n.localize("wh3e.actor.attackValue")} ${toHitTarget})`;
   const hitsAC = game.i18n.localize("wh3e.combat.hitsAC");
-  if (toHitResult <= toHitTarget) {
-    return `${weapon} ${attackVsTarget} ${toHitTarget} ${hitsAC} ${toHitResult - 1}`;
+  const hits = game.i18n.localize("wh3e.combat.hits");
+  let resultHeader = `${weapon} ${attackVsTarget} ${hitsAC} ${toHitResult - 1}`;
+  if (toHitResult > targetAC && toHitResult <= toHitTarget) {
+    if (targetName) {
+      resultHeader = `${weapon} ${attackVsTarget} ${hits} ${targetName}`;
+    }
   } else {
-    return `${weapon} ${attackVsTarget} ${toHitTarget}`;
+    if (targetName) {
+      if (toHitResult > targetAC) {
+        resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.misses")} ${targetName}`;
+      } else {
+        resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.blockedByArmour")} ${targetName}`;
+      }
+    } else {
+      resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.misses")}`;
+    }
   }
+  return resultHeader;
 };
 
 /**
@@ -351,24 +393,30 @@ const getDamageResultHeader = (weapon, damageResult) => {
  * @param {number} diceTwo
  * @returns {string}
  */
-const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo) => {
-  if (rollResult === 20) {
-    return game.i18n.localize("wh3e.dice.fumble");
-  } else if (rollResult === rollTarget) {
-    return game.i18n.localize("wh3e.dice.crit");
-  } else if (rollResult <= rollTarget) {
-    if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE) {
-      return game.i18n.localize("wh3e.dice.successfulPositivePair");
-    } else {
-      return game.i18n.localize("wh3e.dice.success");
+const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, diceOutcome, rollFor = null) => {
+  let category = [];
+  if (diceOutcome === c.SUCCESS) {
+    if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE && diceOutcome === c.SUCCESS) {
+      category.push(game.i18n.localize("wh3e.dice.successfulPositivePair"));
+    }
+    if (rollResult === rollTarget) {
+      category.push(game.i18n.localize("wh3e.dice.crit"));
+    }
+    if (category.length === 0 && rollFor) {
+      category.push(game.i18n.localize("wh3e.dice.success"));
     }
   } else {
-    if (diceOne === diceTwo && rollType === c.DOUBLENEGATIVE) {
-      return game.i18n.localize("wh3e.dice.unsuccessfulNegativePair");
-    } else {
-      return game.i18n.localize("wh3e.dice.failure");
+    if (diceOne === diceTwo && rollType === c.DOUBLENEGATIVE && diceOutcome === c.FAIL) {
+      category.push(game.i18n.localize("wh3e.dice.unsuccessfulNegativePair"));
     }
-  };
+    if (rollResult === 20) {
+      category.push(game.i18n.localize("wh3e.dice.fumble"));
+    }
+    if (category.length === 0 && rollFor) {
+      category.push(game.i18n.localize("wh3e.dice.failure"));
+    }
+  }
+  return category.join(" ");
 };
 
 /**
