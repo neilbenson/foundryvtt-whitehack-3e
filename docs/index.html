@@ -92,9 +92,12 @@
             equipped armour will contribute towards AC.
           </li>
           <li>
-            Encumbrance (ENC): read only, calculated from equipped and stored armour, gear and weapons. Show in red
-            when values are above the 10 equipped and 5 stored levels.
+            Burden: read only, calculates encumbrance from equipped and stored armour, gear and weapons. Values turn red
+            when above the 10 equipped and 5 stored levels. The title updates to reflect the burden: Normal,
+            Heavy, Severe and Massive.
           </li>
+          <li>Experience Points: has fields for current XP and XP required for the next level. Manually updated.</li>
+          <li>Hit Points: has fields for current HP and maximum HP. Manually updated.</li>
         </ul>
 
         <h4>Tabs</h4>
@@ -126,8 +129,7 @@
           </div>
           <div class="eight columns">
             <p>
-              The Select Groups dialog allows the player to choose which group or groups to apply to an attribute. It
-              only shows groups which are marked as active.
+              The Select Groups dialog allows the player to choose which group or groups to apply to an attribute.
             </p>
           </div>
         </div>
@@ -140,9 +142,8 @@
           </div>
           <div class="six columns">
             <p>
-              Attunements, Combat Options, Miracles and Groups all go in here. Along with the type of ability, the
-              active column gives an indicator to which is currently active and affects which groups can be assigned to
-              attributes.
+              Attunements, Combat Options, Miracles and Groups all go in here. The active column gives an indicator
+              as to which class ability is currently active.
             </p>
             <p>
               Clicking on the icon for the ability will show the ability name and description (if any) in the chat.
@@ -324,16 +325,33 @@
 
         <h4>Initiative</h4>
 
-        <p>The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker
-          you can roll initiative from there or from the relevant token on a battle map.</p>
+        <p>
+          The system supports the FoundryVTT initiative system. After actors have been added to the combat tracker
+          you can roll initiative from there or from the relevant token on a battle map.
+        </p>
 
         <h4>Attack Rolls</h4>
 
         <p>
-          Attack rolls show the AC hit (I may add in targetting to pick up AC from tokens) and if the attack is
-          successful (in that the to hit roll is less than or equal to attack value) damage will also be rolled. It is
-          then down to the GM to determine if the to hit roll exceeded the targets AC and to manually deduct hit points
-          from tokens.
+          If a token is targeted by the user, the result of any attack roll will take the target's AC into account,
+          so the dice result must be above the target's AC and below their Attack Value. In instances where a token
+          is not selected the result of the attack roll will say what AC the attack would hit if it is successful, it is
+          then down to the GM to determine if the to hit roll exceeded the targets AC. For all rolls the type of result
+          is shown: Successful Positive Pair, Critical, Success, Fail/Miss, Fumble, Unsuccessful Negative Pair.
+        </p>
+
+        <p>
+          On a successful attack a damage roll will also be made for the weapon used and the GM or player will need
+          to manually deduct hit points from their targets.
+        </p>
+
+        <h4>Game Settings</h4>
+
+        <img src="images/game-settings.png" alt="Game settings panel" />
+
+        <p>
+          Currently the only setting is the default species for your game. If a character doesn't have a species as
+          a group the Species field will always default to this value.
         </p>
 
         <h3>Compatibility with modules</h3>
@@ -346,6 +364,7 @@
         <ul>
           <li>Dice So Nice</li>
           <li>Pop-out</li>
+          <li>Tokenizer</li>
         </ul>
 
         <p>
