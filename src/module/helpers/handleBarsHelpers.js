@@ -52,7 +52,10 @@ export const registerHelpers = async () => {
   });
 
   Handlebars.registerHelper("stripHtml", (html) => {
-    return html.replace(/(<([^>]+)>)/gi, c.EMPTYSTRING);
+    if (html) {
+      return html.replace(/(<([^>]+)>)/gi, c.EMPTYSTRING);
+    }
+    return;
   });
 
   Handlebars.registerHelper("upper", (aString) => {
