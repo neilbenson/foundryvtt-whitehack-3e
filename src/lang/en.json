@@ -203,10 +203,12 @@
       "unsuccessfulNegativePair": "Unsuccessful Negative Pair",
       "failure": "Failure",
       "savingThrowVsTarget": "Saving throw vs target",
-      "taskRollVsTarget": "task roll vs target"
+      "taskRollVsTarget": "task roll vs target",
+      "withQuality": "with quality"
     },
     "errors": {
-      "modsNotNumbers": "Modifiers must be numbers"
+      "modsNotNumbers": "Modifiers must be numbers",
+      "noRollLessThanOne": "Can't roll with a modified target of less than 1"
     },
     "tooltip": {
       "vocationInput": "Updated from first vocation added in abilities tab",

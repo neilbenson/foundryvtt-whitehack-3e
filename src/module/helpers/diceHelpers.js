@@ -7,6 +7,17 @@ import * as c from "../constants.js";
  * @returns {string}
  */
 export const getRollOutcome = (rollResult, rollTarget, rollAC = 0) => {
+  // Determines a fail if rollResult is 20 and rollTarget >=20
+  // If extreme roll 20 is still a fail
+  // let extremeRollResult = rollResult;
+  if (rollTarget >= 20) {
+    if (rollResult === 19) {
+      return c.SUCCESS;
+    } else if (rollResult === 20) {
+      return c.FAIL;
+    }
+    rollResult = rollResult + rollTarget - 20;
+  }
   if (rollResult > rollAC && rollResult <= rollTarget) {
     return c.SUCCESS;
   } else {
@@ -162,11 +173,9 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   }
 
   const toHitOutcome = getRollOutcome(toHitResult, toHitTarget, targetAC);
-  const toHitHeader = getToHitResultHeader(toHitResult, weapon.name, toHitTarget, targetAC, targetName);
+  const toHitHeader = getToHitResultHeader(toHitOutcome, toHitResult, weapon.name, toHitTarget, targetAC, targetName);
   const toHitResultCategory = getResultCategory(toHitTarget, toHitResult, rollType, diceOne, diceTwo, toHitOutcome);
-  const toHitResultCategoryWith = toHitResultCategory
-    ? `${game.i18n.localize("wh3e.combat.with")}  ${toHitResultCategory}`
-    : "";
+  const toHitResultCategoryWith = toHitResultCategory ? `${toHitResultCategory}` : "";
 
   cardData = {
     ...cardData,
@@ -236,6 +245,12 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   }
   const rollTarget = rollValue + rollMod;
   const rollTemplate = "systems/whitehack3e/templates/chat/task-roll.hbs";
+
+  // Check for extreme score
+  if (rollTarget < 1) {
+    ui.notifications.error(game.i18n.localize("wh3e.errors.noRollLessThanOne"));
+    return;
+  }
 
   // Task Roll
   const roll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
@@ -349,12 +364,18 @@ const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne,
  * @param {number} toHitTarget
  * @returns {string}
  */
-const getToHitResultHeader = (toHitResult, weapon, toHitTarget, targetAC, targetName) => {
+const getToHitResultHeader = (toHitOutcome, toHitResult, weapon, toHitTarget, targetAC, targetName) => {
   const attackVsTarget = `(${game.i18n.localize("wh3e.actor.attackValue")} ${toHitTarget})`;
   const hitsAC = game.i18n.localize("wh3e.combat.hitsAC");
   const hits = game.i18n.localize("wh3e.combat.hits");
-  let resultHeader = `${weapon} ${attackVsTarget} ${hitsAC} ${toHitResult - 1}`;
-  if (toHitResult > targetAC && toHitResult <= toHitTarget) {
+  let acHit = toHitResult - 1;
+  // To handle extreme rolls where AV is greater than 20
+  if (toHitTarget >= 20) {
+    // Add over 20 to quality
+    acHit = acHit + toHitTarget - 20;
+  }
+  let resultHeader = `${weapon} ${attackVsTarget} ${hitsAC} ${acHit}`;
+  if (toHitOutcome === c.SUCCESS) {
     if (targetName) {
       resultHeader = `${weapon} ${attackVsTarget} ${hits} ${targetName}`;
     }
@@ -396,8 +417,15 @@ const getDamageResultHeader = (weapon, damageResult) => {
 const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, diceOutcome, rollFor = null) => {
   let category = [];
   if (diceOutcome === c.SUCCESS) {
+    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + rollResult.toString();
     if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE && diceOutcome === c.SUCCESS) {
       category.push(game.i18n.localize("wh3e.dice.successfulPositivePair"));
+    }
+    // If extreme roll will crit on 19, so target becomes 19
+    if (rollTarget >= 20) {
+      extremeRollQuality =
+        game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult + rollTarget - 20).toString();
+      rollTarget = 19;
     }
     if (rollResult === rollTarget) {
       category.push(game.i18n.localize("wh3e.dice.crit"));
@@ -405,11 +433,15 @@ const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, d
     if (category.length === 0 && rollFor) {
       category.push(game.i18n.localize("wh3e.dice.success"));
     }
+    if (rollFor) {
+      // Only push on quality for ST and Task Checks
+      category.push(extremeRollQuality);
+    }
   } else {
     if (diceOne === diceTwo && rollType === c.DOUBLENEGATIVE && diceOutcome === c.FAIL) {
       category.push(game.i18n.localize("wh3e.dice.unsuccessfulNegativePair"));
     }
-    if (rollResult === 20) {
+    if (rollResult === 20 && rollTarget < 20) {
       category.push(game.i18n.localize("wh3e.dice.fumble"));
     }
     if (category.length === 0 && rollFor) {

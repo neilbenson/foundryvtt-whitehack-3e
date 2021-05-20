@@ -58,3 +58,5 @@ Compendium icons courtesy of [game-icons.net](https://game-icons.net) license [C
 
 - [ ] Info on classes and class abilities to add to character sheet
 - [ ] Saving throw modifiers e.g. the Strong bonuses?
+- [ ] Handle extreme rolls
+- [ ] Auctions panel
