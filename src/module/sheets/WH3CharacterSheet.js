@@ -284,7 +284,8 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   async _onDrop(event) {
     await super._onDrop(event);
-    updateActorEncumbrance(this.actor);
+    await updateActorEncumbrance(this.actor);
+    await updateActorGroups(this.actor);
   }
 
   /**

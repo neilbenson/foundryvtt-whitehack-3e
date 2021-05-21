@@ -208,7 +208,7 @@
     },
     "errors": {
       "modsNotNumbers": "Modifiers must be numbers",
-      "noRollLessThanOne": "Can't roll with a modified target of less than 1"
+      "noRollLessThanOne": "Cannot roll with a modified target of less than 1"
     },
     "tooltip": {
       "vocationInput": "Updated from first vocation added in abilities tab",
