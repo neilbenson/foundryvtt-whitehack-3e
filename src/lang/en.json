@@ -99,7 +99,7 @@
       "taskRoll": "task roll"
     },
     "combat": {
-      "initiative": "Initiative",
+      "initiative": "rolls for Initiative!",
       "noTokenForInitiative": "Open character sheet from token to roll for initiative",
       "tokenNotInCombatTracker": "Add {name} to the combat tracker before rolling initiative",
       "noActiveCombat": "There is no active combat encounter!",

@@ -7,15 +7,17 @@ class WH3Actor extends Actor {
    */
   manageGroupsDialog(attribute) {
     const groupTypes = [c.AFFILIATION, c.SPECIES, c.VOCATION];
-    const groups = this.data.items.filter((item) => item.type === c.ABILITY && groupTypes.includes(item.data.type));
+    const groups = this.data.items.filter(
+      (item) => item.type === c.ABILITY && groupTypes.includes(item.data.data.type)
+    );
     let groupsHtml = c.EMPTYSTRING;
     groups.forEach((element) => {
       groupsHtml =
         groupsHtml +
         `
       <div>
-        <input type="checkbox" id="${element._id}" name="${element._id}" value="${element.name}">
-        <label for="${element._id}">${element.name}</label>
+        <input type="checkbox" id="${element.id}" name="${element.id}" value="${element.name}">
+        <label for="${element.id}">${element.name}</label>
       </div>`;
     });
 
@@ -124,12 +126,12 @@ class WH3Actor extends Actor {
     // Setup the roll
     const die = c.ONED6;
     const init = this.data.data.attributes.dex.mod;
-    const roll = new Roll("@die+@init", { die, init });
+    const roll = await new Roll("@die+@init", { die, init }).evaluate({ async: true });
 
     // Convert the roll to a chat message
     roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      flavor: game.i18n.localize("wh3e.combat.initiative"),
+      flavor: this.data.name + " " + game.i18n.localize("wh3e.combat.initiative"),
     });
 
     await game.combat.setInitiative(combatant.id, roll.total);

@@ -66,11 +66,8 @@ export default class WH3MonsterSheet extends ActorSheet {
   async _attackRollHandler() {
     // To use the diceHelper.js attackRoll need to create an item
     // for the monster attack
-    await this.actor.update({
-      items: [],
-    });
     let monsterAttackItem = null;
-    if (this.actor.items.entries[0] === undefined) {
+    if (this.actor.items.size < 1) {
       let newItem = {
         name: this.actor.name,
         type: c.WEAPON,
@@ -81,9 +78,9 @@ export default class WH3MonsterSheet extends ActorSheet {
           rateOfFire: c.NONE,
         },
       };
-      await this.actor.createOwnedItem(newItem);
+      await this.actor.createEmbeddedDocuments("Item", [newItem]);
     }
-    monsterAttackItem = this.actor.items.entries[0];
+    monsterAttackItem = this.actor.items.filter((item) => item)[0];
 
     attackRollDialog(monsterAttackItem);
   }

@@ -14,31 +14,31 @@
     </thead>
     <tbody class="item-list">
       {{#each weapons as |weapon id|}}
-      <tr data-item-id="{{weapon._id}}" class="weapons item">
-        <td class="item-image">
-          <a class="attack-roll">
-            <span class="weapon-rollable" style="background-image: url({{weapon.img}})"></span>
-          </a>
-        </td>
-        <td class="align-left weapon-name" title="{{{stripHtml weapon.data.description}}}">
-          <span>{{weapon.name}}</span>
-        </td>
-        <td class="weapon-damage">
-          <span>{{getTextFromKey "wh3e.damageDice" weapon.data.damage}}</span>
-        </td>
-        <td>
-          <span>{{getTextFromKey "wh3e.weightTypes" weapon.data.weight}}</span>
-        </td>
-        <td>
-          <span>{{weapon.data.range}}</span>
-        </td>
-        <td>
-          <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.data.rateOfFire}}</span>
-        </td>
-        {{> controlsEquipStore name=weapon.name status=weapon.data.equippedStatus}}
-        {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editWeapon") deleteTitle=(localize
+        <tr data-item-id="{{weapon._id}}" class="weapons item">
+          <td class="item-image">
+            <a class="attack-roll">
+              <span class="weapon-rollable" style="background-image: url({{weapon.img}})"></span>
+            </a>
+          </td>
+          <td class="align-left weapon-name" title="{{{stripHtml weapon.data.description}}}">
+            <span>{{weapon.name}}</span>
+          </td>
+          <td class="weapon-damage">
+            <span>{{getTextFromKey "wh3e.damageDice" weapon.data.damage}}</span>
+          </td>
+          <td>
+            <span>{{getTextFromKey "wh3e.weightTypes" weapon.data.weight}}</span>
+          </td>
+          <td>
+            <span>{{weapon.data.range}}</span>
+          </td>
+          <td>
+            <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.data.rateOfFire}}</span>
+          </td>
+          {{> controlsEquipStore name=weapon.name status=weapon.data.equippedStatus}}
+          {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editWeapon") deleteTitle=(localize
         "wh3e.sheet.deleteWeapon") }}
-      </tr>
+        </tr>
       {{/each}}
     </tbody>
   </table>
