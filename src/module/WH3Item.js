@@ -11,7 +11,9 @@ class WHItem extends Item {
    * Set default token for items
    */
   prepareData() {
-    if (!this.data.img) {
+    super.prepareData();
+
+    if (!this.data.img || this.data.img == c.ITEMBAG) {
       const abilityTypeIcons = {
         [c.ABILITY]: [c.DEFAULTABILITYIMAGE],
         [c.ARMOUR]: [c.DEFAULTARMOURIMAGE],
@@ -20,8 +22,6 @@ class WHItem extends Item {
       };
       this.data.img = abilityTypeIcons[this.data.type][0];
     }
-
-    super.prepareData();
   }
 
   /**
@@ -29,7 +29,7 @@ class WHItem extends Item {
    */
   async sendInfoToChat() {
     let messageData = {
-      user: game.user._id,
+      user: game.user.id,
       speaker: ChatMessage.getSpeaker(),
     };
 

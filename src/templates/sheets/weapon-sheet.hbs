@@ -1,8 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-    <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64" />
+    <img src="{{img}}" data-edit="img" title="{{name}}" height="64" width="64" />
     <div>
-      <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" />
+      <h1><input name="name" type="text" value="{{name}}" placeholder="Name" />
       </h1>
     </div>
   </header>
@@ -23,20 +23,23 @@
           {{> selectOptions field="data.weight" selected=data.weight options=config.weaponWeightTypes}}
         </td>
         <td>
-          <input name="data.range" type="text" class="center-text" value={{data.range}} data-dtype="Number" />
+          <input name="data.range" type="text" class="center-text" value={{data.range}}
+                 data-dtype="Number" />
         </td>
         <td>
           {{> selectOptions field="data.rateOfFire" selected=data.rateOfFire options=config.roFShotsPerRound}}
         </td>
         <td>
-          <input name="data.cost" type="text" class="center-text input-small" value={{data.cost}} data-dtype="Number" />
+          <input name="data.cost" type="text" class="center-text input-small" value={{data.cost}}
+                 data-dtype="Number" />
           {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}
         </td>
       </tr>
     </table>
     <div class="full-width-field">
       <label for="data.special">{{localize "wh3e.item.special"}}</label>
-      <input id="data.special" name="data.special" type="text" value="{{data.special}}" data-dtype="String" />
+      <input id="data.special" name="data.special" type="text" value="{{data.special}}"
+             data-dtype="String" />
     </div>
     <div class="full-height-field">
       <label for="data.description">{{localize "wh3e.item.description"}}</label>

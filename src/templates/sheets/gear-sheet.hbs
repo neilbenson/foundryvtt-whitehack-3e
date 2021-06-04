@@ -1,8 +1,8 @@
 <form class="{{cssClass}}" autocomplete="off">
   <header class="sheet-header">
-    <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64" />
+    <img src="{{img}}" data-edit="img" title="{{name}}" height="64" width="64" />
     <div>
-      <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+      <h1><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
     </div>
   </header>
   <div class="sheet-content">
@@ -15,7 +15,8 @@
       </div>
       <div class="flex-group-center">
         <label for="data.quantity">{{localize "wh3e.item.quantity"}}</label>
-        <input id="data.quantity" class="gear-quantity-input" name="data.quantity" type="text" value="{{data.quantity}}"
+        <input id="data.quantity" class="gear-quantity-input" name="data.quantity" type="text"
+               value="{{data.quantity}}"
                data-dtype="Number" />
       </div>
       <div class="flex-group-center" style="padding-right: 0;">

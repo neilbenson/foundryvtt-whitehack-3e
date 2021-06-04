@@ -1,13 +1,13 @@
 <div class="header-info">
   <div class="grid grid-12col">
-    <img class="profile-img grid-col-span-1-3 grid-row-span-1-3" src="{{actor.img}}" data-edit="img"
-         title="{{actor.name}}" />
+    <img class="profile-img grid-col-span-1-3 grid-row-span-1-3" src="{{img}}" data-edit="img"
+         title="{{name}}" />
     {{#if hasToken}}
       <div class="grid-row-span-4-8">
     {{else}}
       <div class="grid-row-span-4-9">
     {{/if}}
-    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
+    <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
   </div>
   {{#if hasToken}}
     <div class="flex-group-center">

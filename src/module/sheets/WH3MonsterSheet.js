@@ -18,9 +18,11 @@ export default class WH3MonsterSheet extends ActorSheet {
    */
   getData() {
     const data = super.getData();
-    data.config = CONFIG.wh3e;
-    data.hasToken = !(this.token === null);
-    return data;
+    let monsterData = data.data;
+    monsterData.config = CONFIG.wh3e;
+    monsterData.hasToken = !(this.token === null);
+    monsterData.editable = this.options.editable;
+    return monsterData;
   }
 
   /**
@@ -33,7 +35,7 @@ export default class WH3MonsterSheet extends ActorSheet {
     }
 
     // Owner only listeners
-    if (this.actor.owner) {
+    if (this.actor.isOwner) {
       html.find("label.attack-roll").click(this._attackRollHandler.bind(this));
       html.find("label.savingThrow").click(this._savingThrowRollHandler.bind(this));
       html.find(".init-label").click(this._initiativeRollHander.bind(this));

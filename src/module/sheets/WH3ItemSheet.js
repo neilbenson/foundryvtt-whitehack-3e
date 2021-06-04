@@ -19,10 +19,14 @@ export default class WH3ItemSheet extends ItemSheet {
    * Fetch Foundry data
    * @returns {Object}
    */
-  getData() {
-    const data = super.getData();
-    data.config = CONFIG.wh3e;
-    return data;
+  getData(options) {
+    const baseData = super.getData(options);
+    const sheetData = {
+      ...baseData.item.data,
+      editable: true,
+      config: CONFIG.wh3e,
+    };
+    return sheetData;
   }
 
   /**
@@ -45,12 +49,14 @@ export default class WH3ItemSheet extends ItemSheet {
    */
   async _actorAbilityTypeUpdateHandler(event) {
     if (this.actor) {
-      await this.actor.updateOwnedItem({
-        _id: this.item.id,
-        data: {
-          type: event.currentTarget.value,
+      await this.actor.updateEmbeddedDocuments("Item", [
+        {
+          _id: this.item.id,
+          data: {
+            type: event.currentTarget.value,
+          },
         },
-      });
+      ]);
       await updateActorEncumbrance(this.actor);
       await updateActorGroups(this.actor);
     }
@@ -62,10 +68,12 @@ export default class WH3ItemSheet extends ItemSheet {
    */
   async _actorAbilityNameUpdateHandler(event) {
     if (this.actor) {
-      await this.actor.updateOwnedItem({
-        _id: this.item.id,
-        name: event.currentTarget.value,
-      });
+      await this.actor.updateEmbeddedDocuments("Item", [
+        {
+          _id: this.item.id,
+          name: event.currentTarget.value,
+        },
+      ]);
       await updateActorGroups(this.actor);
     }
   }
@@ -76,12 +84,14 @@ export default class WH3ItemSheet extends ItemSheet {
    */
   async _actorGearUpdateHandler(event) {
     if (this.actor) {
-      await this.actor.updateOwnedItem({
-        _id: this.item.id,
-        data: {
-          quantity: +event.currentTarget.value,
+      await this.actor.updateEmbeddedDocuments("Item", [
+        {
+          _id: this.item.id,
+          data: {
+            quantity: +event.currentTarget.value,
+          },
         },
-      });
+      ]);
       updateActorEncumbrance(this.actor);
     }
   }

@@ -138,7 +138,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   };
 
   const messageData = {
-    user: game.user._id,
+    user: game.user.id,
     speaker: ChatMessage.getSpeaker(),
   };
 
@@ -161,7 +161,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   const rollTemplate = "systems/whitehack3e/templates/chat/attack-roll.hbs";
 
   // To Hit Roll
-  const toHitRoll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
+  const toHitRoll = await new Roll(getDiceToRoll(rollType), rollData).evaluate({ async: true });
   toHitRoll.toMessage(messageData, { rollMode: null, create: false });
 
   const diceOne = toHitRoll.terms[0].results[0].result;
@@ -192,7 +192,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     // Hit - Damage Roll
     let rollFormula =
       "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
-    let damageRoll = new Roll(rollFormula, rollData).evaluate();
+    let damageRoll = await new Roll(rollFormula, rollData).evaluate({ async: true });
     damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
     cardData.dmgFormula = damageRoll._formula;
@@ -228,7 +228,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   };
 
   const messageData = {
-    user: game.user._id,
+    user: game.user.id,
     speaker: ChatMessage.getSpeaker(),
   };
 
@@ -253,7 +253,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   }
 
   // Task Roll
-  const roll = new Roll(getDiceToRoll(rollType), rollData).evaluate();
+  const roll = await new Roll(getDiceToRoll(rollType), rollData).evaluate({ async: true });
   roll.toMessage(messageData, { rollMode: null, create: false });
 
   // Get results data

@@ -27,10 +27,10 @@ export const registerHelpers = async () => {
   });
 
   /**
-   * Is abilityType a group
+   * Can ability be activate
    */
-  Handlebars.registerHelper("isGroup", (abilityType) => {
-    return [c.AFFILIATION, c.SPECIES, c.VOCATION].includes(abilityType);
+  Handlebars.registerHelper("canActivate", (abilityType) => {
+    return [c.ATTUNEMENT, c.MIRACLE].includes(abilityType);
   });
 
   /**

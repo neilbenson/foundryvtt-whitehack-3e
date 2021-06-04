@@ -22,20 +22,22 @@ export default class WH3CharacterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     const groups = [c.AFFILIATION, c.SPECIES, c.VOCATION];
-    data.config = CONFIG.wh3e;
-    data.weapons = data.items.filter((item) => item.type === c.WEAPON);
-    data.gear = data.items.filter((item) => item.type === c.GEAR);
-    data.abilities = data.items.filter((item) => item.type === c.ABILITY);
-    data.hasGroups = !!data.abilities.filter((item) => {
+    let actorData = data.actor.data;
+    actorData.config = CONFIG.wh3e;
+    actorData.weapons = data.items.filter((item) => item.type === c.WEAPON);
+    actorData.gear = data.items.filter((item) => item.type === c.GEAR);
+    actorData.abilities = data.items.filter((item) => item.type === c.ABILITY);
+    actorData.hasGroups = !!actorData.abilities.filter((item) => {
       return groups.includes(item.data.type);
     });
-    data.armour = data.items.filter((item) => item.type === c.ARMOUR);
-    if (!data.actor.data.basics.species) {
-      data.actor.data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
+    actorData.armour = data.items.filter((item) => item.type === c.ARMOUR);
+    if (!actorData.data.basics.species) {
+      actorData.data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
     }
-    data.charClass = data.data.basics.class;
-    data.hasToken = !(this.token === null);
-    return data;
+    actorData.charClass = actorData.data.basics.class;
+    actorData.hasToken = !(this.token === null);
+    actorData.editable = this.options.editable;
+    return actorData;
   }
 
   /**
@@ -55,7 +57,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     }
 
     // Owner only listeners
-    if (this.actor.owner) {
+    if (this.actor.isOwner) {
       html.find(".item-description").click(this._itemShowInfoHandler.bind(this));
       html.find(".attack-roll").click(this._attackRollHandler.bind(this));
       html.find(".attribute label").click(this._rollHandler.bind(this));
@@ -102,12 +104,14 @@ export default class WH3CharacterSheet extends ActorSheet {
     if (type === c.WEAPON) {
       itemData.data.damage = c.D6;
       itemData.data.weight = c.REGULAR;
+      itemData.data.range = 0;
       itemData.data.rateOfFire = c.NONE;
       itemData.data.equippedStatus = c.STORED;
+      itemData.data.cost = 0;
       itemData.img = c.DEFAULTWEAPONIMAGE;
     }
 
-    await this.actor.createOwnedItem(itemData);
+    await this.actor.createEmbeddedDocuments("Item", [itemData]);
     if (type !== c.ABILITY) {
       updateActorEncumbrance(this.actor);
     }
@@ -122,7 +126,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
-    const item = this.actor.getOwnedItem(itemId);
+    const item = this.actor.items.get(itemId);
 
     item.sheet.render(true);
   }
@@ -136,7 +140,7 @@ export default class WH3CharacterSheet extends ActorSheet {
 
     const element = event.currentTarget;
     const itemId = element.closest("tr").dataset.itemId;
-    await this.actor.deleteOwnedItem(itemId);
+    await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
     await updateActorEncumbrance(this.actor);
     await updateActorGroups(this.actor);
   }
@@ -295,7 +299,7 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   getItem(event) {
     const itemId = event.currentTarget.closest("tr").dataset.itemId;
-    return this.actor.getOwnedItem(itemId);
+    return this.actor.items.get(itemId);
   }
 
   /**

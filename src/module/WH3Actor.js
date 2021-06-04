@@ -132,7 +132,7 @@ class WH3Actor extends Actor {
       flavor: game.i18n.localize("wh3e.combat.initiative"),
     });
 
-    await game.combat.setInitiative(combatant._id, roll.total);
+    await game.combat.setInitiative(combatant.id, roll.total);
   }
 }
 

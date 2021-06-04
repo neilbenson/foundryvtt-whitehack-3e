@@ -32,8 +32,8 @@ Hooks.once("init", () => {
 
   CONFIG.wh3e = wh3e;
 
-  CONFIG.Item.entityClass = WH3Item;
-  CONFIG.Actor.entityClass = WH3Actor;
+  CONFIG.Item.documentClass = WH3Item;
+  CONFIG.Actor.documentClass = WH3Actor;
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("wh3e", WH3ItemSheet, { makeDefault: true });
