@@ -24,15 +24,24 @@
   }
 }
 
-.default-borders {
+.border-dimensions {
   border-top-width: 1px;
   border-right-width: 2px;
   border-bottom-width: 2px;
   border-left-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+}
+
+.wh-borders {
+  .border-dimensions;
   border-top-color: @wh-primary;
   border-right-color: @wh-secondary;
   border-bottom-color: @wh-secondary;
   border-left-color: @wh-primary;
-  border-style: solid;
-  border-radius: 3px;
+}
+
+.default-borders {
+  .border-dimensions;
+  border-color: @c-black;
 }

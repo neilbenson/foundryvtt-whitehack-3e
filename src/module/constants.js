@@ -54,3 +54,5 @@ export const DOUBLEPOSITIVE = "doublePositive";
 export const DOUBLENEGATIVE = "doubleNegative";
 export const SUCCESS = "success";
 export const FAIL = "fail";
+export const WHBACKGROUND = "whBackground";
+export const DEFAULTBACKGROUND = "defaultBackground";
