@@ -3,13 +3,10 @@ import * as c from "../constants.js";
 
 export default class WH3ItemSheet extends ItemSheet {
   static get defaultOptions() {
-    let sheetClasses = ["wh3e", "sheet", "item"];
-    const sheetBackground = (game.settings.get("whitehack3e", "background")) || c.WHBACKGROUND;
-    sheetClasses.push(sheetBackground);
     return mergeObject(super.defaultOptions, {
       width: 530,
       height: 350,
-      classes: sheetClasses,
+      classes: ["wh3e", "sheet", "item"],
       resizable: false,
     });
   }

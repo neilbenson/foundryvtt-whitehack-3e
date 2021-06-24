@@ -181,7 +181,6 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     ...cardData,
     diceOne: diceOne,
     diceTwo: diceTwo,
-    attackedTarget: targetName,
     formula: getRollTypeText(rollType, toHitRoll.formula),
     rollResult: toHitResult,
     toHitHeader: `${toHitHeader} ${toHitResultCategoryWith}`,

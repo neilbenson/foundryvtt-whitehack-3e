@@ -4,12 +4,9 @@ import * as c from "../constants.js";
 
 export default class WH3CharacterSheet extends ActorSheet {
   static get defaultOptions() {
-    let sheetClasses = ["wh3e", "sheet", "character"];
-    const sheetBackground = (game.settings.get("whitehack3e", "background")) || c.WHBACKGROUND;
-    sheetClasses.push(sheetBackground);
     return mergeObject(super.defaultOptions, {
       template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
-      classes: sheetClasses,
+      classes: ["wh3e", "sheet", "character"],
       width: 630,
       height: 625,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-content", initial: "attributes" }],
