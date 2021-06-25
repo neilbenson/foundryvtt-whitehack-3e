@@ -122,7 +122,7 @@
         <input type="text" name="data.encumbrance.equipped" id="data.encumbrance.equipped"
                value="{{decimals data.encumbrance.equipped}}"
                data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance.equipped 10) }} attention{{/if}}"
+               class="read-only{{#if (encumbered data.encumbrance.equipped "equipped") }} attention{{/if}}"
                readonly="readonly" title="{{localize "wh3e.tooltip.encEquipped"}}" />
         <span class="helper-text">{{localize "wh3e.item.equipped"}}</span>
       </div>
@@ -130,7 +130,7 @@
         <input type="text" name="data.encumbrance.stored" id="data.encumbrance.stored"
                value="{{decimals data.encumbrance.stored}}"
                data-dtype="Number"
-               class="read-only{{#if (encumbered data.encumbrance.stored 5) }} attention{{/if}}"
+               class="read-only{{#if (encumbered data.encumbrance.stored "stored") }} attention{{/if}}"
                readonly="readonly" title="{{localize "wh3e.tooltip.encStored"}}" />
         <span class="helper-text">{{localize "wh3e.item.stored"}}</span>
       </div>

@@ -38,13 +38,15 @@ export const registerHelpers = async () => {
    */
   Handlebars.registerHelper("getBurdenCategory", (equipped, stored) => {
     const totalEncumbrance = equipped + stored;
-    if (totalEncumbrance <= 15) {
+    const encumbranceLimit = game.settings.get("whitehack3e", "itemsEquippedLimit")
+      + game.settings.get("whitehack3e", "itemsStoredLimit")
+    if (totalEncumbrance <= encumbranceLimit) {
       return game.i18n.localize("wh3e.burdenCategory.normal");
-    } else if (totalEncumbrance <= 30) {
+    } else if (totalEncumbrance <= encumbranceLimit * 2) {
       return game.i18n.localize("wh3e.burdenCategory.heavy");
-    } else if (totalEncumbrance <= 45) {
+    } else if (totalEncumbrance <= encumbranceLimit * 3) {
       return game.i18n.localize("wh3e.burdenCategory.severe");
-    } else if (totalEncumbrance <= 60) {
+    } else if (totalEncumbrance <= encumbranceLimit * 4) {
       return game.i18n.localize("wh3e.burdenCategory.massive");
     } else {
       return game.i18n.localize("wh3e.burdenCategory.tooMuch");
@@ -70,8 +72,14 @@ export const registerHelpers = async () => {
     return aNumber.toFixed(2);
   });
 
-  Handlebars.registerHelper("encumbered", (encumbrance, threshold) => {
-    return encumbrance > threshold;
+  Handlebars.registerHelper("encumbered", (encumbrance, encType) => {
+    if (
+      (encType === c.EQUIPPED && encumbrance > game.settings.get("whitehack3e", "itemsEquippedLimit")) ||
+      (encType === c.STORED && encumbrance > game.settings.get("whitehack3e", "itemsStoredLimit"))
+    ) {
+      return true;
+    }
+    return false;
   });
 
   Handlebars.registerHelper("hasEncumbrance", (gear) => {

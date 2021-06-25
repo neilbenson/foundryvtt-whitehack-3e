@@ -240,10 +240,10 @@
     "setting": {
       "defaultSpecies": "Default Species",
       "defaultSpeciesHint": "Default species for the world, this will be applied if the PC doesn't have a species group",
-      "background": "Background",
-      "backgroundHint": "Choose Whitehack parchment and styling or change to Foundry default",
-      "whBackground": "Whitehack Parchment Background",
-      "defaultBackground": "Default Foundry Background"
+      "itemsEquippedLimit": "Items Equipped Limit",
+      "itemsEquippedLimitHint": "Defaults to 10. Used in encumbrance calculation.",
+      "itemsStoredLimit": "Items Stored Limit",
+      "itemsStoredLimitHint": "Defaults to 5. Used in encumbrance calculation."
     }
   }
 }
