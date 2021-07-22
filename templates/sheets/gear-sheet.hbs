@@ -1,0 +1,36 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img src="{{img}}" data-edit="img" title="{{name}}" height="64" width="64" />
+    <div>
+      <h1><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
+    </div>
+  </header>
+  <div class="sheet-content">
+    <div class="grid grid-3col">
+      <div class="flex-group-left">
+        <label for="data.weight">{{localize "wh3e.item.weight"}}</label>
+        <div class="flexrow flex-center">
+          {{> selectOptions field="data.weight" selected=data.weight options=config.gearWeightTypes}}
+        </div>
+      </div>
+      <div class="flex-group-center">
+        <label for="data.quantity">{{localize "wh3e.item.quantity"}}</label>
+        <input id="data.quantity" class="gear-quantity-input" name="data.quantity" type="text"
+               value="{{data.quantity}}"
+               data-dtype="Number" />
+      </div>
+      <div class="flex-group-center" style="padding-right: 0;">
+        <label for="data.cost">{{localize "wh3e.item.cost"}}</label>
+        <div class="flexrow flex-center paired-inputs">
+          <input name="data.cost" type="text" class="center-text" value={{data.cost}}
+                 data-dtype="Number" />
+          {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}
+        </div>
+      </div>
+    </div>
+    <div class="full-height-field">
+      <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
+      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+    </div>
+  </div>
+</form>

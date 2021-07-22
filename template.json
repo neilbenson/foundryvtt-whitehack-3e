@@ -1,0 +1,135 @@
+{
+  "Actor": {
+    "types": ["Character", "Monster"],
+    "templates": {
+      "base": {
+        "hitPoints": {
+          "value": 0,
+          "min": 0,
+          "max": 0
+        },
+        "movement": 30,
+        "notes": ""
+      }
+    },
+    "Character": {
+      "templates": ["base"],
+      "basics": {
+        "level": 1,
+        "class": "",
+        "vocation": "",
+        "species": "",
+        "numberOfSlots": 1,
+        "numberOfGroups": 1
+      },
+      "attributes": {
+        "str": {
+          "value": 10,
+          "mod": 0,
+          "dmgMod": 0,
+          "groups": ""
+        },
+        "dex": {
+          "value": 10,
+          "mod": 0,
+          "groups": ""
+        },
+        "con": {
+          "value": 10,
+          "mod": 0,
+          "groups": ""
+        },
+        "int": {
+          "value": 10,
+          "mod": 0,
+          "groups": ""
+        },
+        "wis": {
+          "value": 10,
+          "mod": 0,
+          "groups": ""
+        },
+        "cha": {
+          "value": 10,
+          "mod": 0,
+          "groups": ""
+        }
+      },
+      "combat": {
+        "armourClass": 0,
+        "attackValue": 10
+      },
+      "savingThrow": 5,
+      "languages": "",
+      "xp": {
+        "current": 0,
+        "nextLevel": 0
+      },
+      "corruptionLevel": {
+        "value": 0,
+        "disorders": ""
+      },
+      "encumbrance": {
+        "equipped": 0,
+        "stored": 0
+      },
+      "coin": {
+        "gp": 0,
+        "sp": 0,
+        "cp": 0
+      }
+    },
+    "Monster": {
+      "templates": ["base"],
+      "combat": {
+        "armourClass": 0,
+        "attackValue": 11,
+        "hitDice": {
+          "base": 1,
+          "modifier": 0
+        }
+      },
+      "savingThrow": 6,
+      "attributes": {
+        "dex": {
+          "mod": 0
+        }
+      },
+      "damage": "d6",
+      "special": "",
+      "xp": 0
+    }
+  },
+  "Item": {
+    "types": ["Ability", "Armour", "Gear", "Weapon"],
+    "templates": {
+      "equipmentBase": {
+        "description": "",
+        "cost": 0,
+        "costCoinType": "GP",
+        "weight": "regular",
+        "equippedStatus": "stored"
+      }
+    },
+    "Weapon": {
+      "templates": ["equipmentBase"],
+      "damage": "d6",
+      "range": 0,
+      "rateOfFire": "",
+      "special": ""
+    },
+    "Armour": {
+      "templates": ["equipmentBase"],
+      "armourClass": 0
+    },
+    "Gear": {
+      "templates": ["equipmentBase"],
+      "quantity": 1
+    },
+    "Ability": {
+      "type": "",
+      "description": "",
+      "activeStatus": "inactive"
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "wh3e": {
+    "attribute": {
+      "str": "STR",
+      "wis": "WIS",
+      "int": "INT",
+      "dex": "DEX",
+      "con": "CON",
+      "cha": "CHA",
+      "score": "Score"
+    },
+    "resource": {
+      "gear": "Gear",
+      "backpack": "Backpack",
+      "item.name": "Name",
+      "item.add": "Add Item"
+    },
+    "actor": {
+      "hitpoints": "Hit Points",
+      "level": "Level",
+      "slots": "Slots",
+      "groups": "Groups",
+      "class": "Class",
+      "vocation": "Vocation",
+      "species": "Species",
+      "defaultSpecies": "Human",
+      "savingThrow": "ST",
+      "attackValue": "AV",
+      "armourClass": "AC",
+      "movement": "MV",
+      "encumbrance": "Encumbrance",
+      "corruption": "CL",
+      "hitDice": "Hit Dice",
+      "xp": "Experience Points",
+      "nextLevel": "Next level",
+      "monster": {
+        "xp": "XP"
+      },
+      "initiative": "Init",
+      "languages": "Languages",
+      "notes": "Notes",
+      "selectGroupsFor": "Select groups for ",
+      "clearGroupsFor": "Clear groups for",
+      "confirmClearGroups": "Are you sure you want to clear groups for"
+    },
+    "class": {
+      "theDeft": "The Deft",
+      "theStrong": "The Strong",
+      "theWise": "The Wise",
+      "theBrave": "The Brave",
+      "theFortunate": "The Fortunate"
+    },
+    "abilityType": {
+      "attunement": "Attunement",
+      "combatOption": "Combat Option",
+      "miracle": "Miracle",
+      "quirk": "Quirk",
+      "retainer": "Retainer",
+      "species": "Species",
+      "vocation": "Vocation",
+      "affiliation": "Affiliation"
+    },
+    "category": {
+      "attributes": "Attributes",
+      "attr": "Attr",
+      "description": "Description",
+      "gear": "Gear",
+      "abilities": "Abilities",
+      "weapons": "Weapons",
+      "armour": "Armour",
+      "notes": "Notes"
+    },
+    "sheet": {
+      "addAbility": "Add Ability",
+      "newAbility": "New Ability",
+      "editAbility": "Edit Ability",
+      "deleteAbility": "Delete Ability",
+      "activateDeactivate": "Activate/deactivate",
+      "addGear": "Add Gear",
+      "newGear": "New Gear",
+      "editGear": "Edit Gear",
+      "deleteGear": "Delete Gear",
+      "equip": "Equip",
+      "store": "Store",
+      "addWeapon": "Add Weapon",
+      "newWeapon": "New Weapon",
+      "editWeapon": "Edit Weapon",
+      "deleteWeapon": "Delete Weapon",
+      "addArmour": "Add Armour",
+      "newArmour": "New Armour",
+      "editArmour": "Edit Armour",
+      "deleteArmour": "Delete Armour",
+      "monsterNPC": "Monster/NPC",
+      "update": "Update",
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "activeGroupsRequired": "There must be active groups in Abilities to add here",
+      "savingThrow": "Saving Throw",
+      "taskRoll": "task roll"
+    },
+    "combat": {
+      "initiative": "rolls for Initiative!",
+      "noTokenForInitiative": "Open character sheet from token to roll for initiative",
+      "tokenNotInCombatTracker": "Add {name} to the combat tracker before rolling initiative",
+      "noActiveCombat": "There is no active combat encounter!",
+      "hits": "hits",
+      "with": "with",
+      "misses": "misses",
+      "blockedByArmour": "is blocked by armour vs",
+      "hitsAC": "hits AC",
+      "hitsFor": "hits for",
+      "damage": "damage",
+      "attack": "Attack"
+    },
+    "modifiers": {
+      "rollMod": "Modifier",
+      "toHitMod": "To Hit Mod",
+      "damageMod": "Damage Mod"
+    },
+    "item": {
+      "name": "Name",
+      "damage": "Damage",
+      "weight": "Weight",
+      "range": "Range",
+      "rateOfFire": "RoF",
+      "special": "Special",
+      "description": "Description",
+      "cost": "Cost",
+      "melee": "Melee",
+      "notes": "Notes",
+      "type": "Type",
+      "armourClass": "Armour Class",
+      "active": "Active",
+      "equipped": "Equipped",
+      "stored": "Stored",
+      "quantity": "Quantity"
+    },
+    "coinType": {
+      "gp": "GP",
+      "sp": "SP",
+      "cp": "CP"
+    },
+    "damageDice": {
+      "oneDmg": "1",
+      "d6minus3": "1d6-3",
+      "d6minus2": "1d6-2",
+      "d6minus1": "1d6-1",
+      "d6": "1d6",
+      "d6plus1": "1d6+1",
+      "d6plus2": "1d6+2",
+      "d6plus3": "1d6+3"
+    },
+    "weightTypes": {
+      "regular": "Stone",
+      "heavy": "Sack",
+      "small": "Soap",
+      "negligible": "Negligible",
+      "noEncumbrance": "---"
+    },
+    "burdenCategory": {
+      "normal": "Normal burden",
+      "heavy": "Heavy burden",
+      "severe": "Severe burden",
+      "massive": "Massive burden",
+      "tooMuch": "Can't move!"
+    },
+    "roFShotsPerRound": {
+      "none": "None",
+      "oneInFour": "1/4",
+      "oneInThree": "1/3",
+      "oneInTwo": "1/2",
+      "one": "1",
+      "three": "3"
+    },
+    "armourClasses": {
+      "0": "0",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "plusOne": "+1",
+      "special": "Special"
+    },
+    "misc": {
+      "none": "None",
+      "current": "Current",
+      "max": "Maximum",
+      "versus": "vs"
+    },
+    "dice": {
+      "doublePositiveText": "2d20 take best result",
+      "doubleNegativeText": "2d20 take worst result",
+      "fumble": "Fumble!",
+      "crit": "Crit!",
+      "successfulPositivePair": "Successful Positive Pair",
+      "success": "Success",
+      "unsuccessfulNegativePair": "Unsuccessful Negative Pair",
+      "failure": "Failure",
+      "savingThrowVsTarget": "Saving throw vs target",
+      "taskRollVsTarget": "task roll vs target",
+      "withQuality": "with quality"
+    },
+    "errors": {
+      "modsNotNumbers": "Modifiers must be numbers",
+      "noRollLessThanOne": "Cannot roll with a modified target of less than 1"
+    },
+    "tooltip": {
+      "vocationInput": "Updated from first vocation added in abilities tab",
+      "speciesInput": "Updated from first species added in abilities tab",
+      "savingThrow": "Saving Throw",
+      "corruptionLevel": "Corruption Level",
+      "armourClass": "Armour Class (calculated from Armour and Shield)",
+      "attackValue": "Attack Value",
+      "initiative": "Initiative",
+      "movement": "Movement",
+      "encEquipped": "Encumbrance of Equipped Items (Max 10)",
+      "encStored": "Encumbrance of Stored Items (Max 5)",
+      "hpCurrent": "Current HP",
+      "hpMax": "Maximum HP",
+      "xpCurrent": "Current XP",
+      "xpNextLevel": "XP for next level",
+      "strMod": "AV bonus/Damage bonus",
+      "dexMod": "Initiative bonus",
+      "conMod": "Additional hit points",
+      "intMod": "Additional extra languages",
+      "wisMod": "Extra level 1 slot inactive miracles",
+      "monsterSavingThrow": "Saving Throw (calculated from Hit Dice)",
+      "monsterAttackValue": "Attack Value (calculated from Hit Dice)",
+      "monsterHDInfo": "ST and AV are calculated from this value",
+      "monsterHDAnyValue": "You can put any value in here, for example < to indicate a creature with 1 hp",
+      "monsterXP": "Base XP award",
+      "manageGroups": "Manage groups for"
+    },
+    "setting": {
+      "defaultSpecies": "Default Species",
+      "defaultSpeciesHint": "Default species for the world, this will be applied if the PC doesn't have a species group",
+      "itemsEquippedLimit": "Items Equipped Limit",
+      "itemsEquippedLimitHint": "Defaults to 10. Used in encumbrance calculation.",
+      "itemsStoredLimit": "Items Stored Limit",
+      "itemsStoredLimitHint": "Defaults to 5. Used in encumbrance calculation."
+    }
+  }
+}
