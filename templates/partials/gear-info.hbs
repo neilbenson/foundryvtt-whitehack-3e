@@ -1,0 +1,41 @@
+<div class="tab gear" data-group="primary" data-tab="gear">
+  <table class="fixed_header">
+    <thead>
+      <tr>
+        <th class="item-image"></th>
+        <th class="align-left gear-name">{{localize "wh3e.item.name"}}</th>
+        <th class="gear-quantity">{{localize "wh3e.item.quantity"}}</th>
+        <th class="gear-weight">{{localize "wh3e.item.weight"}}</th>
+        <th class="equippable">{{localize "wh3e.item.equipped"}}</th>
+        {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addGear") type="Gear"}}
+      </tr>
+    </thead>
+    <tbody class="item-list">
+      {{#each gear as |gear id|}}
+        <tr data-item-id="{{gear._id}}" class="item">
+          <td class="item-image">
+            <a class="item-description">
+              <span class="item-info" style="background-image: url({{gear.img}})"></span>
+            </a>
+          </td>
+          <td class="align-left gear-name" title="{{{stripHtml gear.data.description}}}">
+            <span>{{gear.name}}</span>
+          </td>
+          <td class="gear-quantity">
+            <span>{{gear.data.quantity}}</span>
+          </td>
+          <td class="gear-weight">
+            <span>{{getTextFromKey "wh3e.weightTypes" gear.data.weight}}</span>
+          </td>
+          {{#if (hasEncumbrance gear.data.weight)}}
+            {{> controlsEquipStore name=gear.name status=gear.data.equippedStatus}}
+          {{else}}
+            <td class="equippable"></td>
+          {{/if}}
+          {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editGear") deleteTitle=(localize
+        "wh3e.sheet.deleteGear") }}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

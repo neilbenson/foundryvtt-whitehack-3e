@@ -1,0 +1,10 @@
+<div class="tab" data-group="primary" data-tab="notes">
+  <div class="full-width-field">
+    <label for="data.languages" style="font-weight: bold;">{{localize "wh3e.actor.languages"}}</label>
+    <input id="data.languages" name="data.languages" type="text" value="{{data.languages}}" data-dtype="String" />
+  </div>
+  <div class="actor-notes">
+    <label for="data.notes" style="font-weight: bold;">{{localize "wh3e.actor.notes"}}</label>
+    {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
+  </div>
+</div>

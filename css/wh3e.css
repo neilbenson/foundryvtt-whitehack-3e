@@ -1,0 +1,665 @@
+/* Partials */
+.chat-message {
+  font-size: 1em;
+  background-image: url("../assets/ui/UVG-chat-message.jpg");
+}
+.chat-message .message-content h3 {
+  border-bottom: 1px solid #782e22;
+  font-size: 1em;
+  font-weight: bold;
+}
+.chat-message .message-header h4 {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.compendium .directory-list .directory-item {
+  border: 1px solid transparent;
+}
+.dialog {
+  z-index: 999 !important;
+}
+.dialog label {
+  font-weight: bold;
+}
+.dialog .dialog-buttons button {
+  background-color: rgba(255, 255, 240, 0.8);
+  border: 1px solid #b5b3a4;
+}
+.dialog .flex-group-center {
+  padding-left: 0;
+  padding-right: 0;
+}
+.dialog .groups-list {
+  margin-bottom: 20px;
+}
+.dialog .groups-list label {
+  top: -5px;
+  position: relative;
+}
+.flex-center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.flex-grow1 {
+  flex-grow: 1;
+}
+.flex-grow3 {
+  flex-grow: 3;
+}
+.flex-grow8 {
+  flex-grow: 8;
+}
+.flex-grow12 {
+  flex-grow: 12;
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  src: url("../assets/fonts/LinBiolinum_R.otf");
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  src: url("../assets/fonts/LinBiolinum_RB.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Linux Biolinum";
+  src: url("../assets/fonts/LinBiolinum_RI.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Linux Libertine";
+  src: url("../assets/fonts/LinLibertine_R.otf");
+}
+@font-face {
+  font-family: "Linux Libertine";
+  src: url("../assets/fonts/LinLibertine_RB.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Linux Libertine";
+  src: url("../assets/fonts/LinLibertine_RI.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Linux Libertine";
+  src: url("../assets/fonts/LinLibertine_RBI.otf");
+  font-weight: bold;
+  font-style: italic;
+}
+.wh3e.sheet form {
+  font-family: "Linux Biolinum", serif;
+}
+.wh3e.sheet form .sheet-header img {
+  border: none;
+  margin-right: 0;
+  align-self: self-start;
+}
+.wh3e.sheet form .sheet-header h1 input {
+  font-family: "Linux Libertine", sans-serif;
+}
+.wh3e.sheet form .paired-inputs .helper-text {
+  position: relative;
+  min-height: 18px;
+  display: block;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.wh3e.sheet form .paired-inputs div:nth-child(1) {
+  margin-right: 5px;
+}
+.wh3e.sheet form .paired-inputs div:nth-child(2) {
+  margin-left: 5px;
+}
+.wh3e.sheet form input,
+.wh3e.sheet form select {
+  background: #fff;
+  height: 26px;
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-top-color: #dbd196;
+  border-right-color: #5f5621;
+  border-bottom-color: #5f5621;
+  border-left-color: #dbd196;
+  font-size: 1.1em;
+}
+.wh3e.sheet form input.input-small,
+.wh3e.sheet form select.input-small {
+  width: 50%;
+}
+.wh3e.sheet form input.read-only,
+.wh3e.sheet form select.read-only {
+  background-color: #e9e9e3;
+}
+.wh3e.sheet form input.read-only:hover,
+.wh3e.sheet form select.read-only:hover,
+.wh3e.sheet form input.read-only:focus,
+.wh3e.sheet form select.read-only:focus {
+  outline: none;
+  box-shadow: none;
+  cursor: default;
+}
+.wh3e.sheet form input.attention,
+.wh3e.sheet form select.attention {
+  color: red;
+}
+.wh3e.sheet form input:disabled,
+.wh3e.sheet form select:disabled {
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-radius: 3px;
+  border-top-color: #dbd196;
+  border-right-color: #5f5621;
+  border-bottom-color: #5f5621;
+  border-left-color: #dbd196;
+  border-style: solid;
+}
+.wh3e.sheet form .editor {
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-top-color: #dbd196;
+  border-right-color: #5f5621;
+  border-bottom-color: #5f5621;
+  border-left-color: #dbd196;
+  padding: 0;
+}
+.wh3e.sheet form .editor .editor-content {
+  background-color: white;
+  padding: 2px 5px;
+}
+.wh3e.sheet form .sheet-content {
+  height: 100%;
+}
+.wh3e.sheet form nav.sheet-tabs {
+  height: auto;
+  border: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.wh3e.sheet form nav.sheet-tabs .item.active {
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f0f0e0;
+  text-shadow: 1px 1px #000;
+}
+.wh3e.sheet form label {
+  font-weight: bold;
+}
+.wh3e.sheet form button {
+  background-color: rgba(255, 255, 240, 0.8);
+}
+.tox.tox-tinymce .tox-edit-area__iframe {
+  background-color: white;
+  padding: 2px 5px;
+}
+.grid {
+  display: grid;
+  column-gap: 10px;
+  padding: 0;
+}
+.grid-2col {
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-3col {
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-4col {
+  grid-column: span 4 / span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-5col {
+  grid-column: span 5 / span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.grid-6col {
+  grid-column: span 6 / span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.grid-7col {
+  grid-column: span 7 / span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.grid-8col {
+  grid-column: span 8 / span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.grid-9col {
+  grid-column: span 9 / span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+.grid-10col {
+  grid-column: span 10 / span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+.grid-11col {
+  grid-column: span 11 / span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+.grid-12col {
+  grid-column: span 12 / span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.flex-group-center {
+  text-align: center;
+}
+.flex-group-left {
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 0;
+}
+.flex-group-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+.grid .grid-col-span-1-3 {
+  grid-row: 1 / span 3;
+}
+.grid .grid-row-span-1-3 {
+  grid-column: 1 / span 3;
+}
+.grid .grid-row-span-4-3 {
+  grid-column: 4 / span 3;
+}
+.grid .grid-row-span-4-4 {
+  grid-column: 4 / span 4;
+}
+.grid .grid-row-span-4-8 {
+  grid-column: 4 / span 8;
+}
+.grid .grid-row-span-4-9 {
+  grid-column: 4 / span 9;
+}
+.grid .grid-row-span-7-3 {
+  grid-column: 7 / span 3;
+}
+.grid .grid-row-span-7-5 {
+  grid-column: 7 / span 5;
+}
+.grid .grid-row-span-8-2 {
+  grid-column: 8 / span 2;
+}
+.grid .grid-row-span-10-3 {
+  grid-column: 10 / span 3;
+}
+.item-image {
+  width: 6%;
+  min-width: 34px;
+  text-align: center;
+}
+.border-dimensions {
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+}
+.wh-borders {
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-top-color: #dbd196;
+  border-right-color: #5f5621;
+  border-bottom-color: #5f5621;
+  border-left-color: #dbd196;
+}
+.fixed_header {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+.fixed_header tbody {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  height: 280px;
+}
+.fixed_header thead tr {
+  display: block;
+}
+.fixed_header tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.fixed_header th,
+.fixed_header td {
+  padding: 5px;
+  text-align: center;
+}
+.fixed_header th:first-child,
+.fixed_header td:first-child {
+  padding-left: 5px;
+}
+.gear .fixed_header th.equippable,
+.weapons .fixed_header th.equippable,
+.armour .fixed_header th.equippable,
+.gear .fixed_header td.equippable,
+.weapons .fixed_header td.equippable,
+.armour .fixed_header td.equippable {
+  width: 14%;
+  min-width: 80px;
+}
+.abilities .fixed_header th,
+.abilities .fixed_header td {
+  width: 45%;
+  min-width: 262px;
+}
+.abilities .fixed_header th.item-controls,
+.abilities .fixed_header td.item-controls {
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+.abilities .fixed_header th.item-image,
+.abilities .fixed_header td.item-image {
+  width: 6%;
+  min-width: 34px;
+}
+.abilities .fixed_header th.align-left,
+.abilities .fixed_header td.align-left {
+  text-align: left;
+}
+.abilities .fixed_header .ability-name {
+  width: 53%;
+  min-width: 310px;
+}
+.abilities .fixed_header .ability-type {
+  width: 22%;
+  min-width: 120px;
+}
+.abilities .fixed_header .ability-activated {
+  width: 10%;
+  min-width: 60px;
+}
+.gear .fixed_header th,
+.gear .fixed_header td {
+  width: 40%;
+  min-width: 232px;
+}
+.gear .fixed_header th.item-controls,
+.gear .fixed_header td.item-controls {
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+.gear .fixed_header th.item-image,
+.gear .fixed_header td.item-image {
+  width: 6%;
+  min-width: 34px;
+}
+.gear .fixed_header th.align-left,
+.gear .fixed_header td.align-left {
+  text-align: left;
+}
+.gear .fixed_header .gear-name {
+  width: 44%;
+  min-width: 250px;
+}
+.gear .fixed_header .gear-weight {
+  width: 15%;
+  min-width: 90px;
+}
+.gear .fixed_header .gear-quantity {
+  width: 12%;
+  min-width: 70px;
+}
+.weapons .fixed_header th,
+.weapons .fixed_header td {
+  width: 10%;
+  min-width: 60px;
+}
+.weapons .fixed_header th.item-controls,
+.weapons .fixed_header td.item-controls {
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+.weapons .fixed_header th.item-image,
+.weapons .fixed_header td.item-image {
+  width: 6%;
+  min-width: 34px;
+}
+.weapons .fixed_header th.align-left,
+.weapons .fixed_header td.align-left {
+  text-align: left;
+}
+.weapons .fixed_header .weapon-name {
+  width: 29%;
+  min-width: 160px;
+}
+.weapons .fixed_header .weapon-damage {
+  width: 12%;
+  min-width: 70px;
+}
+.armour .fixed_header th,
+.armour .fixed_header td {
+  width: 21%;
+  min-width: 120px;
+}
+.armour .fixed_header th.item-controls,
+.armour .fixed_header td.item-controls {
+  width: 10%;
+  min-width: 60px;
+  text-align: center;
+}
+.armour .fixed_header th.item-image,
+.armour .fixed_header td.item-image {
+  width: 6%;
+  min-width: 34px;
+}
+.armour .fixed_header th.align-left,
+.armour .fixed_header td.align-left {
+  text-align: left;
+}
+.armour .fixed_header .armour-name {
+  width: 50%;
+  min-width: 290px;
+}
+.window-app {
+  background: url("../assets/ui/uvg-window-background.jpg");
+}
+.window-app .window-content {
+  background-image: url("../assets/ui/uvg-window-background.jpg");
+  background-position-y: -30px;
+}
+.window-app .window-header {
+  border-bottom: none;
+  color: black;
+}
+.window-app .window-title {
+  font-weight: bold;
+}
+.window-app.minimized .window-header {
+  border-bottom: none;
+}
+.rollable:hover,
+.rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+.rollable .fa-dice {
+  opacity: 50%;
+}
+.sheet .character {
+  min-width: 600px;
+  min-height: 550px;
+}
+input.center-text {
+  text-align: center;
+}
+.margin-left-20 {
+  margin-left: 20px;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+.character .sheet-header,
+.monster .sheet-header {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.character .sheet-header .profile-img,
+.monster .sheet-header .profile-img {
+  height: 145px;
+  margin-top: 5px;
+}
+.character .sheet-header .header-info,
+.monster .sheet-header .header-info {
+  align-self: self-start;
+}
+.character .sheet-header h1,
+.monster .sheet-header h1 {
+  border-bottom: none;
+}
+.character .sheet-header h1.charname input,
+.monster .sheet-header h1.charname input {
+  margin-left: 5px;
+  width: calc(100% - 10px);
+  height: 32px;
+  font-size: 0.75em;
+}
+.character .stats,
+.monster .stats {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.character .stats .headings,
+.monster .stats .headings {
+  background: rgba(0, 0, 0, 0.5);
+  color: #f0f0e0;
+  text-shadow: 1px 1px #000;
+  border-bottom: 1px solid #000;
+}
+.character .stats .headings span,
+.monster .stats .headings span {
+  font-weight: bold;
+}
+.character .stats .attribute .groups,
+.monster .stats .attribute .groups {
+  margin-left: 15px;
+  margin-right: 5px;
+  padding-left: 5px;
+  text-align: left;
+}
+.character .stats .attribute .modifier,
+.monster .stats .attribute .modifier {
+  flex: 0;
+  position: absolute;
+  height: 20px;
+  width: 25px;
+  left: 14.5%;
+  background-color: #e9e9e3;
+  border-top-width: 1px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-top-color: #dbd196;
+  border-right-color: #5f5621;
+  border-bottom-color: #5f5621;
+  border-left-color: #dbd196;
+}
+.character .stats .attribute input,
+.monster .stats .attribute input {
+  height: 32px;
+}
+.character .sheet-header {
+  flex: 0 0 215px;
+}
+.character .actor-notes {
+  height: 250px;
+}
+.monster .sheet-header {
+  flex: 0 0 160px;
+}
+.monster .sheet-header .header-info {
+  margin-left: 10px;
+}
+.monster .actor-notes {
+  height: 175px;
+}
+a.item-description span,
+a.attack-roll span {
+  height: 24px;
+  width: 24px;
+  display: block;
+  background-size: 24px 24px;
+}
+a.item-description span.weapon-rollable:hover,
+a.attack-roll span.weapon-rollable:hover {
+  background-image: url("/icons/svg/sword.svg") !important;
+  cursor: pointer;
+}
+a.item-description span.item-info:hover,
+a.attack-roll span.item-info:hover {
+  background-image: url("/icons/svg/book.svg") !important;
+  cursor: pointer;
+}
+.wh3e.sheet form {
+  display: flex;
+  flex-direction: column;
+}
+.wh3e.sheet.item .sheet-header {
+  padding-bottom: 10px;
+}
+.wh3e.sheet.item .sheet-header h1 input {
+  width: calc(100% - 9px);
+}
+.wh3e.sheet.item .window-content {
+  overflow-y: unset;
+  overflow-x: unset;
+}
+.wh3e.sheet .sheet-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.wh3e.sheet .sheet-content label {
+  display: block;
+  margin-bottom: 5px;
+}
+.wh3e.sheet .sheet-content .editor {
+  height: calc(100% - 20px);
+  border: 1px solid #aaa;
+}
+.wh3e.sheet .sheet-content .full-width-field {
+  margin-bottom: 10px;
+}
+.wh3e.sheet .sheet-content .full-width-field input,
+.wh3e.sheet .sheet-content .full-width-field select {
+  width: 100%;
+}
+.wh3e.sheet .sheet-content .full-height-field {
+  height: 100%;
+}
+.wh3e.sheet .sheet-content .item-control .active {
+  color: #191813;
+}
+.wh3e.sheet .sheet-content .item-control .inactive {
+  color: rgba(0, 0, 0, 0.4);
+}

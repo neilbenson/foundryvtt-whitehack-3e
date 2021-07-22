@@ -1,0 +1,45 @@
+{
+  "name": "ultraviolethack",
+  "title": "Ultraviolethack (UVG & Whitehack 3E)",
+  "description": "A system for exploring the Ultravolet Grasslands with Whitehack Third Edition",
+  "author": " Whitehack Neil Benson (@OldScouserRPing) | Ultraviolet Grasslands by Luka Rejec | Hack by Michael Parker",
+  "version": "1.2.4",
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "0.8.8",
+  "esmodules": ["wh3e.js"],
+  "styles": ["css/wh3e.css"],
+  "packs": [
+    {
+      "name": "armour",
+      "label": "Armour",
+      "path": "/packs/armour.db",
+      "entity": "Item"
+    },
+    {
+      "name": "gear",
+      "label": "Gear",
+      "path": "/packs/gear.db",
+      "entity": "Item"
+    },
+    {
+      "name": "weapons",
+      "label": "Weapons",
+      "path": "/packs/weapons.db",
+      "entity": "Item"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "gridDistance": 2,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "hitPoints",
+  "initiative": "",
+  "url": "",
+  "manifest": "",
+  "download": ""
+}
