@@ -1,7 +1,9 @@
 {
   "scripts": {
     "gulp": "gulp default",
-    "compendium": "gulp compendia"
+    "compendium": "gulp compendia",
+    "build": "gulp build",
+    "dist": "gulp dist"
   },
   "devDependencies": {
     "cb": "^0.1.0",
