@@ -29,9 +29,9 @@ export default class WH3MonsterSheet extends ActorSheet {
    * Register event listeners
    * @param {Object} html
    */
-  async activateListeners(html) {
+  activateListeners(html) {
     if (this.isEditable) {
-      await html.find(".hitDiceBase").change(this._monsterUpdateStats.bind(this));
+      html.find(".hitDiceBase").change(this._monsterUpdateStats.bind(this));
     }
 
     // Owner only listeners
