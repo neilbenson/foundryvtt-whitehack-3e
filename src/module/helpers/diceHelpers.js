@@ -153,7 +153,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   if (game.user.targets.size === 1) {
     for (let t of game.user.targets.values()) {
       targetAC = t.sheet.actor.data.data.combat.armourClass;
-      targetName = t.nameplate.text;
+      targetName = t.data.name;
     }
   }
 
