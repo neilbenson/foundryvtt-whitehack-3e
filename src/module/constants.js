@@ -56,3 +56,7 @@ export const SUCCESS = "success";
 export const FAIL = "fail";
 export const WHBACKGROUND = "whBackground";
 export const DEFAULTBACKGROUND = "defaultBackground";
+
+// Sheet Constants
+export const CHARACTER_SHEET_WIDTH = 630;
+export const CHARACTER_SHEET_HEIGHT = 625;
