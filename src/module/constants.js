@@ -60,3 +60,5 @@ export const DEFAULTBACKGROUND = "defaultBackground";
 // Sheet Constants
 export const CHARACTER_SHEET_WIDTH = 630;
 export const CHARACTER_SHEET_HEIGHT = 625;
+export const MONSTER_SHEET_WIDTH = 600;
+export const MONSTER_SHEET_HEIGHT = 450;
