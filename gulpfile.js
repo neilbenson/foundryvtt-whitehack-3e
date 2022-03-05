@@ -20,7 +20,8 @@ const STATIC_FILES = [
   "src/assets/**/*",
   "src/lang/**/*",
   "src/module/**/*",
-  "src/templates/**/*"
+  "src/templates/**/*",
+  "src/packs/db/*.db",
 ];
 const LESS_SRC = "src/less/wh3e.less";
 const PACK_SRC = "src/packs";
