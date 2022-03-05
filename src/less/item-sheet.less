@@ -16,35 +16,36 @@
       overflow-y: unset;
       overflow-x: unset;
     }
-  }
-  .sheet-content {
-    height: 100%;
-    display: flex;
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    flex-direction: column;
-    .editor {
-      height: calc(100% - 20px);
-      border: 1px solid #aaa;
-    }
-    .full-width-field {
-      margin-bottom: 10px;
-      input,
-      select {
-        width: 100%;
-      }
-    }
-    .full-height-field {
+
+    .sheet-content {
       height: 100%;
-    }
-    .item-control {
-      .active {
-        color: rgb(25, 24, 19);
+      display: flex;
+      label {
+        display: block;
+        margin-bottom: 5px;
       }
-      .inactive {
-        color: rgba(0, 0, 0, 0.4);
+      flex-direction: column;
+      .editor {
+        height: calc(100% - 20px);
+        border: 1px solid #aaa;
+      }
+      .full-width-field {
+        margin-bottom: 10px;
+        input,
+        select {
+          width: 100%;
+        }
+      }
+      .full-height-field {
+        height: 100%;
+      }
+      .item-control {
+        .active {
+          color: rgb(25, 24, 19);
+        }
+        .inactive {
+          color: rgba(0, 0, 0, 0.4);
+        }
       }
     }
   }
