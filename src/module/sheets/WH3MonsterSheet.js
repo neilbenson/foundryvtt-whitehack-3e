@@ -6,9 +6,9 @@ export default class WH3MonsterSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       template: "systems/whitehack3e/templates/sheets/monster-sheet.hbs",
       classes: ["wh3e", "sheet", "monster"],
-      width: 600,
-      height: 450,
-      resizable: false,
+      width: c.MONSTER_SHEET_WIDTH,
+      height: c.MONSTER_SHEET_HEIGHT,
+      resizable: true,
     });
   }
 

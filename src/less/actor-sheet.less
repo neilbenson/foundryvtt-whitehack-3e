@@ -1,5 +1,8 @@
 .character,
 .monster {
+  min-width: 630px;
+  min-height: 625px;
+
   .sheet-header {
     overflow: hidden;
     margin-bottom: 10px;
@@ -55,6 +58,40 @@
       }
     }
   }
+
+
+  .sheet-content {
+    height: 100%;
+    .tab {
+      height: 100%;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .editor {
+      height: calc(100% - 20px);
+      border: 1px solid #aaa;
+    }
+    .full-width-field {
+      margin-bottom: 10px;
+      input,
+      select {
+        width: 100%;
+      }
+    }
+    .full-height-field {
+      height: 100%;
+    }
+    .item-control {
+      .active {
+        color: rgb(25, 24, 19);
+      }
+      .inactive {
+        color: rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
 }
 
 .character {
@@ -62,7 +99,7 @@
     flex: 0 0 215px;
   }
   .actor-notes {
-    height: 250px;
+    height: calc(100% - 4em);
   }
 }
 .monster {
@@ -73,7 +110,7 @@
     }
   }
   .actor-notes {
-    height: 175px;
+    height: calc(100% - 4em);
   }
 }
 
