@@ -26,6 +26,12 @@
       "label": "Weapons",
       "path": "/packs/weapons.db",
       "type": "Item"
+    },
+    {
+      "name": "tables",
+      "label": "Crits and Fumbles",
+      "path": "/packs/db/crits-and-fumbles.db",
+      "type": "RollTable"
     }
   ],
   "languages": [

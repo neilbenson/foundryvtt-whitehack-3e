@@ -10,6 +10,7 @@ const clean = require("gulp-clean");
 const zip = require("gulp-zip");
 const fs = require("fs");
 const path = require("path");
+const HOME = require('os').homedir();
 
 const SYSTEM = JSON.parse(fs.readFileSync("src/system.json"));
 const STATIC_FILES = [
@@ -19,13 +20,16 @@ const STATIC_FILES = [
   "src/assets/**/*",
   "src/lang/**/*",
   "src/module/**/*",
-  "src/templates/**/*"
+  "src/templates/**/*",
+  "src/packs/db/*.db",
 ];
 const LESS_SRC = "src/less/wh3e.less";
 const PACK_SRC = "src/packs";
 const BUILD_DIR = "build";
 const DIST_DIR = "dist";
 const CSS_DEST = path.join(BUILD_DIR, "css");
+const FOUNDRY_DIR = ".local/share/FoundryVTT/Data/systems";
+const SYSTEM_NAME = "whitehack3e";
 
 /* ----------------------------------------- */
 /*  Compile Compendia
@@ -111,6 +115,10 @@ watchUpdates = () => {
   gulp.watch("src/**/*", gulp.series(cleanBuild, compileCSS, copyFiles, copyDocFiles, compilePacks));
 }
 
+deployLocal = () => {
+  return gulp.src(`${BUILD_DIR}/**/*`, {base: `${BUILD_DIR}`}).pipe(gulp.dest(HOME + path.sep + FOUNDRY_DIR + path.sep + SYSTEM_NAME));
+}
+
 /* ----------------------------------------- */
 /*  Export Tasks
 /* ----------------------------------------- */
@@ -122,3 +130,4 @@ exports.copy = gulp.series(copyFiles);
 exports.build = gulp.series(cleanBuild, compileCSS, copyFiles, copyDocFiles, compilePacks);
 exports.dist = gulp.series(createZip);
 exports.default = gulp.series(cleanBuild, compileCSS, copyFiles, copyDocFiles, compilePacks, watchUpdates);
+exports.deploy = gulp.series(exports.build, deployLocal);
