@@ -7,12 +7,12 @@
   </header>
   <div class="sheet-content">
     <div class="full-width-field ability-type-select">
-      <label for="data.type">{{localize "wh3e.item.type"}}</label>
-      {{> selectOptions field="data.type" selected=data.type options=config.abilityTypes}}
+      <label for="system.type">{{localize "wh3e.item.type"}}</label>
+      {{> selectOptions field="system.type" selected=system.type options=config.abilityTypes}}
     </div>
     <div class="full-height-field">
-      <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
-      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+      <label for="system.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
+      {{editor system.description target="system.description" button=true owner=owner editable=editable}}
     </div>
   </div>
 </form>

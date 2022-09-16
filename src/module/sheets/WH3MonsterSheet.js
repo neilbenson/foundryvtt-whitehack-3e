@@ -18,7 +18,7 @@ export default class WH3MonsterSheet extends ActorSheet {
    */
   getData() {
     const data = super.getData();
-    let monsterData = data.data;
+    let monsterData = data.actor;
     monsterData.config = CONFIG.wh3e;
     monsterData.hasToken = !(this.token === null);
     monsterData.editable = this.options.editable;
@@ -73,7 +73,7 @@ export default class WH3MonsterSheet extends ActorSheet {
         type: c.WEAPON,
         data: {
           description: c.EMPTYSTRING,
-          damage: this.actor.data.data.damage,
+          damage: this.actor.system.damage,
           weight: c.REGULAR,
           rateOfFire: c.NONE,
         },

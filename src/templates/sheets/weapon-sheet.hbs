@@ -17,33 +17,33 @@
       </tr>
       <tr class="flex-center">
         <td>
-          {{> selectOptions field="data.damage" selected=data.damage options=config.damageDice}}
+          {{> selectOptions field="system.damage" selected=system.damage options=config.damageDice}}
         </td>
         <td>
-          {{> selectOptions field="data.weight" selected=data.weight options=config.weaponWeightTypes}}
+          {{> selectOptions field="system.weight" selected=system.weight options=config.weaponWeightTypes}}
         </td>
         <td>
-          <input name="data.range" type="text" class="center-text" value={{data.range}}
+          <input name="system.range" type="text" class="center-text" value={{system.range}}
                  data-dtype="Number" />
         </td>
         <td>
-          {{> selectOptions field="data.rateOfFire" selected=data.rateOfFire options=config.roFShotsPerRound}}
+          {{> selectOptions field="system.rateOfFire" selected=system.rateOfFire options=config.roFShotsPerRound}}
         </td>
         <td>
-          <input name="data.cost" type="text" class="center-text input-small" value={{data.cost}}
+          <input name="system.cost" type="text" class="center-text input-small" value={{system.cost}}
                  data-dtype="Number" />
-          {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}
+          {{> selectOptions field="system.costCoinType" selected=system.costCoinType options=config.coinTypes}}
         </td>
       </tr>
     </table>
     <div class="full-width-field">
-      <label for="data.special">{{localize "wh3e.item.special"}}</label>
-      <input id="data.special" name="data.special" type="text" value="{{data.special}}"
+      <label for="system.special">{{localize "wh3e.item.special"}}</label>
+      <input id="system.special" name="system.special" type="text" value="{{system.special}}"
              data-dtype="String" />
     </div>
     <div class="full-height-field">
-      <label for="data.description">{{localize "wh3e.item.description"}}</label>
-      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+      <label for="system.description">{{localize "wh3e.item.description"}}</label>
+      {{editor system.description target="system.description" button=true owner=owner editable=editable}}
     </div>
   </div>
 </form>

@@ -20,22 +20,22 @@
               <span class="weapon-rollable" style="background-image: url({{weapon.img}})"></span>
             </a>
           </td>
-          <td class="align-left weapon-name" title="{{{stripHtml weapon.data.description}}}">
+          <td class="align-left weapon-name" title="{{{stripHtml weapon.system.description}}}">
             <span>{{weapon.name}}</span>
           </td>
           <td class="weapon-damage">
-            <span>{{getTextFromKey "wh3e.damageDice" weapon.data.damage}}</span>
+            <span>{{getTextFromKey "wh3e.damageDice" weapon.system.damage}}</span>
           </td>
           <td>
-            <span>{{getTextFromKey "wh3e.weightTypes" weapon.data.weight}}</span>
+            <span>{{getTextFromKey "wh3e.weightTypes" weapon.system.weight}}</span>
           </td>
           <td>
-            <span>{{weapon.data.range}}</span>
+            <span>{{weapon.system.range}}</span>
           </td>
           <td>
-            <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.data.rateOfFire}}</span>
+            <span>{{getTextFromKey "wh3e.roFShotsPerRound" weapon.system.rateOfFire}}</span>
           </td>
-          {{> controlsEquipStore name=weapon.name status=weapon.data.equippedStatus}}
+          {{> controlsEquipStore name=weapon.name status=weapon.system.equippedStatus}}
           {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editWeapon") deleteTitle=(localize
         "wh3e.sheet.deleteWeapon") }}
         </tr>

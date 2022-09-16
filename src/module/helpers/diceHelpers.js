@@ -126,9 +126,9 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   let strMod = 0;
   let strDmgMod = 0;
   const actor = weapon.actor;
-  if (actor.data.type !== c.MONSTER && actor.data.data.basics.class === c.THESTRONG) {
-    strMod = actor.data.data.attributes.str.mod;
-    strDmgMod = actor.data.data.attributes.str.dmgMod;
+  if (actor.type !== c.MONSTER && actor.system.basics.class === c.THESTRONG) {
+    strMod = actor.system.attributes.str.mod;
+    strDmgMod = actor.system.attributes.str.dmgMod;
   }
 
   const rollData = {
@@ -143,7 +143,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   };
 
   let cardData = {
-    ...weapon.data,
+    ...weapon,
     owner: actor.id,
   };
 
@@ -152,12 +152,12 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   let targetAC = 0;
   if (game.user.targets.size === 1) {
     for (let t of game.user.targets.values()) {
-      targetAC = t.sheet.actor.data.data.combat.armourClass;
+      targetAC = t.sheet.actor.system.combat.armourClass;
       targetName = t.data.name;
     }
   }
 
-  const toHitTarget = actor.data.data.combat.attackValue + strMod + toHitMod;
+  const toHitTarget = actor.system.combat.attackValue + strMod + toHitMod;
   const rollTemplate = "systems/whitehack3e/templates/chat/attack-roll.hbs";
 
   // To Hit Roll
@@ -190,7 +190,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   if (toHitOutcome === c.SUCCESS) {
     // Hit - Damage Roll
     let rollFormula =
-      "(" + game.i18n.localize("wh3e.damageDice." + weapon.data.data.damage) + ")" + " + @strDmgMod + @damageMod";
+      "(" + game.i18n.localize("wh3e.damageDice." + weapon.system.damage) + ")" + " + @strDmgMod + @damageMod";
     let damageRoll = await new Roll(rollFormula, rollData).evaluate({ async: true });
     damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
@@ -210,7 +210,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   }
 
   messageData.content = await renderTemplate(rollTemplate, cardData);
-  messageData.roll = true;
+  //messageData.roll = true;
   ChatMessage.create(messageData);
 };
 
@@ -230,17 +230,16 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     user: game.user.id,
     speaker: ChatMessage.getSpeaker(),
   };
-
   let cardData = {
     ...actor,
-    owner: actor.data.id,
+    owner: actor.id,
   };
 
   let rollValue = 0;
   if (rollFor === c.SAVINGTHROW) {
-    rollValue = actor.data.data.savingThrow;
+    rollValue = actor.system.savingThrow;
   } else {
-    rollValue = actor.data.data.attributes[rollFor].value;
+    rollValue = actor.system.attributes[rollFor].value;
   }
   const rollTarget = rollValue + rollMod;
   const rollTemplate = "systems/whitehack3e/templates/chat/task-roll.hbs";
@@ -278,7 +277,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   }
 
   messageData.content = await renderTemplate(rollTemplate, cardData);
-  messageData.roll = true;
+  // messageData.roll = true;
   ChatMessage.create(messageData);
 };
 
