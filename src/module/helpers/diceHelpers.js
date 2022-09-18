@@ -153,7 +153,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   if (game.user.targets.size === 1) {
     for (let t of game.user.targets.values()) {
       targetAC = t.sheet.actor.system.combat.armourClass;
-      targetName = t.data.name;
+      targetName = t.document.name;
     }
   }
 
@@ -195,14 +195,19 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     damageRoll.toMessage(messageData, { rollMode: null, create: false });
 
     cardData.dmgFormula = damageRoll._formula;
-    if (damageRoll.dice.length > 0) {
-      cardData.dmgDice = damageRoll.dice[0].expression;
-    } else {
-      cardData.dmgDice = "Fixed damage";
-    }
+
     cardData.damageTemplate = await damageRoll.render();
     cardData.damageResult = damageRoll.total >= 1 ? damageRoll.total : 1;
     cardData.damageHeader = getDamageResultHeader(weapon.name, cardData.damageResult);
+
+    // Different output if not Fixed Damage of 1: shows dice formula and dice results
+    if (damageRoll.dice.length > 0) {
+      cardData.dmgDice = damageRoll.dice[0].expression;
+      cardData.damageDiceRolled = damageRoll.dice[0].results;
+    } else {
+      cardData.dmgDice = "Fixed damage";
+      cardData.damageDiceRolled = [1];
+    }
 
     if (game.dice3d) {
       await game.dice3d.showForRoll(damageRoll, game.user, true, null, false);

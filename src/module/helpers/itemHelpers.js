@@ -1,3 +1,4 @@
+import { wh3e } from "../config.js";
 import * as c from "../constants.js";
 
 /**
@@ -36,7 +37,7 @@ export const updateActorEncumbrance = async (actor) => {
     getEncumbranceForItems(items.filter((item) => item.type === c.GEAR && item.system.equippedStatus === c.STORED));
 
   await actor.update({
-    data: {
+    system: {
       encumbrance: {
         equipped: encEquipped,
         stored: encStored,
@@ -60,7 +61,7 @@ export const updateActorArmourClass = async (actor) => {
   }
 
   await actor.update({
-    data: {
+    system: {
       combat: {
         armourClass: ac,
       },
@@ -82,7 +83,7 @@ export const updateActorGroups = async (actor) => {
   const vocation = vocationObj.length > 0 ? vocationObj[0].name : c.EMPTYSTRING;
 
   await actor.update({
-    data: {
+    system: {
       basics: {
         vocation: vocation,
         species: species,
@@ -93,17 +94,18 @@ export const updateActorGroups = async (actor) => {
 
 const getArmourClassForItems = (items) => {
   let maxAc = 0;
-  let shieldHelmAc = 0;
+  let modifierAc = 0;
   items.forEach((item) => {
-    let tempAc = item.system.armourClass;
-    if (tempAc === c.PLUSONE) {
-      shieldHelmAc = 1;
-    } else if (tempAc !== c.SPECIAL) {
-      tempAc = +tempAc;
-      maxAc = tempAc > maxAc ? tempAc : maxAc;
+    let itemAc = item.system.armourClass;
+    console.log('Item AC', item.system.armourClass);
+    if ([c.PLUSONE, c.PLUSTWO, c.PLUSTHREE, c.MINUSONE, c.MINUSTWO, c.MINUSTHREE].includes(itemAc)) {
+      modifierAc = modifierAc + +(wh3e.armourClasses[itemAc]);
+    } else if (itemAc !== c.SPECIAL) {
+      itemAc = +itemAc;
+      maxAc = itemAc > maxAc ? itemAc : maxAc;
     }
   });
-  return maxAc + shieldHelmAc;
+  return maxAc + modifierAc;
 };
 
 const getEncumbranceForItems = (items) => {
@@ -131,8 +133,8 @@ const getEncumbranceForItems = (items) => {
           encCount = encCount++;
       }
     } else {
-      if (item.system.armourClass !== c.SPECIAL && item.system.armourClass !== c.PLUSONE) {
-        encCount = encCount + +item.system.armourClass;
+      if (item.system.armourClass !== c.SPECIAL) {
+        encCount = encCount + Math.abs(+(wh3e.armourClasses[item.system.armourClass]));
       } else {
         encCount = encCount + 1;
       }
