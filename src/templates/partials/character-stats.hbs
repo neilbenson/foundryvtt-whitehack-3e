@@ -6,11 +6,11 @@
       <span class="flex-grow12"
             title="{{localize "wh3e.sheet.activeGroupsRequired"}}">{{localize "wh3e.actor.groups"}}</span>
     </div>
-    {{#each data.attributes as |attribute key|}}
+    {{#each system.attributes as |attribute key|}}
     <div class="attribute flexrow flex-group-center">
-      <label for="data.attributes.{{key}}.value" class="flex-grow1 rollable" data-roll-for="{{key}}"><span
+      <label for="system.attributes.{{key}}.value" class="flex-grow1 rollable" data-roll-for="{{key}}"><span
               class="fas fa-dice"></span>{{getTextFromKey "wh3e.attribute" key}}</label>
-      <input type="text" name="data.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="Number"
+      <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="Number"
              class="flex-grow1 attribute-score" />
       {{!-- Crappy data scoping issue in Handlebars took me ages to figure out, need to use ../
       in nested component to access parent data. F'n stupid I know --}}
@@ -23,7 +23,7 @@
            class="flex-grow1 modifier">{{attribute.mod}}</div>
       {{/if}}
       {{/if}}
-      <input type="text" name="data.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String"
+      <input type="text" name="system.attributes.{{key}}.groups" value="{{attribute.groups}}" data-dtype="String"
              class="flex-grow12 groups read-only" readonly="readonly"
              title="{{attribute.groups}}" />
       <div class="flex-grow1">

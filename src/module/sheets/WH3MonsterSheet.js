@@ -18,7 +18,7 @@ export default class WH3MonsterSheet extends ActorSheet {
    */
   getData() {
     const data = super.getData();
-    let monsterData = data.data;
+    let monsterData = data.actor;
     monsterData.config = CONFIG.wh3e;
     monsterData.hasToken = !(this.token === null);
     monsterData.editable = this.options.editable;
@@ -51,7 +51,7 @@ export default class WH3MonsterSheet extends ActorSheet {
   _monsterUpdateStats(event) {
     const newHDBase = parseInt(event.currentTarget.value);
     this.actor.update({
-      data: {
+      system: {
         savingThrow: newHDBase + 5,
         combat: {
           attackValue: newHDBase + 10,
@@ -66,22 +66,23 @@ export default class WH3MonsterSheet extends ActorSheet {
   async _attackRollHandler() {
     // To use the diceHelper.js attackRoll need to create an item
     // for the monster attack
-    let monsterAttackItem = null;
+
+    // Ensures there is only one attack item for the monster
     if (this.actor.items.size < 1) {
       let newItem = {
         name: this.actor.name,
         type: c.WEAPON,
-        data: {
+        system: {
           description: c.EMPTYSTRING,
-          damage: this.actor.data.data.damage,
           weight: c.REGULAR,
           rateOfFire: c.NONE,
         },
       };
       await this.actor.createEmbeddedDocuments("Item", [newItem]);
     }
-    monsterAttackItem = this.actor.items.filter((item) => item)[0];
-
+    let monsterAttackItem = this.actor.items.filter((item) => item)[0];
+    // Add damage to monsterAttackItem as that may have changed
+    monsterAttackItem.system.damage = this.actor.system.damage;
     attackRollDialog(monsterAttackItem);
   }
 

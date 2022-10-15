@@ -7,9 +7,7 @@ class WH3Actor extends Actor {
    */
   manageGroupsDialog(attribute) {
     const groupTypes = [c.AFFILIATION, c.SPECIES, c.VOCATION];
-    const groups = this.data.items.filter(
-      (item) => item.type === c.ABILITY && groupTypes.includes(item.data.data.type)
-    );
+    const groups = this.items.filter((item) => item.type === c.ABILITY && groupTypes.includes(item.system.type));
     let groupsHtml = c.EMPTYSTRING;
     groups.forEach((element) => {
       groupsHtml =
@@ -63,7 +61,7 @@ class WH3Actor extends Actor {
           ok: {
             icon: '<i class="fas fa-check"></i>',
             label: game.i18n.localize("wh3e.sheet.clear"),
-            callback: () => this.update({ data: { attributes: { [attribute]: { groups: c.EMPTYSTRING } } } }),
+            callback: () => this.update({ system: { attributes: { [attribute]: { groups: c.EMPTYSTRING } } } }),
           },
         },
       },
@@ -86,7 +84,7 @@ class WH3Actor extends Actor {
     });
 
     this.update({
-      data: {
+      system: {
         attributes: {
           [attribute]: {
             groups: selectedGroupsArray.join(", "),
@@ -125,7 +123,7 @@ class WH3Actor extends Actor {
 
     // Setup the roll
     const die = c.ONED6;
-    const init = this.data.data.attributes.dex.mod;
+    const init = this.system.attributes.dex.mod;
     const roll = await new Roll("@die+@init", { die, init }).evaluate({ async: true });
 
     // Convert the roll to a chat message

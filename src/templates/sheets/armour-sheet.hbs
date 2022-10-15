@@ -8,23 +8,23 @@
   <div class="sheet-content">
     <div class="grid grid-2col">
       <div class="flex-group-left">
-        <label for="data.armourClass" class="left-text">{{localize "wh3e.item.armourClass"}}</label>
+        <label for="system.armourClass" class="left-text">{{localize "wh3e.item.armourClass"}}</label>
         <div class="flexrow flex-center paired-inputs">
-          {{> selectOptions field="data.armourClass" selected=data.armourClass options=config.armourClasses}}
+          {{> selectOptions field="system.armourClass" selected=system.armourClass options=config.armourClasses}}
         </div>
       </div>
       <div class="flex-group-center" style="padding-right: 0;">
-        <label for="data.cost">{{localize "wh3e.item.cost"}}</label>
+        <label for="system.cost">{{localize "wh3e.item.cost"}}</label>
         <div class="flexrow flex-center paired-inputs">
-          <input name="data.cost" type="text" class="center-text" value={{data.cost}}
+          <input name="system.cost" type="text" class="center-text" value={{system.cost}}
                  data-dtype="Number" />
-          {{> selectOptions field="data.costCoinType" selected=data.costCoinType options=config.coinTypes}}
+          {{> selectOptions field="system.costCoinType" selected=system.costCoinType options=config.coinTypes}}
         </div>
       </div>
     </div>
     <div class="full-height-field">
-      <label for="data.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
-      {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+      <label for="system.description" style="font-weight: bold;">{{localize "wh3e.item.description"}}</label>
+      {{editor system.description target="system.description" button=true owner=owner editable=editable}}
     </div>
   </div>
 </form>

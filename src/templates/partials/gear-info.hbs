@@ -18,17 +18,17 @@
               <span class="item-info" style="background-image: url({{gear.img}})"></span>
             </a>
           </td>
-          <td class="align-left gear-name" title="{{{stripHtml gear.data.description}}}">
+          <td class="align-left gear-name" title="{{{stripHtml gear.system.description}}}">
             <span>{{gear.name}}</span>
           </td>
           <td class="gear-quantity">
-            <span>{{gear.data.quantity}}</span>
+            <span>{{gear.system.quantity}}</span>
           </td>
           <td class="gear-weight">
-            <span>{{getTextFromKey "wh3e.weightTypes" gear.data.weight}}</span>
+            <span>{{getTextFromKey "wh3e.weightTypes" gear.system.weight}}</span>
           </td>
-          {{#if (hasEncumbrance gear.data.weight)}}
-            {{> controlsEquipStore name=gear.name status=gear.data.equippedStatus}}
+          {{#if (hasEncumbrance gear.system.weight)}}
+            {{> controlsEquipStore name=gear.name status=gear.system.equippedStatus}}
           {{else}}
             <td class="equippable"></td>
           {{/if}}

@@ -14,7 +14,9 @@
 						<span class="part-total">{{damageResult}}</span>
 					</header>
 					<ol class="dice-rolls">
-						<li class="roll die d6">{{damageResult}}</li>
+						{{#each damageDiceRolled }}
+						<li class="roll die d6">{{result}}</li>
+						{{/each}}
 					</ol>
 				</div>
 			</div>

@@ -3,9 +3,9 @@
   "title": "Whitehack Third Edition",
   "description": "A system for playing Whitehack Third Edition",
   "author": "Neil Benson (@OldScouserRPing)",
-  "version": "1.3.5",
-  "minimumCoreVersion": "0.8.9",
-  "compatibleCoreVersion": "9",
+  "version": "1.4.0",
+  "minimumCoreVersion": "10.285",
+  "compatibleCoreVersion": "10.288",
   "esmodules": ["wh3e.js"],
   "styles": ["css/wh3e.css"],
   "packs": [
@@ -41,5 +41,5 @@
   "initiative": "1d6 + @attributes.dex.mod",
   "url": "https://github.com/neilbenson/foundryvtt-whitehack-3e",
   "manifest": "https://raw.githubusercontent.com/neilbenson/foundryvtt-whitehack-3e/main/src/system.json",
-  "download": "https://github.com/neilbenson/foundryvtt-whitehack-3e/releases/download/1.3.5/foundryvtt-whitehack3e-v1.3.5.zip"
+  "download": "https://github.com/neilbenson/foundryvtt-whitehack-3e/releases/download/1.4.0/foundryvtt-whitehack3e-v1.4.0.zip"
 }

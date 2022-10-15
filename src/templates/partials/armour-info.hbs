@@ -17,13 +17,13 @@
               <span class="item-info" style="background-image: url({{armour.img}})"></span>
             </a>
           </td>
-          <td class="align-left armour-name" title="{{{stripHtml armour.data.description}}}">
+          <td class="align-left armour-name" title="{{{stripHtml armour.system.description}}}">
             <span>{{armour.name}}</span>
           </td>
           <td class="armour-ac">
-            <span>{{getTextFromKey "wh3e.armourClasses" armour.data.armourClass}}</span>
+            <span>{{getTextFromKey "wh3e.armourClasses" armour.system.armourClass}}</span>
           </td>
-          {{> controlsEquipStore name=armour.name status=armour.data.equippedStatus}}
+          {{> controlsEquipStore name=armour.name status=armour.system.equippedStatus}}
           {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editArmour") deleteTitle=(localize
         "wh3e.sheet.deleteArmour") }}
         </tr>

@@ -12,7 +12,7 @@ export default class WH3ItemSheet extends ItemSheet {
   }
 
   get template() {
-    return `systems/whitehack3e/templates/sheets/${this.item.data.type.toLowerCase()}-sheet.hbs`;
+    return `systems/whitehack3e/templates/sheets/${this.item.type.toLowerCase()}-sheet.hbs`;
   }
 
   /**
@@ -22,7 +22,7 @@ export default class WH3ItemSheet extends ItemSheet {
   getData(options) {
     const baseData = super.getData(options);
     const sheetData = {
-      ...baseData.item.data,
+      ...baseData.item,
       editable: true,
       config: CONFIG.wh3e,
     };

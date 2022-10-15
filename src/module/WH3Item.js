@@ -12,15 +12,14 @@ class WHItem extends Item {
    */
   prepareData() {
     super.prepareData();
-
-    if (!this.data.img || this.data.img == c.ITEMBAG) {
+    if (!this.img || this.img == c.ITEMBAG) {
       const abilityTypeIcons = {
         [c.ABILITY]: [c.DEFAULTABILITYIMAGE],
         [c.ARMOUR]: [c.DEFAULTARMOURIMAGE],
         [c.GEAR]: [c.DEFAULTGEARIMAGE],
         [c.WEAPON]: [c.DEFAULTWEAPONIMAGE],
       };
-      this.data.img = abilityTypeIcons[this.data.type][0];
+      this.img = abilityTypeIcons[this.type][0];
     }
   }
 
@@ -34,11 +33,11 @@ class WHItem extends Item {
     };
 
     let cardData = {
-      ...this.data,
+      ...this,
       owner: this.actor.id,
     };
     messageData.content = await renderTemplate(this.chatTemplate[this.type], cardData);
-    messageData.roll = true;
+    //messageData.roll = true;
     ChatMessage.create(messageData);
   }
 }

@@ -1,10 +1,10 @@
 <div class="tab" data-group="primary" data-tab="notes">
   <div class="full-width-field">
-    <label for="data.languages" style="font-weight: bold;">{{localize "wh3e.actor.languages"}}</label>
-    <input id="data.languages" name="data.languages" type="text" value="{{data.languages}}" data-dtype="String" />
+    <label for="system.languages" style="font-weight: bold;">{{localize "wh3e.actor.languages"}}</label>
+    <input id="system.languages" name="system.languages" type="text" value="{{system.languages}}" data-dtype="String" />
   </div>
   <div class="actor-notes">
-    <label for="data.notes" style="font-weight: bold;">{{localize "wh3e.actor.notes"}}</label>
-    {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
+    <label for="system.notes" style="font-weight: bold;">{{localize "wh3e.actor.notes"}}</label>
+    {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
   </div>
 </div>

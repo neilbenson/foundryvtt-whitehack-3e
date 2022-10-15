@@ -22,19 +22,20 @@ export default class WH3CharacterSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     const groups = [c.AFFILIATION, c.SPECIES, c.VOCATION];
-    let actorData = data.actor.data;
+    let actorData = data.actor;
+    
     actorData.config = CONFIG.wh3e;
     actorData.weapons = data.items.filter((item) => item.type === c.WEAPON);
     actorData.gear = data.items.filter((item) => item.type === c.GEAR);
     actorData.abilities = data.items.filter((item) => item.type === c.ABILITY);
     actorData.hasGroups = !!actorData.abilities.filter((item) => {
-      return groups.includes(item.data.type);
+      return groups.includes(item.type);
     });
     actorData.armour = data.items.filter((item) => item.type === c.ARMOUR);
-    if (!actorData.data.basics.species) {
-      actorData.data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
+    if (!actorData.system.basics.species) {
+      actorData.system.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
     }
-    actorData.charClass = actorData.data.basics.class;
+    actorData.charClass = actorData.system.basics.class;
     actorData.hasToken = !(this.token === null);
     actorData.editable = this.options.editable;
     return actorData;
@@ -217,9 +218,10 @@ export default class WH3CharacterSheet extends ActorSheet {
    */
   async _gearChangeEquippedStatusHandler(event) {
     const item = this.getItem(event);
+
     await item.update({
-      data: {
-        equippedStatus: this.updateEquippedStatus(item.data.data.equippedStatus),
+      system: {
+        equippedStatus: this.updateEquippedStatus(item.system.equippedStatus),
       },
     });
     await updateActorEncumbrance(this.actor);

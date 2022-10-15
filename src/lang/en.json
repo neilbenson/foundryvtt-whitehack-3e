@@ -148,7 +148,22 @@
       "d6": "1d6",
       "d6plus1": "1d6+1",
       "d6plus2": "1d6+2",
-      "d6plus3": "1d6+3"
+      "d6plus3": "1d6+3",
+      "d6plus4": "1d6+4",
+      "Twod6minus2": "2d6-2",
+      "Twod6minus1": "2d6-1",
+      "Twod6": "2d6",
+      "Twod6plus1": "2d6+1",
+      "Twod6plus2": "2d6+2",
+      "Twod6plus3": "2d6+3",
+      "Twod6plus4": "2d6+4",
+      "Threed6minus2": "3d6-2",
+      "Threed6minus1": "3d6-1",
+      "Threed6": "3d6",
+      "Threed6plus1": "3d6+1",
+      "Threed6plus2": "3d6+2",
+      "Threed6plus3": "3d6+3",
+      "Threed6plus4": "3d6+4"
     },
     "weightTypes": {
       "regular": "Regular",
@@ -185,6 +200,11 @@
       "8": "8",
       "9": "9",
       "plusOne": "+1",
+      "plusTwo": "+2",
+      "plusThree": "+3",
+      "minusOne": "-1",
+      "minusTwo": "-2",
+      "minusThree": "-3",
       "special": "Special"
     },
     "misc": {
