@@ -5,7 +5,7 @@
   "author": "Neil Benson (@OldScouserRPing)",
   "version": "1.4.0",
   "minimumCoreVersion": "10.285",
-  "compatibleCoreVersion": "10.285",
+  "compatibleCoreVersion": "10.288",
   "esmodules": ["wh3e.js"],
   "styles": ["css/wh3e.css"],
   "packs": [
