@@ -1,5 +1,7 @@
 # Whitehack 3e system (unofficial) for FoundryVTT
 
+**This repo is no longer maintained. If you would like to make a fork please do so and release to Foundry and I'll take this version down**
+
 This system provides support for the [Whitehack RPG 3rd edition](https://whitehackrpg.wordpress.com/) in [FoundryVTT](https://foundryvtt.com). It is published with the approval of Christian Mehrstam, the creator of the Whitehack RPG.
 
 ## Installation
